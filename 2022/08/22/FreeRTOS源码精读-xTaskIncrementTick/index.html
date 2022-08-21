@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="功能将FreeRTOS的系统tick时间xTickCount+1，并检查是否有时间溢出事件；返回值是是否需要切换任务。 调用者xTaskIncrementTick有2处被调用：  在系统tick中断函数中调用，由xPortSysTickHandler的返回值告知是否需要进行任务切换，如果是通过修改寄存器portNVIC_INT_CTRL_REG来触发PendSV中断，进而切换任务。以ARM_CM3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FreeRTOS源码精读-xTaskIncrementTick">
+<meta property="og:url" content="http://example.com/2022/08/22/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-xTaskIncrementTick/index.html">
+<meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
+<meta property="og:description" content="功能将FreeRTOS的系统tick时间xTickCount+1，并检查是否有时间溢出事件；返回值是是否需要切换任务。 调用者xTaskIncrementTick有2处被调用：  在系统tick中断函数中调用，由xPortSysTickHandler的返回值告知是否需要进行任务切换，如果是通过修改寄存器portNVIC_INT_CTRL_REG来触发PendSV中断，进而切换任务。以ARM_CM3">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-21T17:01:17.000Z">
+<meta property="article:modified_time" content="2022-08-21T17:01:50.664Z">
+<meta property="article:author" content="WaterYoungMan">
+<meta property="article:tag" content="FreeRTOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/08/22/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-xTaskIncrementTick/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>FreeRTOS源码精读-xTaskIncrementTick | WaterYoungMan's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WaterYoungMan's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-xTaskIncrementTick/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FreeRTOS源码精读-xTaskIncrementTick
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-22 01:01:17 / Modified: 01:01:50" itemprop="dateCreated datePublished" datetime="2022-08-22T01:01:17+08:00">2022-08-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>将FreeRTOS的系统tick时间xTickCount+1，并检查是否有时间溢出事件；<br>返回值是<code>是否需要切换任务</code>。</p>
+<h2 id="调用者"><a href="#调用者" class="headerlink" title="调用者"></a>调用者</h2><p>xTaskIncrementTick有2处被调用：</p>
+<ol>
+<li>在系统tick中断函数中调用，由xPortSysTickHandler的返回值告知是否需要进行任务切换，如果是通过修改寄存器portNVIC_INT_CTRL_REG来触发PendSV中断，进而切换任务。<br>以ARM_CM3为例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void xPortSysTickHandler( void )</span><br><span class="line">&#123;</span><br><span class="line">    /* The SysTick runs at the lowest interrupt priority, so when this interrupt</span><br><span class="line">     * executes all interrupts must be unmasked.  There is therefore no need to</span><br><span class="line">     * save and then restore the interrupt mask value as its value is already</span><br><span class="line">     * known. */</span><br><span class="line">    portDISABLE_INTERRUPTS();</span><br><span class="line">    &#123;</span><br><span class="line">        /* Increment the RTOS tick. */</span><br><span class="line">        if( xTaskIncrementTick() != pdFALSE )</span><br><span class="line">        &#123;</span><br><span class="line">            /* A context switch is required.  Context switching is performed in</span><br><span class="line">             * the PendSV interrupt.  Pend the PendSV interrupt. */</span><br><span class="line">            portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    portENABLE_INTERRUPTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li>在xTaskResumeAll中调用，有时调度器会被挂起，此时xTickCount并没有及时+1，而是暂存在xPendedCounts中。等到调度器恢复的时候，再补执行。</li>
+</ol>
+<h2 id="函数源码"><a href="#函数源码" class="headerlink" title="函数源码"></a>函数源码</h2><p>BaseType_t xTaskIncrementTick( void )<br>{<br>    TCB_t * pxTCB;<br>    TickType_t xItemValue;<br>    BaseType_t xSwitchRequired &#x3D; pdFALSE;</p>
+<pre><code>/* Called by the portable layer each time a tick interrupt occurs.
+ * Increments the tick then checks to see if the new tick value will cause any
+ * tasks to be unblocked. */
+traceTASK_INCREMENT_TICK( xTickCount );
+
+if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
+&#123;
+    /* Minor optimisation.  The tick count cannot change in this
+     * block. */
+    const TickType_t xConstTickCount = xTickCount + ( TickType_t ) 1;
+
+    /* Increment the RTOS tick, switching the delayed and overflowed
+     * delayed lists if it wraps to 0. */
+    xTickCount = xConstTickCount;
+
+    if( xConstTickCount == ( TickType_t ) 0U ) /*lint !e774 &#39;if&#39; does not always evaluate to false as it is looking for an overflow. */
+    &#123;
+        taskSWITCH_DELAYED_LISTS();
+    &#125;
+    else
+    &#123;
+        mtCOVERAGE_TEST_MARKER();
+    &#125;
+
+    /* See if this tick has made a timeout expire.  Tasks are stored in
+     * the  queue in the order of their wake time - meaning once one task
+     * has been found whose block time has not expired there is no need to
+     * look any further down the list. */
+    if( xConstTickCount &gt;= xNextTaskUnblockTime )
+    &#123;
+        for( ; ; )
+        &#123;
+            if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
+            &#123;
+                /* The delayed list is empty.  Set xNextTaskUnblockTime
+                 * to the maximum possible value so it is extremely
+                 * unlikely that the
+                 * if( xTickCount &gt;= xNextTaskUnblockTime ) test will pass
+                 * next time through. */
+                xNextTaskUnblockTime = portMAX_DELAY; /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
+                break;
+            &#125;
+            else
+            &#123;
+                /* The delayed list is not empty, get the value of the
+                 * item at the head of the delayed list.  This is the time
+                 * at which the task at the head of the delayed list must
+                 * be removed from the Blocked state. */
+                pxTCB = listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList ); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */
+                xItemValue = listGET_LIST_ITEM_VALUE( &amp;( pxTCB-&gt;xStateListItem ) );
+
+                if( xConstTickCount &lt; xItemValue )
+                &#123;
+                    /* It is not time to unblock this item yet, but the
+                     * item value is the time at which the task at the head
+                     * of the blocked list must be removed from the Blocked
+                     * state -  so record the item value in
+                     * xNextTaskUnblockTime. */
+                    xNextTaskUnblockTime = xItemValue;
+                    break; /*lint !e9011 Code structure here is deemed easier to understand with multiple breaks. */
+                &#125;
+                else
+                &#123;
+                    mtCOVERAGE_TEST_MARKER();
+                &#125;
+
+                /* It is time to remove the item from the Blocked state. */
+                listREMOVE_ITEM( &amp;( pxTCB-&gt;xStateListItem ) );
+
+                /* Is the task waiting on an event also?  If so remove
+                 * it from the event list. */
+                if( listLIST_ITEM_CONTAINER( &amp;( pxTCB-&gt;xEventListItem ) ) != NULL )
+                &#123;
+                    listREMOVE_ITEM( &amp;( pxTCB-&gt;xEventListItem ) );
+                &#125;
+                else
+                &#123;
+                    mtCOVERAGE_TEST_MARKER();
+                &#125;
+
+                /* Place the unblocked task into the appropriate ready
+                 * list. */
+                prvAddTaskToReadyList( pxTCB );
+
+                /* A task being unblocked cannot cause an immediate
+                 * context switch if preemption is turned off. */
+                #if ( configUSE_PREEMPTION == 1 )
+                &#123;
+                    /* Preemption is on, but a context switch should
+                     * only be performed if the unblocked task has a
+                     * priority that is equal to or higher than the
+                     * currently executing task. */
+                    if( pxTCB-&gt;uxPriority &gt;= pxCurrentTCB-&gt;uxPriority )
+                    &#123;
+                        xSwitchRequired = pdTRUE;
+                    &#125;
+                    else
+                    &#123;
+                        mtCOVERAGE_TEST_MARKER();
+                    &#125;
+                &#125;
+                #endif /* configUSE_PREEMPTION */
+            &#125;
+        &#125;
+    &#125;
+
+    /* Tasks of equal priority to the currently running task will share
+     * processing time (time slice) if preemption is on, and the application
+     * writer has not explicitly turned time slicing off. */
+    #if ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) )
+    &#123;
+        if( listCURRENT_LIST_LENGTH( &amp;( pxReadyTasksLists[ pxCurrentTCB-&gt;uxPriority ] ) ) &gt; ( UBaseType_t ) 1 )
+        &#123;
+            xSwitchRequired = pdTRUE;
+        &#125;
+        else
+        &#123;
+            mtCOVERAGE_TEST_MARKER();
+        &#125;
+    &#125;
+    #endif /* ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) ) */
+
+    #if ( configUSE_TICK_HOOK == 1 )
+    &#123;
+        /* Guard against the tick hook being called when the pended tick
+         * count is being unwound (when the scheduler is being unlocked). */
+        if( xPendedTicks == ( TickType_t ) 0 )
+        &#123;
+            vApplicationTickHook();
+        &#125;
+        else
+        &#123;
+            mtCOVERAGE_TEST_MARKER();
+        &#125;
+    &#125;
+    #endif /* configUSE_TICK_HOOK */
+
+    #if ( configUSE_PREEMPTION == 1 )
+    &#123;
+        if( xYieldPending != pdFALSE )
+        &#123;
+            xSwitchRequired = pdTRUE;
+        &#125;
+        else
+        &#123;
+            mtCOVERAGE_TEST_MARKER();
+        &#125;
+    &#125;
+    #endif /* configUSE_PREEMPTION */
+&#125;
+else
+&#123;
+    ++xPendedTicks;
+
+    /* The tick hook gets called at regular intervals, even if the
+     * scheduler is locked. */
+    #if ( configUSE_TICK_HOOK == 1 )
+    &#123;
+        vApplicationTickHook();
+    &#125;
+    #endif
+&#125;
+
+return xSwitchRequired;
+</code></pre>
+<p>}</p>
+<h2 id="源码解读"><a href="#源码解读" class="headerlink" title="源码解读"></a>源码解读</h2><ol>
+<li>首先通过变量uxSchedulerSuspended确认当前调度器是否被挂起，如果挂起则直接将xPendedCounts+1然后退出；</li>
+<li>如果未挂起则将xTickCount+1；然后检查tick是否出现溢出，如果tick从0xffffffff增加为0，则会执行<code>taskSWITCH_DELAYED_LISTS</code>，对应代码为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/* pxDelayedTaskList and pxOverflowDelayedTaskList are switched when the tick</span><br><span class="line"> * count overflows. */</span><br><span class="line">#define taskSWITCH_DELAYED_LISTS()                                                \</span><br><span class="line">    &#123;                                                                             \</span><br><span class="line">        List_t * pxTemp;                                                          \</span><br><span class="line">                                                                                  \</span><br><span class="line">        /* The delayed tasks list should be empty when the lists are switched. */ \</span><br><span class="line">        configASSERT( ( listLIST_IS_EMPTY( pxDelayedTaskList ) ) );               \</span><br><span class="line">                                                                                  \</span><br><span class="line">        pxTemp = pxDelayedTaskList;                                               \</span><br><span class="line">        pxDelayedTaskList = pxOverflowDelayedTaskList;                            \</span><br><span class="line">        pxOverflowDelayedTaskList = pxTemp;                                       \</span><br><span class="line">        xNumOfOverflows++;                                                        \</span><br><span class="line">        prvResetNextTaskUnblockTime();                                            \</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>taskSWITCH_DELAYED_LISTS函数功能：</p>
+<ul>
+<li>将溢出delay任务列表和非溢出delay任务列表做一个对调。</li>
+<li>xNumOfOverflows +1，即tick溢出次数加1，用于获知当前的tick已经溢出了多少个循环，可以理解为秒钟走了一圈自动触发分针走一格。</li>
+<li>prvResetNextTaskUnblockTime()，将下一个任务的解除阻塞时间重新计算。</li>
+</ul>
+<p>（我是这么理解的：溢出任务列表里面存放的任务应该是下一个tick循环的任务，而当tick清0并进入新一轮的循环之后，原本的溢出任务列表则变成了非溢出任务列表，可以正常比较执行了。）</p>
+<ol start="3">
+<li>检查完tick溢出后，通过判断xConstTickCount与xNextTaskUnblockTime的大小关系来确认是否有阻塞的任务出现超时，如果有则将这些任务挨个从pxDelayedTaskList取出放到pxReadyTasksLists，并判断是否有优先级比当前任务相同或更高的任务。如果有（且系统配置了允许优先级抢占configUSE_PREEMPTION）则将xSwitchRequired置为true。</li>
+<li>检查当前同一优先级的就绪任务是否超过1个，如果有（且系统配置了允许时间分片configUSE_TIME_SLICING）则将xSwitchRequired置为true。</li>
+<li>如果xYieldPending为true，则将xSwitchRequired置为true。xYieldPending是一个全局变量，可以理解为一个异步的任务切换通知，当有些函数希望触发任务切换时，不是直接调用切换，而是通过将xYieldPending置位，然后等到systick中断再切换。</li>
+</ol>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>xTaskIncrementTick的功能：</p>
+<ol>
+<li>修改系统tick；</li>
+<li>判断是否有任务因为tick增加或是别的原因（xYieldPending）而需要解除阻塞，并修改pxReadyTasksLists和pxDelayedTaskList两个任务列表。</li>
+<li>综合是否需要进行任务切换并放到函数返回值中，而真正的切换动作由后续其他函数（xPortPendSVHandler）来完成。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FreeRTOS/" rel="tag"># FreeRTOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/18/FreeRTOS%E8%BF%9B%E9%98%B6-%E4%BB%BB%E5%8A%A1%E5%88%87%E6%8D%A2%E7%9A%84%E6%97%B6%E6%9C%BA/" rel="prev" title="FreeRTOS进阶-任务切换的时机">
+      <i class="fa fa-chevron-left"></i> FreeRTOS进阶-任务切换的时机
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD"><span class="nav-number">1.</span> <span class="nav-text">功能</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E8%80%85"><span class="nav-number">2.</span> <span class="nav-text">调用者</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%87%BD%E6%95%B0%E6%BA%90%E7%A0%81"><span class="nav-number">3.</span> <span class="nav-text">函数源码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%BA%90%E7%A0%81%E8%A7%A3%E8%AF%BB"><span class="nav-number">4.</span> <span class="nav-text">源码解读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
