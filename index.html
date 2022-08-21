@@ -145,6 +145,222 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">esp32c3-执行export.sh失败问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-22 02:02:51 / Modified: 02:03:24" itemprop="dateCreated datePublished" datetime="2022-08-22T02:02:51+08:00">2022-08-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>export.sh是乐鑫开发框架esp-idf的一个编译环境自动导入脚本，每次编译之前都需要执行。<br>一次在ubuntu虚拟机中执行esp-idf的export.sh时出现了卡住的情况，异常日志如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Detecting the Python interpreter</span><br><span class="line">Checking &quot;python3&quot; ...</span><br><span class="line">Python 3.8.10</span><br><span class="line">&quot;python3&quot; has been detected</span><br><span class="line">Checking Python compatibility</span><br><span class="line">Checking other ESP-IDF version.</span><br><span class="line">Adding ESP-IDF tools to PATH...</span><br><span class="line">Using a supported version of tool cmake found in PATH: 3.16.3.</span><br><span class="line">However the recommended version is 3.23.1.</span><br><span class="line">Using Python interpreter in /home/wang/.espressif/python_env/idf5.0_py3.8_env/bin/python</span><br><span class="line">Checking if Python packages are up to date...</span><br><span class="line">Downloading https://dl.espressif.com/dl/esp-idf/</span><br><span class="line">Destination: /home/wang/.espressif/espidf.constraints.v5.0.txt.tmp</span><br></pre></td></tr></table></figure>
+<p>从日志可以看出，下载配置文件espidf.constraints.v5.0.txt出现异常。</p>
+<h2 id="解决方法一"><a href="#解决方法一" class="headerlink" title="解决方法一"></a>解决方法一</h2><p>通过在esp-idf源码中搜索错误日志定位到idf_tools.py的一个函数，读了代码发现下载这个配置文件前会检查espidf.constraints.v5.0.txt的更新日期与当前日期之差，如果超过一天才会下载更新。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def get_constraints(idf_version):  # type: (str) -&gt; str</span><br><span class="line">    constraint_file = &#x27;espidf.constraints.v&#123;&#125;.txt&#x27;.format(idf_version)</span><br><span class="line">    constraint_path = os.path.join(global_idf_tools_path or &#x27;&#x27;, constraint_file)</span><br><span class="line">    constraint_url = &#x27;/&#x27;.join([IDF_DL_URL, constraint_file])</span><br><span class="line">    temp_path = constraint_path + &#x27;.tmp&#x27;</span><br><span class="line"></span><br><span class="line">    mkdir_p(os.path.dirname(temp_path))</span><br><span class="line">    try:</span><br><span class="line">        age = datetime.date.today() - datetime.date.fromtimestamp(os.path.getmtime(constraint_path))</span><br><span class="line">        if age &lt; datetime.timedelta(days=1):</span><br><span class="line">            info(f&#x27;Skipping the download of &#123;constraint_path&#125; because it was downloaded recently. If you believe &#x27;</span><br><span class="line">                 f&#x27;that this is causing you trouble then remove it manually and re-run your install script.&#x27;)</span><br><span class="line">            return constraint_path</span><br><span class="line">    except OSError:</span><br><span class="line">        # doesn&#x27;t exist or inaccessible</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure>
+<p>解决方法有两种：</p>
+<ol>
+<li><p>如果该文件已经存在，则更新文件时间即可<br>进入到该目录下手动更新该文件的时间。<br>cd ~&#x2F;.espressif<br>touch espidf.constraints.v5.0.txt</p>
+</li>
+<li><p>如果该文件不存在，手动下载文件即可<br>手动下载<a target="_blank" rel="noopener" href="https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.0.txt">https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.0.txt</a><br>再拷贝到&#x2F;home&#x2F;wang&#x2F;.espressif&#x2F;espidf.constraints.v5.0.txt</p>
+</li>
+</ol>
+<p>以上两种改动都会导致再次执行export.sh时认为espidf.constraints.v5.0.txt刚刚更新过，不会再执行下载动作，也就避免了下载卡顿问题。但这两种做法都只是通过避免下载来绕过问题，并没有真正解决下载失败问题。</p>
+<h2 id="解决方法二"><a href="#解决方法二" class="headerlink" title="解决方法二"></a>解决方法二</h2><p>根本问题在于在terminal通过脚本到<a target="_blank" rel="noopener" href="https://dl.espressif.com下载文件失败./">https://dl.espressif.com下载文件失败。</a><br>于是我在terminal中尝试ping了一下dl.espressif.com，发现也是失败，但是用chrome浏览器打开这个地址却是正常的，这说明在浏览器和terminal中访问一个域名，实际经过的路径是不一样的。<br>于是在terminal中ping了一下其他域名，发现有的能通有的不能通：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ping www.qq.com失败</span><br><span class="line">ping qq.com正常</span><br><span class="line">ping www.baidu.com正常</span><br><span class="line">ping baidu.com正常</span><br></pre></td></tr></table></figure>
+<p>因此我怀疑在虚拟机自身的DNS服务出现了问题。<br>网上建议修改&#x2F;etc&#x2F;resolv.conf，增加DNS服务器地址。<br>打开后发现文件作者建议我们不要直接修改conf文件，而是需要通过resolvectl去操作。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># This file is managed by man:systemd-resolved(8). Do not edit.</span><br><span class="line">#</span><br><span class="line"># This is a dynamic resolv.conf file for connecting local clients to the</span><br><span class="line"># internal DNS stub resolver of systemd-resolved. This file lists all</span><br><span class="line"># configured search domains.</span><br><span class="line">#</span><br><span class="line"># Run &quot;resolvectl status&quot; to see details about the uplink DNS servers</span><br><span class="line"># currently in use.</span><br><span class="line">#</span><br><span class="line"># Third party programs must not access this file directly, but only through the</span><br><span class="line"># symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,</span><br><span class="line"># replace this symlink by a static file or a different symlink.</span><br><span class="line">#</span><br><span class="line"># See man:systemd-resolved.service(8) for details about the supported modes of</span><br><span class="line"># operation for /etc/resolv.conf.</span><br><span class="line"></span><br><span class="line">nameserver 127.0.0.53</span><br><span class="line">options edns0 trust-ad</span><br><span class="line">search localdomain</span><br></pre></td></tr></table></figure>
+<p>联想到最近有将虚拟机的NAT模式改为桥接模式，而之前NAT模式下执行export.sh是正常的。</p>
+<ul>
+<li>桥接模式相当于从主机虚拟一个网卡出来给虚拟机使用，虚拟机和主机处于同一局域网。</li>
+<li>NAT模式是虚拟机处于主机的子网当中，相当于虚拟机把主机当做一个路由器，虚拟机位于LAN口。</li>
+</ul>
+<p>于是我将虚拟机从NAT模式改回了桥接模式，结果之前ping不通的<a target="_blank" rel="noopener" href="http://www.qq.com和dl.espressif.com都能ping通了,export.sh也能正常的执行完毕./">www.qq.com和dl.espressif.com都能ping通了，export.sh也能正常的执行完毕。</a><br>猜想NAT模式下，虚拟机的ternimal中执行DNS时有先经过主机的DNS服务；而桥接模式下虚拟机DNS不经过主机，而是直接经过主机上级路由器。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>当前export.sh卡顿的根源在于该脚本从dl.espressif.com下载文件失败。<br>可以通过手动下载文件来绕过问题，也可以通过修复DNS问题来根本性解决问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/" class="post-title-link" itemprop="url">ARM指令-LDR</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-22 01:45:32 / Modified: 01:49:40" itemprop="dateCreated datePublished" datetime="2022-08-22T01:45:32+08:00">2022-08-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>LDR是ARM的指令，也是伪指令</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>LDR{条件} 目的寄存器 &lt;存储器地址&gt;<br>作用：将存储器地址所指地址处连续的4个字节（1个字）的数据传送到目的寄存器中。</p>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LDR R0，[R1] ；将存储器地址为R1的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，R2] ；将存储器地址为R1+R2的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，#8] ；将存储器地址为R1+8的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1]，R2 ；将存储器地址为R1的字数据读入寄存器R0，然后R1=R1+8。</span><br><span class="line">LDR R0，[R1]，#8 ；将存储器地址为R1的字数据读入寄存器R0，并将R1+8的值存入R1。</span><br><span class="line">LDR R0，[R1，R2]! ；将存储器地址为R1+R2的字数据读入寄存器R0，并将R1+R2的值存入R1。</span><br><span class="line">LDR R0，[R1，LSL #3] ；将存储器地址为R18的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，R2，LSL #2] ；将存储器地址为R1+R24的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，，R2，LSL #2]！ ；将存储器地址为R1+R24的字数据读入寄存器R0，并将R1+R24的值存入R1。</span><br><span class="line">LDR R0，[R1]，R2，LSL #2 ；将存储器地址为R1的字数据读入寄存器R0，并将R1+R2*4的值存入R1。</span><br><span class="line">LDR R0，Label ；Label为程序标号，Label必须是当前指令的-4~4KB范围内。</span><br></pre></td></tr></table></figure>
+<p>要注意的是:<br>LDR Rd，[Rn]，#0x04 ；这里Rd不允许是R15。</p>
+<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><h3 id="LDRB和LDRH"><a href="#LDRB和LDRH" class="headerlink" title="LDRB和LDRH"></a>LDRB和LDRH</h3><p>另外LDRB 的指令格式与LDR相似，只不过它是将存储器地址中的8位（1个字节）读到目的寄存器中。<br>LDRH的指令格式也与LDR相似，它是将内存中的16位（半字）读到目的寄存器中。</p>
+<h3 id="LDR-R0，-x3D-0xff"><a href="#LDR-R0，-x3D-0xff" class="headerlink" title="LDR R0，&#x3D;0xff"></a>LDR R0，&#x3D;0xff</h3><p>这里的LDR不是arm指令，而是伪指令。这个时候与MOVE很相似，只不过MOV指令后的立即数是有限制的。这个立即数必须是0X00-0XFF范围内的数经过偶数次右移得到的数，所以MOV用起来比较麻烦，因为有些数不那么容易看出来是否合法。</p>
+<h3 id="LDR-R，label-和-LDR-R，-x3D-label的区别"><a href="#LDR-R，label-和-LDR-R，-x3D-label的区别" class="headerlink" title="LDR R，label 和 LDR R，&#x3D;label的区别"></a>LDR R，label 和 LDR R，&#x3D;label的区别</h3><p>当用 LDR r， &#x3D;imd &#x2F;&#x2F; r 为寄存器， imd为立即数<br>LDR 是一条伪指令。编译器会根据 立即数的大小，决定用 ldr 指令或者是mov或mvn指令。<br>当imd能用mov或者mvn操作时，就将它翻译成一条mov或mvn指令。当imd大于mov或mvn能够操作的数时，编译器会将imd存在一个内存单元中，然后再用一条ldr指令加载这个内存单元的的值到寄存器中。<br>LDR r， label 和 LDR r， &#x3D;label的区别：<br>LDR r， &#x3D;label 会把label表示的值加载到寄存器中，而LDR r， label会把label当做地址，把label指向的地址中的值加载到寄存器中。<br>譬如 label的值是 0x8000， LDR r， &#x3D;label会将 0x8000加载到寄存器中，而LDR r， label则会将内存0x8000处的值加载到寄存器中。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/66d801c85ee9">https://www.jianshu.com/p/66d801c85ee9</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/" class="post-title-link" itemprop="url">ARM指令-cpsid和cpsie</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-22 01:44:35 / Modified: 01:44:44" itemprop="dateCreated datePublished" datetime="2022-08-22T01:44:35+08:00">2022-08-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>cpsid和cpsie不是通用汇编指令，而是arm指令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cps = Change Processor State`</span><br><span class="line">id = irq_disable</span><br><span class="line">ie = irq_enable</span><br></pre></td></tr></table></figure>
+<h2 id="中断开关"><a href="#中断开关" class="headerlink" title="中断开关"></a>中断开关</h2><p>i &#x3D; interrupt</p>
+<h3 id="cpsid-i"><a href="#cpsid-i" class="headerlink" title="cpsid i"></a>cpsid i</h3><p>禁用中断</p>
+<h3 id="cpsie-i"><a href="#cpsie-i" class="headerlink" title="cpsie i"></a>cpsie i</h3><p>使能中断</p>
+<h2 id="异常开关"><a href="#异常开关" class="headerlink" title="异常开关"></a>异常开关</h2><p>f &#x3D; faultmask</p>
+<h3 id="cpsid-f"><a href="#cpsid-f" class="headerlink" title="cpsid f"></a>cpsid f</h3><p>禁用异常</p>
+<h3 id="cpsie-f"><a href="#cpsie-f" class="headerlink" title="cpsie f"></a>cpsie f</h3><p>使能异常</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-xTaskIncrementTick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -170,7 +386,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-08-22 01:01:17 / Modified: 01:01:50" itemprop="dateCreated datePublished" datetime="2022-08-22T01:01:17+08:00">2022-08-22</time>
+              <time title="Created: 2022-08-22 01:01:17 / Modified: 01:02:53" itemprop="dateCreated datePublished" datetime="2022-08-22T01:01:17+08:00">2022-08-22</time>
             </span>
 
           
@@ -190,173 +406,8 @@
 <li>在系统tick中断函数中调用，由xPortSysTickHandler的返回值告知是否需要进行任务切换，如果是通过修改寄存器portNVIC_INT_CTRL_REG来触发PendSV中断，进而切换任务。<br>以ARM_CM3为例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void xPortSysTickHandler( void )</span><br><span class="line">&#123;</span><br><span class="line">    /* The SysTick runs at the lowest interrupt priority, so when this interrupt</span><br><span class="line">     * executes all interrupts must be unmasked.  There is therefore no need to</span><br><span class="line">     * save and then restore the interrupt mask value as its value is already</span><br><span class="line">     * known. */</span><br><span class="line">    portDISABLE_INTERRUPTS();</span><br><span class="line">    &#123;</span><br><span class="line">        /* Increment the RTOS tick. */</span><br><span class="line">        if( xTaskIncrementTick() != pdFALSE )</span><br><span class="line">        &#123;</span><br><span class="line">            /* A context switch is required.  Context switching is performed in</span><br><span class="line">             * the PendSV interrupt.  Pend the PendSV interrupt. */</span><br><span class="line">            portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    portENABLE_INTERRUPTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li>在xTaskResumeAll中调用，有时调度器会被挂起，此时xTickCount并没有及时+1，而是暂存在xPendedCounts中。等到调度器恢复的时候，再补执行。</li>
 </ol>
-<h2 id="函数源码"><a href="#函数源码" class="headerlink" title="函数源码"></a>函数源码</h2><p>BaseType_t xTaskIncrementTick( void )<br>{<br>    TCB_t * pxTCB;<br>    TickType_t xItemValue;<br>    BaseType_t xSwitchRequired &#x3D; pdFALSE;</p>
-<pre><code>/* Called by the portable layer each time a tick interrupt occurs.
- * Increments the tick then checks to see if the new tick value will cause any
- * tasks to be unblocked. */
-traceTASK_INCREMENT_TICK( xTickCount );
+<h2 id="函数源码"><a href="#函数源码" class="headerlink" title="函数源码"></a>函数源码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t xTaskIncrementTick( void )</span><br><span class="line">&#123;</span><br><span class="line">    TCB_t * pxTCB;</span><br><span class="line">    TickType_t xItemValue;</span><br><span class="line">    BaseType_t xSwitchRequired = pdFALSE;</span><br><span class="line"></span><br><span class="line">    /* Called by the portable layer each time a tick interrupt occurs.</span><br><span class="line">     * Increments the tick then checks to see if the new tick value will cause any</span><br><span class="line">     * tasks to be unblocked. */</span><br><span class="line">    traceTASK_INCREMENT_TICK( xTickCount );</span><br><span class="line"></span><br><span class="line">    if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )</span><br><span class="line">    &#123;</span><br><span class="line">        /* Minor optimisation.  The tick count cannot change in this</span><br><span class="line">         * block. */</span><br><span class="line">        const TickType_t xConstTickCount = xTickCount + ( TickType_t ) 1;</span><br><span class="line"></span><br><span class="line">        /* Increment the RTOS tick, switching the delayed and overflowed</span><br><span class="line">         * delayed lists if it wraps to 0. */</span><br><span class="line">        xTickCount = xConstTickCount;</span><br><span class="line"></span><br><span class="line">        if( xConstTickCount == ( TickType_t ) 0U ) /*lint !e774 &#x27;if&#x27; does not always evaluate to false as it is looking for an overflow. */</span><br><span class="line">        &#123;</span><br><span class="line">            taskSWITCH_DELAYED_LISTS();</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            mtCOVERAGE_TEST_MARKER();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /* See if this tick has made a timeout expire.  Tasks are stored in</span><br><span class="line">         * the  queue in the order of their wake time - meaning once one task</span><br><span class="line">         * has been found whose block time has not expired there is no need to</span><br><span class="line">         * look any further down the list. */</span><br><span class="line">        if( xConstTickCount &gt;= xNextTaskUnblockTime )</span><br><span class="line">        &#123;</span><br><span class="line">            for( ; ; )</span><br><span class="line">            &#123;</span><br><span class="line">                if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )</span><br><span class="line">                &#123;</span><br><span class="line">                    /* The delayed list is empty.  Set xNextTaskUnblockTime</span><br><span class="line">                     * to the maximum possible value so it is extremely</span><br><span class="line">                     * unlikely that the</span><br><span class="line">                     * if( xTickCount &gt;= xNextTaskUnblockTime ) test will pass</span><br><span class="line">                     * next time through. */</span><br><span class="line">                    xNextTaskUnblockTime = portMAX_DELAY; /*lint !e961 MISRA exception as the casts are only redundant for some ports. */</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    /* The delayed list is not empty, get the value of the</span><br><span class="line">                     * item at the head of the delayed list.  This is the time</span><br><span class="line">                     * at which the task at the head of the delayed list must</span><br><span class="line">                     * be removed from the Blocked state. */</span><br><span class="line">                    pxTCB = listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList ); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */</span><br><span class="line">                    xItemValue = listGET_LIST_ITEM_VALUE( &amp;( pxTCB-&gt;xStateListItem ) );</span><br><span class="line"></span><br><span class="line">                    if( xConstTickCount &lt; xItemValue )</span><br><span class="line">                    &#123;</span><br><span class="line">                        /* It is not time to unblock this item yet, but the</span><br><span class="line">                         * item value is the time at which the task at the head</span><br><span class="line">                         * of the blocked list must be removed from the Blocked</span><br><span class="line">                         * state -  so record the item value in</span><br><span class="line">                         * xNextTaskUnblockTime. */</span><br><span class="line">                        xNextTaskUnblockTime = xItemValue;</span><br><span class="line">                        break; /*lint !e9011 Code structure here is deemed easier to understand with multiple breaks. */</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                    &#123;</span><br><span class="line">                        mtCOVERAGE_TEST_MARKER();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    /* It is time to remove the item from the Blocked state. */</span><br><span class="line">                    listREMOVE_ITEM( &amp;( pxTCB-&gt;xStateListItem ) );</span><br><span class="line"></span><br><span class="line">                    /* Is the task waiting on an event also?  If so remove</span><br><span class="line">                     * it from the event list. */</span><br><span class="line">                    if( listLIST_ITEM_CONTAINER( &amp;( pxTCB-&gt;xEventListItem ) ) != NULL )</span><br><span class="line">                    &#123;</span><br><span class="line">                        listREMOVE_ITEM( &amp;( pxTCB-&gt;xEventListItem ) );</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                    &#123;</span><br><span class="line">                        mtCOVERAGE_TEST_MARKER();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    /* Place the unblocked task into the appropriate ready</span><br><span class="line">                     * list. */</span><br><span class="line">                    prvAddTaskToReadyList( pxTCB );</span><br><span class="line"></span><br><span class="line">                    /* A task being unblocked cannot cause an immediate</span><br><span class="line">                     * context switch if preemption is turned off. */</span><br><span class="line">                    #if ( configUSE_PREEMPTION == 1 )</span><br><span class="line">                    &#123;</span><br><span class="line">                        /* Preemption is on, but a context switch should</span><br><span class="line">                         * only be performed if the unblocked task has a</span><br><span class="line">                         * priority that is equal to or higher than the</span><br><span class="line">                         * currently executing task. */</span><br><span class="line">                        if( pxTCB-&gt;uxPriority &gt;= pxCurrentTCB-&gt;uxPriority )</span><br><span class="line">                        &#123;</span><br><span class="line">                            xSwitchRequired = pdTRUE;</span><br><span class="line">                        &#125;</span><br><span class="line">                        else</span><br><span class="line">                        &#123;</span><br><span class="line">                            mtCOVERAGE_TEST_MARKER();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    #endif /* configUSE_PREEMPTION */</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /* Tasks of equal priority to the currently running task will share</span><br><span class="line">         * processing time (time slice) if preemption is on, and the application</span><br><span class="line">         * writer has not explicitly turned time slicing off. */</span><br><span class="line">        #if ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) )</span><br><span class="line">        &#123;</span><br><span class="line">            if( listCURRENT_LIST_LENGTH( &amp;( pxReadyTasksLists[ pxCurrentTCB-&gt;uxPriority ] ) ) &gt; ( UBaseType_t ) 1 )</span><br><span class="line">            &#123;</span><br><span class="line">                xSwitchRequired = pdTRUE;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                mtCOVERAGE_TEST_MARKER();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        #endif /* ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) ) */</span><br><span class="line"></span><br><span class="line">        #if ( configUSE_TICK_HOOK == 1 )</span><br><span class="line">        &#123;</span><br><span class="line">            /* Guard against the tick hook being called when the pended tick</span><br><span class="line">             * count is being unwound (when the scheduler is being unlocked). */</span><br><span class="line">            if( xPendedTicks == ( TickType_t ) 0 )</span><br><span class="line">            &#123;</span><br><span class="line">                vApplicationTickHook();</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                mtCOVERAGE_TEST_MARKER();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        #endif /* configUSE_TICK_HOOK */</span><br><span class="line"></span><br><span class="line">        #if ( configUSE_PREEMPTION == 1 )</span><br><span class="line">        &#123;</span><br><span class="line">            if( xYieldPending != pdFALSE )</span><br><span class="line">            &#123;</span><br><span class="line">                xSwitchRequired = pdTRUE;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                mtCOVERAGE_TEST_MARKER();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        #endif /* configUSE_PREEMPTION */</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        ++xPendedTicks;</span><br><span class="line"></span><br><span class="line">        /* The tick hook gets called at regular intervals, even if the</span><br><span class="line">         * scheduler is locked. */</span><br><span class="line">        #if ( configUSE_TICK_HOOK == 1 )</span><br><span class="line">        &#123;</span><br><span class="line">            vApplicationTickHook();</span><br><span class="line">        &#125;</span><br><span class="line">        #endif</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return xSwitchRequired;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )
-&#123;
-    /* Minor optimisation.  The tick count cannot change in this
-     * block. */
-    const TickType_t xConstTickCount = xTickCount + ( TickType_t ) 1;
-
-    /* Increment the RTOS tick, switching the delayed and overflowed
-     * delayed lists if it wraps to 0. */
-    xTickCount = xConstTickCount;
-
-    if( xConstTickCount == ( TickType_t ) 0U ) /*lint !e774 &#39;if&#39; does not always evaluate to false as it is looking for an overflow. */
-    &#123;
-        taskSWITCH_DELAYED_LISTS();
-    &#125;
-    else
-    &#123;
-        mtCOVERAGE_TEST_MARKER();
-    &#125;
-
-    /* See if this tick has made a timeout expire.  Tasks are stored in
-     * the  queue in the order of their wake time - meaning once one task
-     * has been found whose block time has not expired there is no need to
-     * look any further down the list. */
-    if( xConstTickCount &gt;= xNextTaskUnblockTime )
-    &#123;
-        for( ; ; )
-        &#123;
-            if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )
-            &#123;
-                /* The delayed list is empty.  Set xNextTaskUnblockTime
-                 * to the maximum possible value so it is extremely
-                 * unlikely that the
-                 * if( xTickCount &gt;= xNextTaskUnblockTime ) test will pass
-                 * next time through. */
-                xNextTaskUnblockTime = portMAX_DELAY; /*lint !e961 MISRA exception as the casts are only redundant for some ports. */
-                break;
-            &#125;
-            else
-            &#123;
-                /* The delayed list is not empty, get the value of the
-                 * item at the head of the delayed list.  This is the time
-                 * at which the task at the head of the delayed list must
-                 * be removed from the Blocked state. */
-                pxTCB = listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList ); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */
-                xItemValue = listGET_LIST_ITEM_VALUE( &amp;( pxTCB-&gt;xStateListItem ) );
-
-                if( xConstTickCount &lt; xItemValue )
-                &#123;
-                    /* It is not time to unblock this item yet, but the
-                     * item value is the time at which the task at the head
-                     * of the blocked list must be removed from the Blocked
-                     * state -  so record the item value in
-                     * xNextTaskUnblockTime. */
-                    xNextTaskUnblockTime = xItemValue;
-                    break; /*lint !e9011 Code structure here is deemed easier to understand with multiple breaks. */
-                &#125;
-                else
-                &#123;
-                    mtCOVERAGE_TEST_MARKER();
-                &#125;
-
-                /* It is time to remove the item from the Blocked state. */
-                listREMOVE_ITEM( &amp;( pxTCB-&gt;xStateListItem ) );
-
-                /* Is the task waiting on an event also?  If so remove
-                 * it from the event list. */
-                if( listLIST_ITEM_CONTAINER( &amp;( pxTCB-&gt;xEventListItem ) ) != NULL )
-                &#123;
-                    listREMOVE_ITEM( &amp;( pxTCB-&gt;xEventListItem ) );
-                &#125;
-                else
-                &#123;
-                    mtCOVERAGE_TEST_MARKER();
-                &#125;
-
-                /* Place the unblocked task into the appropriate ready
-                 * list. */
-                prvAddTaskToReadyList( pxTCB );
-
-                /* A task being unblocked cannot cause an immediate
-                 * context switch if preemption is turned off. */
-                #if ( configUSE_PREEMPTION == 1 )
-                &#123;
-                    /* Preemption is on, but a context switch should
-                     * only be performed if the unblocked task has a
-                     * priority that is equal to or higher than the
-                     * currently executing task. */
-                    if( pxTCB-&gt;uxPriority &gt;= pxCurrentTCB-&gt;uxPriority )
-                    &#123;
-                        xSwitchRequired = pdTRUE;
-                    &#125;
-                    else
-                    &#123;
-                        mtCOVERAGE_TEST_MARKER();
-                    &#125;
-                &#125;
-                #endif /* configUSE_PREEMPTION */
-            &#125;
-        &#125;
-    &#125;
-
-    /* Tasks of equal priority to the currently running task will share
-     * processing time (time slice) if preemption is on, and the application
-     * writer has not explicitly turned time slicing off. */
-    #if ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) )
-    &#123;
-        if( listCURRENT_LIST_LENGTH( &amp;( pxReadyTasksLists[ pxCurrentTCB-&gt;uxPriority ] ) ) &gt; ( UBaseType_t ) 1 )
-        &#123;
-            xSwitchRequired = pdTRUE;
-        &#125;
-        else
-        &#123;
-            mtCOVERAGE_TEST_MARKER();
-        &#125;
-    &#125;
-    #endif /* ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) ) */
-
-    #if ( configUSE_TICK_HOOK == 1 )
-    &#123;
-        /* Guard against the tick hook being called when the pended tick
-         * count is being unwound (when the scheduler is being unlocked). */
-        if( xPendedTicks == ( TickType_t ) 0 )
-        &#123;
-            vApplicationTickHook();
-        &#125;
-        else
-        &#123;
-            mtCOVERAGE_TEST_MARKER();
-        &#125;
-    &#125;
-    #endif /* configUSE_TICK_HOOK */
-
-    #if ( configUSE_PREEMPTION == 1 )
-    &#123;
-        if( xYieldPending != pdFALSE )
-        &#123;
-            xSwitchRequired = pdTRUE;
-        &#125;
-        else
-        &#123;
-            mtCOVERAGE_TEST_MARKER();
-        &#125;
-    &#125;
-    #endif /* configUSE_PREEMPTION */
-&#125;
-else
-&#123;
-    ++xPendedTicks;
-
-    /* The tick hook gets called at regular intervals, even if the
-     * scheduler is locked. */
-    #if ( configUSE_TICK_HOOK == 1 )
-    &#123;
-        vApplicationTickHook();
-    &#125;
-    #endif
-&#125;
-
-return xSwitchRequired;
-</code></pre>
-<p>}</p>
 <h2 id="源码解读"><a href="#源码解读" class="headerlink" title="源码解读"></a>源码解读</h2><ol>
 <li>首先通过变量uxSchedulerSuspended确认当前调度器是否被挂起，如果挂起则直接将xPendedCounts+1然后退出；</li>
 <li>如果未挂起则将xTickCount+1；然后检查tick是否出现溢出，如果tick从0xffffffff增加为0，则会执行<code>taskSWITCH_DELAYED_LISTS</code>，对应代码为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/* pxDelayedTaskList and pxOverflowDelayedTaskList are switched when the tick</span><br><span class="line"> * count overflows. */</span><br><span class="line">#define taskSWITCH_DELAYED_LISTS()                                                \</span><br><span class="line">    &#123;                                                                             \</span><br><span class="line">        List_t * pxTemp;                                                          \</span><br><span class="line">                                                                                  \</span><br><span class="line">        /* The delayed tasks list should be empty when the lists are switched. */ \</span><br><span class="line">        configASSERT( ( listLIST_IS_EMPTY( pxDelayedTaskList ) ) );               \</span><br><span class="line">                                                                                  \</span><br><span class="line">        pxTemp = pxDelayedTaskList;                                               \</span><br><span class="line">        pxDelayedTaskList = pxOverflowDelayedTaskList;                            \</span><br><span class="line">        pxOverflowDelayedTaskList = pxTemp;                                       \</span><br><span class="line">        xNumOfOverflows++;                                                        \</span><br><span class="line">        prvResetNextTaskUnblockTime();                                            \</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
@@ -429,7 +480,7 @@ return xSwitchRequired;
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-22 01:01:35" itemprop="dateModified" datetime="2022-08-22T01:01:35+08:00">2022-08-22</time>
+                <time title="Modified: 2022-08-22 01:06:44" itemprop="dateModified" datetime="2022-08-22T01:06:44+08:00">2022-08-22</time>
               </span>
 
           
@@ -489,8 +540,7 @@ return xSwitchRequired;
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">	.align 4</span><br><span class="line">vPortStartFirstTask: .asmfunc</span><br><span class="line">	;/* Use the NVIC offset register to locate the stack. */</span><br><span class="line">	ldr r0, NVICOffsetConst</span><br><span class="line">	ldr r0, [r0]</span><br><span class="line">	ldr r0, [r0]</span><br><span class="line">	;/* Set the msp back to the start of the stack. */</span><br><span class="line">	msr msp, r0</span><br><span class="line">	;/* Clear the bit that indicates the FPU is in use in case the FPU was used</span><br><span class="line">	;before the scheduler was started - which would otherwise result in the</span><br><span class="line">	;unnecessary leaving of space in the SVC stack for lazy saving of FPU</span><br><span class="line">	;registers. */</span><br><span class="line">	mov r0, #0</span><br><span class="line">	msr control, r0</span><br><span class="line">	;/* Call SVC to start the first task. */</span><br><span class="line">	cpsie i</span><br><span class="line">	cpsie f</span><br><span class="line">	dsb</span><br><span class="line">	isb</span><br><span class="line">	svc #0</span><br><span class="line">	.endasmfunc</span><br></pre></td></tr></table></figure>
 <p>值得注意的是，并不是所有的芯片架构的prvStartFirstTask都是通过SVC中断来启动第一个任务，我们看下ARM_CM0的代码，里面没有”svc #0”语句：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">void vPortStartFirstTask( void )</span><br><span class="line">&#123;</span><br><span class="line">    /* The MSP stack is not reset as, unlike on M3/4 parts, there is no vector</span><br><span class="line">     * table offset register that can be used to locate the initial stack value.</span><br><span class="line">     * Not all M0 parts have the application vector table at address 0. */</span><br><span class="line">    __asm volatile (</span><br><span class="line">        &quot;	.syntax unified				\n&quot;</span><br><span class="line">        &quot;	ldr  r2, pxCurrentTCBConst2	\n&quot;/* Obtain location of pxCurrentTCB. */</span><br><span class="line">        &quot;	ldr  r3, [r2]				\n&quot;</span><br><span class="line">        &quot;	ldr  r0, [r3]				\n&quot;/* The first item in pxCurrentTCB is the task top of stack. */</span><br><span class="line">        &quot;	adds r0, #32					\n&quot;/* Discard everything up to r0. */</span><br><span class="line">        &quot;	msr  psp, r0					\n&quot;/* This is now the new top of stack to use in the task. */</span><br><span class="line">        &quot;	movs r0, #2					\n&quot;/* Switch to the psp stack. */</span><br><span class="line">        &quot;	msr  CONTROL, r0				\n&quot;</span><br><span class="line">        &quot;	isb							\n&quot;</span><br><span class="line">        &quot;	pop  &#123;r0-r5&#125;					\n&quot;/* Pop the registers that are saved automatically. */</span><br><span class="line">        &quot;	mov  lr, r5					\n&quot;/* lr is now in r5. */</span><br><span class="line">        &quot;	pop  &#123;r3&#125;					\n&quot;/* Return address is now in r3. */</span><br><span class="line">        &quot;	pop  &#123;r2&#125;					\n&quot;/* Pop and discard XPSR. */</span><br><span class="line">        &quot;	cpsie i						\n&quot;/* The first task has its context and interrupts can be enabled. */</span><br><span class="line">        &quot;	bx   r3						\n&quot;/* Finally, jump to the user defined task code. */</span><br><span class="line">        &quot;								\n&quot;</span><br><span class="line">        &quot;	.align 4					\n&quot;</span><br><span class="line">        &quot;pxCurrentTCBConst2: .word pxCurrentTCB	  &quot;</span><br><span class="line">        );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>在<code>FreeRTOS/Source/portable</code>中可以看到，SVC调用代码还可以是<code>svc %0</code>，<code>svc 0</code></p>
+<p>从<code>FreeRTOS/Source/portable</code>中可以看到，在不同芯片上，SVC调用代码还可以是<code>svc %0</code>或<code>svc 0</code></p>
 <h3 id="发生了什么"><a href="#发生了什么" class="headerlink" title="发生了什么"></a>发生了什么</h3><p>该中断的优先级为1，由SVC指令触发。触发后如果没有更高优先级的中断存在，就会根据中断向量表，跳转到vPortSVCHandler函数。</p>
 <h3 id="为什么要设计SVC中断"><a href="#为什么要设计SVC中断" class="headerlink" title="为什么要设计SVC中断"></a>为什么要设计SVC中断</h3><p>SVC中断中需要修改寄存器，根据一些网上的资料，在部分ARM芯片上，只有特权模式下才能修改这些寄存器，而进入中断会自动切换到特权模式。因此我怀疑这个SVC的设计和ARM的权限设计有关，即用户模式下的应用需要借助高权限的中断来完成一些操作系统任务。</p>
 <h3 id="具体实现"><a href="#具体实现" class="headerlink" title="具体实现"></a>具体实现</h3><p>以ARM_CM3为例：</p>
@@ -972,246 +1022,6 @@ return xSwitchRequired;
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%AB%BA%E5%8F%AF%E6%A1%A2%E4%BC%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/13/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E7%AB%BA%E5%8F%AF%E6%A1%A2%E4%BC%A0/" class="post-title-link" itemprop="url">读书笔记-竺可桢传</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-13 23:23:07 / Modified: 23:23:39" itemprop="dateCreated datePublished" datetime="2022-08-13T23:23:07+08:00">2022-08-13</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>阅读时间：2022.07.30。<br>这本书是去威海旅游的时候在路边书店买下的。<br>竺可桢先生是我们的老校长，我在校时便深受他的思想影响。<br>读完传记，得以窥见竺老校长的一生。我感慨于在二十世纪初那个年代成长起来的人，很多都拥有着强烈的使命感，有真正的民族主义和爱国情怀，对同胞充满了大爱。可能是遇到了太多的苦难，他们也特别珍惜来之不易的学习机会。一批批青年在艰苦的环境中成长，最终成为在各行各业功勋卓著的栋梁之才。反观现在和平年代，物质和享乐充斥着人们的生活，让大多数人无暇去思考。而青年人也普遍缺乏对社会的认识，缺乏对历史的了解。贫富差距的增大，房价的高昂甚至也逐渐消磨了年轻人的奋斗激情。整个社会仿佛一个巨大的机器，在按照一部分人设置的轨道运行。再看看日本和韩国的现状，经济下行，社会严重分化，没有活力。希望中国能从这个轨道跳脱出来，避免重蹈日韩的覆辙。</p>
-<h2 id="严谨的学问精神"><a href="#严谨的学问精神" class="headerlink" title="严谨的学问精神"></a>严谨的学问精神</h2><p>竺可桢在学问上的严谨和我有着很多相似之处，对于自己的成果总是反复的修改，力图达到自身最满意的程度，这里我将之称为“效果”思想。我常常也是力图将事情做到最好，对于自己写的文章字字斟酌，做的事情反复思量，以前我常常怀疑自己的做法是不是正确的，现在发现和老校长不谋而合，内心感到很宽慰。<br>很多时候为了效率，公司希望你用20%的时间将事情做到80%即可，这种思想很多时候在商业世界是投入产出比高的选择，这里我将之称为“效率”思想。“效率”思想过度的泛滥会导致产出的作品质量低下，公司赚到了钱，却伤害了消费者。<br>“效果”和“效率”思想都是有可取之处的，并且需要并行，在不同的场景，要用不同的思想去解决问题。在一些无关紧要的事情上，应尽可能投入少的时间获得大的收益，一昧投入只会越陷越深；在一些重大的事情上，必须投入120%的努力，精益求精。在特定的场景下如何选择这两种思想，事实上是一个广泛性的问题，我们所有人都在不停地面临这样的选择。能够拥有选择的智慧，是一件幸事。</p>
-<h2 id="百折不挠的抗争精神"><a href="#百折不挠的抗争精神" class="headerlink" title="百折不挠的抗争精神"></a>百折不挠的抗争精神</h2><p>8年西迁，4易校址。中途还遭遇了妻子过世这样沉重的打击，但是竺可桢没有被打倒，反而在困境之中将学校越办越好，获得世界瞩目的科研成果，培养了比非困难时期更多的优秀学生。相比抗战年代的苦难，我们今天的一些个人的困难又算的了什么呢，在那种环境下他们可以坚持下去，我们更应该可以。</p>
-<h2 id="人生的关键选择"><a href="#人生的关键选择" class="headerlink" title="人生的关键选择"></a>人生的关键选择</h2><p>竺可桢校长提到，“大学教育的目标，决不仅仅是造就多少专家如工程师医生之类，而尤在乎养成公忠坚毅，能担当大任，主持风尚，转移国运的领导人才。”然而想到当初毕业时，有很多人不知道要做什么，有些人想安稳的度过一生，有些人有想法但不知自己具体该如何做，而我其实也在曾这三者之间徘徊。大学时我常常去图书馆读书，有幸能让自己的视野更广阔一点，但在面临人生方向的选择的时候，仍然觉得自己所知道的远远不够，无法找到确切的答案。我想，一方面是自身的阅历太少；一方面每个人的经历与自身情况又大不相同，他人的选择无法复制到自己身上。我们不仅要“知”，还要有“智”，这样才能做出更好的选择。所幸的是，我一直没有放弃追问，在毕业后的五年，遇到了更多的事，逐渐开始形成自己的答案。我给自己制定了短期和长期的规划：</p>
-<h3 id="3年的规划"><a href="#3年的规划" class="headerlink" title="3年的规划"></a>3年的规划</h3><p>1.在技术领域继续深耕，达到行业专家或更高水平；<br>2.打造自身的IP，通过个人文章、作品来影响或帮助到一些行业从业者；<br>3.逐步提升商业视野，了解商业运行规律，开始构建自己的商业知识体系与资源网络；</p>
-<h3 id="长期的规划"><a href="#长期的规划" class="headerlink" title="长期的规划"></a>长期的规划</h3><p>1.持续阅读，丰富自身的人文知识、人生阅历；<br>2.不断学习一切可以学习的事物，补齐自身的短板，<br>3.了解世界，探索自身能力的边界；<br>4.照顾好家人；<br>5.多运动；<br>6.向他人学习；<br>7.35岁左右拥有一些良性的财富资产；</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/05/python-%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/05/python-%E5%A6%82%E4%BD%95%E8%A7%A3%E6%9E%90%E6%96%87%E4%BB%B6%E7%9A%84%E7%BC%96%E7%A0%81%E6%A0%BC%E5%BC%8F/" class="post-title-link" itemprop="url">python-如何解析文件的编码格式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-05 07:58:58 / Modified: 08:06:42" itemprop="dateCreated datePublished" datetime="2022-08-05T07:58:58+08:00">2022-08-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>python直接打开非utf-8编码格式的文件，并使用readline()读取内容，会出现字节解析失败。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">with open(file, &#x27;r&#x27;) as f:</span><br><span class="line">	str = f.readline()</span><br></pre></td></tr></table></figure>
-<p>报错信息如下：</p>
-<blockquote>
-<p>UnicodeDecodeError: ‘utf-8’ codec can’t decode byte 0xff in position 0: invalid start byte</p>
-</blockquote>
-<h2 id="问题分析"><a href="#问题分析" class="headerlink" title="问题分析"></a>问题分析</h2><p>1.python的默认文件解析格式是utf-8，如果被打开的文件是非utf-8编码，那么后续的文本处理就无法顺利执行。<br>2.我们需要在open时指定文件的编码格式，类似于<code>open(filename, encoding=&#39;gbk2312&#39;)</code><br>3.需要有途径能获知文件编码格式。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>使用chardet库可以自动分析字节流的编码格式，借用chardet可以分析文件的编码格式。</p>
-<h3 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">import chardet</span><br><span class="line">def predict_encoding(file_path):</span><br><span class="line">    with open(file_path, &#x27;rb&#x27;) as f:</span><br><span class="line">        d = chardet.detect(f.read())</span><br><span class="line">        print(d)</span><br><span class="line">        file_encoding = d[&#x27;encoding&#x27;]</span><br><span class="line">    return file_encoding</span><br></pre></td></tr></table></figure>
-<p>方法一会将文件中所有内容进行编码解析，遇到文件内容较大时，执行时间较长。<br>我们也可以只读取文件的开头一定行数的字节，再解析其编码，如方法二只读取文件的前1000行：</p>
-<h3 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">import chardet</span><br><span class="line"># 注意：默认n_lines大小可自行修改</span><br><span class="line">def predict_encoding(file_path, n_lines=1000):</span><br><span class="line">    with open(file_path, &#x27;rb&#x27;) as f:</span><br><span class="line">        rawdata = b&#x27;&#x27;.join([f.readline() for _ in range(n_lines)])</span><br><span class="line">        d = chardet.detect(rawdata)</span><br><span class="line">        print(d)</span><br><span class="line">        file_encoding = d[&#x27;encoding&#x27;]</span><br><span class="line">    return file_encoding</span><br></pre></td></tr></table></figure>
-<p>值得注意的是，chardet的预测并不是绝对正确，通常它的返回值会给出一个预测概率（在’confidence’字段）。因为文件本质上是字节流的组合，文件的读入者无法保证创建者在一个文件中只使用一种编码格式，还是多种编码格式。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>在读入文件大小可控，行数小于一千行的时候，使用方法一。</li>
-<li>在读入文件大小未知的使用场景，使用方法二，该方法执行时间更可控。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/05/python-%E4%B8%80%E6%96%87%E5%BC%84%E6%87%82pip/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/05/python-%E4%B8%80%E6%96%87%E5%BC%84%E6%87%82pip/" class="post-title-link" itemprop="url">python-一文弄懂pip</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-05 07:20:19 / Modified: 08:06:47" itemprop="dateCreated datePublished" datetime="2022-08-05T07:20:19+08:00">2022-08-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="pip是什么"><a href="#pip是什么" class="headerlink" title="pip是什么"></a>pip是什么</h2><p>pip是python的一个包管理工具，用于安装、卸载python的库(或称模块)。类似于ubuntu的apt，nodejs的npm。<br>当调用python模块时出现类似于<code>ModuleNotFoundError: No module named &#39;xxx&#39;</code>的错误，就需要用pip来安装相应的python模块了。</p>
-<p>在pip安装python模块的时候经常会看到网上里有各种推荐的安装方式，例如：<br><code>pip install，pip3 install，python -m pip install，python2 -m pip install，python3 -m pip install</code><br>那么这些方式各有什么区别，我应该使用哪一种呢？<br>要弄明白这个问题，首先需要弄清楚执行这些指令时发生了什么。</p>
-<h2 id="在ternimal下执行指令时发生了什么"><a href="#在ternimal下执行指令时发生了什么" class="headerlink" title="在ternimal下执行指令时发生了什么"></a>在ternimal下执行指令时发生了什么</h2><p>事实上我们在linux的terminal下执行类似<code>cd, ls, git, nodejs，python，pip</code>这些指令的时候，本质上是在调用某个可执行文件，而这些可执行文件是通过linux的环境变量PATH去查找的（其他操作系统同理），所以当我们在安装某些软件时，如果想在ternimal下直接调用就需要去配置环境变量PATH。<br>我们可以通过<code>whereis xxx</code>来查找这些命令指向的位置。<br>执行指令可能直接调用执行文件，也可能间接调用。我将执行指令分为以下几类：</p>
-<ul>
-<li>指令名就是可执行文件名，如 <code>ls, git</code> （有些是linux系统安装时编译的，有些是后期安装软件时编译的）</li>
-<li>指令名是可执行文件名的软链接，执行软链接时再跳转到链接指向的位置，如 <code>noidejs, python</code></li>
-<li>指令名是shell内置命令，即shell负责解释这些指令，相应的执行操作由shell解释完再操作，如 <code>cd</code>。</li>
-<li>指令名是可执行文件的别名（alias），如oh-my-zsh默认会将<code>git status -s</code>别名为更简短的<code>gst</code>，我们也可以在<del>&#x2F;.bashrc，</del>&#x2F;.zshrc这样的文件中增加自定义别名</li>
-</ul>
-<h2 id="如何安装pip"><a href="#如何安装pip" class="headerlink" title="如何安装pip"></a>如何安装pip</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python3的pip安装：</span><br><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py </span><br><span class="line">python3 get-pip.py</span><br><span class="line"></span><br><span class="line">python2的pip安装：</span><br><span class="line">curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py </span><br><span class="line">python2 get-pip.py</span><br></pre></td></tr></table></figure>
-<p>对于默认为python3版本的环境，也可以通过<code>sudo apt install pip</code>来安装</p>
-<h2 id="pip执行文件存放在哪"><a href="#pip执行文件存放在哪" class="headerlink" title="pip执行文件存放在哪"></a>pip执行文件存放在哪</h2><p>pip的可执行文件位置：<br><code>/usr/bin/pip</code><br>pip的源代码位置(存放在相应的python版本下面)：<br><code>~/.local/lib/python3.8/site-packages</code></p>
-<h2 id="执行pip时发生了什么"><a href="#执行pip时发生了什么" class="headerlink" title="执行pip时发生了什么"></a>执行pip时发生了什么</h2><ol>
-<li>通过<code>whereis pip</code>可知执行文件存放在<code>/usr/bin/</code></li>
-<li>通过<code>ls -al /usr/bin | grep pip</code>可以看出来<code>/usr/bin/pip</code>不是一个软链接，实际上是一个python文件，只是这个文件没有<code>.py</code>后缀而已，所以执行pip相当于执行test.py这样的python文件</li>
-<li>通过查看<code>/usr/bin/pip</code>的内容可知，执行pip时会通过首行的<code>#!/usr/bin/python3</code>来告知内核当未指定执行程序，将默认用<code>/usr/bin/python3</code>来执行。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">╰─ cat /usr/bin/pip</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"># EASY-INSTALL-ENTRY-SCRIPT: &#x27;pip==20.0.2&#x27;,&#x27;console_scripts&#x27;,&#x27;pip&#x27;</span><br><span class="line">__requires__ = &#x27;pip==20.0.2&#x27;</span><br><span class="line">import re</span><br><span class="line">import sys</span><br><span class="line">from pkg_resources import load_entry_point</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    sys.argv[0] = re.sub(r&#x27;(-script\.pyw?|\.exe)?$&#x27;, &#x27;&#x27;, sys.argv[0])</span><br><span class="line">    sys.exit(</span><br><span class="line">        load_entry_point(&#x27;pip==20.0.2&#x27;, &#x27;console_scripts&#x27;, &#x27;pip&#x27;)()</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></li>
-<li>因此在terminal下执行pip的实际流程为：</li>
-</ol>
-<ul>
-<li>通过环境变量PATH找到名为pip的可执行文件所处的文件夹</li>
-<li>直接执行<code>pip</code>相当于执行<code>/usr/bin/python3 pip</code>。</li>
-</ul>
-<h2 id="执行pip3发生了什么"><a href="#执行pip3发生了什么" class="headerlink" title="执行pip3发生了什么"></a>执行pip3发生了什么</h2><p>pip3和pip的原理几乎是一样的，同样的方式我们可以看到pip3的文件内容和pip几乎没有差别：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">╰─ cat /usr/bin/pip3</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"># EASY-INSTALL-ENTRY-SCRIPT: &#x27;pip==20.0.2&#x27;,&#x27;console_scripts&#x27;,&#x27;pip3&#x27;</span><br><span class="line">__requires__ = &#x27;pip==20.0.2&#x27;</span><br><span class="line">import re</span><br><span class="line">import sys</span><br><span class="line">from pkg_resources import load_entry_point</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    sys.argv[0] = re.sub(r&#x27;(-script\.pyw?|\.exe)?$&#x27;, &#x27;&#x27;, sys.argv[0])</span><br><span class="line">    sys.exit(</span><br><span class="line">        load_entry_point(&#x27;pip==20.0.2&#x27;, &#x27;console_scripts&#x27;, &#x27;pip3&#x27;)()</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-<h2 id="执行python-m-pip发生了什么"><a href="#执行python-m-pip发生了什么" class="headerlink" title="执行python -m pip发生了什么"></a>执行python -m pip发生了什么</h2><ol>
-<li>通过<code>whereis python</code>可知执行文件存放在&#x2F;usr&#x2F;bin&#x2F;</li>
-<li>通过<code>ls -al /usr/bin | grep python</code>可以看出&#x2F;usr&#x2F;bin&#x2F;python是一个软链接，即python -&gt; &#x2F;usr&#x2F;bin&#x2F;python3</li>
-<li>因此在terminal下执行python -m pip的实际流程为：</li>
-</ol>
-<ul>
-<li>通过环境变量PATH找到名为python的可执行文件所处的文件</li>
-<li>执行<code>python -m pip</code> 相当于<code>/usr/bin/python -m pip</code></li>
-</ul>
-<ol start="4">
-<li><code>python2 -m pip</code>，<code>python3 -m pip</code>和<code>python -m pip</code>的调用原理是一样的，调用python工具执行其下面的一个名为pip的模块(-m代表module)。</li>
-</ol>
-<h2 id="pip下载的包安装在哪"><a href="#pip下载的包安装在哪" class="headerlink" title="pip下载的包安装在哪"></a>pip下载的包安装在哪</h2><p>pip安装的路径取决于调用pip时使用的python的版本。<br>如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/.local/lib/python2.7/site-packages</span><br><span class="line">~/.local/lib/python3.8/site-packages</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>pip是一个python的子模块，具备公共python库管理的功能。</li>
-<li>使用pip安装python模块的过程就是从源仓库地址下载python包（或称模块，库）并存放在本机文件的过程。</li>
-<li>不同的pip安装指令实质的差异是安装包存放的地址差异，这取决最终执行这条指令的python版本，本机的每个python版本都自维护了一个包存放地址。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1281,12 +1091,12 @@ return xSwitchRequired;
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">17</span>
+          <span class="site-state-item-count">20</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">7</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
