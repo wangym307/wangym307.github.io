@@ -769,10 +769,16 @@ while(1);
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-22 01:01:17 / Modified: 01:02:53" itemprop="dateCreated datePublished" datetime="2022-08-22T01:01:17+08:00">2022-08-22</time>
+              <time title="Created: 2022-08-22 01:01:17" itemprop="dateCreated datePublished" datetime="2022-08-22T01:01:17+08:00">2022-08-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-08-23 00:26:23" itemprop="dateModified" datetime="2022-08-23T00:26:23+08:00">2022-08-23</time>
+              </span>
 
           
 
@@ -785,7 +791,7 @@ while(1);
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>将FreeRTOS的系统tick时间xTickCount+1，并检查是否有时间溢出事件；<br>返回值是<code>是否需要切换任务</code>。</p>
+          <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>在调度器未挂起时将FreeRTOS的系统tick时间xTickCount+1，并检查是否有时间溢出事件；<br>返回值是<code>是否需要切换任务</code>。</p>
 <h2 id="调用者"><a href="#调用者" class="headerlink" title="调用者"></a>调用者</h2><p>xTaskIncrementTick有2处被调用：</p>
 <ol>
 <li>在系统tick中断函数中调用，由xPortSysTickHandler的返回值告知是否需要进行任务切换，如果是通过修改寄存器portNVIC_INT_CTRL_REG来触发PendSV中断，进而切换任务。<br>以ARM_CM3为例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void xPortSysTickHandler( void )</span><br><span class="line">&#123;</span><br><span class="line">    /* The SysTick runs at the lowest interrupt priority, so when this interrupt</span><br><span class="line">     * executes all interrupts must be unmasked.  There is therefore no need to</span><br><span class="line">     * save and then restore the interrupt mask value as its value is already</span><br><span class="line">     * known. */</span><br><span class="line">    portDISABLE_INTERRUPTS();</span><br><span class="line">    &#123;</span><br><span class="line">        /* Increment the RTOS tick. */</span><br><span class="line">        if( xTaskIncrementTick() != pdFALSE )</span><br><span class="line">        &#123;</span><br><span class="line">            /* A context switch is required.  Context switching is performed in</span><br><span class="line">             * the PendSV interrupt.  Pend the PendSV interrupt. */</span><br><span class="line">            portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    portENABLE_INTERRUPTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
@@ -811,9 +817,9 @@ while(1);
 </ol>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>xTaskIncrementTick的功能：</p>
 <ol>
-<li>修改系统tick；</li>
+<li>在调度器未挂起时修改系统tick；</li>
 <li>判断是否有任务因为tick增加或是别的原因（xYieldPending）而需要解除阻塞，并修改pxReadyTasksLists和pxDelayedTaskList两个任务列表。</li>
-<li>综合是否需要进行任务切换并放到函数返回值中，而真正的切换动作由后续其他函数（xPortPendSVHandler）来完成。</li>
+<li>综合判断是否需要进行任务切换并放到函数返回值中，而真正的切换动作由后续其他函数（xPortPendSVHandler）来完成。</li>
 </ol>
 
       
