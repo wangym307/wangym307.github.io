@@ -145,6 +145,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/" class="post-title-link" itemprop="url">ARM指令-cpsid和cpsie</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-22 01:44:35 / Modified: 23:40:20" itemprop="dateCreated datePublished" datetime="2022-08-22T01:44:35+08:00">2022-08-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>cpsid和cpsie不是通用汇编指令，而是arm指令。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cps = Change Processor State`</span><br><span class="line">id = irq_disable</span><br><span class="line">ie = irq_enable</span><br></pre></td></tr></table></figure>
+<h2 id="中断开关"><a href="#中断开关" class="headerlink" title="中断开关"></a>中断开关</h2><p>i &#x3D; interrupt</p>
+<h3 id="cpsid-i"><a href="#cpsid-i" class="headerlink" title="cpsid i"></a>cpsid i</h3><p>禁用中断</p>
+<h3 id="cpsie-i"><a href="#cpsie-i" class="headerlink" title="cpsie i"></a>cpsie i</h3><p>使能中断</p>
+<h2 id="异常开关"><a href="#异常开关" class="headerlink" title="异常开关"></a>异常开关</h2><p>f &#x3D; faultmask</p>
+<h3 id="cpsid-f"><a href="#cpsid-f" class="headerlink" title="cpsid f"></a>cpsid f</h3><p>禁用异常</p>
+<h3 id="cpsie-f"><a href="#cpsie-f" class="headerlink" title="cpsie f"></a>cpsie f</h3><p>使能异常</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-xTaskIncrementTick/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -950,108 +1016,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/05/python-%E4%B8%80%E6%96%87%E5%BC%84%E6%87%82pip/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/05/python-%E4%B8%80%E6%96%87%E5%BC%84%E6%87%82pip/" class="post-title-link" itemprop="url">python-一文弄懂pip</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-05 07:20:19 / Modified: 08:06:47" itemprop="dateCreated datePublished" datetime="2022-08-05T07:20:19+08:00">2022-08-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="pip是什么"><a href="#pip是什么" class="headerlink" title="pip是什么"></a>pip是什么</h2><p>pip是python的一个包管理工具，用于安装、卸载python的库(或称模块)。类似于ubuntu的apt，nodejs的npm。<br>当调用python模块时出现类似于<code>ModuleNotFoundError: No module named &#39;xxx&#39;</code>的错误，就需要用pip来安装相应的python模块了。</p>
-<p>在pip安装python模块的时候经常会看到网上里有各种推荐的安装方式，例如：<br><code>pip install，pip3 install，python -m pip install，python2 -m pip install，python3 -m pip install</code><br>那么这些方式各有什么区别，我应该使用哪一种呢？<br>要弄明白这个问题，首先需要弄清楚执行这些指令时发生了什么。</p>
-<h2 id="在ternimal下执行指令时发生了什么"><a href="#在ternimal下执行指令时发生了什么" class="headerlink" title="在ternimal下执行指令时发生了什么"></a>在ternimal下执行指令时发生了什么</h2><p>事实上我们在linux的terminal下执行类似<code>cd, ls, git, nodejs，python，pip</code>这些指令的时候，本质上是在调用某个可执行文件，而这些可执行文件是通过linux的环境变量PATH去查找的（其他操作系统同理），所以当我们在安装某些软件时，如果想在ternimal下直接调用就需要去配置环境变量PATH。<br>我们可以通过<code>whereis xxx</code>来查找这些命令指向的位置。<br>执行指令可能直接调用执行文件，也可能间接调用。我将执行指令分为以下几类：</p>
-<ul>
-<li>指令名就是可执行文件名，如 <code>ls, git</code> （有些是linux系统安装时编译的，有些是后期安装软件时编译的）</li>
-<li>指令名是可执行文件名的软链接，执行软链接时再跳转到链接指向的位置，如 <code>noidejs, python</code></li>
-<li>指令名是shell内置命令，即shell负责解释这些指令，相应的执行操作由shell解释完再操作，如 <code>cd</code>。</li>
-<li>指令名是可执行文件的别名（alias），如oh-my-zsh默认会将<code>git status -s</code>别名为更简短的<code>gst</code>，我们也可以在<del>&#x2F;.bashrc，</del>&#x2F;.zshrc这样的文件中增加自定义别名</li>
-</ul>
-<h2 id="如何安装pip"><a href="#如何安装pip" class="headerlink" title="如何安装pip"></a>如何安装pip</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">python3的pip安装：</span><br><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py </span><br><span class="line">python3 get-pip.py</span><br><span class="line"></span><br><span class="line">python2的pip安装：</span><br><span class="line">curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py </span><br><span class="line">python2 get-pip.py</span><br></pre></td></tr></table></figure>
-<p>对于默认为python3版本的环境，也可以通过<code>sudo apt install pip</code>来安装</p>
-<h2 id="pip执行文件存放在哪"><a href="#pip执行文件存放在哪" class="headerlink" title="pip执行文件存放在哪"></a>pip执行文件存放在哪</h2><p>pip的可执行文件位置：<br><code>/usr/bin/pip</code><br>pip的源代码位置(存放在相应的python版本下面)：<br><code>~/.local/lib/python3.8/site-packages</code></p>
-<h2 id="执行pip时发生了什么"><a href="#执行pip时发生了什么" class="headerlink" title="执行pip时发生了什么"></a>执行pip时发生了什么</h2><ol>
-<li>通过<code>whereis pip</code>可知执行文件存放在<code>/usr/bin/</code></li>
-<li>通过<code>ls -al /usr/bin | grep pip</code>可以看出来<code>/usr/bin/pip</code>不是一个软链接，实际上是一个python文件，只是这个文件没有<code>.py</code>后缀而已，所以执行pip相当于执行test.py这样的python文件</li>
-<li>通过查看<code>/usr/bin/pip</code>的内容可知，执行pip时会通过首行的<code>#!/usr/bin/python3</code>来告知内核当未指定执行程序，将默认用<code>/usr/bin/python3</code>来执行。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">╰─ cat /usr/bin/pip</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"># EASY-INSTALL-ENTRY-SCRIPT: &#x27;pip==20.0.2&#x27;,&#x27;console_scripts&#x27;,&#x27;pip&#x27;</span><br><span class="line">__requires__ = &#x27;pip==20.0.2&#x27;</span><br><span class="line">import re</span><br><span class="line">import sys</span><br><span class="line">from pkg_resources import load_entry_point</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    sys.argv[0] = re.sub(r&#x27;(-script\.pyw?|\.exe)?$&#x27;, &#x27;&#x27;, sys.argv[0])</span><br><span class="line">    sys.exit(</span><br><span class="line">        load_entry_point(&#x27;pip==20.0.2&#x27;, &#x27;console_scripts&#x27;, &#x27;pip&#x27;)()</span><br><span class="line">    )</span><br></pre></td></tr></table></figure></li>
-<li>因此在terminal下执行pip的实际流程为：</li>
-</ol>
-<ul>
-<li>通过环境变量PATH找到名为pip的可执行文件所处的文件夹</li>
-<li>直接执行<code>pip</code>相当于执行<code>/usr/bin/python3 pip</code>。</li>
-</ul>
-<h2 id="执行pip3发生了什么"><a href="#执行pip3发生了什么" class="headerlink" title="执行pip3发生了什么"></a>执行pip3发生了什么</h2><p>pip3和pip的原理几乎是一样的，同样的方式我们可以看到pip3的文件内容和pip几乎没有差别：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">╰─ cat /usr/bin/pip3</span><br><span class="line">#!/usr/bin/python3</span><br><span class="line"># EASY-INSTALL-ENTRY-SCRIPT: &#x27;pip==20.0.2&#x27;,&#x27;console_scripts&#x27;,&#x27;pip3&#x27;</span><br><span class="line">__requires__ = &#x27;pip==20.0.2&#x27;</span><br><span class="line">import re</span><br><span class="line">import sys</span><br><span class="line">from pkg_resources import load_entry_point</span><br><span class="line"></span><br><span class="line">if __name__ == &#x27;__main__&#x27;:</span><br><span class="line">    sys.argv[0] = re.sub(r&#x27;(-script\.pyw?|\.exe)?$&#x27;, &#x27;&#x27;, sys.argv[0])</span><br><span class="line">    sys.exit(</span><br><span class="line">        load_entry_point(&#x27;pip==20.0.2&#x27;, &#x27;console_scripts&#x27;, &#x27;pip3&#x27;)()</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
-<h2 id="执行python-m-pip发生了什么"><a href="#执行python-m-pip发生了什么" class="headerlink" title="执行python -m pip发生了什么"></a>执行python -m pip发生了什么</h2><ol>
-<li>通过<code>whereis python</code>可知执行文件存放在&#x2F;usr&#x2F;bin&#x2F;</li>
-<li>通过<code>ls -al /usr/bin | grep python</code>可以看出&#x2F;usr&#x2F;bin&#x2F;python是一个软链接，即python -&gt; &#x2F;usr&#x2F;bin&#x2F;python3</li>
-<li>因此在terminal下执行python -m pip的实际流程为：</li>
-</ol>
-<ul>
-<li>通过环境变量PATH找到名为python的可执行文件所处的文件</li>
-<li>执行<code>python -m pip</code> 相当于<code>/usr/bin/python -m pip</code></li>
-</ul>
-<ol start="4">
-<li><code>python2 -m pip</code>，<code>python3 -m pip</code>和<code>python -m pip</code>的调用原理是一样的，调用python工具执行其下面的一个名为pip的模块(-m代表module)。</li>
-</ol>
-<h2 id="pip下载的包安装在哪"><a href="#pip下载的包安装在哪" class="headerlink" title="pip下载的包安装在哪"></a>pip下载的包安装在哪</h2><p>pip安装的路径取决于调用pip时使用的python的版本。<br>如</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">~/.local/lib/python2.7/site-packages</span><br><span class="line">~/.local/lib/python3.8/site-packages</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
-<li>pip是一个python的子模块，具备公共python库管理的功能。</li>
-<li>使用pip安装python模块的过程就是从源仓库地址下载python包（或称模块，库）并存放在本机文件的过程。</li>
-<li>不同的pip安装指令实质的差异是安装包存放的地址差异，这取决最终执行这条指令的python版本，本机的每个python版本都自维护了一个包存放地址。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1121,12 +1085,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">27</span>
+          <span class="site-state-item-count">28</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

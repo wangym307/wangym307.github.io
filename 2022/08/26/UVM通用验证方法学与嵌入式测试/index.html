@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="概述UVM（Universal Verification Methodology），通用验证方法学，是当前芯片验证中最流行的验证方法学。本文将介绍UVM的全局视图，包括基于UVM的验证框架、UVM类库和UVM的各种实用的机制。 UVM验证大框架UVM这一验证方法学从发布到现在已经有10年之久了，它是一种使用SystemVerilog进行功能验证的方法，并提供了使用SystemVerilog代码实现">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UVM通用验证方法学与嵌入式测试">
+<meta property="og:url" content="http://example.com/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/index.html">
+<meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
+<meta property="og:description" content="概述UVM（Universal Verification Methodology），通用验证方法学，是当前芯片验证中最流行的验证方法学。本文将介绍UVM的全局视图，包括基于UVM的验证框架、UVM类库和UVM的各种实用的机制。 UVM验证大框架UVM这一验证方法学从发布到现在已经有10年之久了，它是一种使用SystemVerilog进行功能验证的方法，并提供了使用SystemVerilog代码实现">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-08-25T23:54:40.000Z">
+<meta property="article:modified_time" content="2022-08-25T23:55:11.753Z">
+<meta property="article:author" content="WaterYoungMan">
+<meta property="article:tag" content="验证">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>UVM通用验证方法学与嵌入式测试 | WaterYoungMan's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WaterYoungMan's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          UVM通用验证方法学与嵌入式测试
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-26 07:54:40 / Modified: 07:55:11" itemprop="dateCreated datePublished" datetime="2022-08-26T07:54:40+08:00">2022-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>UVM（Universal Verification Methodology），通用验证方法学，是当前芯片验证中最流行的验证方法学。<br>本文将介绍UVM的全局视图，包括基于UVM的验证框架、UVM类库和UVM的各种实用的机制。</p>
+<h2 id="UVM验证大框架"><a href="#UVM验证大框架" class="headerlink" title="UVM验证大框架"></a>UVM验证大框架</h2><p>UVM这一验证方法学从发布到现在已经有10年之久了，它是一种使用SystemVerilog进行功能验证的方法，并提供了使用SystemVerilog代码实现的支持库。UVM的定位还是很高的，从它的名字”通用验证方法学“就可以看出，三个观念的转变：从定制到通用、从仿真到验证、从方法到方法学。</p>
+<p>传统的仿真可以简单地理解为就是从testbench向待测设计通过连线施加不同测试向量或者命令的过程，而UVM考虑的维度会更高一些、更详尽一些和更通用一些，仿真只是完成验证工程的技术手段。仿真要解决的问题是怎么从DUT输入激励并得到DUT的输出，而验证要解决的问题是怎么保证DUT功能的完备性和正确性。</p>
+<p>单从方法学这一字眼看，UVM定义的是一套完整的规范、方式或者流程，有组织有纪律，它不单单只是那一套SystemVerilog类库。UVM方法学指导了整个基于仿真的验证过程，区别于现在发展如火如荼且验证思想不相同的Formal验证和便携式激励验证（PSS，Portable Stimulus Standard）。</p>
+<p>UVM指导验证工程从DUT的功能规范（Specification）出发，制定验证计划，测试点分解，创建测试用例，定义验收（sign-off）方式和标准，流程自动化和报告自动化等等。如下图所示，基于UVM的验证流程相对标准和规范，也是目前被广泛采用的方式，不同单位不同项目可能会进行一些调整：</p>
+<p>UVM通过SystemVerilog类库的形式提供了验证环境和测试用例的可重用机制，极大的提高了验证效率。在UVM的框架里面，各类环境组件相互独立、各司其职，各个仿真阶段定义明确且执行起来井然有序，这相当于在”空间“和”时间“两个尺度上都体现出了其通用性。下图是基于UVM搭建的验证环境下各组件的大致关系，实际工程中需要根据待测设计规格进行调整。</p>
+<h2 id="UVM类库"><a href="#UVM类库" class="headerlink" title="UVM类库"></a>UVM类库</h2><p>这一节要呈现的是UVM提供的SystemVerilog类库，或者直接叫UVM类库（UVM Class Library）。这套库提供了可以使用SV快速开发架构良好（well-constructed）且具有可重用性（resuable）的验证环境所需要的基础类（Class）、宏（Macro）以及公共函数（Utilities），这就意味着，UVM验证在技术上说白了就是面向对象程序的开发。用户可以从Accellera网站（Accellera是在EDA、IC设计和制造领域的标准组织）上下载UVM类库源代码、用户指南和参考文档等相关资料。</p>
+<p>按照Accellera提供的UVM参考手册，UVM类库可以按照功能将其内容分成若干类别，方便梳理和使用。主要的类别有公共元素（包括类型定义、变量、函数和任务）、核心基类（Core Base Classes）、报告类（Reporting Classes）、工厂类（Factory Class）、组件类（Component Classes）、寄存器类（Register Layer Classes）、序列类（Sequence Classes）、序列器类（Sequencer Classes）、事务级模型类（TLM Classes）、线程同步类（Synchronization Classes）、宏（Macro）等等，更多细节读者可以翻一翻UVM参考手册[2]，或者等一等该系列后续文章。下面是将这些类的继承关系稍作整理后的UVM类架构：</p>
+<h2 id="UVM机制"><a href="#UVM机制" class="headerlink" title="UVM机制"></a>UVM机制</h2><p>UVM类库强大的地方不只是上面展开的类图，还应领略它各种非常实用且功能强大的机制。只有这些机制的引入，才能让UVM环境组件分工明确、密切协作，才能让整个仿真有条不紊且高效正确地运作起来。回过头讲，掌握UVM的各种机制也是用好UVM的必备条件。本节将大概介绍UVM有哪些机制，以及他们的作用，更多的细节需要后续文章再逐个展开。</p>
+<p>Factory机制。顾名思义，这是UVM家开的工厂。在这家工厂里面，你可以登记所有你定义的类。当你需要创建对象的时候，只要让工厂帮你生产出来即可；当你想要更换对象类型的时候，跟工厂交代一下，它会帮你把后续生产的对象都换成你想要的类型。</p>
+<p>ConfigDatabase机制。翻译过来就是配置数据库，缩写是config_db。数据库无非就是用来存放数据的，UVM提供的这个配置数据库功能很齐全，它可以存放一切你想要存放的数据，并且提供完善的匹配查询服务。配置数据库的用处在于，可以在不同对象之间传递数据。</p>
+<p>Phase机制。这套机制定义了基于UVM的仿真步调，也就是说它将整个仿真分成了不同的阶段（phase），在什么时候实例化环境组件，什么时候连接组件，什么时候复位，什么时候产生激励，什么时候产生报告等等，这些步调都是提前安排好的。</p>
+<p>Objection机制。作为软件程序的验证环境，它总是想要不断往下执行，最好不要停下来。然而，phase机制为所有环境组件都定好了基调，它要协调大家步调一致地往前走。于是Objection机制就出现了，它是协调各个环境组件遵守Phase机制的手段，有时候也会被用来同步跟RTL的步调。</p>
+<p>Sequence机制。测试用例如果想要构造稍微复杂一点的测试场景，可以率先构造能够复用的测试序列，然后再根据不同的测试场景组合起来。多个测试序列可能是串行的，也可能是并行的，但都没关系，sequence机制会协调好测试序列和驱动器（Driver）之间关系，好让测试向量一个不落地驱动到待测设计接口上。</p>
+<p>Reporting机制。信息的打印对于验证人员来说至关重要，关系到问题定位的效率。UVM的消息机制非常强大，消息分了严重等级（severity），不同等级的消息对应不同的处理方式；其中INFO等级的消息还被赋予了冗余度（verbosity），便于信息的筛选和分类；此外还提供了相关的宏和函数来便利不同数据结构的打印。</p>
+<p>寄存器抽象层（RAL, Register Abstraction Layer）。在数字系统中，寄存器常被用于功能配置、状态记录和查询、数值传递等等，切实影响着数字系统的行为。为了实时跟踪这些寄存器的状态，或者方便根据测试意图来配置寄存器，可以使用UVM的寄存器抽象层来完整地映射RTL中的寄存器组。这样除了便利寄存器的访问，还提供了收集寄存器覆盖率的方法。</p>
+<p>事务级建模（TLM, Transaction Level Modeling ）。事务级区别于信号级，不再关心具体某个信号的逻辑值。事务级建模处理的数据对象是一组有关联的数据，可以是数据包（Package）的形式，同时事务（Transaction）也是UVM环境组件之间交互的信息单元。抽象层的建立，使得数据的传递和处理变得更加高效。</p>
+<h2 id="嵌入式测试"><a href="#嵌入式测试" class="headerlink" title="嵌入式测试"></a>嵌入式测试</h2><p>UVM是芯片验证测试的成熟方法，具备一套复杂、完备的流程和机制。<br>偏上层的测试，比如芯片应用测试，也可以理解并借鉴UVM方法的设计思想，将其简化后应用到测试中，打造出更完备的测试方案。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/404777602">https://zhuanlan.zhihu.com/p/404777602</a></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E9%AA%8C%E8%AF%81/" rel="tag"># 验证</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/08/26/python-%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84/" rel="prev" title="python-列表与元组">
+      <i class="fa fa-chevron-left"></i> python-列表与元组
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A6%82%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVM%E9%AA%8C%E8%AF%81%E5%A4%A7%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">UVM验证大框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVM%E7%B1%BB%E5%BA%93"><span class="nav-number">3.</span> <span class="nav-text">UVM类库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UVM%E6%9C%BA%E5%88%B6"><span class="nav-number">4.</span> <span class="nav-text">UVM机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95"><span class="nav-number">5.</span> <span class="nav-text">嵌入式测试</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83"><span class="nav-number">6.</span> <span class="nav-text">参考</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
