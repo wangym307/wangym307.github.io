@@ -20,22 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="背景在esp-idf中看到了components&#x2F;mdns&#x2F;host_test&#x2F;components&#x2F;freertos_linux这个组件，看了下代码发现有点类似于在linux下直接模拟FreeRTOS的接口，网上找了一下发现FreeRTOS官方的工程已经支持linux模拟。 操作示例1.以下是官方网站，上面也有步骤教程：https:&#x2F;&#x2F;www.freertos.org&#x2F;FreeRTOS-simu">
+  <meta name="description" content="背景今天周六在家休息，下午看了一场技术直播：“2022年字节跳动技术沙龙”的第七期|高性能微服务框架CloudWeGo。 技术沙龙的主题是介绍CloudWeGo项目中的几个子项目：  6W+微服务高性能RPC框架Kitex； 大规模企业级HTTP框架Hertz； 基于Rust语言实现的RPC框架Volo；  以下是直播间给出的背景介绍：  云原生时代，微服务架构改造是 IT 架构变化的主流。如何解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="FreeRTOS-在Linux上仿真FreeRTOS">
-<meta property="og:url" content="http://example.com/2022/08/14/FreeRTOS-%E5%9C%A8Linux%E4%B8%8A%E4%BB%BF%E7%9C%9FFreeRTOS/index.html">
+<meta property="og:title" content="rust-云原生时代下的微服务框架语言选择">
+<meta property="og:url" content="http://example.com/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
-<meta property="og:description" content="背景在esp-idf中看到了components&#x2F;mdns&#x2F;host_test&#x2F;components&#x2F;freertos_linux这个组件，看了下代码发现有点类似于在linux下直接模拟FreeRTOS的接口，网上找了一下发现FreeRTOS官方的工程已经支持linux模拟。 操作示例1.以下是官方网站，上面也有步骤教程：https:&#x2F;&#x2F;www.freertos.org&#x2F;FreeRTOS-simu">
+<meta property="og:description" content="背景今天周六在家休息，下午看了一场技术直播：“2022年字节跳动技术沙龙”的第七期|高性能微服务框架CloudWeGo。 技术沙龙的主题是介绍CloudWeGo项目中的几个子项目：  6W+微服务高性能RPC框架Kitex； 大规模企业级HTTP框架Hertz； 基于Rust语言实现的RPC框架Volo；  以下是直播间给出的背景介绍：  云原生时代，微服务架构改造是 IT 架构变化的主流。如何解">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://s2.loli.net/2022/08/11/FOdqewa6Pzx9AG8.png">
-<meta property="article:published_time" content="2022-08-14T15:43:05.000Z">
-<meta property="article:modified_time" content="2022-08-14T15:44:14.653Z">
+<meta property="article:published_time" content="2022-08-27T16:06:35.000Z">
+<meta property="article:modified_time" content="2022-08-27T16:07:24.325Z">
 <meta property="article:author" content="WaterYoungMan">
-<meta property="article:tag" content="FreeRTOS">
+<meta property="article:tag" content="rust">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://s2.loli.net/2022/08/11/FOdqewa6Pzx9AG8.png">
 
-<link rel="canonical" href="http://example.com/2022/08/14/FreeRTOS-%E5%9C%A8Linux%E4%B8%8A%E4%BB%BF%E7%9C%9FFreeRTOS/">
+<link rel="canonical" href="http://example.com/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/">
 
 
 <script id="page-configurations">
@@ -48,7 +46,7 @@
   };
 </script>
 
-  <title>FreeRTOS-在Linux上仿真FreeRTOS | WaterYoungMan's Blog</title>
+  <title>rust-云原生时代下的微服务框架语言选择 | WaterYoungMan's Blog</title>
   
 
 
@@ -153,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/14/FreeRTOS-%E5%9C%A8Linux%E4%B8%8A%E4%BB%BF%E7%9C%9FFreeRTOS/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -166,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          FreeRTOS-在Linux上仿真FreeRTOS
+          rust-云原生时代下的微服务框架语言选择
         </h1>
 
         <div class="post-meta">
@@ -177,7 +175,7 @@
               <span class="post-meta-item-text">Posted on</span>
               
 
-              <time title="Created: 2022-08-14 23:43:05 / Modified: 23:44:14" itemprop="dateCreated datePublished" datetime="2022-08-14T23:43:05+08:00">2022-08-14</time>
+              <time title="Created: 2022-08-28 00:06:35 / Modified: 00:07:24" itemprop="dateCreated datePublished" datetime="2022-08-28T00:06:35+08:00">2022-08-28</time>
             </span>
 
           
@@ -191,12 +189,41 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>在esp-idf中看到了<code>components/mdns/host_test/components/freertos_linux</code>这个组件，看了下代码发现有点类似于在linux下直接模拟FreeRTOS的接口，网上找了一下发现FreeRTOS官方的工程已经支持linux模拟。</p>
-<h2 id="操作示例"><a href="#操作示例" class="headerlink" title="操作示例"></a>操作示例</h2><p>1.以下是官方网站，上面也有步骤教程：<br><a target="_blank" rel="noopener" href="https://www.freertos.org/FreeRTOS-simulator-for-Linux.html">https://www.freertos.org/FreeRTOS-simulator-for-Linux.html</a></p>
-<p>2.下载FreeRTOS工程<br><code>https://github.com/FreeRTOS/FreeRTOS</code></p>
-<p>3.在Linux上编译执行（相关的gcc，make，库依赖可参考官网说明安装）</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd FreeRTOS/Demo/Posix_GCC</span><br><span class="line">make</span><br><span class="line">cd build</span><br><span class="line">./posix_demo</span><br></pre></td></tr></table></figure>
-<p><img src="https://s2.loli.net/2022/08/11/FOdqewa6Pzx9AG8.png" alt="image.png"></p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今天周六在家休息，下午看了一场技术直播：“2022年字节跳动技术沙龙”的第七期|高性能微服务框架CloudWeGo。</p>
+<p>技术沙龙的主题是介绍CloudWeGo项目中的几个子项目：</p>
+<ul>
+<li>6W+微服务高性能RPC框架Kitex；</li>
+<li>大规模企业级HTTP框架Hertz；</li>
+<li>基于Rust语言实现的RPC框架Volo；</li>
+</ul>
+<p>以下是直播间给出的背景介绍：</p>
+<blockquote>
+<p>云原生时代，微服务架构改造是 IT 架构变化的主流。如何解决研发效率和稳定性两大关键问题，成了企业 IT 部门的关注焦点。另一方面，过去的企业级 IT 架构，选型上大多以 Java 语言写就，Java 总体设计上面向大规模、长时间服务；静态类型动态链接的语言结构等特性，在强调敏捷开发、效率优先的云原生时代，往往失去了一丝灵活性。</p>
+</blockquote>
+<blockquote>
+<p>规模化的差别，各异的业务场景，不同选型思路下诞生了各种各样的开源微服务框架，这其中就有来自字节跳动所开源的 CloudWeGo。CloudWeGo 是一套可快速构建企业级云原生微服务架构的中间件集合，项目共同的特点是高性能、高扩展性、高可靠，注于微服务通信与治理，主体选用了 Go 语言。另外，本次沙龙还将正式发布国内唯一一个基于 Rust 语言的开源 RPC 框架，敬请期待！</p>
+</blockquote>
+<h2 id="听后感"><a href="#听后感" class="headerlink" title="听后感"></a>听后感</h2><p>作为一个嵌入式开发，我对很多后端的开发知识了解不全面。不过好在演讲者的侧重点普遍在：</p>
+<ul>
+<li>go、rust及其他语言优劣势对比。</li>
+<li>如何结合语言做性能优化。</li>
+<li>开源社区搭建愿景和方法。</li>
+</ul>
+<p>所以整体听下来还是比较轻松的。其中印象较深的有以下几点：</p>
+<h3 id="对rust的介绍"><a href="#对rust的介绍" class="headerlink" title="对rust的介绍"></a>对rust的介绍</h3><p>rust是最近几年比较火的编程语言，可以在嵌入式领域应用，乐鑫已经提供了基于esp32c3的<a target="_blank" rel="noopener" href="https://github.com/ivmarkov/rust-esp32-std-demo">rust-esp32-std-demo</a>。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>rust也是一门接近底层的语言，运行效率接近<code>c/c++</code>，甚至在某些场景下运行效率能超过<code>c/c++</code>，演讲者给出的理由是“rust的编译规则更加严格，编译器可以做更为激进的优化”。</li>
+<li>有人说“rust是c++的最佳实践”，rust没有<code>c++</code>的历史包袱，语言设计时就避免了很多<code>c++</code>踩过的坑。</li>
+<li>linux内核唯一接收过的有非c语言的代码提交，就是rust。rust获得了来自linus本人的肯定。</li>
+<li>具有很好的内存安全性。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>rust的学习曲线陡峭，难于上手。</li>
+<li>rust编译速度巨慢，编译一个项目可能要几个小时。</li>
+</ul>
+<h3 id="多种编程语言的对比"><a href="#多种编程语言的对比" class="headerlink" title="多种编程语言的对比"></a>多种编程语言的对比</h3><p>java、c、rust、go、python。<br>基本上从运行效率、开发难度、优化难易、内存安全等几个维度来进行比较。<br>rust除了开发难度大之外，其他维度上都没有太大短板，可以说综合能力很强。</p>
+<h3 id="开源社区"><a href="#开源社区" class="headerlink" title="开源社区"></a>开源社区</h3><p>相比于嵌入式，后端的开源框架是非常活跃的。嵌入式的开发环境碎片化无疑是开源的最大阻力，任重而道远啊~</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>rust是一门非常有潜力的语言，应用空间广阔。</p>
 
     </div>
 
@@ -206,7 +233,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/FreeRTOS/" rel="tag"># FreeRTOS</a>
+              <a href="/tags/rust/" rel="tag"># rust</a>
           </div>
 
         
@@ -215,13 +242,10 @@
         
     <div class="post-nav">
       <div class="post-nav-item">
-    <a href="/2022/08/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%86%85%E5%AD%98%E5%8A%A8%E6%80%81%E5%88%86%E9%85%8D%E7%AE%97%E6%B3%95/" rel="prev" title="操作系统-内存动态分配算法">
-      <i class="fa fa-chevron-left"></i> 操作系统-内存动态分配算法
+    <a href="/2022/08/27/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-P5%E5%92%8CP7%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/" rel="prev" title="编程方法论-P5和P7的代码有什么区别">
+      <i class="fa fa-chevron-left"></i> 编程方法论-P5和P7的代码有什么区别
     </a></div>
-      <div class="post-nav-item">
-    <a href="/2022/08/16/FreeRTOS%E5%9F%BA%E7%A1%80-%E4%BA%92%E6%96%A5%E9%94%81%E4%B8%8E%E9%80%92%E5%BD%92%E4%BA%92%E6%96%A5%E9%94%81/" rel="next" title="FreeRTOS基础-互斥锁与递归互斥锁">
-      FreeRTOS基础-互斥锁与递归互斥锁 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -280,7 +304,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%93%8D%E4%BD%9C%E7%A4%BA%E4%BE%8B"><span class="nav-number">2.</span> <span class="nav-text">操作示例</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AC%E5%90%8E%E6%84%9F"><span class="nav-number">2.</span> <span class="nav-text">听后感</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9rust%E7%9A%84%E4%BB%8B%E7%BB%8D"><span class="nav-number">2.1.</span> <span class="nav-text">对rust的介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BC%98%E7%82%B9"><span class="nav-number">2.1.1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BC%BA%E7%82%B9"><span class="nav-number">2.1.2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%9A%E7%A7%8D%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="nav-number">2.2.</span> <span class="nav-text">多种编程语言的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BC%80%E6%BA%90%E7%A4%BE%E5%8C%BA"><span class="nav-number">2.3.</span> <span class="nav-text">开源社区</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">3.</span> <span class="nav-text">小结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
