@@ -145,6 +145,229 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/" class="post-title-link" itemprop="url">FreeRTOS基础-编码标准和命名风格</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 23:49:06 / Modified: 23:59:36" itemprop="dateCreated datePublished" datetime="2022-08-28T23:49:06+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="FreeRTOS-的编码标准"><a href="#FreeRTOS-的编码标准" class="headerlink" title="FreeRTOS 的编码标准"></a><code>FreeRTOS</code> 的编码标准</h2><p><code>FreeRTOS</code> 核心源码文件的编写遵循 MISRA 代码规则，同时支持各种编译器。但考虑到有些编译器的性能还比较弱，不支持 C 语言的新标准 <code>C99</code> 和 <code>C11</code> 的一些特性和语法，所以 <code>FreeRTOS</code> 的源码中就没有引入 <code>C99</code> 和 <code>C11</code> 的新特性，但是有一个例外，源码中有用到头文件<code>stdint.h</code>（这个文件是C99标准才引入的）。</p>
+<h2 id="FreeRTOS-的命名规则"><a href="#FreeRTOS-的命名规则" class="headerlink" title="FreeRTOS 的命名规则"></a><code>FreeRTOS</code> 的命名规则</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
+<li>uint32_t 定义的变量都加上前缀 ul。 u 代表 unsigned 无符号，l 代表 long 长整型。</li>
+<li>uint16_t 定义的变量都加上前缀 us。 u 代表 unsigned 无符号，s 代表 short 短整型。</li>
+<li>uint8_t 定义的变量都加上前缀 uc。 u 代表 unsigned 无符号，c 代表 char 字符型。</li>
+<li>stdint.h 文件中未定义的变量类型，在定义变量时需要加上前缀 x，比如 BaseType_t 和</li>
+<li>TickType_t 定义的变量。</li>
+<li>stdint.h 文件中未定义的无符号变量类型，在定义变量时要加上前缀 u，比如 UBaseType_t 定义的变量要加上前缀 ux。</li>
+<li>size_t 定义的变量也要加上前缀 ux。</li>
+<li>枚举变量会加上前缀 e。</li>
+<li>指针变量会加上前缀 p，比如 uint16_t 定义的指针变量会加上前缀 pus。</li>
+<li>根据 MISRA 代码规则，char 定义的变量只能用于 ASCII 字符，前缀使用 c。</li>
+<li>根据 MISRA 代码规则，char *定义的指针变量只能用于 ASCII 字符串，前缀使用 pc。</li>
+</ul>
+<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
+<li>加上了 static 声明的函数，定义时要加上前缀 prv，这个是单词 private 的缩写。</li>
+<li>带有返回值的函数，根据返回值的数据类型，加上相应的前缀；如果没有返回值，即 void 类型，函数的前缀加上字母 v。</li>
+<li>根据文件名，文件中相应的函数定义时也将文件名加到函数命名中，比如<code>tasks.c</code>文件中函数<code>vTaskDelete</code>，函数中的 task 就是文件名中的 task。</li>
+</ul>
+<h3 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h3><ul>
+<li>根据宏定义所在的文件，文件中的宏定义声明时也将文件名加到宏定义中，比如宏定义<code>configUSE_PREEMPTION </code>是定义在文件<code>FreeRTOSConfig.h</code>里面。宏定义中的<code>config</code>就是文件名中的<code>config</code>。</li>
+<li>前缀要小写。</li>
+<li>除了前缀，其余部分全部大写，同时用下划线分开。</li>
+</ul>
+<h2 id="FreeRTOS-中数据类型"><a href="#FreeRTOS-中数据类型" class="headerlink" title="FreeRTOS 中数据类型"></a><code>FreeRTOS</code> 中数据类型</h2><p><code>FreeRTOS</code> 使用的数据类型主要分为 stdint.h 文件中定义的和自己定义的两种。 其中 char 和 char * 定义的变量要特别注意。<br><code>FreeRTOS</code> 主要自定义了以下四种数据类型：</p>
+<h3 id="TickType-t"><a href="#TickType-t" class="headerlink" title="TickType_t"></a>TickType_t</h3><p>如果用户使能了宏定义<code>configUSE_16_BIT_TICKS</code>，那么<code>TickType_t</code>定义的就是16位无符号数；<br>如果没有使能，那么TickType_t定义的就是32位无符号数。对于32位架构的处理器，一定要禁止此宏定义，即设置此宏定义数值为 0 即可。</p>
+<h3 id="BaseType-t"><a href="#BaseType-t" class="headerlink" title="BaseType_t"></a>BaseType_t</h3><p>这个数据类型根据系统架构的位数而定，对于32位架构，<code>BaseType_t</code>定义的是32位有符号数，对于16位架构，<code>BaseType_t</code>定义的是16位有符号数。如果<code>BaseType_t</code> 被定义成了<code>char</code>型，要特别注意将其设置为有符号数，因为部分函数的返回值是用负数来表示错误类型。</p>
+<h3 id="UBaseType-t"><a href="#UBaseType-t" class="headerlink" title="UBaseType_t"></a>UBaseType_t</h3><p>这个数据类型是<code>BaseType_t</code>类型的无符号版本。</p>
+<h3 id="StackType-t"><a href="#StackType-t" class="headerlink" title="StackType_t"></a>StackType_t</h3><p>栈变量数据类型定义，这个数量类型由系统架构决定，对于 16 位系统架构，<code>StackType_t</code>定义的是16位变量，对于 32 位系统架构，<code>StackType_t</code> 定义的是 32 位变量。</p>
+<h2 id="FreeRTOS-的排版和注释"><a href="#FreeRTOS-的排版和注释" class="headerlink" title="FreeRTOS 的排版和注释"></a><code>FreeRTOS</code> 的排版和注释</h2><h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>Tab 制表符用于缩进，Tab 一次缩进 4 个字符空间。</p>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p><code>FreeRTOS</code> 中注释不会超过 80 个字符宽度，除非对函数的参数进行注释时。 源码中主要是采用<code>/* */</code>的形式进行注释，不采用<code>C++</code>中的双斜杠风格来注释。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/" class="post-title-link" itemprop="url">makefile库函数-wildcard</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 23:45:27 / Modified: 23:45:42" itemprop="dateCreated datePublished" datetime="2022-08-28T23:45:27+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：在makefile中手动一个个添加.c文件，相对来说比较繁琐。为此makefile提供了库函数wildcard，能一次性添加特定目录下符合特定规则（通常是通配符*）的所有文件。<br>由于makefile中可以直接调用shell，因此我们也可以通过shell的find语句来实现类似于wildcard的功能。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><code>my_abs_path = $(wildcard path/to/*.c)</code></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>wildcard返回值为以空格隔开的文件路径集合，如“path&#x2F;to&#x2F;file1.c path&#x2F;to&#x2F;file2.c”</li>
+<li>不能递归查找入参目录下的所有子目录；</li>
+<li>入参目录为相对路径，则展开之后也是相对路径，入参目录为绝对路径，则展开之后也是绝对路径；</li>
+<li><code>*.c</code>也可以是其他类型的文件，如<code>*.h，*.txt</code>等等</li>
+</ul>
+<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><p>新建一个makefile，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ABS_ROOT := $(abspath .)</span><br><span class="line">SRCS := $(wildcard src/*.c)</span><br><span class="line">ABS_SRCS := $(wildcard $(ABS_ROOT)/src/*.c)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(SRCS)</span><br><span class="line">	@echo $(ABS_SRCS)</span><br></pre></td></tr></table></figure>
+<p>执行make可以看到输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╰─± make</span><br><span class="line">src/test2.c src/test3.c src/test1.c</span><br><span class="line">/home/wang/Workspaces/learning/c/src/test2.c /home/wang/Workspaces/learning/c/src/test3.c /home/wang/Workspaces/learning/c/src/test1.c</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/" class="post-title-link" itemprop="url">makefile库函数-abspath</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 23:43:10 / Modified: 23:45:13" itemprop="dateCreated datePublished" datetime="2022-08-28T23:43:10+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：该函数主要用于将_names中的相对路径转换成绝对路径，并返回转换后的结果。<br>函数意义：abs_path &#x3D; absolute path，指绝对路径</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在makefile中的常见用法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path = $(abspath _names)</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2><p>新建一个makefile，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path := $(abspath .)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(my_abs_path)</span><br></pre></td></tr></table></figure>
+<p>执行make可以看到输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ make</span><br><span class="line">/home/wang/Workspaces/open</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -698,246 +921,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/gdb-vscode%E5%8F%AF%E8%A7%86%E5%8C%96%E8%B0%83%E8%AF%95%E6%97%B6%E5%A2%9E%E5%8A%A0sudo%E6%9D%83%E9%99%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/gdb-vscode%E5%8F%AF%E8%A7%86%E5%8C%96%E8%B0%83%E8%AF%95%E6%97%B6%E5%A2%9E%E5%8A%A0sudo%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">gdb-vscode可视化调试时增加sudo权限</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:39:22 / Modified: 23:59:45" itemprop="dateCreated datePublished" datetime="2022-08-22T23:39:22+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><p>不管是命令行调试，还是可视化调试，都需确保要调试的文件在编译时已经增加了cflag”-g”，否则无法增加对应调试信息。</p>
-<h2 id="命令行gdb调试"><a href="#命令行gdb调试" class="headerlink" title="命令行gdb调试"></a>命令行gdb调试</h2><p>基础指令：<code>gdb + 可执行文件</code><br>输入<code>r</code>开始运行<br>具体命令行可参阅：<a target="_blank" rel="noopener" href="https://www.modb.pro/db/232755">gdb命令行</a></p>
-<h2 id="vscode可视化gdb调试"><a href="#vscode可视化gdb调试" class="headerlink" title="vscode可视化gdb调试"></a>vscode可视化gdb调试</h2><ul>
-<li>在工作目录下为调试项目增加”launch.json”</li>
-<li>使用vscode左侧的”Run and Debug”工具进行可视化调试，可以轻松增加断点，单步调试，查看变量值等</li>
-</ul>
-<h3 id="vscode调用的gdb没有sudo权限问题"><a href="#vscode调用的gdb没有sudo权限问题" class="headerlink" title="vscode调用的gdb没有sudo权限问题"></a>vscode调用的gdb没有sudo权限问题</h3><p>gdb运行代码的时候出现<code>Operation not permitted</code>，需要为gdb增加sudo权限，解决方法是新建一个执行文件来间接以sudo方式调用gdb，然后指定vscode将这个执行文件作为gdb工具使用；<br>这么转换的原因是vscode的gdb工具是默认以非sudo方式运行的。</p>
-<ol>
-<li>工程根目录创建一个名为gdb_sudo的可执行脚本，并赋予执行权限。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;sudo /usr/bin/gdb &quot;$@&quot;&#x27;&gt;gdb_sudo</span><br><span class="line">sudo chmod 777 gdb_sudo</span><br></pre></td></tr></table></figure></li>
-<li>增加.vscode文件夹下的launch.json或改动<br>“miDebuggerPath”: “${workspaceRoot}&#x2F;gdb_sudo”</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // Use IntelliSense to learn about possible attributes.</span><br><span class="line">    // Hover to view descriptions of existing attributes.</span><br><span class="line">    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) xxx_demo_quickstart&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/path/to/bin&quot;,</span><br><span class="line">            &quot;args&quot;: [&quot;&quot;],</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: false,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // &quot;miDebuggerPath&quot;: &quot;/usr/bin/gdb&quot;,</span><br><span class="line">            &quot;miDebuggerPath&quot;: &quot;$&#123;workspaceRoot&#125;/gdb_sudo&quot;,</span><br><span class="line">            &quot;postDebugTask&quot;: &quot;Terminate All Tasks&quot;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>更改&#x2F;etc&#x2F;sudoers，增加一行，user_name为自己账号名。<br>user_name ALL&#x3D;(ALL) NOPASSWD:&#x2F;usr&#x2F;bin&#x2F;gdb</li>
-</ol>
-<h3 id="无法增加断点问题"><a href="#无法增加断点问题" class="headerlink" title="无法增加断点问题"></a>无法增加断点问题</h3><p>如果gdb启动执行文件的时候打印<code>no debugging symbols found</code>，且无法增加断点，可能是编译可执行文件的时候没有增加cflag “-g”</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E6%9D%83%E9%99%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">linux-权限</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:57 / Modified: 23:40:07" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:57+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>权限与用户、组的关系是密不可分的。<br>Linux系统中文件的ugo权限是Linux进行权限管理的基本方式，本文将介绍ugo权限的基本概念。</p>
-<h2 id="权限的概念"><a href="#权限的概念" class="headerlink" title="权限的概念"></a>权限的概念</h2><h3 id="文件的所有者和组"><a href="#文件的所有者和组" class="headerlink" title="文件的所有者和组"></a>文件的所有者和组</h3><p>Linux 文件的ugo权限把对文件的访问者划分为三个类别：文件的所有者、组和其他人。所谓的 ugo 就是指 user(也称为 owner)、group(所在组)和other(其他组)三个单词的首字母组合。</p>
-<p>通过<code>ls -al</code>指令可以查看ugo权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ ls -al /usr/bin/wireshark </span><br><span class="line">-rwxr-xr-x 1 root root 8786544 4月  20  2020 /usr/bin/wireshark</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件的所有者"><a href="#文件的所有者" class="headerlink" title="文件的所有者"></a>文件的所有者</h3><p>文件的所有者一般是创建该文件的用户，对该文件具有完全的权限。在一台允许多个用户访问的Linux主机上，可以通过文件的所有者来区分一个文件属于某个用户。当然，一个用户也无权查看或更改其它用户的文件。<br>上面第一个root代表文件所有者为root。</p>
-<h3 id="文件所属的组"><a href="#文件所属的组" class="headerlink" title="文件所属的组"></a>文件所属的组</h3><p>假如有几个用户合作开发同一个项目，如果每个用户只能查看和修改自己创建的文件就太不方便了，也就谈不上什么合作了。所以需要一个机制允许一个用户查看和修改其它用户的文件，此时就用到组的概念的。我们可以创建一个组，然后把需要合作的用户都添加都这个组中。在设置文件的访问权限时，允许这个组中的用户对该文件进行读取和修改。<br>上面第二个root代表文件所属的组为root。</p>
-<h3 id="其他人"><a href="#其他人" class="headerlink" title="其他人"></a>其他人</h3><p>如果我想把一个文件共享给系统中的所有用户该怎么办？通过组的方式显然是不合适的，因为需要把系统中的所有用户都添加到一个组中。并且系统中添加了新用户该怎么办，每添加一个新用户就把他添加到这个组中吗？这个问题可以通过其他人的概念解决。在设置文件的访问权限时，允许其他人户对该文件进行读取和修改。</p>
-<h2 id="操作权限的指令"><a href="#操作权限的指令" class="headerlink" title="操作权限的指令"></a>操作权限的指令</h2><p>u：user，所有者<br>g：group，所在组<br>o：other，其他组<br>a：all，以上所有</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx g=r o=r 文件名：</span><br><span class="line">表示修改文件的所有者的权限是rwx，所在组r，其他组r，u表示所有者，g表示所在组，o表示其他组。</span><br><span class="line">chmod u+x o-x 文件名：表示所有者加上一个x权限，其他组减去一个x权限。</span><br><span class="line">chmod a=rwx 文件名 ：表示给文件所有者、所在组、其他组都设置rwx权限，a表示所有。</span><br><span class="line">chmod a+r 文件名：表示给文件所有者、所在组、其他组都加上r权限。</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html">https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/" class="post-title-link" itemprop="url">linux-用户与组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:21 / Modified: 23:34:48" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:21+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在 Linux 操作系统中，有时候需要用指令来为某些应用程序增加权限。<br>比如为虚拟机增加usb使用权限，需要增加一个名为usbfs的用户组，并将当前用户添加到usbfs组中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd usbfs</span><br><span class="line">sudo adduser $USER usbfs</span><br><span class="line">cat /etc/group |grep usbfs</span><br></pre></td></tr></table></figure>
-<p>那么“为什么增加用户组就可以解决这些权限问题?”，首先需要了解用户和组的概念。<br>“用户-组-权限”三者的关系是密不可分的。</p>
-<h2 id="用户与组的概念"><a href="#用户与组的概念" class="headerlink" title="用户与组的概念"></a>用户与组的概念</h2><h3 id="理解linux多用户，多任务的特性"><a href="#理解linux多用户，多任务的特性" class="headerlink" title="理解linux多用户，多任务的特性"></a>理解linux多用户，多任务的特性</h3><p>Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响，例如某台linux服务器上有4个用户，分别是root、www、ftp和mysql，在同一时间内，root用户可能在查看系统日志，管理维护系统，www用户可能在修改自己的网页程序，ftp用户可能在上传软件到服务器，mysql用户可能在执行自己的SQL查询，每个用户互不干扰，有条不紊的进行着自己的工作，而每个用户之间不能越权访问，比如www用户不能执行mysql用户的SQL查询操作，ftp用户也不能修改www用户的网页程序，因此可知，不同用户具有不同的权限，每个用户是在权限允许的范围内完成不同的任务，linux正是通过这种权限的划分与管理，实现了多用户多任务的运行机制。</p>
-<h3 id="linux下用户的角色分类"><a href="#linux下用户的角色分类" class="headerlink" title="linux下用户的角色分类"></a>linux下用户的角色分类</h3><p> 在linux下用户是根据角色定义的，具体分为三种角色：</p>
-<ul>
-<li>超级用户：拥有对系统的最高管理权限，默认是root用户。</li>
-<li>普通用户：只能对自己目录下的文件进行访问和修改，具有登录系统的权限，例如上面提到的www用户、ftp用户等。</li>
-<li>虚拟用户：也叫“伪”用户，这类用户最大的特点是不能登录系统，它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。例如系统默认的bin、adm、nobody用户等，一般运行的web服务，默认就是使用的nobody用户，但是nobody用户是不能登录系统的。</li>
-</ul>
-<h3 id="用户和组的概念"><a href="#用户和组的概念" class="headerlink" title="用户和组的概念"></a>用户和组的概念</h3><p>我们知道，Linux是一个多用户多任务的分时操作系统，如果要使用系统资源，就必须向系统管理员申请一个账户，然后通过这个账户进入系统。这个账户和用户是一个概念，通过建立不同属性的用户，一方面，可以合理的利用和控制系统资源，另一方面也可以帮助用户组织文件，提供对用户文件的安全性保护。<br>每个用户都用一个唯一的用户名和用户口令，在登录系统时，只有正确输入了用户名和密码，才能进入系统和自己的主目录。<br>用户组是具有相同特征用户的逻辑集合，有时我们需要让多个用户具有相同的权限，比如查看、修改某一个文件的权限，一种方法是分别对多个用户进行文件访问授权，如果有10个用户的话，就需要授权10次，显然这种方法不太合理；另一种方法是建立一个组，让这个组具有查看、修改此文件的权限，然后将所有需要访问此文件的用户放入这个组中，那么所有用户就具有了和组一样的权限。这就是用户组，将用户分组是Linux 系统中对用户进行管理及控制访问权限的一种手段，通过定义用户组，在很大程度上简化了管理工作。</p>
-<h3 id="用户和组的关系"><a href="#用户和组的关系" class="headerlink" title="用户和组的关系"></a>用户和组的关系</h3><p>用户和用户组的对应关系有：一对一、一对多、多对一和多对多；</p>
-<ul>
-<li>一对一：即一个用户可以存在一个组中，也可以是组中的唯一成员。</li>
-<li>一对多：即一个用户可以存在多个用户组中。那么此用户具有多个组的共同权限。</li>
-<li>多对一：多个用户可以存在一个组中，这些用户具有和组相同的权限。</li>
-<li>多对多：多个用户可以存在多个组中。其实就是上面三个对应关系的扩展。</li>
-</ul>
-<h2 id="操作指令"><a href="#操作指令" class="headerlink" title="操作指令"></a>操作指令</h2><h3 id="增删用户"><a href="#增删用户" class="headerlink" title="增删用户"></a>增删用户</h3><p>adduser deluser</p>
-<h3 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h3><p>useradd userdel usermod</p>
-<h3 id="组操作"><a href="#组操作" class="headerlink" title="组操作"></a>组操作</h3><p>groupadd groupdel groupmod</p>
-<h3 id="useradd-与adduser的区别"><a href="#useradd-与adduser的区别" class="headerlink" title="useradd 与adduser的区别"></a>useradd 与adduser的区别</h3><ul>
-<li>adduser是一个 perl 脚本，通过交互式菜单设定一些用户参数。在输入adduser 用户名后，会自动创建用户主目录（并复制&#x2F;etc&#x2F;skel目录下的文件）、指定系统 shell，提示输入用户密码，很简单的就添加了一个标准的普通用户。</li>
-<li>useradd是一个指令，如果不使用任何选项，创建的用户将无密码、无主目录、没有指定 shell。如果你需要正常使用这个账户，就还需要设置密码、创建家目录等额外操作。</li>
-</ul>
-<p>以下是执行<code>man useradd</code>获得的一段作者对于useradd的描述，可以看出useradd相比adduser是更偏底层的指令：</p>
-<blockquote>
-<p>DESCRIPTION<br>useradd is a low level utility for adding users. On Debian,<br>administrators should usually use adduser(8) instead.</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/401618">https://developer.aliyun.com/article/401618</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1003,12 +990,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">30</span>
+          <span class="site-state-item-count">33</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
