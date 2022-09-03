@@ -145,6 +145,63 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/04/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%B8%8D%E5%90%8CMTU%E7%9A%84%E7%BD%91%E5%8D%A1%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CTCP%E9%80%9A%E4%BF%A1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/04/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%B8%8D%E5%90%8CMTU%E7%9A%84%E7%BD%91%E5%8D%A1%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CTCP%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">网络协议-不同MTU的网卡如何进行TCP通信</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-09-04 00:06:07" itemprop="dateCreated datePublished" datetime="2022-09-04T00:06:07+08:00">2022-09-04</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BA%A2%E6%8B%82%E5%A4%9C%E5%A5%94%E3%80%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -795,95 +852,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/" class="post-title-link" itemprop="url">FreeRTOS基础-编码标准和命名风格</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-28 23:49:06 / Modified: 23:59:36" itemprop="dateCreated datePublished" datetime="2022-08-28T23:49:06+08:00">2022-08-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="FreeRTOS-的编码标准"><a href="#FreeRTOS-的编码标准" class="headerlink" title="FreeRTOS 的编码标准"></a><code>FreeRTOS</code> 的编码标准</h2><p><code>FreeRTOS</code> 核心源码文件的编写遵循 MISRA 代码规则，同时支持各种编译器。但考虑到有些编译器的性能还比较弱，不支持 C 语言的新标准 <code>C99</code> 和 <code>C11</code> 的一些特性和语法，所以 <code>FreeRTOS</code> 的源码中就没有引入 <code>C99</code> 和 <code>C11</code> 的新特性，但是有一个例外，源码中有用到头文件<code>stdint.h</code>（这个文件是C99标准才引入的）。</p>
-<h2 id="FreeRTOS-的命名规则"><a href="#FreeRTOS-的命名规则" class="headerlink" title="FreeRTOS 的命名规则"></a><code>FreeRTOS</code> 的命名规则</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
-<li>uint32_t 定义的变量都加上前缀 ul。 u 代表 unsigned 无符号，l 代表 long 长整型。</li>
-<li>uint16_t 定义的变量都加上前缀 us。 u 代表 unsigned 无符号，s 代表 short 短整型。</li>
-<li>uint8_t 定义的变量都加上前缀 uc。 u 代表 unsigned 无符号，c 代表 char 字符型。</li>
-<li>stdint.h 文件中未定义的变量类型，在定义变量时需要加上前缀 x，比如 BaseType_t 和</li>
-<li>TickType_t 定义的变量。</li>
-<li>stdint.h 文件中未定义的无符号变量类型，在定义变量时要加上前缀 u，比如 UBaseType_t 定义的变量要加上前缀 ux。</li>
-<li>size_t 定义的变量也要加上前缀 ux。</li>
-<li>枚举变量会加上前缀 e。</li>
-<li>指针变量会加上前缀 p，比如 uint16_t 定义的指针变量会加上前缀 pus。</li>
-<li>根据 MISRA 代码规则，char 定义的变量只能用于 ASCII 字符，前缀使用 c。</li>
-<li>根据 MISRA 代码规则，char *定义的指针变量只能用于 ASCII 字符串，前缀使用 pc。</li>
-</ul>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
-<li>加上了 static 声明的函数，定义时要加上前缀 prv，这个是单词 private 的缩写。</li>
-<li>带有返回值的函数，根据返回值的数据类型，加上相应的前缀；如果没有返回值，即 void 类型，函数的前缀加上字母 v。</li>
-<li>根据文件名，文件中相应的函数定义时也将文件名加到函数命名中，比如<code>tasks.c</code>文件中函数<code>vTaskDelete</code>，函数中的 task 就是文件名中的 task。</li>
-</ul>
-<h3 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h3><ul>
-<li>根据宏定义所在的文件，文件中的宏定义声明时也将文件名加到宏定义中，比如宏定义<code>configUSE_PREEMPTION </code>是定义在文件<code>FreeRTOSConfig.h</code>里面。宏定义中的<code>config</code>就是文件名中的<code>config</code>。</li>
-<li>前缀要小写。</li>
-<li>除了前缀，其余部分全部大写，同时用下划线分开。</li>
-</ul>
-<h2 id="FreeRTOS-中数据类型"><a href="#FreeRTOS-中数据类型" class="headerlink" title="FreeRTOS 中数据类型"></a><code>FreeRTOS</code> 中数据类型</h2><p><code>FreeRTOS</code> 使用的数据类型主要分为 stdint.h 文件中定义的和自己定义的两种。 其中 char 和 char * 定义的变量要特别注意。<br><code>FreeRTOS</code> 主要自定义了以下四种数据类型：</p>
-<h3 id="TickType-t"><a href="#TickType-t" class="headerlink" title="TickType_t"></a>TickType_t</h3><p>如果用户使能了宏定义<code>configUSE_16_BIT_TICKS</code>，那么<code>TickType_t</code>定义的就是16位无符号数；<br>如果没有使能，那么TickType_t定义的就是32位无符号数。对于32位架构的处理器，一定要禁止此宏定义，即设置此宏定义数值为 0 即可。</p>
-<h3 id="BaseType-t"><a href="#BaseType-t" class="headerlink" title="BaseType_t"></a>BaseType_t</h3><p>这个数据类型根据系统架构的位数而定，对于32位架构，<code>BaseType_t</code>定义的是32位有符号数，对于16位架构，<code>BaseType_t</code>定义的是16位有符号数。如果<code>BaseType_t</code> 被定义成了<code>char</code>型，要特别注意将其设置为有符号数，因为部分函数的返回值是用负数来表示错误类型。</p>
-<h3 id="UBaseType-t"><a href="#UBaseType-t" class="headerlink" title="UBaseType_t"></a>UBaseType_t</h3><p>这个数据类型是<code>BaseType_t</code>类型的无符号版本。</p>
-<h3 id="StackType-t"><a href="#StackType-t" class="headerlink" title="StackType_t"></a>StackType_t</h3><p>栈变量数据类型定义，这个数量类型由系统架构决定，对于 16 位系统架构，<code>StackType_t</code>定义的是16位变量，对于 32 位系统架构，<code>StackType_t</code> 定义的是 32 位变量。</p>
-<h2 id="FreeRTOS-的排版和注释"><a href="#FreeRTOS-的排版和注释" class="headerlink" title="FreeRTOS 的排版和注释"></a><code>FreeRTOS</code> 的排版和注释</h2><h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>Tab 制表符用于缩进，Tab 一次缩进 4 个字符空间。</p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p><code>FreeRTOS</code> 中注释不会超过 80 个字符宽度，除非对函数的参数进行注释时。 源码中主要是采用<code>/* */</code>的形式进行注释，不采用<code>C++</code>中的双斜杠风格来注释。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -953,7 +921,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

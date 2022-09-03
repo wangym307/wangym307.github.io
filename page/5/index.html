@@ -145,6 +145,80 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/19/WiFi%E5%9F%BA%E7%A1%80-AP%E5%92%8CSTA%E7%9A%84%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/07/19/WiFi%E5%9F%BA%E7%A1%80-AP%E5%92%8CSTA%E7%9A%84%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">WiFi基础-AP和STA的概念</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2022-07-19 23:22:07" itemprop="dateCreated datePublished" datetime="2022-07-19T23:22:07+08:00">2022-07-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-07-20 23:28:07" itemprop="dateModified" datetime="2022-07-20T23:28:07+08:00">2022-07-20</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><p>AP和STA是WiFi协议中的基础概念，本文对AP和STA进行介绍。<br>此外，还介绍BSSID、SSID和ESSID的概念。</p>
+<h2 id="AP与STA关系图"><a href="#AP与STA关系图" class="headerlink" title="AP与STA关系图"></a>AP与STA关系图</h2><p>WiFi网络是一个星型网络，AP与STA是1对多的关系：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">erDiagram</span><br><span class="line">    AP ||--o&#123; STA1 : connect</span><br><span class="line">    AP ||--o&#123; STA2 : connect</span><br><span class="line">    AP ||--o&#123; STA3 : connect</span><br></pre></td></tr></table></figure>
+<h2 id="AP"><a href="#AP" class="headerlink" title="AP"></a>AP</h2><p>Access Point, 也就是无线接入点，是一个无线网络的创建者，是网络的中心节点。一般家庭或办公室使用的无线路由器就一个AP。<br>AP相当于一个连接有线网和无线网的桥梁，其主要作用是将各个无线网络客户端连接到一起，然后将无线网络接入以太网，从而达到网络无线覆盖的目的。</p>
+<h3 id="胖AP（FAT-AP）"><a href="#胖AP（FAT-AP）" class="headerlink" title="胖AP（FAT AP）"></a>胖AP（FAT AP）</h3><p>也称无线路由器。无线路由器除具有无线接入功能外，基本具备了路由器的全部功能。一般有WAN、LAN两种接口，支持地址转换（NAT）功能，多支持DHCP服务器、DNS，以及VPN接入、防火墙等安全功能。<br>FAT AP适合小规模无线部署。家用的无线路由器一般为FAT AP。</p>
+<h3 id="瘦AP（FIT-AP）"><a href="#瘦AP（FIT-AP）" class="headerlink" title="瘦AP（FIT AP）"></a>瘦AP（FIT AP）</h3><p>也称无线网桥、无线网关。其传输机制相当于有线网络中的集线器，在无线局域网中不停地接收和传送数据。<br>瘦AP本身并不能进行配置，需要一台专门的设备（无线控制器）进行集中控制管理配置。“控制器+瘦AP+路由器架构”一般用于大面积的无线网覆盖，因为在AP数量众多的时候，只通过控制器来管理配置，会简化很大的工作量。<br>理论上，当网络中增加一个无线AP之后，即可成倍地扩展网络覆盖直径；还可使网络中容纳更多的网络设备。每个无线AP基本上都拥有一个以太网接口，用于实现无线与有线的连接。<br>FIT AP适合大规模无线部署。公司，学校里面的公用AP一般为FIT AP。</p>
+<h2 id="STA"><a href="#STA" class="headerlink" title="STA"></a>STA</h2><p>Station，也就是无线站点，是一个无线网络的使用者，是网络的周边节点。STA可以是装有无线网卡的计算机，也可以是有WiFi模块的智能手机，任何一个接入无线AP的设备都可以称为一个站点。</p>
+<h2 id="其他相关概念"><a href="#其他相关概念" class="headerlink" title="其他相关概念"></a>其他相关概念</h2><h3 id="BSSID"><a href="#BSSID" class="headerlink" title="BSSID"></a>BSSID</h3><p>Basic Service Set ID，基本服务集标识。<br>要在同一个区域划分不同的局域网络，可以为工作站指定所要使用的BSS（基本服务集）。在基础网络里，BSSID（基本服务集标识）即是基站无线界面所使用的 MAC 地址。<br>BSSID的常见格式为11:22:33:44:55:66</p>
+<h3 id="SSID"><a href="#SSID" class="headerlink" title="SSID"></a>SSID</h3><p>Service Set ID，服务集标识。<br>网络管理人员通常比较喜欢跟文字、数字或名称打交道，而不是 48 个 bit 的 MAC 地址。<br>SSID，是让网管人员为服务组合(service set)指定的识别码。<br>我们平时生活中接触到的WiFi热点的名称就是SSID。<br>SSID 的长度介于 0 至 32 字节之间，通常人们习惯将SSID设置ASCII编码的字符串，但802.11规范中并无要求，SSID也可以是任何格式的编码，包括中文。</p>
+<h3 id="ESSID"><a href="#ESSID" class="headerlink" title="ESSID"></a>ESSID</h3><p>Extended Service Set ID，延伸式服务组合标识。<br>ESSID是一个比较抽象的概念，它实际上就和SSID相同（本质也是一串字符），只是如果有好几个无线路由器都叫这个名字，例如上面提到的“瘦AP”通常会使用相同的SSID，那么我们就相当于把这个SSID 扩大了，所以这几个无线路由器共同的这个名字就叫 ESSID。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/28/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF-RSSI%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -371,7 +445,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">42</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
