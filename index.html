@@ -168,8 +168,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-09-04 00:06:07" itemprop="dateCreated datePublished" datetime="2022-09-04T00:06:07+08:00">2022-09-04</time>
+              <time title="Created: 2022-09-04 00:06:07 / Modified: 00:08:29" itemprop="dateCreated datePublished" datetime="2022-09-04T00:06:07+08:00">2022-09-04</time>
             </span>
 
           
@@ -183,7 +184,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>一台路由器下连接了两个子设备，一台设备的网卡MTU（最大传输单元）是1500，一台设备的MTU是1000，如何进行TCP通信，在哪一层协商？</p>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>要解决这个问题，最基本的两个知识是TCP分段和IP分片，简单来说：</p>
+<ul>
+<li>分段特指发生在使用TCP协议的传输层中的数据切分行为</li>
+<li>分片特指发生在使用IPv4协议的网络IP层中的数据切分行为</li>
+</ul>
+<h3 id="TCP分段"><a href="#TCP分段" class="headerlink" title="TCP分段"></a>TCP分段</h3><blockquote>
+<p>TCP分段的原因是因为TCP报文段大小受MSS限制。</p>
+</blockquote>
+<p>最大报文段长度MSS（Maximum Segment Size），为TCP传输层的最大载荷上限(即应用层数据最大长度)。<br>MSS是TCP的报头的可选项，MSS的协商在TCP握手阶段完成：</p>
+<blockquote>
+<p>B将自己的MSS发送给A，建议A在发数据给B的时候，采用MSS&#x3D;1420进行分段。而B在发数据给A的时候，同样会带上MSS&#x3D;1372。两者在对比后，会采用小的那个值（1372）作为通信的MSS值，这个过程叫MSS协商。</p>
+</blockquote>
+<p>通常一条TCP连接的MSS取通信双方较小的那一个MSS值，与MTU的换算关系为：<br>MTU &#x3D; MSS + TCP首部长度 + IP首部长度<br>故在以太网中(网络层以IPv4为例)：<br>MSS &#x3D; 以太网MTU - TCP首部长度 - IPv4首部长度 &#x3D; 1500 - 20 - 20 &#x3D; 1460字节</p>
+<p>为什么MSS的大小需要协商呢？还得从IP层分片说起。</p>
+<h3 id="IP层分片"><a href="#IP层分片" class="headerlink" title="IP层分片"></a>IP层分片</h3><blockquote>
+<p>IP分片的原因是因为IP数据报大小受MTU限制。</p>
+</blockquote>
+<p>最大传输单元MTU(Maximum Transmit Unit)，这个值是由数据链路层提供，为了告诉上层IP层，自己的传输能力是多大。<br>受各种因素限制，一个网卡能发出的单包数据长度是有限的，这个单包数据的最大长度就是数据链路层的传输能力。</p>
+<h3 id="发送端的IP分片"><a href="#发送端的IP分片" class="headerlink" title="发送端的IP分片"></a>发送端的IP分片</h3><p>在网络数据发送者开始发送时，IP层就会根据MTU进行数据包切分，一般MTU&#x3D;1500 Byte。 </p>
+<ul>
+<li>假设IP层有 &lt;&#x3D; 1500 Byte 需要发送，只需要一个IP包就可以完成发送任务；</li>
+<li>假设IP层有 &gt; 1500 Byte 数据需要发送，需要分片才能完成发送，分片后的 IP Header ID 相同，同时为了分片后能在接收端把切片组装起来，还需要在分片后的IP包里加上各种信息。比如这个分片在原来的IP包里的偏移offset。</li>
+</ul>
+<h3 id="传输路径上的IP分片"><a href="#传输路径上的IP分片" class="headerlink" title="传输路径上的IP分片"></a>传输路径上的IP分片</h3><p>我们知道在因特网通信过程，网络数据在很多路由器节点之间跳转，而各个节点间MTU可能不同，这就导致数据是可能被多次分片的。而且每次分片都要加上各种信息便于在接收端进行分片重组。<br>如果有办法知道整个链路上，最小的MTU是多少，并且以最小MTU长度发送数据，那么不管数据传到哪个节点，都不会发生分片。<br>整个链路上，最小的MTU，就叫PMTU（path MTU）。<br>有一个获得这个PMTU的方法，叫 Path MTU Discovery。<br>Path MTU Discovery的大致原理是：</p>
+<blockquote>
+<p>通过向对端发送申明不要分包(DF)的IP报文，然后根据是否收到传输路径上节点的“ICMP不可达报文”，来判断目前的发送数据长度是否过长，如果过长则减少长度重新试探，直至发送成功。</p>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>不同MTU的两个网卡设备进行TCP通信时，两端先根据自身的MTU计算出MSS，然后在TCP握手的时候进行MSS协商。</p>
+
       
     </div>
 
@@ -225,10 +255,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-03 22:43:20 / Modified: 22:44:01" itemprop="dateCreated datePublished" datetime="2022-09-03T22:43:20+08:00">2022-09-03</time>
+              <time title="Created: 2022-09-03 22:43:20" itemprop="dateCreated datePublished" datetime="2022-09-03T22:43:20+08:00">2022-09-03</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-04 00:07:58" itemprop="dateModified" datetime="2022-09-04T00:07:58+08:00">2022-09-04</time>
+              </span>
 
           
 
@@ -241,7 +277,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>作者 王小波<br>阅读时间：2022.03.22</p>
+          <p>作者：王小波<br>阅读时间：2022.03.22</p>
 <p>这是一本以明代戏剧《红拂传》人物为原型创作的小说：<br>李靖、红拂、虬髯公，世称风尘三侠。隋朝末年，他们三人都在洛阳城里住过。</p>
 <ul>
 <li>李靖解开费马定理，证明了自己是一个聪明人。他成为唐朝开国功臣“李卫公”后，却装傻到老。</li>
@@ -926,7 +962,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">15</span>
+        <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
