@@ -145,6 +145,408 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/" class="post-title-link" itemprop="url">makefile库函数-wildcard</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 23:45:27 / Modified: 23:45:42" itemprop="dateCreated datePublished" datetime="2022-08-28T23:45:27+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：在makefile中手动一个个添加.c文件，相对来说比较繁琐。为此makefile提供了库函数wildcard，能一次性添加特定目录下符合特定规则（通常是通配符*）的所有文件。<br>由于makefile中可以直接调用shell，因此我们也可以通过shell的find语句来实现类似于wildcard的功能。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><code>my_abs_path = $(wildcard path/to/*.c)</code></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>wildcard返回值为以空格隔开的文件路径集合，如“path&#x2F;to&#x2F;file1.c path&#x2F;to&#x2F;file2.c”</li>
+<li>不能递归查找入参目录下的所有子目录；</li>
+<li>入参目录为相对路径，则展开之后也是相对路径，入参目录为绝对路径，则展开之后也是绝对路径；</li>
+<li><code>*.c</code>也可以是其他类型的文件，如<code>*.h，*.txt</code>等等</li>
+</ul>
+<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><p>新建一个makefile，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ABS_ROOT := $(abspath .)</span><br><span class="line">SRCS := $(wildcard src/*.c)</span><br><span class="line">ABS_SRCS := $(wildcard $(ABS_ROOT)/src/*.c)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(SRCS)</span><br><span class="line">	@echo $(ABS_SRCS)</span><br></pre></td></tr></table></figure>
+<p>执行make可以看到输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╰─± make</span><br><span class="line">src/test2.c src/test3.c src/test1.c</span><br><span class="line">/home/wang/Workspaces/learning/c/src/test2.c /home/wang/Workspaces/learning/c/src/test3.c /home/wang/Workspaces/learning/c/src/test1.c</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/" class="post-title-link" itemprop="url">makefile库函数-abspath</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 23:43:10 / Modified: 23:45:13" itemprop="dateCreated datePublished" datetime="2022-08-28T23:43:10+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：该函数主要用于将_names中的相对路径转换成绝对路径，并返回转换后的结果。<br>函数意义：abs_path &#x3D; absolute path，指绝对路径</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在makefile中的常见用法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path = $(abspath _names)</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2><p>新建一个makefile，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path := $(abspath .)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(my_abs_path)</span><br></pre></td></tr></table></figure>
+<p>执行make可以看到输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ make</span><br><span class="line">/home/wang/Workspaces/open</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/" class="post-title-link" itemprop="url">rust-云原生时代下的微服务框架语言选择</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 00:06:35 / Modified: 00:07:24" itemprop="dateCreated datePublished" datetime="2022-08-28T00:06:35+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今天周六在家休息，下午看了一场技术直播：“2022年字节跳动技术沙龙”的第七期|高性能微服务框架CloudWeGo。</p>
+<p>技术沙龙的主题是介绍CloudWeGo项目中的几个子项目：</p>
+<ul>
+<li>6W+微服务高性能RPC框架Kitex；</li>
+<li>大规模企业级HTTP框架Hertz；</li>
+<li>基于Rust语言实现的RPC框架Volo；</li>
+</ul>
+<p>以下是直播间给出的背景介绍：</p>
+<blockquote>
+<p>云原生时代，微服务架构改造是 IT 架构变化的主流。如何解决研发效率和稳定性两大关键问题，成了企业 IT 部门的关注焦点。另一方面，过去的企业级 IT 架构，选型上大多以 Java 语言写就，Java 总体设计上面向大规模、长时间服务；静态类型动态链接的语言结构等特性，在强调敏捷开发、效率优先的云原生时代，往往失去了一丝灵活性。</p>
+</blockquote>
+<blockquote>
+<p>规模化的差别，各异的业务场景，不同选型思路下诞生了各种各样的开源微服务框架，这其中就有来自字节跳动所开源的 CloudWeGo。CloudWeGo 是一套可快速构建企业级云原生微服务架构的中间件集合，项目共同的特点是高性能、高扩展性、高可靠，注于微服务通信与治理，主体选用了 Go 语言。另外，本次沙龙还将正式发布国内唯一一个基于 Rust 语言的开源 RPC 框架，敬请期待！</p>
+</blockquote>
+<h2 id="听后感"><a href="#听后感" class="headerlink" title="听后感"></a>听后感</h2><p>作为一个嵌入式开发，我对很多后端的开发知识了解不全面。不过好在演讲者的侧重点普遍在：</p>
+<ul>
+<li>go、rust及其他语言优劣势对比。</li>
+<li>如何结合语言做性能优化。</li>
+<li>开源社区搭建愿景和方法。</li>
+</ul>
+<p>所以整体听下来还是比较轻松的。其中印象较深的有以下几点：</p>
+<h3 id="对rust的介绍"><a href="#对rust的介绍" class="headerlink" title="对rust的介绍"></a>对rust的介绍</h3><p>rust是最近几年比较火的编程语言，可以在嵌入式领域应用，乐鑫已经提供了基于esp32c3的<a target="_blank" rel="noopener" href="https://github.com/ivmarkov/rust-esp32-std-demo">rust-esp32-std-demo</a>。</p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>rust也是一门接近底层的语言，运行效率接近<code>c/c++</code>，甚至在某些场景下运行效率能超过<code>c/c++</code>，演讲者给出的理由是“rust的编译规则更加严格，编译器可以做更为激进的优化”。</li>
+<li>有人说“rust是c++的最佳实践”，rust没有<code>c++</code>的历史包袱，语言设计时就避免了很多<code>c++</code>踩过的坑。</li>
+<li>linux内核唯一接收过的有非c语言的代码提交，就是rust。rust获得了来自linus本人的肯定。</li>
+<li>具有很好的内存安全性。</li>
+</ul>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li>rust的学习曲线陡峭，难于上手。</li>
+<li>rust编译速度巨慢，编译一个项目可能要几个小时。</li>
+</ul>
+<h3 id="多种编程语言的对比"><a href="#多种编程语言的对比" class="headerlink" title="多种编程语言的对比"></a>多种编程语言的对比</h3><p>java、c、rust、go、python。<br>基本上从运行效率、开发难度、优化难易、内存安全等几个维度来进行比较。<br>rust除了开发难度大之外，其他维度上都没有太大短板，可以说综合能力很强。</p>
+<h3 id="开源社区"><a href="#开源社区" class="headerlink" title="开源社区"></a>开源社区</h3><p>相比于嵌入式，后端的开源框架是非常活跃的。嵌入式的开发环境碎片化无疑是开源的最大阻力，任重而道远啊~</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>rust是一门非常有潜力的语言，应用空间广阔。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/27/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-P5%E5%92%8CP7%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/27/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-P5%E5%92%8CP7%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">编程方法论-P5和P7的代码有什么区别</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-27 23:21:02 / Modified: 23:21:38" itemprop="dateCreated datePublished" datetime="2022-08-27T23:21:02+08:00">2022-08-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>有一天，小明问我一个这样的问题：<br>“P5和P7的代码有什么区别？”<br>（这里P5和P7指的<del>不是某XP电动汽车品牌的型号，而</del>是某互联网大厂的工程师职级：P5一般指刚入行的初级工程师，P7一般指从业5-10年的资深工程师。）</p>
+<h2 id="我的回答"><a href="#我的回答" class="headerlink" title="我的回答"></a>我的回答</h2><p>我思考了一下，脑海里跳出一连串字眼，P7的代码应该是：</p>
+<ul>
+<li>排版整洁的，有一致的编程风格的</li>
+<li>不缺乏注释，也不过度注释的</li>
+<li>易于被人类理解的</li>
+<li>易于扩充功能的</li>
+<li>易于被接手的工程师修改的</li>
+<li>被合理组织的</li>
+<li>函数功能单一的</li>
+<li>文件职责明确的</li>
+<li>数据结构设计合理的</li>
+<li>运行效率更高的</li>
+<li>bug更少的</li>
+</ul>
+<h2 id="小明的补充"><a href="#小明的补充" class="headerlink" title="小明的补充"></a>小明的补充</h2><p>小明说，你说很对，但是关于函数API设计，不只是功能单一即可，还要追求“高内聚低耦合”。有人总结了一整套关于“高内聚低耦合”的原则：</p>
+<ul>
+<li>开闭原则 OCP (The Open-Close Principle)</li>
+<li>单一职责原则 SRP (Single Responsibility Principle)</li>
+<li>依赖倒置原则 DIP (Dependence Inversion Principle)</li>
+<li>最少知识原则 LKP (Least Knowledge Principle)) &#x2F; 迪米特法则 (Law Of Demeter)</li>
+<li>里氏替换原则 LSP (Liskov Substitution Principle)</li>
+<li>接口隔离原则 ISP (Interface Segregation Principle)</li>
+<li>组合&#x2F;聚合复用原则 CARP (Composite&#x2F;Aggregate Reuse Principle)</li>
+</ul>
+<h2 id="什么是不好的代码"><a href="#什么是不好的代码" class="headerlink" title="什么是不好的代码"></a>什么是不好的代码</h2><h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><blockquote>
+<p>重复可能是软件中一切邪恶的根源。—— Robert C.Martin</p>
+</blockquote>
+<p>Martin Fowler 也认为坏味道中首当其冲的就是重复代码。<br>很多时候，当我们消除了重复代码之后，发现代码就已经比原来整洁多了。</p>
+<h3 id="函数过长、类过大、参数过长"><a href="#函数过长、类过大、参数过长" class="headerlink" title="函数过长、类过大、参数过长"></a>函数过长、类过大、参数过长</h3><p>过长的函数解释能力、共享能力、选择能力都较差，也不易维护。<br>过大的类代表了类做了很多事情，也常常有过多的重复代码。<br>参数过长，不易理解，调用时也容易出错。</p>
+<h3 id="发散式变化、霰弹式修改、依恋情结"><a href="#发散式变化、霰弹式修改、依恋情结" class="headerlink" title="发散式变化、霰弹式修改、依恋情结"></a>发散式变化、霰弹式修改、依恋情结</h3><p>如果一个类不是单一职责的，则不同的变化可能都需要修改这个类，说明存在发散式变化，应考虑将不同的变化分离开。<br>如果某个变化需要修改多个类的方法，则说明存在霰弹式修改，应考虑将这些需要修改的方法放入同一个类。<br>如果函数对于某个类的兴趣高于了自己所处的类，说明存在依恋情结，应考虑将函数转移到他应有的类中。</p>
+<h3 id="数据泥团"><a href="#数据泥团" class="headerlink" title="数据泥团"></a>数据泥团</h3><p>有时候会发现三四个相同的字段，在多个类和函数中均出现，这时候说明有必要给这一组字段建立一个类，将其封装起来。</p>
+<h3 id="过多的-if…else-或者使用-switch"><a href="#过多的-if…else-或者使用-switch" class="headerlink" title="过多的 if…else 或者使用 switch"></a>过多的 if…else 或者使用 switch</h3><p>过多的 if…else 或者 switch ，都应该考虑用多态来替换掉。甚至有些人认为除个别情况外，代码中就不应该存在 if…else 。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
+<li>整洁是好代码的必要条件。</li>
+<li>编程者应该追求高质量的代码，把代码看做自己的作品。</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/3edxmpbbtgc4i2vf19xg">https://www.infoq.cn/article/3edxmpbbtgc4i2vf19xg</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">UVM通用验证方法学与嵌入式测试</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-26 07:54:40 / Modified: 07:55:11" itemprop="dateCreated datePublished" datetime="2022-08-26T07:54:40+08:00">2022-08-26</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>UVM（Universal Verification Methodology），通用验证方法学，是当前芯片验证中最流行的验证方法学。<br>本文将介绍UVM的全局视图，包括基于UVM的验证框架、UVM类库和UVM的各种实用的机制。</p>
+<h2 id="UVM验证大框架"><a href="#UVM验证大框架" class="headerlink" title="UVM验证大框架"></a>UVM验证大框架</h2><p>UVM这一验证方法学从发布到现在已经有10年之久了，它是一种使用SystemVerilog进行功能验证的方法，并提供了使用SystemVerilog代码实现的支持库。UVM的定位还是很高的，从它的名字”通用验证方法学“就可以看出，三个观念的转变：从定制到通用、从仿真到验证、从方法到方法学。</p>
+<p>传统的仿真可以简单地理解为就是从testbench向待测设计通过连线施加不同测试向量或者命令的过程，而UVM考虑的维度会更高一些、更详尽一些和更通用一些，仿真只是完成验证工程的技术手段。仿真要解决的问题是怎么从DUT输入激励并得到DUT的输出，而验证要解决的问题是怎么保证DUT功能的完备性和正确性。</p>
+<p>单从方法学这一字眼看，UVM定义的是一套完整的规范、方式或者流程，有组织有纪律，它不单单只是那一套SystemVerilog类库。UVM方法学指导了整个基于仿真的验证过程，区别于现在发展如火如荼且验证思想不相同的Formal验证和便携式激励验证（PSS，Portable Stimulus Standard）。</p>
+<p>UVM指导验证工程从DUT的功能规范（Specification）出发，制定验证计划，测试点分解，创建测试用例，定义验收（sign-off）方式和标准，流程自动化和报告自动化等等。如下图所示，基于UVM的验证流程相对标准和规范，也是目前被广泛采用的方式，不同单位不同项目可能会进行一些调整：</p>
+<p>UVM通过SystemVerilog类库的形式提供了验证环境和测试用例的可重用机制，极大的提高了验证效率。在UVM的框架里面，各类环境组件相互独立、各司其职，各个仿真阶段定义明确且执行起来井然有序，这相当于在”空间“和”时间“两个尺度上都体现出了其通用性。下图是基于UVM搭建的验证环境下各组件的大致关系，实际工程中需要根据待测设计规格进行调整。</p>
+<h2 id="UVM类库"><a href="#UVM类库" class="headerlink" title="UVM类库"></a>UVM类库</h2><p>这一节要呈现的是UVM提供的SystemVerilog类库，或者直接叫UVM类库（UVM Class Library）。这套库提供了可以使用SV快速开发架构良好（well-constructed）且具有可重用性（resuable）的验证环境所需要的基础类（Class）、宏（Macro）以及公共函数（Utilities），这就意味着，UVM验证在技术上说白了就是面向对象程序的开发。用户可以从Accellera网站（Accellera是在EDA、IC设计和制造领域的标准组织）上下载UVM类库源代码、用户指南和参考文档等相关资料。</p>
+<p>按照Accellera提供的UVM参考手册，UVM类库可以按照功能将其内容分成若干类别，方便梳理和使用。主要的类别有公共元素（包括类型定义、变量、函数和任务）、核心基类（Core Base Classes）、报告类（Reporting Classes）、工厂类（Factory Class）、组件类（Component Classes）、寄存器类（Register Layer Classes）、序列类（Sequence Classes）、序列器类（Sequencer Classes）、事务级模型类（TLM Classes）、线程同步类（Synchronization Classes）、宏（Macro）等等，更多细节读者可以翻一翻UVM参考手册[2]，或者等一等该系列后续文章。下面是将这些类的继承关系稍作整理后的UVM类架构：</p>
+<h2 id="UVM机制"><a href="#UVM机制" class="headerlink" title="UVM机制"></a>UVM机制</h2><p>UVM类库强大的地方不只是上面展开的类图，还应领略它各种非常实用且功能强大的机制。只有这些机制的引入，才能让UVM环境组件分工明确、密切协作，才能让整个仿真有条不紊且高效正确地运作起来。回过头讲，掌握UVM的各种机制也是用好UVM的必备条件。本节将大概介绍UVM有哪些机制，以及他们的作用，更多的细节需要后续文章再逐个展开。</p>
+<p>Factory机制。顾名思义，这是UVM家开的工厂。在这家工厂里面，你可以登记所有你定义的类。当你需要创建对象的时候，只要让工厂帮你生产出来即可；当你想要更换对象类型的时候，跟工厂交代一下，它会帮你把后续生产的对象都换成你想要的类型。</p>
+<p>ConfigDatabase机制。翻译过来就是配置数据库，缩写是config_db。数据库无非就是用来存放数据的，UVM提供的这个配置数据库功能很齐全，它可以存放一切你想要存放的数据，并且提供完善的匹配查询服务。配置数据库的用处在于，可以在不同对象之间传递数据。</p>
+<p>Phase机制。这套机制定义了基于UVM的仿真步调，也就是说它将整个仿真分成了不同的阶段（phase），在什么时候实例化环境组件，什么时候连接组件，什么时候复位，什么时候产生激励，什么时候产生报告等等，这些步调都是提前安排好的。</p>
+<p>Objection机制。作为软件程序的验证环境，它总是想要不断往下执行，最好不要停下来。然而，phase机制为所有环境组件都定好了基调，它要协调大家步调一致地往前走。于是Objection机制就出现了，它是协调各个环境组件遵守Phase机制的手段，有时候也会被用来同步跟RTL的步调。</p>
+<p>Sequence机制。测试用例如果想要构造稍微复杂一点的测试场景，可以率先构造能够复用的测试序列，然后再根据不同的测试场景组合起来。多个测试序列可能是串行的，也可能是并行的，但都没关系，sequence机制会协调好测试序列和驱动器（Driver）之间关系，好让测试向量一个不落地驱动到待测设计接口上。</p>
+<p>Reporting机制。信息的打印对于验证人员来说至关重要，关系到问题定位的效率。UVM的消息机制非常强大，消息分了严重等级（severity），不同等级的消息对应不同的处理方式；其中INFO等级的消息还被赋予了冗余度（verbosity），便于信息的筛选和分类；此外还提供了相关的宏和函数来便利不同数据结构的打印。</p>
+<p>寄存器抽象层（RAL, Register Abstraction Layer）。在数字系统中，寄存器常被用于功能配置、状态记录和查询、数值传递等等，切实影响着数字系统的行为。为了实时跟踪这些寄存器的状态，或者方便根据测试意图来配置寄存器，可以使用UVM的寄存器抽象层来完整地映射RTL中的寄存器组。这样除了便利寄存器的访问，还提供了收集寄存器覆盖率的方法。</p>
+<p>事务级建模（TLM, Transaction Level Modeling ）。事务级区别于信号级，不再关心具体某个信号的逻辑值。事务级建模处理的数据对象是一组有关联的数据，可以是数据包（Package）的形式，同时事务（Transaction）也是UVM环境组件之间交互的信息单元。抽象层的建立，使得数据的传递和处理变得更加高效。</p>
+<h2 id="嵌入式测试"><a href="#嵌入式测试" class="headerlink" title="嵌入式测试"></a>嵌入式测试</h2><p>UVM是芯片验证测试的成熟方法，具备一套复杂、完备的流程和机制。<br>偏上层的测试，比如芯片应用测试，也可以理解并借鉴UVM方法的设计思想，将其简化后应用到测试中，打造出更完备的测试方案。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/404777602">https://zhuanlan.zhihu.com/p/404777602</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/python-%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -527,388 +929,10 @@ while(1);
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E6%9D%83%E9%99%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">linux-权限</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:57 / Modified: 23:40:07" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:57+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>权限与用户、组的关系是密不可分的。<br>Linux系统中文件的ugo权限是Linux进行权限管理的基本方式，本文将介绍ugo权限的基本概念。</p>
-<h2 id="权限的概念"><a href="#权限的概念" class="headerlink" title="权限的概念"></a>权限的概念</h2><h3 id="文件的所有者和组"><a href="#文件的所有者和组" class="headerlink" title="文件的所有者和组"></a>文件的所有者和组</h3><p>Linux 文件的ugo权限把对文件的访问者划分为三个类别：文件的所有者、组和其他人。所谓的 ugo 就是指 user(也称为 owner)、group(所在组)和other(其他组)三个单词的首字母组合。</p>
-<p>通过<code>ls -al</code>指令可以查看ugo权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ ls -al /usr/bin/wireshark </span><br><span class="line">-rwxr-xr-x 1 root root 8786544 4月  20  2020 /usr/bin/wireshark</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件的所有者"><a href="#文件的所有者" class="headerlink" title="文件的所有者"></a>文件的所有者</h3><p>文件的所有者一般是创建该文件的用户，对该文件具有完全的权限。在一台允许多个用户访问的Linux主机上，可以通过文件的所有者来区分一个文件属于某个用户。当然，一个用户也无权查看或更改其它用户的文件。<br>上面第一个root代表文件所有者为root。</p>
-<h3 id="文件所属的组"><a href="#文件所属的组" class="headerlink" title="文件所属的组"></a>文件所属的组</h3><p>假如有几个用户合作开发同一个项目，如果每个用户只能查看和修改自己创建的文件就太不方便了，也就谈不上什么合作了。所以需要一个机制允许一个用户查看和修改其它用户的文件，此时就用到组的概念的。我们可以创建一个组，然后把需要合作的用户都添加都这个组中。在设置文件的访问权限时，允许这个组中的用户对该文件进行读取和修改。<br>上面第二个root代表文件所属的组为root。</p>
-<h3 id="其他人"><a href="#其他人" class="headerlink" title="其他人"></a>其他人</h3><p>如果我想把一个文件共享给系统中的所有用户该怎么办？通过组的方式显然是不合适的，因为需要把系统中的所有用户都添加到一个组中。并且系统中添加了新用户该怎么办，每添加一个新用户就把他添加到这个组中吗？这个问题可以通过其他人的概念解决。在设置文件的访问权限时，允许其他人户对该文件进行读取和修改。</p>
-<h2 id="操作权限的指令"><a href="#操作权限的指令" class="headerlink" title="操作权限的指令"></a>操作权限的指令</h2><p>u：user，所有者<br>g：group，所在组<br>o：other，其他组<br>a：all，以上所有</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx g=r o=r 文件名：</span><br><span class="line">表示修改文件的所有者的权限是rwx，所在组r，其他组r，u表示所有者，g表示所在组，o表示其他组。</span><br><span class="line">chmod u+x o-x 文件名：表示所有者加上一个x权限，其他组减去一个x权限。</span><br><span class="line">chmod a=rwx 文件名 ：表示给文件所有者、所在组、其他组都设置rwx权限，a表示所有。</span><br><span class="line">chmod a+r 文件名：表示给文件所有者、所在组、其他组都加上r权限。</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html">https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/" class="post-title-link" itemprop="url">linux-用户与组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:21 / Modified: 23:34:48" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:21+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在 Linux 操作系统中，有时候需要用指令来为某些应用程序增加权限。<br>比如为虚拟机增加usb使用权限，需要增加一个名为usbfs的用户组，并将当前用户添加到usbfs组中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd usbfs</span><br><span class="line">sudo adduser $USER usbfs</span><br><span class="line">cat /etc/group |grep usbfs</span><br></pre></td></tr></table></figure>
-<p>那么“为什么增加用户组就可以解决这些权限问题?”，首先需要了解用户和组的概念。<br>“用户-组-权限”三者的关系是密不可分的。</p>
-<h2 id="用户与组的概念"><a href="#用户与组的概念" class="headerlink" title="用户与组的概念"></a>用户与组的概念</h2><h3 id="理解linux多用户，多任务的特性"><a href="#理解linux多用户，多任务的特性" class="headerlink" title="理解linux多用户，多任务的特性"></a>理解linux多用户，多任务的特性</h3><p>Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响，例如某台linux服务器上有4个用户，分别是root、www、ftp和mysql，在同一时间内，root用户可能在查看系统日志，管理维护系统，www用户可能在修改自己的网页程序，ftp用户可能在上传软件到服务器，mysql用户可能在执行自己的SQL查询，每个用户互不干扰，有条不紊的进行着自己的工作，而每个用户之间不能越权访问，比如www用户不能执行mysql用户的SQL查询操作，ftp用户也不能修改www用户的网页程序，因此可知，不同用户具有不同的权限，每个用户是在权限允许的范围内完成不同的任务，linux正是通过这种权限的划分与管理，实现了多用户多任务的运行机制。</p>
-<h3 id="linux下用户的角色分类"><a href="#linux下用户的角色分类" class="headerlink" title="linux下用户的角色分类"></a>linux下用户的角色分类</h3><p> 在linux下用户是根据角色定义的，具体分为三种角色：</p>
-<ul>
-<li>超级用户：拥有对系统的最高管理权限，默认是root用户。</li>
-<li>普通用户：只能对自己目录下的文件进行访问和修改，具有登录系统的权限，例如上面提到的www用户、ftp用户等。</li>
-<li>虚拟用户：也叫“伪”用户，这类用户最大的特点是不能登录系统，它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。例如系统默认的bin、adm、nobody用户等，一般运行的web服务，默认就是使用的nobody用户，但是nobody用户是不能登录系统的。</li>
-</ul>
-<h3 id="用户和组的概念"><a href="#用户和组的概念" class="headerlink" title="用户和组的概念"></a>用户和组的概念</h3><p>我们知道，Linux是一个多用户多任务的分时操作系统，如果要使用系统资源，就必须向系统管理员申请一个账户，然后通过这个账户进入系统。这个账户和用户是一个概念，通过建立不同属性的用户，一方面，可以合理的利用和控制系统资源，另一方面也可以帮助用户组织文件，提供对用户文件的安全性保护。<br>每个用户都用一个唯一的用户名和用户口令，在登录系统时，只有正确输入了用户名和密码，才能进入系统和自己的主目录。<br>用户组是具有相同特征用户的逻辑集合，有时我们需要让多个用户具有相同的权限，比如查看、修改某一个文件的权限，一种方法是分别对多个用户进行文件访问授权，如果有10个用户的话，就需要授权10次，显然这种方法不太合理；另一种方法是建立一个组，让这个组具有查看、修改此文件的权限，然后将所有需要访问此文件的用户放入这个组中，那么所有用户就具有了和组一样的权限。这就是用户组，将用户分组是Linux 系统中对用户进行管理及控制访问权限的一种手段，通过定义用户组，在很大程度上简化了管理工作。</p>
-<h3 id="用户和组的关系"><a href="#用户和组的关系" class="headerlink" title="用户和组的关系"></a>用户和组的关系</h3><p>用户和用户组的对应关系有：一对一、一对多、多对一和多对多；</p>
-<ul>
-<li>一对一：即一个用户可以存在一个组中，也可以是组中的唯一成员。</li>
-<li>一对多：即一个用户可以存在多个用户组中。那么此用户具有多个组的共同权限。</li>
-<li>多对一：多个用户可以存在一个组中，这些用户具有和组相同的权限。</li>
-<li>多对多：多个用户可以存在多个组中。其实就是上面三个对应关系的扩展。</li>
-</ul>
-<h2 id="操作指令"><a href="#操作指令" class="headerlink" title="操作指令"></a>操作指令</h2><h3 id="增删用户"><a href="#增删用户" class="headerlink" title="增删用户"></a>增删用户</h3><p>adduser deluser</p>
-<h3 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h3><p>useradd userdel usermod</p>
-<h3 id="组操作"><a href="#组操作" class="headerlink" title="组操作"></a>组操作</h3><p>groupadd groupdel groupmod</p>
-<h3 id="useradd-与adduser的区别"><a href="#useradd-与adduser的区别" class="headerlink" title="useradd 与adduser的区别"></a>useradd 与adduser的区别</h3><ul>
-<li>adduser是一个 perl 脚本，通过交互式菜单设定一些用户参数。在输入adduser 用户名后，会自动创建用户主目录（并复制&#x2F;etc&#x2F;skel目录下的文件）、指定系统 shell，提示输入用户密码，很简单的就添加了一个标准的普通用户。</li>
-<li>useradd是一个指令，如果不使用任何选项，创建的用户将无密码、无主目录、没有指定 shell。如果你需要正常使用这个账户，就还需要设置密码、创建家目录等额外操作。</li>
-</ul>
-<p>以下是执行<code>man useradd</code>获得的一段作者对于useradd的描述，可以看出useradd相比adduser是更偏底层的指令：</p>
-<blockquote>
-<p>DESCRIPTION<br>useradd is a low level utility for adding users. On Debian,<br>administrators should usually use adduser(8) instead.</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/401618">https://developer.aliyun.com/article/401618</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">esp32c3-执行export.sh失败问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 02:02:51 / Modified: 02:03:24" itemprop="dateCreated datePublished" datetime="2022-08-22T02:02:51+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>export.sh是乐鑫开发框架esp-idf的一个编译环境自动导入脚本，每次编译之前都需要执行。<br>一次在ubuntu虚拟机中执行esp-idf的export.sh时出现了卡住的情况，异常日志如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Detecting the Python interpreter</span><br><span class="line">Checking &quot;python3&quot; ...</span><br><span class="line">Python 3.8.10</span><br><span class="line">&quot;python3&quot; has been detected</span><br><span class="line">Checking Python compatibility</span><br><span class="line">Checking other ESP-IDF version.</span><br><span class="line">Adding ESP-IDF tools to PATH...</span><br><span class="line">Using a supported version of tool cmake found in PATH: 3.16.3.</span><br><span class="line">However the recommended version is 3.23.1.</span><br><span class="line">Using Python interpreter in /home/wang/.espressif/python_env/idf5.0_py3.8_env/bin/python</span><br><span class="line">Checking if Python packages are up to date...</span><br><span class="line">Downloading https://dl.espressif.com/dl/esp-idf/</span><br><span class="line">Destination: /home/wang/.espressif/espidf.constraints.v5.0.txt.tmp</span><br></pre></td></tr></table></figure>
-<p>从日志可以看出，下载配置文件espidf.constraints.v5.0.txt出现异常。</p>
-<h2 id="解决方法一"><a href="#解决方法一" class="headerlink" title="解决方法一"></a>解决方法一</h2><p>通过在esp-idf源码中搜索错误日志定位到idf_tools.py的一个函数，读了代码发现下载这个配置文件前会检查espidf.constraints.v5.0.txt的更新日期与当前日期之差，如果超过一天才会下载更新。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def get_constraints(idf_version):  # type: (str) -&gt; str</span><br><span class="line">    constraint_file = &#x27;espidf.constraints.v&#123;&#125;.txt&#x27;.format(idf_version)</span><br><span class="line">    constraint_path = os.path.join(global_idf_tools_path or &#x27;&#x27;, constraint_file)</span><br><span class="line">    constraint_url = &#x27;/&#x27;.join([IDF_DL_URL, constraint_file])</span><br><span class="line">    temp_path = constraint_path + &#x27;.tmp&#x27;</span><br><span class="line"></span><br><span class="line">    mkdir_p(os.path.dirname(temp_path))</span><br><span class="line">    try:</span><br><span class="line">        age = datetime.date.today() - datetime.date.fromtimestamp(os.path.getmtime(constraint_path))</span><br><span class="line">        if age &lt; datetime.timedelta(days=1):</span><br><span class="line">            info(f&#x27;Skipping the download of &#123;constraint_path&#125; because it was downloaded recently. If you believe &#x27;</span><br><span class="line">                 f&#x27;that this is causing you trouble then remove it manually and re-run your install script.&#x27;)</span><br><span class="line">            return constraint_path</span><br><span class="line">    except OSError:</span><br><span class="line">        # doesn&#x27;t exist or inaccessible</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure>
-<p>解决方法有两种：</p>
-<ol>
-<li><p>如果该文件已经存在，则更新文件时间即可<br>进入到该目录下手动更新该文件的时间。<br>cd ~&#x2F;.espressif<br>touch espidf.constraints.v5.0.txt</p>
-</li>
-<li><p>如果该文件不存在，手动下载文件即可<br>手动下载<a target="_blank" rel="noopener" href="https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.0.txt">https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.0.txt</a><br>再拷贝到&#x2F;home&#x2F;wang&#x2F;.espressif&#x2F;espidf.constraints.v5.0.txt</p>
-</li>
-</ol>
-<p>以上两种改动都会导致再次执行export.sh时认为espidf.constraints.v5.0.txt刚刚更新过，不会再执行下载动作，也就避免了下载卡顿问题。但这两种做法都只是通过避免下载来绕过问题，并没有真正解决下载失败问题。</p>
-<h2 id="解决方法二"><a href="#解决方法二" class="headerlink" title="解决方法二"></a>解决方法二</h2><p>根本问题在于在terminal通过脚本到<a target="_blank" rel="noopener" href="https://dl.espressif.com下载文件失败./">https://dl.espressif.com下载文件失败。</a><br>于是我在terminal中尝试ping了一下dl.espressif.com，发现也是失败，但是用chrome浏览器打开这个地址却是正常的，这说明在浏览器和terminal中访问一个域名，实际经过的路径是不一样的。<br>于是在terminal中ping了一下其他域名，发现有的能通有的不能通：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ping www.qq.com失败</span><br><span class="line">ping qq.com正常</span><br><span class="line">ping www.baidu.com正常</span><br><span class="line">ping baidu.com正常</span><br></pre></td></tr></table></figure>
-<p>因此我怀疑在虚拟机自身的DNS服务出现了问题。<br>网上建议修改&#x2F;etc&#x2F;resolv.conf，增加DNS服务器地址。<br>打开后发现文件作者建议我们不要直接修改conf文件，而是需要通过resolvectl去操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># This file is managed by man:systemd-resolved(8). Do not edit.</span><br><span class="line">#</span><br><span class="line"># This is a dynamic resolv.conf file for connecting local clients to the</span><br><span class="line"># internal DNS stub resolver of systemd-resolved. This file lists all</span><br><span class="line"># configured search domains.</span><br><span class="line">#</span><br><span class="line"># Run &quot;resolvectl status&quot; to see details about the uplink DNS servers</span><br><span class="line"># currently in use.</span><br><span class="line">#</span><br><span class="line"># Third party programs must not access this file directly, but only through the</span><br><span class="line"># symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,</span><br><span class="line"># replace this symlink by a static file or a different symlink.</span><br><span class="line">#</span><br><span class="line"># See man:systemd-resolved.service(8) for details about the supported modes of</span><br><span class="line"># operation for /etc/resolv.conf.</span><br><span class="line"></span><br><span class="line">nameserver 127.0.0.53</span><br><span class="line">options edns0 trust-ad</span><br><span class="line">search localdomain</span><br></pre></td></tr></table></figure>
-<p>联想到最近有将虚拟机的NAT模式改为桥接模式，而之前NAT模式下执行export.sh是正常的。</p>
-<ul>
-<li>桥接模式相当于从主机虚拟一个网卡出来给虚拟机使用，虚拟机和主机处于同一局域网。</li>
-<li>NAT模式是虚拟机处于主机的子网当中，相当于虚拟机把主机当做一个路由器，虚拟机位于LAN口。</li>
-</ul>
-<p>于是我将虚拟机从NAT模式改回了桥接模式，结果之前ping不通的<a target="_blank" rel="noopener" href="http://www.qq.com和dl.espressif.com都能ping通了,export.sh也能正常的执行完毕./">www.qq.com和dl.espressif.com都能ping通了，export.sh也能正常的执行完毕。</a><br>猜想NAT模式下，虚拟机的ternimal中执行DNS时有先经过主机的DNS服务；而桥接模式下虚拟机DNS不经过主机，而是直接经过主机上级路由器。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>当前export.sh卡顿的根源在于该脚本从dl.espressif.com下载文件失败。<br>可以通过手动下载文件来绕过问题，也可以通过修复DNS问题来根本性解决问题。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/" class="post-title-link" itemprop="url">ARM指令-LDR</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 01:45:32 / Modified: 01:49:40" itemprop="dateCreated datePublished" datetime="2022-08-22T01:45:32+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>LDR是ARM的指令，也是伪指令</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>LDR{条件} 目的寄存器 &lt;存储器地址&gt;<br>作用：将存储器地址所指地址处连续的4个字节（1个字）的数据传送到目的寄存器中。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LDR R0，[R1] ；将存储器地址为R1的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，R2] ；将存储器地址为R1+R2的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，#8] ；将存储器地址为R1+8的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1]，R2 ；将存储器地址为R1的字数据读入寄存器R0，然后R1=R1+8。</span><br><span class="line">LDR R0，[R1]，#8 ；将存储器地址为R1的字数据读入寄存器R0，并将R1+8的值存入R1。</span><br><span class="line">LDR R0，[R1，R2]! ；将存储器地址为R1+R2的字数据读入寄存器R0，并将R1+R2的值存入R1。</span><br><span class="line">LDR R0，[R1，LSL #3] ；将存储器地址为R18的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，R2，LSL #2] ；将存储器地址为R1+R24的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，，R2，LSL #2]！ ；将存储器地址为R1+R24的字数据读入寄存器R0，并将R1+R24的值存入R1。</span><br><span class="line">LDR R0，[R1]，R2，LSL #2 ；将存储器地址为R1的字数据读入寄存器R0，并将R1+R2*4的值存入R1。</span><br><span class="line">LDR R0，Label ；Label为程序标号，Label必须是当前指令的-4~4KB范围内。</span><br></pre></td></tr></table></figure>
-<p>要注意的是:<br>LDR Rd，[Rn]，#0x04 ；这里Rd不允许是R15。</p>
-<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><h3 id="LDRB和LDRH"><a href="#LDRB和LDRH" class="headerlink" title="LDRB和LDRH"></a>LDRB和LDRH</h3><p>另外LDRB 的指令格式与LDR相似，只不过它是将存储器地址中的8位（1个字节）读到目的寄存器中。<br>LDRH的指令格式也与LDR相似，它是将内存中的16位（半字）读到目的寄存器中。</p>
-<h3 id="LDR-R0，-x3D-0xff"><a href="#LDR-R0，-x3D-0xff" class="headerlink" title="LDR R0，&#x3D;0xff"></a>LDR R0，&#x3D;0xff</h3><p>这里的LDR不是arm指令，而是伪指令。这个时候与MOVE很相似，只不过MOV指令后的立即数是有限制的。这个立即数必须是0X00-0XFF范围内的数经过偶数次右移得到的数，所以MOV用起来比较麻烦，因为有些数不那么容易看出来是否合法。</p>
-<h3 id="LDR-R，label-和-LDR-R，-x3D-label的区别"><a href="#LDR-R，label-和-LDR-R，-x3D-label的区别" class="headerlink" title="LDR R，label 和 LDR R，&#x3D;label的区别"></a>LDR R，label 和 LDR R，&#x3D;label的区别</h3><p>当用 LDR r， &#x3D;imd &#x2F;&#x2F; r 为寄存器， imd为立即数<br>LDR 是一条伪指令。编译器会根据 立即数的大小，决定用 ldr 指令或者是mov或mvn指令。<br>当imd能用mov或者mvn操作时，就将它翻译成一条mov或mvn指令。当imd大于mov或mvn能够操作的数时，编译器会将imd存在一个内存单元中，然后再用一条ldr指令加载这个内存单元的的值到寄存器中。<br>LDR r， label 和 LDR r， &#x3D;label的区别：<br>LDR r， &#x3D;label 会把label表示的值加载到寄存器中，而LDR r， label会把label当做地址，把label指向的地址中的值加载到寄存器中。<br>譬如 label的值是 0x8000， LDR r， &#x3D;label会将 0x8000加载到寄存器中，而LDR r， label则会将内存0x8000处的值加载到寄存器中。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/66d801c85ee9">https://www.jianshu.com/p/66d801c85ee9</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/" class="post-title-link" itemprop="url">ARM指令-cpsid和cpsie</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 01:44:35 / Modified: 23:40:20" itemprop="dateCreated datePublished" datetime="2022-08-22T01:44:35+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>cpsid和cpsie不是通用汇编指令，而是arm指令。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cps = Change Processor State`</span><br><span class="line">id = irq_disable</span><br><span class="line">ie = irq_enable</span><br></pre></td></tr></table></figure>
-<h2 id="中断开关"><a href="#中断开关" class="headerlink" title="中断开关"></a>中断开关</h2><p>i &#x3D; interrupt</p>
-<h3 id="cpsid-i"><a href="#cpsid-i" class="headerlink" title="cpsid i"></a>cpsid i</h3><p>禁用中断</p>
-<h3 id="cpsie-i"><a href="#cpsie-i" class="headerlink" title="cpsie i"></a>cpsie i</h3><p>使能中断</p>
-<h2 id="异常开关"><a href="#异常开关" class="headerlink" title="异常开关"></a>异常开关</h2><p>f &#x3D; faultmask</p>
-<h3 id="cpsid-f"><a href="#cpsid-f" class="headerlink" title="cpsid f"></a>cpsid f</h3><p>禁用异常</p>
-<h3 id="cpsie-f"><a href="#cpsie-f" class="headerlink" title="cpsie f"></a>cpsie f</h3><p>使能异常</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -974,7 +998,7 @@ while(1);
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">37</span>
+          <span class="site-state-item-count">42</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
