@@ -20,19 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="关于博客每一种编程语言的学习都以”hello world”开始(和结束)，不如个人博客也以一篇”hello world”开始吧hh~。搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会">
+  <meta name="description" content="简介ARM(Advanced RISC Machine)架构。是一个精简指令集(RISC,Reduced Instruction Set Computer)处理器架构家族，具有低成本、高性能、低耗电的特性。ARM架构广泛应用在嵌入式系统，现在也有应用在个人计算机（Apple M1）和超级计算机中。  与ARM同属精简指令集架构的还有RISC-V，MIPS，Xtensa等。 与精简指令集相对应的是复">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/06/25/hello-world/index.html">
+<meta property="og:title" content="ARM-芯片架构简介">
+<meta property="og:url" content="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
-<meta property="og:description" content="关于博客每一种编程语言的学习都以”hello world”开始(和结束)，不如个人博客也以一篇”hello world”开始吧hh~。搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会">
+<meta property="og:description" content="简介ARM(Advanced RISC Machine)架构。是一个精简指令集(RISC,Reduced Instruction Set Computer)处理器架构家族，具有低成本、高性能、低耗电的特性。ARM架构广泛应用在嵌入式系统，现在也有应用在个人计算机（Apple M1）和超级计算机中。  与ARM同属精简指令集架构的还有RISC-V，MIPS，Xtensa等。 与精简指令集相对应的是复">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-25T07:51:49.007Z">
-<meta property="article:modified_time" content="2022-08-04T23:34:50.528Z">
+<meta property="article:published_time" content="2022-09-04T16:58:54.000Z">
+<meta property="article:modified_time" content="2022-09-04T16:59:05.684Z">
 <meta property="article:author" content="WaterYoungMan">
+<meta property="article:tag" content="ARM">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/06/25/hello-world/">
+<link rel="canonical" href="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">
 
 
 <script id="page-configurations">
@@ -45,7 +46,7 @@
   };
 </script>
 
-  <title>Hello World | WaterYoungMan's Blog</title>
+  <title>ARM-芯片架构简介 | WaterYoungMan's Blog</title>
   
 
 
@@ -150,7 +151,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/25/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +164,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          ARM-芯片架构简介
         </h1>
 
         <div class="post-meta">
@@ -172,16 +173,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-06-25 15:51:49" itemprop="dateCreated datePublished" datetime="2022-06-25T15:51:49+08:00">2022-06-25</time>
+              <time title="Created: 2022-09-05 00:58:54 / Modified: 00:59:05" itemprop="dateCreated datePublished" datetime="2022-09-05T00:58:54+08:00">2022-09-05</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-05 07:34:50" itemprop="dateModified" datetime="2022-08-05T07:34:50+08:00">2022-08-05</time>
-              </span>
 
           
 
@@ -194,26 +189,44 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>每一种编程语言的学习都以”hello world”开始(<del>和结束</del>)，不如个人博客也以一篇”hello world”开始吧hh~。<br>搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。<br>恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。<br>于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会包括以下几个主要内容：</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ARM(Advanced RISC Machine)架构。是一个精简指令集(RISC,Reduced Instruction Set Computer)处理器架构家族，具有低成本、高性能、低耗电的特性。<br>ARM架构广泛应用在嵌入式系统，现在也有应用在个人计算机（Apple M1）和超级计算机中。</p>
 <ul>
-<li>将个人这几年做嵌入式程序开发的技术笔记做一些整理。</li>
-<li>输出一些技术文章专栏。</li>
-<li>记录一些个人思考、想法。</li>
-<li>分享一些书籍、电影。</li>
+<li>与ARM同属精简指令集架构的还有RISC-V，MIPS，Xtensa等。</li>
+<li>与精简指令集相对应的是复杂指令集（CISC,Complex Instruction Set Computer），代表架构为X86。</li>
 </ul>
-<p>看到有些欣赏的博客网站维护了几年，因为这样那样的原因停更了，有点可惜。<br>希望自己能多多坚持。</p>
-<h2 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h2><p>世界上只有一种真正的英雄主义，就是认清了生活的真相后还依然热爱生活。</p>
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
-<li>程序员(IoT上市公司某技术研发组长)</li>
-<li>中国最”水”大学工科硕士(毕业)</li>
-<li>阅读爱好者（小说、传记、历史、哲学）</li>
-<li>热衷于学习一切事物（技多不压身）</li>
-<li>经常在钱塘江边夜跑（吹江风）</li>
-<li>篮球、羽毛球、乒乓球（球类爱好者）</li>
-<li>会跳一点hiphop（强身健体）</li>
-<li>有一个单反（瞎拍一些照片）</li>
-<li>有一只猫（英短银渐层）</li>
-</ul>
+<h2 id="ARM架构范畴"><a href="#ARM架构范畴" class="headerlink" title="ARM架构范畴"></a>ARM架构范畴</h2><p>ARM架构的主要范畴整理如下：</p>
+<table>
+<thead>
+<tr>
+<th>条目</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>指令集</td>
+<td>每条指令的功能；指令如何在内存中表示(它的编码)</td>
+</tr>
+<tr>
+<td>寄存器组</td>
+<td>有多少寄存器；寄存器的大小；寄存器的功能；寄存器的初始状态</td>
+</tr>
+<tr>
+<td>异常模型</td>
+<td>不同的权限级别；异常的类型；从异常中获取或返回时会发生什么</td>
+</tr>
+<tr>
+<td>内存模型</td>
+<td>内存访问是如何排序的；缓存是如何运作的，什么时候以及软件必须如何执行显式维护</td>
+</tr>
+<tr>
+<td>调试、跟踪和分析</td>
+<td>如何设置和触发断点；跟踪工具可以捕获什么信息，以什么格式捕获</td>
+</tr>
+<tr>
+<td>安全性扩展(TrustZone)</td>
+<td>如何设置和触发断点；跟踪工具可以捕获什么信息，以什么格式捕获</td>
+</tr>
+</tbody></table>
 
     </div>
 
@@ -222,17 +235,20 @@
     
 
       <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ARM/" rel="tag"># ARM</a>
+          </div>
 
         
 
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/06/28/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF-RSSI%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="next" title="无线技术-RSSI基本概念">
-      无线技术-RSSI基本概念 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" rel="prev" title="ARM-芯片启动流程">
+      <i class="fa fa-chevron-left"></i> ARM-芯片启动流程
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -291,7 +307,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">关于博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%B4%BB"><span class="nav-number">2.</span> <span class="nav-text">关于生活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91"><span class="nav-number">3.</span> <span class="nav-text">关于我</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ARM%E6%9E%B6%E6%9E%84%E8%8C%83%E7%95%B4"><span class="nav-number">2.</span> <span class="nav-text">ARM架构范畴</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

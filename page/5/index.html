@@ -145,6 +145,70 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%87%BD%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">shell学习-函数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-01 07:59:58 / Modified: 08:00:21" itemprop="dateCreated datePublished" datetime="2022-08-01T07:59:58+08:00">2022-08-01</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="有返回值函数"><a href="#有返回值函数" class="headerlink" title="有返回值函数"></a>有返回值函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">demoFun()&#123;</span><br><span class="line">    echo &quot;这是我的第一个 shell 函数!&quot;</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;-----函数开始执行-----&quot;</span><br><span class="line">demoFun</span><br><span class="line">echo &quot;-----函数执行完毕-----&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="无返回值函数"><a href="#无返回值函数" class="headerlink" title="无返回值函数"></a>无返回值函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">funWithReturn()&#123;</span><br><span class="line">    echo &quot;这个函数会对输入的两个数字进行相加运算...&quot;</span><br><span class="line">    echo &quot;输入第一个数字: &quot;</span><br><span class="line">    read aNum</span><br><span class="line">    echo &quot;输入第二个数字: &quot;</span><br><span class="line">    read anotherNum</span><br><span class="line">    echo &quot;两个数字分别为 $aNum 和 $anotherNum !&quot;</span><br><span class="line">    return $(($aNum+$anotherNum))</span><br><span class="line">&#125;</span><br><span class="line">funWithReturn</span><br></pre></td></tr></table></figure>
+<p>echo “输入的两个数字之和为 $? !”</p>
+<h2 id="函数入参"><a href="#函数入参" class="headerlink" title="函数入参"></a>函数入参</h2><p>在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数…</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">funWithParam()&#123;</span><br><span class="line">    echo &quot;第一个参数为 $1 !&quot;</span><br><span class="line">    echo &quot;第二个参数为 $2 !&quot;</span><br><span class="line">    echo &quot;第十个参数为 $10 !&quot;</span><br><span class="line">    echo &quot;第十个参数为 $&#123;10&#125; !&quot;</span><br><span class="line">    echo &quot;第十一个参数为 $&#123;11&#125; !&quot;</span><br><span class="line">    echo &quot;参数总数有 $# 个!&quot;</span><br><span class="line">    echo &quot;作为一个字符串输出所有参数 $* !&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell-func.html">https://www.runoob.com/linux/linux-shell-func.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%8F%98%E9%87%8F/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -706,7 +770,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-count">46</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
