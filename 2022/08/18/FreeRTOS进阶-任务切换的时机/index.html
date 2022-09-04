@@ -28,7 +28,7 @@
 <meta property="og:description" content="背景操作系统的任务切换是任务管理中很重要的一环。要了解FreeRTOS的任务切换机制，先要了解以下几个函数：    描述 FreeRTOS定义中断函数名 ARM芯片常用适配名    系统管理调用中断 vPortSVCHandler SVC_Handler   挂起系统管理中断 xPortPendSVHandler PendSV_Handler   系统滴答定时器中断 xPortSysTickHan">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2022-08-18T14:08:49.000Z">
-<meta property="article:modified_time" content="2022-08-21T17:06:44.113Z">
+<meta property="article:modified_time" content="2022-09-04T04:39:29.064Z">
 <meta property="article:author" content="WaterYoungMan">
 <meta property="article:tag" content="FreeRTOS">
 <meta name="twitter:card" content="summary">
@@ -181,7 +181,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-22 01:06:44" itemprop="dateModified" datetime="2022-08-22T01:06:44+08:00">2022-08-22</time>
+                <time title="Modified: 2022-09-04 12:39:29" itemprop="dateModified" datetime="2022-09-04T12:39:29+08:00">2022-09-04</time>
               </span>
 
           
@@ -254,7 +254,7 @@
 
 <h2 id="taskYIELD"><a href="#taskYIELD" class="headerlink" title="taskYIELD"></a>taskYIELD</h2><p>在需要手动切换任务的场景，就会调用taskYIELD()，最终会执行宏portYIELD()。<br>以ARM_CM3为例：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#define portYIELD()                                 \</span><br><span class="line">&#123;                                                   \</span><br><span class="line">    /* Set a PendSV to request a context switch. */ \</span><br><span class="line">    portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT; \</span><br><span class="line">                                                    \</span><br><span class="line">    /* Barriers are normally not required but do ensure the code is completely \</span><br><span class="line">     * within the specified behaviour for the architecture. */ \</span><br><span class="line">    __asm volatile ( &quot;dsb&quot; ::: &quot;memory&quot; );                     \</span><br><span class="line">    __asm volatile ( &quot;isb&quot; );                                  \</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>在tasks.c中可以看到，xTaskResumeAll、vTaskResume、prvIdleTask这样的函数都会调用taskYIELD。</p>
+<p>在tasks.c中可以看到，xTaskResumeAll、vTaskResume、prvIdleTask这样的函数都会调用taskYIELD。<br>可以看到portYIELD触发PendSV中断的方式和SystickHandle一样，都是修改CPU的寄存器<code>portNVIC_INT_CTRL_REG</code>。</p>
 <h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>systick中断、任务操作函数、某些系统调用都会触发任务切换。</p>
 
     </div>
@@ -353,7 +353,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">43</span>
+          <span class="site-state-item-count">44</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

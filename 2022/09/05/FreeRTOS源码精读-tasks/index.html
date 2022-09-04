@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="阅读原则tasks.c是FreeRTOS的核心代码，虽不算非常复杂，也有5000多行代码，一行行代码看的话一天也不够用。我推荐的阅读步骤是：  先看API、数据结构、全局变量 再看主要函数的源码 最后看次要函数的源码  关键APIxTaskCreate功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。这个函数仅在支持动态内存申请的宏使能时生效。 值得注意的是，有的CPU的栈内存是从">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FreeRTOS源码精读-tasks">
+<meta property="og:url" content="http://example.com/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/index.html">
+<meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
+<meta property="og:description" content="阅读原则tasks.c是FreeRTOS的核心代码，虽不算非常复杂，也有5000多行代码，一行行代码看的话一天也不够用。我推荐的阅读步骤是：  先看API、数据结构、全局变量 再看主要函数的源码 最后看次要函数的源码  关键APIxTaskCreate功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。这个函数仅在支持动态内存申请的宏使能时生效。 值得注意的是，有的CPU的栈内存是从">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-04T16:20:45.000Z">
+<meta property="article:modified_time" content="2022-09-04T16:23:11.036Z">
+<meta property="article:author" content="WaterYoungMan">
+<meta property="article:tag" content="FreeRTOS">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://example.com/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'en'
+  };
+</script>
+
+  <title>FreeRTOS源码精读-tasks | WaterYoungMan's Blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">WaterYoungMan's Blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FreeRTOS源码精读-tasks
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-05 00:20:45 / Modified: 00:23:11" itemprop="dateCreated datePublished" datetime="2022-09-05T00:20:45+08:00">2022-09-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="阅读原则"><a href="#阅读原则" class="headerlink" title="阅读原则"></a>阅读原则</h2><p>tasks.c是FreeRTOS的核心代码，虽不算非常复杂，也有5000多行代码，一行行代码看的话一天也不够用。我推荐的阅读步骤是：</p>
+<ul>
+<li>先看API、数据结构、全局变量</li>
+<li>再看主要函数的源码</li>
+<li>最后看次要函数的源码</li>
+</ul>
+<h2 id="关键API"><a href="#关键API" class="headerlink" title="关键API"></a>关键API</h2><h3 id="xTaskCreate"><a href="#xTaskCreate" class="headerlink" title="xTaskCreate"></a>xTaskCreate</h3><p>功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。<br>这个函数仅在支持动态内存申请的宏使能时生效。</p>
+<p>值得注意的是，有的CPU的栈内存是从低向高增长，有的CPU栈内存是高向低增长（如ARM架构）。这会影响任务控制块内存（pxNewTCB）和任务内存（pxStack）的申请顺序，对于一块全新的内存来说，malloc通常是优先申请低地址的内存，再申请高地址的内存。所以为了避免栈增长到溢出的时候踩踏到pxNewTCB的内存，实现了一套任务控制块内存保护机制：</p>
+<ul>
+<li>若CPU的内存是由高向低增长，则先申请任务内存（pxStack），再申请任务控制块内存（pxNewTCB），这样pxNewTCB就处于pxStack的更高地址，栈顶指针pxTopOfStack的初始值就放在任务内存（pxStack）的最高地址（为了向低增长），也就是内存数组的结尾处。</li>
+<li>此后，任务内存（pxStack）不断被使用，pxTopOfStack也逐渐指向更低的地址，但再也不会和任务控制块内存相遇。这就降低了自身控制块内存被自身stack内存踩踏的风险。</li>
+<li>值得注意的是，由于内存是由malloc去分配的，当内存被多次循环使用并释放后，并不能保证后申请的内存地址就比先申请的内存地址更高（也就是说，前文说提的任务控制块内存保护机制并不总能生效），也不能保证连续申请的两块内存物理地址是连续的（此时这种内存保护机制无需生效）。</li>
+</ul>
+<h3 id="xTaskCreateStatic"><a href="#xTaskCreateStatic" class="headerlink" title="xTaskCreateStatic"></a>xTaskCreateStatic</h3><p>功能：以静态内存创建任务<br>这个函数与xTaskCreate的区别仅在于任务相关的内存的申请方式不通，该函数用的是预先指定的静态内存。</p>
+<h3 id="prvInitialiseNewTask"><a href="#prvInitialiseNewTask" class="headerlink" title="prvInitialiseNewTask"></a>prvInitialiseNewTask</h3><p>功能：初始化一个新的任务，被以上两个API<code>xTaskCreate</code>和<code>xTaskCreateStatic</code>调用。</p>
+<ul>
+<li>重置任务内存（pxStack）为默认值，默认为<code>0xA5</code></li>
+<li>根据栈增长方向设置栈顶指针pxTopOfStack的初始值</li>
+<li>初始化优先级、任务名。</li>
+<li>初始化<code>xStateListItem</code>，<code>xStateListItem</code>是一个重要的元素，其类型为一个链表的节点，挂在不同的链表（就绪，阻塞，删除，挂起）下时，意味着其处于不同的任务状态。</li>
+<li>初始化<code>xStateListItem</code></li>
+</ul>
+<h3 id="vTaskDelete"><a href="#vTaskDelete" class="headerlink" title="vTaskDelete"></a>vTaskDelete</h3><p>功能：删除任务</p>
+<h3 id="prvInitialiseTaskLists"><a href="#prvInitialiseTaskLists" class="headerlink" title="prvInitialiseTaskLists"></a>prvInitialiseTaskLists</h3><p>功能：初始化各个状态的任务链表全局变量，在创建第一个任务的时候会被调用。</p>
+<h3 id="vTaskStartScheduler"><a href="#vTaskStartScheduler" class="headerlink" title="vTaskStartScheduler"></a>vTaskStartScheduler</h3><p>功能：开启任务调度器。</p>
+<ul>
+<li>创建第一个任务（或称线程），idle任务</li>
+<li>（如果使能了timer宏）创建定时器任务</li>
+<li>开始调度器（<code>xPortStartScheduler</code>），初始化tick时钟，tick是整个操作系统的心跳。</li>
+</ul>
+<h3 id="vTaskEndScheduler"><a href="#vTaskEndScheduler" class="headerlink" title="vTaskEndScheduler"></a>vTaskEndScheduler</h3><p>功能：结束任务调度器。（很少使用）</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li>任务按相对时间延迟<code>vTaskDelay</code>、任务按绝对时间延迟<code>xTaskDelayUntil</code>；</li>
+<li>任务优先级设置<code>vTaskPrioritySet</code>、任务优先级获取<code>uxTaskPriorityGet</code>，<code>uxTaskPriorityGetFromISR</code>;</li>
+<li>挂起任务<code>vTaskSuspend</code>、恢复任务<code>vTaskResume</code>；</li>
+<li>挂起所有任务<code>vTaskSuspendAll</code>，恢复所有任务<code>xTaskResumeAll</code>，支持递归调用。</li>
+<li>任务上下文切换<code>vTaskSwitchContext</code></li>
+<li>任务优先级继承<code>xTaskPriorityInherit</code>（与互斥锁有关）</li>
+<li>当前所有任务信息获取<code>vTaskList</code></li>
+</ul>
+<h2 id="关键结构体"><a href="#关键结构体" class="headerlink" title="关键结构体"></a>关键结构体</h2><p>整个task.c的核心数据结构就是这个任务控制块tskTCB，对应源码为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * Task control block.  A task control block (TCB) is allocated for each task,</span><br><span class="line"> * and stores task state information, including a pointer to the task&#x27;s context</span><br><span class="line"> * (the task&#x27;s run time environment, including register values)</span><br><span class="line"> */</span><br><span class="line">typedef struct tskTaskControlBlock       /* The old naming convention is used to prevent breaking kernel aware debuggers. */</span><br><span class="line">&#123;</span><br><span class="line">    volatile StackType_t * pxTopOfStack; /*&lt; Points to the location of the last item placed on the tasks stack.  THIS MUST BE THE FIRST MEMBER OF THE TCB STRUCT. */</span><br><span class="line"></span><br><span class="line">    #if ( portUSING_MPU_WRAPPERS == 1 )</span><br><span class="line">        xMPU_SETTINGS xMPUSettings; /*&lt; The MPU settings are defined as part of the port layer.  THIS MUST BE THE SECOND MEMBER OF THE TCB STRUCT. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    ListItem_t xStateListItem;                  /*&lt; The list that the state list item of a task is reference from denotes the state of that task (Ready, Blocked, Suspended ). */</span><br><span class="line">    ListItem_t xEventListItem;                  /*&lt; Used to reference a task from an event list. */</span><br><span class="line">    UBaseType_t uxPriority;                     /*&lt; The priority of the task.  0 is the lowest priority. */</span><br><span class="line">    StackType_t * pxStack;                      /*&lt; Points to the start of the stack. */</span><br><span class="line">    char pcTaskName[ configMAX_TASK_NAME_LEN ]; /*&lt; Descriptive name given to the task when created.  Facilitates debugging only. */ /*lint !e971 Unqualified char types are allowed for strings and single characters only. */</span><br><span class="line"></span><br><span class="line">    #if ( ( portSTACK_GROWTH &gt; 0 ) || ( configRECORD_STACK_HIGH_ADDRESS == 1 ) )</span><br><span class="line">        StackType_t * pxEndOfStack; /*&lt; Points to the highest valid address for the stack. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( portCRITICAL_NESTING_IN_TCB == 1 )</span><br><span class="line">        UBaseType_t uxCriticalNesting; /*&lt; Holds the critical section nesting depth for ports that do not maintain their own count in the port layer. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_TRACE_FACILITY == 1 )</span><br><span class="line">        UBaseType_t uxTCBNumber;  /*&lt; Stores a number that increments each time a TCB is created.  It allows debuggers to determine when a task has been deleted and then recreated. */</span><br><span class="line">        UBaseType_t uxTaskNumber; /*&lt; Stores a number specifically for use by third party trace code. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_MUTEXES == 1 )</span><br><span class="line">        UBaseType_t uxBasePriority; /*&lt; The priority last assigned to the task - used by the priority inheritance mechanism. */</span><br><span class="line">        UBaseType_t uxMutexesHeld;</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_APPLICATION_TASK_TAG == 1 )</span><br><span class="line">        TaskHookFunction_t pxTaskTag;</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configNUM_THREAD_LOCAL_STORAGE_POINTERS &gt; 0 )</span><br><span class="line">        void * pvThreadLocalStoragePointers[ configNUM_THREAD_LOCAL_STORAGE_POINTERS ];</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configGENERATE_RUN_TIME_STATS == 1 )</span><br><span class="line">        configRUN_TIME_COUNTER_TYPE ulRunTimeCounter; /*&lt; Stores the amount of time the task has spent in the Running state. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( ( configUSE_NEWLIB_REENTRANT == 1 ) || ( configUSE_C_RUNTIME_TLS_SUPPORT == 1 ) )</span><br><span class="line">        configTLS_BLOCK_TYPE xTLSBlock; /*&lt; Memory block used as Thread Local Storage (TLS) Block for the task. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_TASK_NOTIFICATIONS == 1 )</span><br><span class="line">        volatile uint32_t ulNotifiedValue[ configTASK_NOTIFICATION_ARRAY_ENTRIES ];</span><br><span class="line">        volatile uint8_t ucNotifyState[ configTASK_NOTIFICATION_ARRAY_ENTRIES ];</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    /* See the comments in FreeRTOS.h with the definition of</span><br><span class="line">     * tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE. */</span><br><span class="line">    #if ( tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE != 0 ) /*lint !e731 !e9029 Macro has been consolidated for readability reasons. */</span><br><span class="line">        uint8_t ucStaticallyAllocated;                     /*&lt; Set to pdTRUE if the task is a statically allocated to ensure no attempt is made to free the memory. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( INCLUDE_xTaskAbortDelay == 1 )</span><br><span class="line">        uint8_t ucDelayAborted;</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_POSIX_ERRNO == 1 )</span><br><span class="line">        int iTaskErrno;</span><br><span class="line">    #endif</span><br><span class="line">&#125; tskTCB;</span><br><span class="line">typedef tskTCB TCB_t;</span><br></pre></td></tr></table></figure>
+
+<h2 id="关键全局变量"><a href="#关键全局变量" class="headerlink" title="关键全局变量"></a>关键全局变量</h2><p>对任务的操作和以下几个全局变量有重要关系：</p>
+<ul>
+<li>pxReadyTasksLists，就绪任务列表数组（数组的序号是对应的优先级）；</li>
+<li>pxDelayedTaskList，延时任务列表（任务阻塞后根据阻塞时间，变成延时任务或溢出延时任务或挂起任务）；</li>
+<li>pxOverflowDelayedTaskList，时间溢出的延时任务列表；</li>
+<li>xPendingReadyList，调度器挂起期间切换到就绪状态的任务列表；</li>
+<li>xTasksWaitingTermination，被删除（但还未删除内存的）任务列表；</li>
+<li>xSuspendedTaskList，挂起任务列表；</li>
+</ul>
+<p>理解了这几个全局变量，就能轻松地理解task.c中的函数对于任务状态的切换过程。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">PRIVILEGED_DATA static List_t pxReadyTasksLists[ configMAX_PRIORITIES ]; /*&lt; Prioritised ready tasks. */</span><br><span class="line">PRIVILEGED_DATA static List_t xDelayedTaskList1;                         /*&lt; Delayed tasks. */</span><br><span class="line">PRIVILEGED_DATA static List_t xDelayedTaskList2;                         /*&lt; Delayed tasks (two lists are used - one for delays that have overflowed the current tick count. */</span><br><span class="line">PRIVILEGED_DATA static List_t * volatile pxDelayedTaskList;              /*&lt; Points to the delayed task list currently being used. */</span><br><span class="line">PRIVILEGED_DATA static List_t * volatile pxOverflowDelayedTaskList;      /*&lt; Points to the delayed task list currently being used to hold tasks that have overflowed the current tick count. */</span><br><span class="line">PRIVILEGED_DATA static List_t xPendingReadyList;                         /*&lt; Tasks that have been readied while the scheduler was suspended.  They will be moved to the ready list when the scheduler is resumed. */</span><br><span class="line"></span><br><span class="line">#if ( INCLUDE_vTaskDelete == 1 )</span><br><span class="line"></span><br><span class="line">    PRIVILEGED_DATA static List_t xTasksWaitingTermination; /*&lt; Tasks that have been deleted - but their memory not yet freed. */</span><br><span class="line">    PRIVILEGED_DATA static volatile UBaseType_t uxDeletedTasksWaitingCleanUp = ( UBaseType_t ) 0U;</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if ( INCLUDE_vTaskSuspend == 1 )</span><br><span class="line"></span><br><span class="line">    PRIVILEGED_DATA static List_t xSuspendedTaskList; /*&lt; Tasks that are currently suspended. */</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
+
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>理解了最关键的几个全局变量、数据结构、任务函数，就能快速掌握task.c的核心功能。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FreeRTOS/" rel="tag"># FreeRTOS</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/04/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%B8%8D%E5%90%8CMTU%E7%9A%84%E7%BD%91%E5%8D%A1%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CTCP%E9%80%9A%E4%BF%A1/" rel="prev" title="网络协议-不同MTU的网卡如何进行TCP通信">
+      <i class="fa fa-chevron-left"></i> 网络协议-不同MTU的网卡如何进行TCP通信
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E5%8E%9F%E5%88%99"><span class="nav-number">1.</span> <span class="nav-text">阅读原则</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AEAPI"><span class="nav-number">2.</span> <span class="nav-text">关键API</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#xTaskCreate"><span class="nav-number">2.1.</span> <span class="nav-text">xTaskCreate</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#xTaskCreateStatic"><span class="nav-number">2.2.</span> <span class="nav-text">xTaskCreateStatic</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prvInitialiseNewTask"><span class="nav-number">2.3.</span> <span class="nav-text">prvInitialiseNewTask</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vTaskDelete"><span class="nav-number">2.4.</span> <span class="nav-text">vTaskDelete</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#prvInitialiseTaskLists"><span class="nav-number">2.5.</span> <span class="nav-text">prvInitialiseTaskLists</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vTaskStartScheduler"><span class="nav-number">2.6.</span> <span class="nav-text">vTaskStartScheduler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vTaskEndScheduler"><span class="nav-number">2.7.</span> <span class="nav-text">vTaskEndScheduler</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">2.8.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E7%BB%93%E6%9E%84%E4%BD%93"><span class="nav-number">3.</span> <span class="nav-text">关键结构体</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E5%85%A8%E5%B1%80%E5%8F%98%E9%87%8F"><span class="nav-number">4.</span> <span class="nav-text">关键全局变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B0%8F%E7%BB%93"><span class="nav-number">5.</span> <span class="nav-text">小结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">44</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">tags</span>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
