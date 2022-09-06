@@ -145,6 +145,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">ARM-CPU核间通信如何实现</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-07 00:32:13 / Modified: 00:37:24" itemprop="dateCreated datePublished" datetime="2022-09-07T00:32:13+08:00">2022-09-07</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>有的嵌入式芯片可能是单核，有的可能是双核或者更多。<br>如果两个核之间需要进行通信，如何实现？</p>
+<h2 id="大致原理"><a href="#大致原理" class="headerlink" title="大致原理"></a>大致原理</h2><p>这里仅简单介绍一种方式，基本的思想是共享内存+原子操作+通知机制：</p>
+<ul>
+<li>共享内存，即两个核能访问同一块内存区域。</li>
+<li>原子操作，即两个核不会在同一时刻去修改内存区域，具有互斥性。</li>
+<li>通知机制，即一个核通过GPIO中断或其他方式来通知另一个核有消息要发送。</li>
+</ul>
+<p>大致描述一下过程为：<br>当A核需要向B核发送消息时，首先A核通过原子操作取得共享内存的修改权，然后将要发送的消息放置到共享内存中，再通过通知机制告诉B核来读取内存中的数据。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -168,10 +234,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-05 00:58:54 / Modified: 00:59:05" itemprop="dateCreated datePublished" datetime="2022-09-05T00:58:54+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 00:58:54" itemprop="dateCreated datePublished" datetime="2022-09-05T00:58:54+08:00">2022-09-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-07 00:34:09" itemprop="dateModified" datetime="2022-09-07T00:34:09+08:00">2022-09-07</time>
+              </span>
 
           
 
@@ -219,7 +291,7 @@
 </tr>
 <tr>
 <td>安全性扩展(TrustZone)</td>
-<td>如何设置和触发断点；跟踪工具可以捕获什么信息，以什么格式捕获</td>
+<td>安全性扩展，隔离某些资源</td>
 </tr>
 </tbody></table>
 
@@ -360,10 +432,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-05 00:20:45 / Modified: 00:23:11" itemprop="dateCreated datePublished" datetime="2022-09-05T00:20:45+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 00:20:45" itemprop="dateCreated datePublished" datetime="2022-09-05T00:20:45+08:00">2022-09-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-07 00:05:18" itemprop="dateModified" datetime="2022-09-07T00:05:18+08:00">2022-09-07</time>
+              </span>
 
           
 
@@ -383,7 +461,9 @@
 <li>最后看次要函数的源码</li>
 </ul>
 <h2 id="关键API"><a href="#关键API" class="headerlink" title="关键API"></a>关键API</h2><h3 id="xTaskCreate"><a href="#xTaskCreate" class="headerlink" title="xTaskCreate"></a>xTaskCreate</h3><p>功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。<br>这个函数仅在支持动态内存申请的宏使能时生效。</p>
-<p>值得注意的是，有的CPU的栈内存是从低向高增长，有的CPU栈内存是高向低增长（如ARM架构）。这会影响任务控制块内存（pxNewTCB）和任务内存（pxStack）的申请顺序，对于一块全新的内存来说，malloc通常是优先申请低地址的内存，再申请高地址的内存。所以为了避免栈增长到溢出的时候踩踏到pxNewTCB的内存，实现了一套任务控制块内存保护机制：</p>
+<p>值得注意的是，有的CPU的栈内存是从低向高增长，有的CPU栈内存是高向低增长（如ARM架构）。这会影响任务控制块内存（pxNewTCB）和任务内存（pxStack）的申请顺序，对于一块全新的内存来说，malloc通常是优先申请低地址的内存，再申请高地址的内存。</p>
+<p>两种不同栈生长方向的内存申请情况如下图所示：<br><img src="https://s2.loli.net/2022/09/07/pDzy5ro4Ijl3ifv.png" alt="stackgrow.png"></p>
+<p>为了避免栈增长到溢出的时候踩踏到pxNewTCB的内存，freeRTOS实现了一套任务控制块内存保护机制：</p>
 <ul>
 <li>若CPU的内存是由高向低增长，则先申请任务内存（pxStack），再申请任务控制块内存（pxNewTCB），这样pxNewTCB就处于pxStack的更高地址，栈顶指针pxTopOfStack的初始值就放在任务内存（pxStack）的最高地址（为了向低增长），也就是内存数组的结尾处。</li>
 <li>此后，任务内存（pxStack）不断被使用，pxTopOfStack也逐渐指向更低的地址，但再也不会和任务控制块内存相遇。这就降低了自身控制块内存被自身stack内存踩踏的风险。</li>
@@ -883,73 +963,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/c%E8%AF%AD%E8%A8%80-%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E6%88%90%E5%91%98%E5%81%8F%E7%A7%BB%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/02/c%E8%AF%AD%E8%A8%80-%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E6%88%90%E5%91%98%E5%81%8F%E7%A7%BB%E9%87%8F/" class="post-title-link" itemprop="url">c语言-计算结构体中成员偏移量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-02 22:55:52 / Modified: 23:44:59" itemprop="dateCreated datePublished" datetime="2022-09-02T22:55:52+08:00">2022-09-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    char a;</span><br><span class="line">    int b;</span><br><span class="line">    int c;</span><br><span class="line">&#125; test_s;</span><br></pre></td></tr></table></figure>
-<p>求test_s中成员c相对于结构体首地址的偏移量。</p>
-<h2 id="写法"><a href="#写法" class="headerlink" title="写法"></a>写法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define offsetof(type, v) (&amp;(((type *)0)-&gt;v))</span><br><span class="line">int result = offset(test_s, c);</span><br></pre></td></tr></table></figure>
-
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>无需借助实体变量。</li>
-<li>相比于”以成员c的实际地址减去结构体的地址”的方法，少了一步减法运算，执行速度快。</li>
-<li>事实上<code>offsetof</code>是c语言标准库中的宏，定义在&lt;stddef.h&gt;中，可以直接使用。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1019,7 +1032,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

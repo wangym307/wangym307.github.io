@@ -27,11 +27,13 @@
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
 <meta property="og:description" content="阅读原则tasks.c是FreeRTOS的核心代码，虽不算非常复杂，也有5000多行代码，一行行代码看的话一天也不够用。我推荐的阅读步骤是：  先看API、数据结构、全局变量 再看主要函数的源码 最后看次要函数的源码  关键APIxTaskCreate功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。这个函数仅在支持动态内存申请的宏使能时生效。 值得注意的是，有的CPU的栈内存是从">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2022/09/07/pDzy5ro4Ijl3ifv.png">
 <meta property="article:published_time" content="2022-09-04T16:20:45.000Z">
-<meta property="article:modified_time" content="2022-09-04T16:23:11.036Z">
+<meta property="article:modified_time" content="2022-09-06T16:05:18.087Z">
 <meta property="article:author" content="WaterYoungMan">
 <meta property="article:tag" content="FreeRTOS">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/09/07/pDzy5ro4Ijl3ifv.png">
 
 <link rel="canonical" href="http://example.com/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/">
 
@@ -173,10 +175,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-05 00:20:45 / Modified: 00:23:11" itemprop="dateCreated datePublished" datetime="2022-09-05T00:20:45+08:00">2022-09-05</time>
+              <time title="Created: 2022-09-05 00:20:45" itemprop="dateCreated datePublished" datetime="2022-09-05T00:20:45+08:00">2022-09-05</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-07 00:05:18" itemprop="dateModified" datetime="2022-09-07T00:05:18+08:00">2022-09-07</time>
+              </span>
 
           
 
@@ -196,7 +204,9 @@
 <li>最后看次要函数的源码</li>
 </ul>
 <h2 id="关键API"><a href="#关键API" class="headerlink" title="关键API"></a>关键API</h2><h3 id="xTaskCreate"><a href="#xTaskCreate" class="headerlink" title="xTaskCreate"></a>xTaskCreate</h3><p>功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。<br>这个函数仅在支持动态内存申请的宏使能时生效。</p>
-<p>值得注意的是，有的CPU的栈内存是从低向高增长，有的CPU栈内存是高向低增长（如ARM架构）。这会影响任务控制块内存（pxNewTCB）和任务内存（pxStack）的申请顺序，对于一块全新的内存来说，malloc通常是优先申请低地址的内存，再申请高地址的内存。所以为了避免栈增长到溢出的时候踩踏到pxNewTCB的内存，实现了一套任务控制块内存保护机制：</p>
+<p>值得注意的是，有的CPU的栈内存是从低向高增长，有的CPU栈内存是高向低增长（如ARM架构）。这会影响任务控制块内存（pxNewTCB）和任务内存（pxStack）的申请顺序，对于一块全新的内存来说，malloc通常是优先申请低地址的内存，再申请高地址的内存。</p>
+<p>两种不同栈生长方向的内存申请情况如下图所示：<br><img src="https://s2.loli.net/2022/09/07/pDzy5ro4Ijl3ifv.png" alt="stackgrow.png"></p>
+<p>为了避免栈增长到溢出的时候踩踏到pxNewTCB的内存，freeRTOS实现了一套任务控制块内存保护机制：</p>
 <ul>
 <li>若CPU的内存是由高向低增长，则先申请任务内存（pxStack），再申请任务控制块内存（pxNewTCB），这样pxNewTCB就处于pxStack的更高地址，栈顶指针pxTopOfStack的初始值就放在任务内存（pxStack）的最高地址（为了向低增长），也就是内存数组的结尾处。</li>
 <li>此后，任务内存（pxStack）不断被使用，pxTopOfStack也逐渐指向更低的地址，但再也不会和任务控制块内存相遇。这就降低了自身控制块内存被自身stack内存踩踏的风险。</li>
@@ -342,7 +352,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">46</span>
+          <span class="site-state-item-count">47</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
