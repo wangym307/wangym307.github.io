@@ -145,6 +145,72 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">操作系统-原子操作与互斥操作</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-08 00:07:27 / Modified: 00:16:31" itemprop="dateCreated datePublished" datetime="2022-09-08T00:07:27+08:00">2022-09-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>如果多个线程访问相同的数据，一个正在读取共享数据的线程可能中断另一个正在修改相同共享数据的线程，导致线程读取到不一致的数据。<br>为了避免多线程同时访问同一块数据，可以用原子操作或者互斥操作进行相应的保护。</p>
+<h2 id="互斥操作"><a href="#互斥操作" class="headerlink" title="互斥操作"></a>互斥操作</h2><p>互相排斥（mutex exclusion）技术，简称为互斥（mutex），它用于防止多个线程同时访问共享资源。互斥技术采用一个对象控制独占访问权限，该对象称之为互斥。配合条件变量（condition variable），互斥可以实现广泛的同步访问控制。例如，它们允许程序员为数据访问操作指定执行次序。</p>
+<h2 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h2><p>原子操作，指CPU操作过程中不能被中断。原子曾被认为是不可分割的最小单元，原子操作也可以被理解为一个不可被分割的操作。在针对某个值进行原子操作时，CPU绝对不会再进行其他的针对该值的操作，通常，原子操作仅会由单条CPU指令完成。原子操作是无锁的，其他同步技术实现也常依赖于原子操作。</p>
+<h2 id="互斥操作和原子操作的区别"><a href="#互斥操作和原子操作的区别" class="headerlink" title="互斥操作和原子操作的区别"></a>互斥操作和原子操作的区别</h2><ul>
+<li>互斥操作时，线程取锁之后，可以被其他线程打断再返回回来执行；而原子操作是单个不可被打断的操作，通常是由单条CPU指令完成，所以没有其他线程可以打断它。</li>
+<li>原子操作的优势：更加轻量，可以在不形成临界区的情况下完成并发安全的值得替换操作。可以大大减少同步对程序性能的消耗。</li>
+<li>原子操作的劣势：原子操作是乐观锁，总是假设操作未被改变，在被操作的值被频繁改变的情况下，原子操作并不那么容易成功；而互斥锁是悲观锁，我们总是假设会有并发的操作要修改被操作的值，因此使用锁对一系列操作加上临界区保护。</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -168,10 +234,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-09-07 00:32:13 / Modified: 00:37:24" itemprop="dateCreated datePublished" datetime="2022-09-07T00:32:13+08:00">2022-09-07</time>
+              <time title="Created: 2022-09-07 00:32:13" itemprop="dateCreated datePublished" datetime="2022-09-07T00:32:13+08:00">2022-09-07</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-08 00:18:07" itemprop="dateModified" datetime="2022-09-08T00:18:07+08:00">2022-09-08</time>
+              </span>
 
           
 
@@ -184,15 +256,29 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>有的嵌入式芯片可能是单核，有的可能是双核或者更多。<br>如果两个核之间需要进行通信，如何实现？</p>
-<h2 id="大致原理"><a href="#大致原理" class="headerlink" title="大致原理"></a>大致原理</h2><p>这里仅简单介绍一种方式，基本的思想是共享内存+原子操作+通知机制：</p>
+          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>对于多核的CPU架构，如果两个核之间需要进行通信，如何实现？</p>
+<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>核间通信，又叫Inter Processor Communication(IPC)。<br>这里仅简单介绍一种方式，基本的思想是“共享内存+互斥操作+通知机制”：</p>
 <ul>
 <li>共享内存，即两个核能访问同一块内存区域。</li>
-<li>原子操作，即两个核不会在同一时刻去修改内存区域，具有互斥性。</li>
+<li>互斥操作，即两个核不会在同一时刻去修改同一个内存区域。</li>
 <li>通知机制，即一个核通过GPIO中断或其他方式来通知另一个核有消息要发送。</li>
 </ul>
-<p>大致描述一下过程为：<br>当A核需要向B核发送消息时，首先A核通过原子操作取得共享内存的修改权，然后将要发送的消息放置到共享内存中，再通过通知机制告诉B核来读取内存中的数据。</p>
-
+<p>当A核需要向B核发送消息时，大致过程为：</p>
+<ul>
+<li>首先A核通过互斥操作取得共享内存的修改权；</li>
+<li>然后A核将要发送的消息放置到共享内存中；</li>
+<li>最后A核通过通知机制告诉B核来读取内存中的数据。</li>
+</ul>
+<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>在一块由KM4(Armv8-M，Cortex-M33) + KM0(ArmV8-M，Cortex-M23)组成的双核芯片上，核间通信实现如下（共用一段代码）:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">u32 Messages[32] = &#123;0&#125;;</span><br><span class="line">/**</span><br><span class="line">  * @brief  exchange messages between KM0 and KM4.</span><br><span class="line">  * @param  IPC_ChNum: the IPC channel number.</span><br><span class="line">   * @param  Message: pointer to the message to be exchanged,and should not stored in stack.</span><br><span class="line">  * @retval   None</span><br><span class="line">  */</span><br><span class="line">void ipc_send_message(u8 IPC_ChNum, u32 Message)</span><br><span class="line">&#123;</span><br><span class="line">	u32 CpuId = IPC_CPUID();</span><br><span class="line">	IPC_TypeDef *IPC_DEV;</span><br><span class="line">	</span><br><span class="line">	if(CpuId == 1) </span><br><span class="line">		IPC_DEV = IPCM4_DEV;</span><br><span class="line">	else if(CpuId == 0) </span><br><span class="line">		IPC_DEV = IPCM0_DEV;</span><br><span class="line">	if(IPC_USER_POINT == ipc_init_config[IPC_ChNum].USER_MSG_TYPE) &#123;</span><br><span class="line">		/*message is shared between two cpu ,so it can&#x27;t store in stack</span><br><span class="line">		 * assume stack down growth, and 0x100 is an estimated value</span><br><span class="line">		 */</span><br><span class="line">		assert_param((Message &gt; (u32)(vTaskStackAddr() + vTaskStackSize()*4)) || (Message &lt; (u32)vTaskStackAddr()));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if(IPC_ChNum &gt; 10)&#123;</span><br><span class="line">		Messages[IPC_ChNum] = (u32)Message;</span><br><span class="line">		IPC_DEV-&gt;IPCx_USR[11] = (u32)&amp;Messages[0];</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		IPC_DEV-&gt;IPCx_USR[IPC_ChNum] = (u32)Message;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	IPC_INTRequest(IPC_DEV, IPC_ChNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码中的基本流程为：</p>
+<ul>
+<li>将要发送的数据放置在共享内存中；</li>
+<li>将共享内存的地址和通道号（最多定义32个通道）放到对应的寄存器中；</li>
+<li>通过中断通知对端核接收IPC消息。</li>
+</ul>
+<p>其中，IPC_INTRequest 的代码为汇编实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1010c940 &lt;IPC_INTRequest&gt;:</span><br><span class="line">1010c940:	2301      	movs	r3, #1</span><br><span class="line">1010c942:	fa03 f101 	lsl.w	r1, r3, r1</span><br><span class="line">1010c946:	6081      	str	r1, [r0, #8]</span><br><span class="line">1010c948:	4770      	bx	lr</span><br><span class="line">1010c94a:	bf00      	nop</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -897,72 +983,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E5%A4%B1%E6%8E%A7%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E5%A4%B1%E6%8E%A7%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《失控》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-03 22:37:20 / Modified: 22:37:41" itemprop="dateCreated datePublished" datetime="2022-09-03T22:37:20+08:00">2022-09-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：凯文·凯利<br>阅读时间：2020.09.04</p>
-<p>很难想象这是一本26年前写出来的书，刚好跟我的年纪一样。<br>里面的大量观点放到今天来看也毫不过时，甚至超前于当前时代。书中几乎准确地预测了互联网世界的发展方向，例如：</p>
-<ul>
-<li>从无序走向有序；</li>
-<li>分布式协作；</li>
-<li>从大数据和超强算力中涌现出人工智能；</li>
-</ul>
-<p>优美的行文架构，丰富的逻辑论证让书中观点变得丰满立体。<br>读这本书，就像爬黄山，到了山顶忽然看见了云海，波涛，怪石。<br>它打开一扇新世界的大门，让你从上而下去欣赏这混沌世界。 </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1032,7 +1052,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">47</span>
+          <span class="site-state-item-count">48</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

@@ -20,15 +20,20 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="WaterYoungMan&#39;s Blog">
-<meta property="og:url" content="http://example.com/archives/page/3/index.html">
+  <meta name="description" content="背景如果多个线程访问相同的数据，一个正在读取共享数据的线程可能中断另一个正在修改相同共享数据的线程，导致线程读取到不一致的数据。为了避免多线程同时访问同一块数据，可以用原子操作或者互斥操作进行相应的保护。 互斥操作互相排斥（mutex exclusion）技术，简称为互斥（mutex），它用于防止多个线程同时访问共享资源。互斥技术采用一个对象控制独占访问权限，该对象称之为互斥。配合条件变量（con">
+<meta property="og:type" content="article">
+<meta property="og:title" content="操作系统-原子操作与互斥操作">
+<meta property="og:url" content="http://example.com/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
+<meta property="og:description" content="背景如果多个线程访问相同的数据，一个正在读取共享数据的线程可能中断另一个正在修改相同共享数据的线程，导致线程读取到不一致的数据。为了避免多线程同时访问同一块数据，可以用原子操作或者互斥操作进行相应的保护。 互斥操作互相排斥（mutex exclusion）技术，简称为互斥（mutex），它用于防止多个线程同时访问共享资源。互斥技术采用一个对象控制独占访问权限，该对象称之为互斥。配合条件变量（con">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2022-09-07T16:07:27.000Z">
+<meta property="article:modified_time" content="2022-09-07T16:16:31.894Z">
 <meta property="article:author" content="WaterYoungMan">
+<meta property="article:tag" content="操作系统">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/archives/page/3/">
+<link rel="canonical" href="http://example.com/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/">
 
 
 <script id="page-configurations">
@@ -36,12 +41,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'en'
   };
 </script>
 
-  <title>Archive | WaterYoungMan's Blog</title>
+  <title>操作系统-原子操作与互斥操作 | WaterYoungMan's Blog</title>
   
 
 
@@ -139,235 +144,88 @@
         <div class="content-wrap">
           
 
-          <div class="content archive">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        
-        <span class="collection-header">OK! 48 posts in total. Keep on posting.</span>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统-原子操作与互斥操作
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-08 00:07:27 / Modified: 00:16:31" itemprop="dateCreated datePublished" datetime="2022-09-08T00:07:27+08:00">2022-09-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2022</span>
-    </div>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-26T07:54:40+08:00"
-              content="2022-08-26">
-          08-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/" itemprop="url">
-            <span itemprop="name">UVM通用验证方法学与嵌入式测试</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-26T00:00:21+08:00"
-              content="2022-08-26">
-          08-26
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/26/python-%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84/" itemprop="url">
-            <span itemprop="name">python-列表与元组</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-25T23:33:15+08:00"
-              content="2022-08-25">
-          08-25
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/25/%E6%9C%89%E6%BD%9C%E5%8A%9B%E7%9A%84%E5%91%98%E5%B7%A5%E9%80%9A%E5%B8%B8%E5%85%B7%E6%9C%89%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E8%B4%A8/" itemprop="url">
-            <span itemprop="name">有潜力的员工通常具有的几个特质</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-23T00:21:41+08:00"
-              content="2022-08-23">
-          08-23
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/23/FreeRTOS%E8%BF%9B%E9%98%B6-%E8%8A%AF%E7%89%87%E7%A7%BB%E6%A4%8D/" itemprop="url">
-            <span itemprop="name">FreeRTOS进阶-芯片移植</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T23:48:31+08:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cwifi%E5%97%85%E6%8E%A2%E6%8A%93%E5%8C%85/" itemprop="url">
-            <span itemprop="name">在linux下进行wifi嗅探抓包</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T23:39:22+08:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/gdb-vscode%E5%8F%AF%E8%A7%86%E5%8C%96%E8%B0%83%E8%AF%95%E6%97%B6%E5%A2%9E%E5%8A%A0sudo%E6%9D%83%E9%99%90/" itemprop="url">
-            <span itemprop="name">gdb-vscode可视化调试时增加sudo权限</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T23:34:57+08:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" itemprop="url">
-            <span itemprop="name">linux-权限</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T23:34:21+08:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/" itemprop="url">
-            <span itemprop="name">linux-用户与组</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T02:02:51+08:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" itemprop="url">
-            <span itemprop="name">esp32c3-执行export.sh失败问题</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2022-08-22T01:45:32+08:00"
-              content="2022-08-22">
-          08-22
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/" itemprop="url">
-            <span itemprop="name">ARM指令-LDR</span>
-          </a>
-      </div>
-
-    </header>
-  </article>
-
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>如果多个线程访问相同的数据，一个正在读取共享数据的线程可能中断另一个正在修改相同共享数据的线程，导致线程读取到不一致的数据。<br>为了避免多线程同时访问同一块数据，可以用原子操作或者互斥操作进行相应的保护。</p>
+<h2 id="互斥操作"><a href="#互斥操作" class="headerlink" title="互斥操作"></a>互斥操作</h2><p>互相排斥（mutex exclusion）技术，简称为互斥（mutex），它用于防止多个线程同时访问共享资源。互斥技术采用一个对象控制独占访问权限，该对象称之为互斥。配合条件变量（condition variable），互斥可以实现广泛的同步访问控制。例如，它们允许程序员为数据访问操作指定执行次序。</p>
+<h2 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h2><p>原子操作，指CPU操作过程中不能被中断。原子曾被认为是不可分割的最小单元，原子操作也可以被理解为一个不可被分割的操作。在针对某个值进行原子操作时，CPU绝对不会再进行其他的针对该值的操作，通常，原子操作仅会由单条CPU指令完成。原子操作是无锁的，其他同步技术实现也常依赖于原子操作。</p>
+<h2 id="互斥操作和原子操作的区别"><a href="#互斥操作和原子操作的区别" class="headerlink" title="互斥操作和原子操作的区别"></a>互斥操作和原子操作的区别</h2><ul>
+<li>互斥操作时，线程取锁之后，可以被其他线程打断再返回回来执行；而原子操作是单个不可被打断的操作，通常是由单条CPU指令完成，所以没有其他线程可以打断它。</li>
+<li>原子操作的优势：更加轻量，可以在不形成临界区的情况下完成并发安全的值得替换操作。可以大大减少同步对程序性能的消耗。</li>
+<li>原子操作的劣势：原子操作是乐观锁，总是假设操作未被改变，在被操作的值被频繁改变的情况下，原子操作并不那么容易成功；而互斥锁是悲观锁，我们总是假设会有并发的操作要修改被操作的值，因此使用锁对一系列操作加上临界区保护。</li>
+</ul>
 
     </div>
-  </div>
-  
-  
-  
 
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag"># 操作系统</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" rel="prev" title="ARM-CPU核间通信如何实现">
+      <i class="fa fa-chevron-left"></i> ARM-CPU核间通信如何实现
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
   
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/archives/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/archives/">1</a><a class="page-number" href="/archives/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><a class="extend next" rel="next" href="/archives/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
+  
+  
 
 
 
@@ -419,6 +277,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C"><span class="nav-number">2.</span> <span class="nav-text">互斥操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="nav-number">3.</span> <span class="nav-text">原子操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C%E5%92%8C%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-number">4.</span> <span class="nav-text">互斥操作和原子操作的区别</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
