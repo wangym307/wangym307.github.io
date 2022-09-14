@@ -145,6 +145,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-c%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-c%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">编程方法论-c语言设计模式</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-09-15 00:47:00 / Modified: 00:52:27" itemprop="dateCreated datePublished" datetime="2022-09-15T00:47:00+08:00">2022-09-15</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="对c语言设计模式的理解"><a href="#对c语言设计模式的理解" class="headerlink" title="对c语言设计模式的理解"></a>对c语言设计模式的理解</h2><p>常见设计模式有23种，经常在java开发中被使用，而嵌入式c语言开发中往往少有提及。我认为有以下几点原因：</p>
+<ul>
+<li>设计模式是与面向对象的编程思想紧密结合的，而java拥有很多面向对象的语言特性。</li>
+<li>设计模式中有大量的抽象封装方法，更适合在偏上层的复杂业务逻辑中使用，而java相比于c来说是更偏上层的语言。</li>
+</ul>
+<p>事实上c语言也能实现面向对象的设计方法。且随着市面上MCU的性能高速发展，嵌入式程序中的业务逻辑越来越复杂，代码量也达到很高的级别。由此，软件人员的架构设计能力也变得越来越重要。</p>
+<p>设计模式可能不用，但不可不了解。<br>我认为设计模式与c语言的结合点如下：</p>
+<ul>
+<li>在一些需求经常变更的，代码扩展迭代频繁的场景中，可以尝试将设计模式与c语言深度融合。</li>
+<li>在一些底层代码如硬件操作中，不宜做过多封装。此时可不使用设计模式，或仅在一些结构体数据结构的设计上做相应参考。</li>
+</ul>
+<h2 id="3句话以内描述设计模式"><a href="#3句话以内描述设计模式" class="headerlink" title="3句话以内描述设计模式"></a>3句话以内描述设计模式</h2><h3 id="单件模式"><a href="#单件模式" class="headerlink" title="单件模式"></a>单件模式</h3><p>将构造类的过程用一个函数封装。</p>
+<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>将拷贝数据的过程用一个函数封装。</p>
+<h3 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h3><p>与二叉树有关。<br>如果一个节点还有子节点，则处理对应的子节点；如果无子节点，则直接处理。</p>
+<h3 id="模板模式"><a href="#模板模式" class="headerlink" title="模板模式"></a>模板模式</h3><p>将多个不同流程里面相同的步骤或者说框架提取出来，作为一套模板，供不同的流程使用。<br>个人认为有点类似于c++中的继承，但又不太一样。</p>
+<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>根据不同的要求输出不同类型的产品(同数据结构)。</p>
+<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>抽象工厂模式和工厂模式很相似，都是根据不同的要求输出不同类型的产品。<br>两者的区别是：</p>
+<ul>
+<li>抽象工厂的产品和操作接口都不一样。</li>
+<li>工厂模式只是产品不同，操作接口是相同的。</li>
+</ul>
+<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>对于当前等级无法处理的任务，由链表的下一级负责完成，依此类推。</p>
+<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><p>迭代器模式是对数据结构的一种隐藏，迭代器相当于装载各种数据结构的一种容器。使用者只关心对容器的操作，而无需关心容器内部的数据结构。</p>
+<h3 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h3><p>将数据结构中一个接口中有强相关关系的多个操作，打包在一个接口中处理。</p>
+<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>将行为相似的操作抽象为一个代理操作，外部使用者直接操作代理接口即可。<br>个人认为有点类似于迭代器模式，迭代器模式的抽象更为彻底（包括了数据类型）。</p>
+<h3 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h3><p>个人认为享元模式有点类似于单例模式的组合。在需要获取时才判断数据是否存在，如不存在则创建。<br>区别是享元模式一般存在类型相似但不相同的多组数据。</p>
+<h3 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h3><p>装饰模式需要借助链表，有点类似于责任链模式。<br>个人认为区别有两点：</p>
+<ul>
+<li>装饰模式还增加了对接口入参的封装，入参常为结构体本身的指针。</li>
+<li>装饰模式也是将数据处理交由下一级完成，但不先进行责任判定。</li>
+</ul>
+<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><p>将要处理的事情抽象为对特定数据结构的操作，只关心结果，过程交由该操作完成。</p>
+<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><p>对同一类型但不同值的数据的处理，交由统一的方法接口处理。</p>
+<h3 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h3><p>一方对另一方的请求，需通过中介找到。</p>
+<h3 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h3><p>是对流程的一种抽象化处理。<br>个人认为有点类似于模板模式和外观模式。</p>
+<h3 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h3><p>将对入参的请求和处理解耦。先根据入参的类型找到处理函数，再做相应处理。<br>个人认为有点类似于代理模式。</p>
+<h3 id="观察者模式-常用"><a href="#观察者模式-常用" class="headerlink" title="观察者模式(常用)"></a>观察者模式(常用)</h3><p>对数据结构中的公有操作及相应的数据类型进行互相绑定。</p>
+<h3 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h3><p>与应用软件中的“撤销”行为有强相关性。具体做法是：</p>
+<ul>
+<li>用户的每执行一个操作，都同时建立一个对应的撤销函数。</li>
+<li>将每一个操作和对应的撤销函数都作为节点的内容挂接到操作链表上。</li>
+<li>这样就能在任何时候通过操作链表找到上一步动作，并进行相应的撤销。</li>
+</ul>
+<h3 id="解释器模式"><a href="#解释器模式" class="headerlink" title="解释器模式"></a>解释器模式</h3><p>主要用于解析组合字符串。</p>
+<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>通过命令内容，找到相应的命令处理方法并执行。<br>可以用于设计cli(command-line interface)命令处理架构。</p>
+<h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><p>适合结合状态机编程使用。主要封装状态切换函数和当前状态处理函数。</p>
+<h3 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h3><p>访问者即消费者，处理者即生产者。<br>处理者根据访问者的类型和需求来做相应处理。</p>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>软件的基本设计原则：以人为本、模块分离、层次清晰、简约至上、适用为先、抽象基本业务。<br>合理的才是最好的。不能不设计，也不能过度设计。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="http://www.uml.org.cn/c%2B%2B/201608044.asp">http://www.uml.org.cn/c%2B%2B/201608044.asp</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/14/ARM-%E4%B8%BB%E8%A6%81%E5%AF%84%E5%AD%98%E5%99%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -939,93 +1048,10 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BD%97%E7%B4%A0%E8%B0%88%E4%BA%BA%E7%9A%84%E7%90%86%E6%80%A7%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BD%97%E7%B4%A0%E8%B0%88%E4%BA%BA%E7%9A%84%E7%90%86%E6%80%A7%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《罗素谈人的理性》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-03 22:41:28 / Modified: 22:42:37" itemprop="dateCreated datePublished" datetime="2022-09-03T22:41:28+08:00">2022-09-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：罗素<br>阅读时间：2020.12.05</p>
-<p>读罗素的书是因为王小波对他的推崇，而我个人也喜欢看一些哲学相关的书籍。<br>这也是一本影响了我个人世界观的书籍，推荐。<br>当时没有写完整的书评，仅在微信读书上记录了一些划线笔记，现搬移过来，暂不做整理。</p>
-<h2 id="第1章-人有不幸"><a href="#第1章-人有不幸" class="headerlink" title="第1章 人有不幸"></a>第1章 人有不幸</h2><blockquote>
-<p>我认为，这种不幸在很大程度上是由对世界的错误看法、错误的伦理观、错误的生活习惯所引起的，结果导致了对那些可能获得事物的天然热情和追求欲望的丧失，而这些事物，正是人和动物的一切幸福、快乐最终有赖于它们的。</p>
-</blockquote>
-<p>王小波说人的一切痛苦来自于对无能的愤怒，而罗素眼中，大概还有错误的世界观。在我看来，错误也是无知的一种，王小波是了解罗素的，不知他是如何看待“无能”和“无知”之间的关系的。</p>
-<h2 id="第5章-疲劳的工作"><a href="#第5章-疲劳的工作" class="headerlink" title="第5章 疲劳的工作"></a>第5章 疲劳的工作</h2><blockquote>
-<p>但是，我们有必要认识到，使人兴奋的娱乐并非通向幸福之路，尽管只要使人更满足的快乐是可望而不可及的，一个人会发现，除非通过兴奋的刺激，否则生活是难以忍受的。</p>
-</blockquote>
-<p>过度娱乐带来疲劳，长久的平淡反而使人清醒。</p>
-<h2 id="第9章-舆论与恐惧"><a href="#第9章-舆论与恐惧" class="headerlink" title="第9章 舆论与恐惧"></a>第9章 舆论与恐惧</h2><blockquote>
-<p>在现代世界，由于交通工具的创造发明，人们不必再像过去那样，仅仅与自己的近邻来往了。那些拥有汽车的人可以把方圆20英里内的任何人看做自己的邻居。因此他们比过去有更多的机会来选择自己的朋友。</p>
-</blockquote>
-<p>有趣的现象，在中国和美国的城市化进程中，都出现了邻里变得陌生的情况。但个人认为其主要原因并不是交通工具的出现，而是由人在社会中的角色变化。其一，现代社会功能的强大使得人不必再依靠邻里的帮扶和受到宗族村落的制约。其二，现代的工作时间特性使得人们早出晚归，邻里之间鲜有机会和精力见面，人们更愿意按自己的喜好选择多种多样的消遣方式。</p>
-<h2 id="第11章-渴望的热情"><a href="#第11章-渴望的热情" class="headerlink" title="第11章 渴望的热情"></a>第11章 渴望的热情</h2><blockquote>
-<p>一个人的兴趣越广，他拥有的快乐机会就越多，而受命运摆布的可能性也就越小，因为如果他失去了某一种兴趣，他便可转而依赖另一种。生命短暂，人们不可能事事都感兴趣，不过对尽可能多的事物感兴趣却是一桩好事。我们都容易染上内省者的弊病，世界向他吐现出千姿百态的景象，但他却别转脑袋，专注于内心的空虚，我们可不要以为，内省者的忧郁有什么了不起之处。 </p>
-</blockquote>
-<h2 id="第14章-时代与劳务"><a href="#第14章-时代与劳务" class="headerlink" title="第14章 时代与劳务"></a>第14章 时代与劳务</h2><blockquote>
-<p>一项伟大的建设性事业所给予的乐趣是人生所能奉献的最大的快慰之一，虽然不幸得很，这种卓绝超群的欢乐仅为不同凡俗的人所享受。</p>
-</blockquote>
-<p>哲学的魅力在于，将一些事情、道理抽象出最本质的部分，而这又和写代码的过程很相似。解构并重塑，能让一件事情达到新的高度。</p>
-<h2 id="第20章-休闲生活"><a href="#第20章-休闲生活" class="headerlink" title="第20章 休闲生活"></a>第20章 休闲生活</h2><blockquote>
-<p>富人和奉承他们的人发表赞美可敬的劳苦工作，颂扬简朴的生活，宣传一种教义，那就是所谓穷人比富人容易进入天堂。总之，他们竭力使体力劳动者相信改变物质在空间中的形式及其位置的工作是特别高尚的，所有这些就同男人竭力让女人相信她们之所以特别高尚在于她们性的约束一样。</p>
-</blockquote>
-<p>所有事物背后必有其道理。儒家思想控制士大夫阶层忠君爱国，得以被统治阶级发扬光大。类似的情况在古今中外都是如此的一致。<br>很多事情你看到是这样子，不是因为它本身是这样子，而是因为有人希望你看到是这样子。<br>这个世界是怎么样的，一家之言永远是肤浅的。读万卷书，行万里路才是最好的答案。终身学习的可贵之处也在这里。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1091,12 +1117,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>

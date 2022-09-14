@@ -145,6 +145,71 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/" class="post-title-link" itemprop="url">makefile库函数-abspath</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 23:43:10 / Modified: 23:45:13" itemprop="dateCreated datePublished" datetime="2022-08-28T23:43:10+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：该函数主要用于将_names中的相对路径转换成绝对路径，并返回转换后的结果。<br>函数意义：abs_path &#x3D; absolute path，指绝对路径</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在makefile中的常见用法为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path = $(abspath _names)</span><br></pre></td></tr></table></figure>
+
+<h2 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2><p>新建一个makefile，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path := $(abspath .)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(my_abs_path)</span><br></pre></td></tr></table></figure>
+<p>执行make可以看到输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ make</span><br><span class="line">/home/wang/Workspaces/open</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -261,10 +326,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2022-08-27 23:21:02 / Modified: 23:21:38" itemprop="dateCreated datePublished" datetime="2022-08-27T23:21:02+08:00">2022-08-27</time>
+              <time title="Created: 2022-08-27 23:21:02" itemprop="dateCreated datePublished" datetime="2022-08-27T23:21:02+08:00">2022-08-27</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2022-09-15 00:47:37" itemprop="dateModified" datetime="2022-09-15T00:47:37+08:00">2022-09-15</time>
+              </span>
 
           
 
@@ -867,100 +938,10 @@ while(1);
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/" class="post-title-link" itemprop="url">linux-用户与组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:21 / Modified: 23:34:48" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:21+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在 Linux 操作系统中，有时候需要用指令来为某些应用程序增加权限。<br>比如为虚拟机增加usb使用权限，需要增加一个名为usbfs的用户组，并将当前用户添加到usbfs组中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd usbfs</span><br><span class="line">sudo adduser $USER usbfs</span><br><span class="line">cat /etc/group |grep usbfs</span><br></pre></td></tr></table></figure>
-<p>那么“为什么增加用户组就可以解决这些权限问题?”，首先需要了解用户和组的概念。<br>“用户-组-权限”三者的关系是密不可分的。</p>
-<h2 id="用户与组的概念"><a href="#用户与组的概念" class="headerlink" title="用户与组的概念"></a>用户与组的概念</h2><h3 id="理解linux多用户，多任务的特性"><a href="#理解linux多用户，多任务的特性" class="headerlink" title="理解linux多用户，多任务的特性"></a>理解linux多用户，多任务的特性</h3><p>Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响，例如某台linux服务器上有4个用户，分别是root、www、ftp和mysql，在同一时间内，root用户可能在查看系统日志，管理维护系统，www用户可能在修改自己的网页程序，ftp用户可能在上传软件到服务器，mysql用户可能在执行自己的SQL查询，每个用户互不干扰，有条不紊的进行着自己的工作，而每个用户之间不能越权访问，比如www用户不能执行mysql用户的SQL查询操作，ftp用户也不能修改www用户的网页程序，因此可知，不同用户具有不同的权限，每个用户是在权限允许的范围内完成不同的任务，linux正是通过这种权限的划分与管理，实现了多用户多任务的运行机制。</p>
-<h3 id="linux下用户的角色分类"><a href="#linux下用户的角色分类" class="headerlink" title="linux下用户的角色分类"></a>linux下用户的角色分类</h3><p> 在linux下用户是根据角色定义的，具体分为三种角色：</p>
-<ul>
-<li>超级用户：拥有对系统的最高管理权限，默认是root用户。</li>
-<li>普通用户：只能对自己目录下的文件进行访问和修改，具有登录系统的权限，例如上面提到的www用户、ftp用户等。</li>
-<li>虚拟用户：也叫“伪”用户，这类用户最大的特点是不能登录系统，它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。例如系统默认的bin、adm、nobody用户等，一般运行的web服务，默认就是使用的nobody用户，但是nobody用户是不能登录系统的。</li>
-</ul>
-<h3 id="用户和组的概念"><a href="#用户和组的概念" class="headerlink" title="用户和组的概念"></a>用户和组的概念</h3><p>我们知道，Linux是一个多用户多任务的分时操作系统，如果要使用系统资源，就必须向系统管理员申请一个账户，然后通过这个账户进入系统。这个账户和用户是一个概念，通过建立不同属性的用户，一方面，可以合理的利用和控制系统资源，另一方面也可以帮助用户组织文件，提供对用户文件的安全性保护。<br>每个用户都用一个唯一的用户名和用户口令，在登录系统时，只有正确输入了用户名和密码，才能进入系统和自己的主目录。<br>用户组是具有相同特征用户的逻辑集合，有时我们需要让多个用户具有相同的权限，比如查看、修改某一个文件的权限，一种方法是分别对多个用户进行文件访问授权，如果有10个用户的话，就需要授权10次，显然这种方法不太合理；另一种方法是建立一个组，让这个组具有查看、修改此文件的权限，然后将所有需要访问此文件的用户放入这个组中，那么所有用户就具有了和组一样的权限。这就是用户组，将用户分组是Linux 系统中对用户进行管理及控制访问权限的一种手段，通过定义用户组，在很大程度上简化了管理工作。</p>
-<h3 id="用户和组的关系"><a href="#用户和组的关系" class="headerlink" title="用户和组的关系"></a>用户和组的关系</h3><p>用户和用户组的对应关系有：一对一、一对多、多对一和多对多；</p>
-<ul>
-<li>一对一：即一个用户可以存在一个组中，也可以是组中的唯一成员。</li>
-<li>一对多：即一个用户可以存在多个用户组中。那么此用户具有多个组的共同权限。</li>
-<li>多对一：多个用户可以存在一个组中，这些用户具有和组相同的权限。</li>
-<li>多对多：多个用户可以存在多个组中。其实就是上面三个对应关系的扩展。</li>
-</ul>
-<h2 id="操作指令"><a href="#操作指令" class="headerlink" title="操作指令"></a>操作指令</h2><h3 id="增删用户"><a href="#增删用户" class="headerlink" title="增删用户"></a>增删用户</h3><p>adduser deluser</p>
-<h3 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h3><p>useradd userdel usermod</p>
-<h3 id="组操作"><a href="#组操作" class="headerlink" title="组操作"></a>组操作</h3><p>groupadd groupdel groupmod</p>
-<h3 id="useradd-与adduser的区别"><a href="#useradd-与adduser的区别" class="headerlink" title="useradd 与adduser的区别"></a>useradd 与adduser的区别</h3><ul>
-<li>adduser是一个 perl 脚本，通过交互式菜单设定一些用户参数。在输入adduser 用户名后，会自动创建用户主目录（并复制&#x2F;etc&#x2F;skel目录下的文件）、指定系统 shell，提示输入用户密码，很简单的就添加了一个标准的普通用户。</li>
-<li>useradd是一个指令，如果不使用任何选项，创建的用户将无密码、无主目录、没有指定 shell。如果你需要正常使用这个账户，就还需要设置密码、创建家目录等额外操作。</li>
-</ul>
-<p>以下是执行<code>man useradd</code>获得的一段作者对于useradd的描述，可以看出useradd相比adduser是更偏底层的指令：</p>
-<blockquote>
-<p>DESCRIPTION<br>useradd is a low level utility for adding users. On Debian,<br>administrators should usually use adduser(8) instead.</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/401618">https://developer.aliyun.com/article/401618</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -1026,12 +1007,12 @@ while(1);
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">51</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">18</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
