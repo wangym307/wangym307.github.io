@@ -145,6 +145,78 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E6%9D%83%E9%99%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">linux-权限</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-22 23:34:57 / Modified: 23:40:07" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:57+08:00">2022-08-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>权限与用户、组的关系是密不可分的。<br>Linux系统中文件的ugo权限是Linux进行权限管理的基本方式，本文将介绍ugo权限的基本概念。</p>
+<h2 id="权限的概念"><a href="#权限的概念" class="headerlink" title="权限的概念"></a>权限的概念</h2><h3 id="文件的所有者和组"><a href="#文件的所有者和组" class="headerlink" title="文件的所有者和组"></a>文件的所有者和组</h3><p>Linux 文件的ugo权限把对文件的访问者划分为三个类别：文件的所有者、组和其他人。所谓的 ugo 就是指 user(也称为 owner)、group(所在组)和other(其他组)三个单词的首字母组合。</p>
+<p>通过<code>ls -al</code>指令可以查看ugo权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ ls -al /usr/bin/wireshark </span><br><span class="line">-rwxr-xr-x 1 root root 8786544 4月  20  2020 /usr/bin/wireshark</span><br></pre></td></tr></table></figure>
+
+<h3 id="文件的所有者"><a href="#文件的所有者" class="headerlink" title="文件的所有者"></a>文件的所有者</h3><p>文件的所有者一般是创建该文件的用户，对该文件具有完全的权限。在一台允许多个用户访问的Linux主机上，可以通过文件的所有者来区分一个文件属于某个用户。当然，一个用户也无权查看或更改其它用户的文件。<br>上面第一个root代表文件所有者为root。</p>
+<h3 id="文件所属的组"><a href="#文件所属的组" class="headerlink" title="文件所属的组"></a>文件所属的组</h3><p>假如有几个用户合作开发同一个项目，如果每个用户只能查看和修改自己创建的文件就太不方便了，也就谈不上什么合作了。所以需要一个机制允许一个用户查看和修改其它用户的文件，此时就用到组的概念的。我们可以创建一个组，然后把需要合作的用户都添加都这个组中。在设置文件的访问权限时，允许这个组中的用户对该文件进行读取和修改。<br>上面第二个root代表文件所属的组为root。</p>
+<h3 id="其他人"><a href="#其他人" class="headerlink" title="其他人"></a>其他人</h3><p>如果我想把一个文件共享给系统中的所有用户该怎么办？通过组的方式显然是不合适的，因为需要把系统中的所有用户都添加到一个组中。并且系统中添加了新用户该怎么办，每添加一个新用户就把他添加到这个组中吗？这个问题可以通过其他人的概念解决。在设置文件的访问权限时，允许其他人户对该文件进行读取和修改。</p>
+<h2 id="操作权限的指令"><a href="#操作权限的指令" class="headerlink" title="操作权限的指令"></a>操作权限的指令</h2><p>u：user，所有者<br>g：group，所在组<br>o：other，其他组<br>a：all，以上所有</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx g=r o=r 文件名：</span><br><span class="line">表示修改文件的所有者的权限是rwx，所在组r，其他组r，u表示所有者，g表示所在组，o表示其他组。</span><br><span class="line">chmod u+x o-x 文件名：表示所有者加上一个x权限，其他组减去一个x权限。</span><br><span class="line">chmod a=rwx 文件名 ：表示给文件所有者、所在组、其他组都设置rwx权限，a表示所有。</span><br><span class="line">chmod a+r 文件名：表示给文件所有者、所在组、其他组都加上r权限。</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html">https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -929,123 +1001,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/14/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">操作系统-调度算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-14 12:13:05 / Modified: 23:43:44" itemprop="dateCreated datePublished" datetime="2022-08-14T12:13:05+08:00">2022-08-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="调度算法的评价指标"><a href="#调度算法的评价指标" class="headerlink" title="调度算法的评价指标"></a>调度算法的评价指标</h2><p>CPU利用率：CPU忙碌的时间&#x2F;总时间</p>
-<p>系统吞吐量：单位时间内总共完成多少道作业&#x2F;进程</p>
-<p>周转时间：作业完成的时刻 - 作业提交的时刻，也等于 作业&#x2F;进程等待时间 + 作业&#x2F;进程运行时间。</p>
-<p>周转时间 &#x3D; 作业在作业队列等待被高级调度的时间 + 进程在就绪队列等待被低级调度的时间 + 进程运行的时间 + 进程等待IO操作的时间。</p>
-<p>平均周转时间：各作业周转时间之和 &#x2F; 作业数</p>
-<p>带权周转时间：作业周转时间 &#x2F; 作业实际运行的时间，带权周转时间 &gt;&#x3D; 1，越小越好。</p>
-<p>平均带权周转时间：各作业带权周转时间之和 &#x2F; 作业数</p>
-<p>等待时间： 进程&#x2F;作业 处于等待CPU状态的时间之和。等于周转时间 - 运行时间。</p>
-<p>响应时间：从用户提交作业请求到该作业第一次占有CPU的时间。</p>
-<h2 id="批处理时代算法"><a href="#批处理时代算法" class="headerlink" title="批处理时代算法"></a>批处理时代算法</h2><h3 id="先来先服务算法-FCFS"><a href="#先来先服务算法-FCFS" class="headerlink" title="先来先服务算法(FCFS)"></a>先来先服务算法(FCFS)</h3><p>First Come First Serve，按照进程进入就绪队列的先后顺序调度并分配处理机执行。先来先服务调度算法是一种非抢占式的算法，先进入就绪队列的进程，先分配处理机运行。一旦一个进程占有了处理机，它就一直运行下去，直到该进程完成工作或者因为等待某事件发生而不能继续运行时才释放处理机。</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>有利于长作业以及 CPU 繁忙的作业</li>
-</ul>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>不利于短作业以及 I&#x2F;O 繁忙的作业</li>
-</ul>
-<h3 id="最短作业优先算法-SJF"><a href="#最短作业优先算法-SJF" class="headerlink" title="最短作业优先算法(SJF)"></a>最短作业优先算法(SJF)</h3><p>Shortest Job First, SJF。从就绪队列中选出一个估计运行时间最短的进程，将处理机分配给它，使它立即执行并一直执行到完成，或发生某事件而被阻塞放弃处理机时再重新调度。</p>
-<h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>比 FCFS 改善平均周转时间和平均带权周转时间，缩短作业的等待时间；</li>
-<li>提高系统的吞吐量；</li>
-</ul>
-<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>对长作业非常不利，可能长时间得不到执行；</li>
-<li>未能依据作业的紧迫程度来划分执行的优先级；</li>
-<li>难以准确估计作业（进程）的执行时间，从而影响调度性能。</li>
-</ul>
-<h3 id="高响应比优先算法-HRRN"><a href="#高响应比优先算法-HRRN" class="headerlink" title="高响应比优先算法(HRRN)"></a>高响应比优先算法(HRRN)</h3><p>Highest Response Ratio Next，HRRN。<br>前面的先来先服务算法(FCFS)对长作业有利，最短作业优先算法(SJF)对短作业有利。却都达不到对长作业和短作业调度的平衡。<br>进程(任务)的两个重要属性：等待时间和要求服务时间。<br>高响应比优先算法试图达到这个属性之间的平衡，让等待时间长+要求服务时间短（就是短作业）的任务更容易被选中。</p>
-<p>有一个量化的公式：响应比 &#x3D; （等待时间+要求服务时间）&#x2F; 要求服务时间。<br>响应比高的算法会先执行。</p>
-<h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><p>综合考虑了等待时间和运行时间（要求服务时间）。等待时间相同时，要求服务时间短的优先 ；要求服务时间相同时，等待时间长的优先 。对于长作业来说，随着等待时间越来越久，其响应比也会 越来越大，从而避免了长作业饥饿的问；</p>
-<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><p>没有考虑到作业&#x2F;进程的紧急程度；如果要求服务的时间预估错误，则高响应比算法不再有效。</p>
-<h2 id="并发时代算法"><a href="#并发时代算法" class="headerlink" title="并发时代算法"></a>并发时代算法</h2><h3 id="时间片轮转算法-RR"><a href="#时间片轮转算法-RR" class="headerlink" title="时间片轮转算法(RR)"></a>时间片轮转算法(RR)</h3><p>Round Robin，RR。在这个算法里，将系统中所有的就绪进程按照FCFS原则，排成一个队列。每次调度时将CPU分派给队首进程，让其执行一个时间片。时间片的长度从几个ms到几百ms，在一个时间片结束时，发生时钟中断。调度程序据此暂停当前进程的执行，将其送到就绪队列的末尾，并通过上下文切换执行当前的队首进程。进程可以未使用完一个时间片，就出让CPU（如阻塞）。</p>
-<p>这个算法存在一个问题，时间片的长度怎么设计？</p>
-<ul>
-<li>时间片越短，固定时间里可运行的进程就越多，可CPU说过，切换进程是要消耗他不少指令周期的，时间片过短会导致大量CPU资源浪费在切换上下文上。</li>
-<li>时间片过长，长到一个时间片能执行完每一个单独的任务时，就相当于退化为FCFS算法。这也意味着短交互指令响应会变慢。</li>
-</ul>
-<h4 id="优点-3"><a href="#优点-3" class="headerlink" title="优点"></a>优点</h4><p>公平；每个进程响应快；不会导致饥饿；</p>
-<h4 id="缺点-3"><a href="#缺点-3" class="headerlink" title="缺点"></a>缺点</h4><p>没有考虑到作业&#x2F;进程的紧急程度；时间片大小需要足够合适，否则会降低进程运行效率。</p>
-<h3 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h3><p>前面那个时间片轮转调度过于公平，实际上进程的任务的紧急程度是不一样的，有些进程可以在后台慢慢运算，而有些进程急于给用户响应。<br>所以在时间片轮转的基础上，加上了优先级，调度程既希望给每个进程轮转调度，又希望每次轮转尽可能选择高优先级的进程。</p>
-<p>每个进程将被赋予一个优先级，自己根据自己的情况确定优先级数值，但是，用户进程的优先级不准高于内核进程的优先级。切换程序的时候，先从优先级1的队列里选择一个进程，如果优先级1队列为空，才会选择优先级2中的进程，以此类推。</p>
-<h4 id="优点-4"><a href="#优点-4" class="headerlink" title="优点"></a>优点</h4><p>区分进程的紧急程度，根据优先级决定调度顺序；也可以灵活设定CPU&#x2F;IO密集型进程的优先级；</p>
-<h4 id="缺点-4"><a href="#缺点-4" class="headerlink" title="缺点"></a>缺点</h4><p>若源源不断地有高优先级进程到来，则可能导致饥饿。</p>
-<h3 id="多级反馈队列调度算法-MFQ"><a href="#多级反馈队列调度算法-MFQ" class="headerlink" title="多级反馈队列调度算法(MFQ)"></a>多级反馈队列调度算法(MFQ)</h3><p>Multilevel Feedback Queue，MFQ。</p>
-<ul>
-<li>「多级」就是就绪队列不再是一个，而是多个，每个队列优先级不同，时间片也不同。</li>
-<li>「反馈」意味着这个算法是动态的，根据当前进程的变化而变化。</li>
-</ul>
-<p>有多个队列，每个队列优先级不同，队列优先级越高，时间片越短。<br>新来的进程会先进入最高优先级队列，如果在一级队列的时间片内没有执行完，该进程会被向下送入二级队列，以此类推，直至进程执行完成。<br>只有高级队列为空时，才执行低级队列中的进程。假如正在执行低级队列中的进程，此时高级队列中来了新进程，则停止运行当前进程，转而运行高级队列中的进程。</p>
-<p>可以发现，这个算法兼顾了公平和效率。</p>
-<ul>
-<li>短作业进入高级队列可以很快被执行完毕而不会进入低级队列，保证了短作业响应速度。</li>
-<li>长作业可能在高级队列的时间片内执行不完，会被移入低级队列，虽然低级队列的优先权低，但时间片长，也就是说，低级队列被选中执行的概率相对小，但一旦被选中则执行的时间长。</li>
-</ul>
-<h4 id="优点-5"><a href="#优点-5" class="headerlink" title="优点"></a>优点</h4><p>该算法同时使用了FCFS、RR、SPF 和优先级调度算法，也集合了他们的优点，即公平、快速响应、短进程快速完成（他们可能在第一级队列就完成了）、区分进程紧急程度、灵活调整系统对CPU&#x2F;IO密集型进程的偏好；</p>
-<h4 id="缺点-5"><a href="#缺点-5" class="headerlink" title="缺点"></a>缺点</h4><p>可能导致饥饿。如不停有新进程进入1级队列，而且这些进程都是短进程，在1个时间片内就可以完成，此时下级队列的进程就一直无法持有CPU。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>批处理算法和并发算法的最大区别是：一个任务是连续执行还是按照时间片分割的。</li>
-<li>进程调度的策略至关重要，调度算法指标总结来说就是公平与效率的取舍。各种调度算法各有优势，在不同场景不同系统选择适当的调度策略。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1115,7 +1070,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>

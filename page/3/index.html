@@ -145,6 +145,75 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/" class="post-title-link" itemprop="url">makefile库函数-wildcard</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-08-28 23:45:27 / Modified: 23:45:42" itemprop="dateCreated datePublished" datetime="2022-08-28T23:45:27+08:00">2022-08-28</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：在makefile中手动一个个添加.c文件，相对来说比较繁琐。为此makefile提供了库函数wildcard，能一次性添加特定目录下符合特定规则（通常是通配符*）的所有文件。<br>由于makefile中可以直接调用shell，因此我们也可以通过shell的find语句来实现类似于wildcard的功能。</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><code>my_abs_path = $(wildcard path/to/*.c)</code></p>
+<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
+<li>wildcard返回值为以空格隔开的文件路径集合，如“path&#x2F;to&#x2F;file1.c path&#x2F;to&#x2F;file2.c”</li>
+<li>不能递归查找入参目录下的所有子目录；</li>
+<li>入参目录为相对路径，则展开之后也是相对路径，入参目录为绝对路径，则展开之后也是绝对路径；</li>
+<li><code>*.c</code>也可以是其他类型的文件，如<code>*.h，*.txt</code>等等</li>
+</ul>
+<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><p>新建一个makefile，内容为：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ABS_ROOT := $(abspath .)</span><br><span class="line">SRCS := $(wildcard src/*.c)</span><br><span class="line">ABS_SRCS := $(wildcard $(ABS_ROOT)/src/*.c)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(SRCS)</span><br><span class="line">	@echo $(ABS_SRCS)</span><br></pre></td></tr></table></figure>
+<p>执行make可以看到输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╰─± make</span><br><span class="line">src/test2.c src/test3.c src/test1.c</span><br><span class="line">/home/wang/Workspaces/learning/c/src/test2.c /home/wang/Workspaces/learning/c/src/test3.c /home/wang/Workspaces/learning/c/src/test1.c</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -866,78 +935,6 @@ while(1);
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E6%9D%83%E9%99%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">linux-权限</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:57 / Modified: 23:40:07" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:57+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>权限与用户、组的关系是密不可分的。<br>Linux系统中文件的ugo权限是Linux进行权限管理的基本方式，本文将介绍ugo权限的基本概念。</p>
-<h2 id="权限的概念"><a href="#权限的概念" class="headerlink" title="权限的概念"></a>权限的概念</h2><h3 id="文件的所有者和组"><a href="#文件的所有者和组" class="headerlink" title="文件的所有者和组"></a>文件的所有者和组</h3><p>Linux 文件的ugo权限把对文件的访问者划分为三个类别：文件的所有者、组和其他人。所谓的 ugo 就是指 user(也称为 owner)、group(所在组)和other(其他组)三个单词的首字母组合。</p>
-<p>通过<code>ls -al</code>指令可以查看ugo权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ ls -al /usr/bin/wireshark </span><br><span class="line">-rwxr-xr-x 1 root root 8786544 4月  20  2020 /usr/bin/wireshark</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件的所有者"><a href="#文件的所有者" class="headerlink" title="文件的所有者"></a>文件的所有者</h3><p>文件的所有者一般是创建该文件的用户，对该文件具有完全的权限。在一台允许多个用户访问的Linux主机上，可以通过文件的所有者来区分一个文件属于某个用户。当然，一个用户也无权查看或更改其它用户的文件。<br>上面第一个root代表文件所有者为root。</p>
-<h3 id="文件所属的组"><a href="#文件所属的组" class="headerlink" title="文件所属的组"></a>文件所属的组</h3><p>假如有几个用户合作开发同一个项目，如果每个用户只能查看和修改自己创建的文件就太不方便了，也就谈不上什么合作了。所以需要一个机制允许一个用户查看和修改其它用户的文件，此时就用到组的概念的。我们可以创建一个组，然后把需要合作的用户都添加都这个组中。在设置文件的访问权限时，允许这个组中的用户对该文件进行读取和修改。<br>上面第二个root代表文件所属的组为root。</p>
-<h3 id="其他人"><a href="#其他人" class="headerlink" title="其他人"></a>其他人</h3><p>如果我想把一个文件共享给系统中的所有用户该怎么办？通过组的方式显然是不合适的，因为需要把系统中的所有用户都添加到一个组中。并且系统中添加了新用户该怎么办，每添加一个新用户就把他添加到这个组中吗？这个问题可以通过其他人的概念解决。在设置文件的访问权限时，允许其他人户对该文件进行读取和修改。</p>
-<h2 id="操作权限的指令"><a href="#操作权限的指令" class="headerlink" title="操作权限的指令"></a>操作权限的指令</h2><p>u：user，所有者<br>g：group，所在组<br>o：other，其他组<br>a：all，以上所有</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx g=r o=r 文件名：</span><br><span class="line">表示修改文件的所有者的权限是rwx，所在组r，其他组r，u表示所有者，g表示所在组，o表示其他组。</span><br><span class="line">chmod u+x o-x 文件名：表示所有者加上一个x权限，其他组减去一个x权限。</span><br><span class="line">chmod a=rwx 文件名 ：表示给文件所有者、所在组、其他组都设置rwx权限，a表示所有。</span><br><span class="line">chmod a+r 文件名：表示给文件所有者、所在组、其他组都加上r权限。</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html">https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1007,7 +1004,7 @@ while(1);
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">51</span>
+          <span class="site-state-item-count">52</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
