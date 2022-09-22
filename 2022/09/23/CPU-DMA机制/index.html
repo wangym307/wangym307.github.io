@@ -20,19 +20,19 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="关于博客每一种编程语言的学习都以”hello world”开始(和结束)，不如个人博客也以一篇”hello world”开始吧hh~。搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会">
+  <meta name="description" content="简介定义DMA，全称Direct Memory Access，即直接存储器访问。DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。 优势DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://example.com/2022/06/25/hello-world/index.html">
+<meta property="og:title" content="CPU-DMA机制">
+<meta property="og:url" content="http://example.com/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
-<meta property="og:description" content="关于博客每一种编程语言的学习都以”hello world”开始(和结束)，不如个人博客也以一篇”hello world”开始吧hh~。搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会">
+<meta property="og:description" content="简介定义DMA，全称Direct Memory Access，即直接存储器访问。DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。 优势DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2022-06-25T07:51:49.007Z">
-<meta property="article:modified_time" content="2022-08-04T23:34:50.528Z">
+<meta property="article:published_time" content="2022-09-22T23:58:18.000Z">
+<meta property="article:modified_time" content="2022-09-22T23:59:01.676Z">
 <meta property="article:author" content="WaterYoungMan">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://example.com/2022/06/25/hello-world/">
+<link rel="canonical" href="http://example.com/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/">
 
 
 <script id="page-configurations">
@@ -45,7 +45,7 @@
   };
 </script>
 
-  <title>Hello World | WaterYoungMan's Blog</title>
+  <title>CPU-DMA机制 | WaterYoungMan's Blog</title>
   
 
 
@@ -150,7 +150,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/25/hello-world/">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.gif">
@@ -163,7 +163,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          CPU-DMA机制
         </h1>
 
         <div class="post-meta">
@@ -172,16 +172,10 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
+              
 
-              <time title="Created: 2022-06-25 15:51:49" itemprop="dateCreated datePublished" datetime="2022-06-25T15:51:49+08:00">2022-06-25</time>
+              <time title="Created: 2022-09-23 07:58:18 / Modified: 07:59:01" itemprop="dateCreated datePublished" datetime="2022-09-23T07:58:18+08:00">2022-09-23</time>
             </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-05 07:34:50" itemprop="dateModified" datetime="2022-08-05T07:34:50+08:00">2022-08-05</time>
-              </span>
 
           
 
@@ -194,26 +188,24 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>每一种编程语言的学习都以”hello world”开始(<del>和结束</del>)，不如个人博客也以一篇”hello world”开始吧hh~。<br>搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。<br>恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。<br>于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会包括以下几个主要内容：</p>
+        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>DMA，全称Direct Memory Access，即直接存储器访问。<br>DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。</p>
+<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据的通道，使得CPU的效率大大提高。<br>DMA传输对于高效能嵌入式系统算法和网络非常重要。</p>
+<h3 id="传输范围"><a href="#传输范围" class="headerlink" title="传输范围"></a>传输范围</h3><ul>
+<li>外设到内存</li>
+<li>内存到外设</li>
+<li>内存到内存</li>
+</ul>
+<h3 id="CPU和DMA访问内存的冲突"><a href="#CPU和DMA访问内存的冲突" class="headerlink" title="CPU和DMA访问内存的冲突"></a>CPU和DMA访问内存的冲突</h3><p>CPU和DMA同时需要访问内存总线时，两者是如何协调工作的，常见的方式有以下3种：</p>
 <ul>
-<li>将个人这几年做嵌入式程序开发的技术笔记做一些整理。</li>
-<li>输出一些技术文章专栏。</li>
-<li>记录一些个人思考、想法。</li>
-<li>分享一些书籍、电影。</li>
+<li>DMA传输期间停止CPU访问内存</li>
+<li>I&#x2F;O设备周期性挪用内存</li>
+<li>DMA与CPU交替访问内存</li>
 </ul>
-<p>看到有些欣赏的博客网站维护了几年，因为这样那样的原因停更了，有点可惜。<br>希望自己能多多坚持。</p>
-<h2 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h2><p>世界上只有一种真正的英雄主义，就是认清了生活的真相后还依然热爱生活。</p>
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
-<li>程序员(IoT上市公司某技术研发组长)</li>
-<li>中国最”水”大学工科硕士(毕业)</li>
-<li>阅读爱好者（小说、传记、历史、哲学）</li>
-<li>热衷于学习一切事物（技多不压身）</li>
-<li>经常在钱塘江边夜跑（吹江风）</li>
-<li>篮球、羽毛球、乒乓球（球类爱好者）</li>
-<li>会跳一点hiphop（强身健体）</li>
-<li>有一个单反（瞎拍一些照片）</li>
-<li>有一只猫（英短银渐层）</li>
-</ul>
+<p>对于一个已经量产的CPU，选用以上哪种方式已经确定。</p>
+<h2 id="DMA传输流程"><a href="#DMA传输流程" class="headerlink" title="DMA传输流程"></a>DMA传输流程</h2><h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><p>CPU对DMA控制器初始化，并向I&#x2F;O接口发出操作命令，I&#x2F;O接口提出DMA请求。</p>
+<h3 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h3><p>DMA控制器对DMA请求判别优先级及屏蔽，向总线裁决逻辑提出总线请求。当CPU执行完当前总线周期即可释放总线控制权。此时，总线裁决逻辑输出总线应答，表示DMA已经响应，通过DMA控制器通知I&#x2F;O接口开始DMA传输。</p>
+<h3 id="传输"><a href="#传输" class="headerlink" title="传输"></a>传输</h3><p>DMA控制器获得总线控制权后，CPU即刻挂起或只执行内部操作，由DMA控制器输出读写命令，直接控制RAM与I&#x2F;O接口进行DMA传输。<br>在DMA控制器的控制下，在存储器和外部设备之间直接进行数据传送，在传送过程中不需要中央处理器的参与。开始时需提供要传送的数据的起始位置和数据长度。</p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>当完成规定的成批数据传送后，DMA控制器即释放总线控制权，并向I&#x2F;O接口发出结束信号。当I&#x2F;O接口收到结束信号后，一方面停 止I&#x2F;O设备的工作，另一方面向CPU提出中断请求，使CPU从不介入的状态解脱，并执行一段检查本次DMA传输操作正确性的代码。最后，带着本次操作结果及状态继续执行原来的程序。</p>
 
     </div>
 
@@ -228,11 +220,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2022/06/28/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF-RSSI%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" rel="next" title="无线技术-RSSI基本概念">
-      无线技术-RSSI基本概念 <i class="fa fa-chevron-right"></i>
+    <a href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" rel="prev" title="编程方法论-面向对象">
+      <i class="fa fa-chevron-left"></i> 编程方法论-面向对象
     </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -291,7 +283,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">关于博客</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E7%94%9F%E6%B4%BB"><span class="nav-number">2.</span> <span class="nav-text">关于生活</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E4%BA%8E%E6%88%91"><span class="nav-number">3.</span> <span class="nav-text">关于我</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">1.</span> <span class="nav-text">简介</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%98%E5%8A%BF"><span class="nav-number">1.2.</span> <span class="nav-text">优势</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93%E8%8C%83%E5%9B%B4"><span class="nav-number">1.3.</span> <span class="nav-text">传输范围</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU%E5%92%8CDMA%E8%AE%BF%E9%97%AE%E5%86%85%E5%AD%98%E7%9A%84%E5%86%B2%E7%AA%81"><span class="nav-number">1.4.</span> <span class="nav-text">CPU和DMA访问内存的冲突</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DMA%E4%BC%A0%E8%BE%93%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">DMA传输流程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%B7%E6%B1%82"><span class="nav-number">2.1.</span> <span class="nav-text">请求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%93%8D%E5%BA%94"><span class="nav-number">2.2.</span> <span class="nav-text">响应</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BC%A0%E8%BE%93"><span class="nav-number">2.3.</span> <span class="nav-text">传输</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%BB%93%E6%9D%9F"><span class="nav-number">2.4.</span> <span class="nav-text">结束</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
