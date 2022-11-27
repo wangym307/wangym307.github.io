@@ -145,6 +145,94 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" class="post-title-link" itemprop="url">在linux下模拟AP热点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-11-27 23:33:40 / Modified: 23:34:15" itemprop="dateCreated datePublished" datetime="2022-11-27T23:33:40+08:00">2022-11-27</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><p>在Linux PC下使用WiFi网卡仿真一个AP热点需要如下3步，对应需要的组件分别为：</p>
+<ul>
+<li>创建WiFi AP：hostapd</li>
+<li>使能DHCP功能：udhcpd(或dnsmasq)</li>
+<li>使能NAT(路由转发)功能：iptables</li>
+</ul>
+<p>如果热点下的设备不需要上网，则配置前两步即可。</p>
+<h2 id="安装相应工具"><a href="#安装相应工具" class="headerlink" title="安装相应工具"></a>安装相应工具</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install hostapd</span><br><span class="line">sudo apt install udhcpd</span><br></pre></td></tr></table></figure>
+
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><p>1.如果当前wifi网卡正在作为STATION模式使用，可能会导致多个进程同时操作wifi，出现冲突，建议先关闭<code>network-manager</code>（ubuntu默认安装的网络管理服务）：<br><code>sudo service network-manager stop</code><br>恢复方法：<code>sudo service network-manager start</code><br>注意，关闭network-manager服务也会同时关闭有线网卡的使用，如果需要有线上网功能，也可以仅手动关闭wifi网卡。<br>2.如果之前开启的进程未完全结束，可能需要清除历史进程及缓存：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo killall hostapd udhcpd</span><br><span class="line">sudo rfkill unblock all</span><br></pre></td></tr></table></figure>
+
+<h3 id="创建WiFi-AP"><a href="#创建WiFi-AP" class="headerlink" title="创建WiFi AP"></a>创建WiFi AP</h3><ol>
+<li>新建配置文件test_hostapd.conf，可参考：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface=wlp4s0</span><br><span class="line">ctrl_interface_group=0</span><br><span class="line">ieee80211n=1</span><br><span class="line">ssid=m_test_ap</span><br><span class="line">hw_mode=g</span><br><span class="line">channel=6</span><br><span class="line">max_num_sta=1</span><br><span class="line">macaddr_acl=0</span><br><span class="line">beacon_int=100</span><br><span class="line">ignore_broadcast_ssid=0</span><br></pre></td></tr></table></figure>
+其中<code>wlp4s0</code>为wifi网卡在linux系统中的名称，可以通过<code>ip addr</code>或者<code>ifconfig</code>指令查看。</li>
+<li>运行hostapd进程<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo hostapd test_hostapd.conf -B</span><br><span class="line">(其中-B代表放到后台执行)</span><br></pre></td></tr></table></figure>
+说明：创建AP这一步，其实仅是让WiFi网卡拥有发送AP beacon和收发auth，assoc等管理帧的能力。<br>此时如果有WiFi STA连上这台AP，还无法通过dhcp获取动态ip地址。</li>
+</ol>
+<h3 id="为创建的AP使能dhcp功能"><a href="#为创建的AP使能dhcp功能" class="headerlink" title="为创建的AP使能dhcp功能"></a>为创建的AP使能dhcp功能</h3><p>上面已经提到，使能dhcp可以通过udhcpd或dnsmasq工具来实现，本文提供udhcpd的用法。</p>
+<ol>
+<li>新建配置文件test_udhcpd.conf，可参考：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">start		192.168.30.20	</span><br><span class="line">end		192.168.30.254	</span><br><span class="line">interface	wlp4s0		</span><br><span class="line">remaining	yes		</span><br><span class="line">opt	dns	8.8.8.8 114.114.114.114</span><br><span class="line">option	subnet	255.255.255.0</span><br><span class="line">opt	router	192.168.30.1</span><br></pre></td></tr></table></figure></li>
+<li>为AP设置ip地址，<code>sudo ip addr add dev wlp4s0 192.168.30.1</code>。</li>
+<li>如果出现STA连上AP连上ARP不回复的情况，可以尝试修改路由表：<code>sudo ip route add dev wlp4s0 default</code></li>
+<li>运行udhcpd进程，<code>sudo udhcpd -f test_udhcpd.conf &amp; </code></li>
+</ol>
+<h3 id="NAT路由功能"><a href="#NAT路由功能" class="headerlink" title="NAT路由功能"></a>NAT路由功能</h3><p>如连接热点的设备需连接因特网，则需要执行此步骤。<br>需用到iptables工具，本文不展开。</p>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://wiki.alpinelinux.org/wiki/Wireless_AP_with_udhcpd_and_NAT">https://wiki.alpinelinux.org/wiki/Wireless_AP_with_udhcpd_and_NAT</a></li>
+<li><a target="_blank" rel="noopener" href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-dhcp-configuring-server">https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-dhcp-configuring-server</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -894,102 +982,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">ARM-芯片启动流程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-05 00:37:53 / Modified: 00:43:23" itemprop="dateCreated datePublished" datetime="2022-09-05T00:37:53+08:00">2022-09-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="芯片启动流程"><a href="#芯片启动流程" class="headerlink" title="芯片启动流程"></a>芯片启动流程</h2><p>在MCU(CPU)上执行C语言编译的可执行文件时，基本可以将启动流程分为以下3个阶段：</p>
-<ul>
-<li>初始化阶段</li>
-<li>执行阶段</li>
-<li>退出阶段</li>
-</ul>
-<p>ARM芯片也不例外，仅与其他架构芯片有一些细节上的不同。</p>
-<h2 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h2><h3 id="硬件初始化"><a href="#硬件初始化" class="headerlink" title="硬件初始化"></a>硬件初始化</h3><p>硬件初始化通常在启动代码cstartup.s中执行，如果需要，还可以通过用户提供的额外低级接口<code>__low_level_init</code>来执行用户自己的代码。它可能包括重置&#x2F;启动其余硬件，设置CPU等，以准备软件c&#x2F;c++系统初始化。</p>
-<ul>
-<li>当cpu复位的时候，，程序将从系统启动代码中的程序入口entry开始执行。</li>
-<li>堆栈指针初始化为 CSTACK 块的末尾。</li>
-<li>对于Arm7&#x2F;9&#x2F;11、Cortex-A和Cortex-R器件，异常堆栈指针初始化为每个相应部分的末尾。</li>
-<li>如果用户定义了函数<code>__low_level_init</code>，则为应用程序提供执行早期初始化的机会。</li>
-</ul>
-<h3 id="c-x2F-c-软件系统初始化"><a href="#c-x2F-c-软件系统初始化" class="headerlink" title="c&#x2F;c++软件系统初始化"></a>c&#x2F;c++软件系统初始化</h3><p>通常，此步操作确保在调用 main 函数之前，每个全局（静态链接）的 C&#x2F;C++符号都会收到其正确的初始化值。</p>
-<ul>
-<li>静态和全局变量初始化。也就是说，清零初始化为零的变量，并将其他初始化变量的值从 ROM 复制到 RAM 存储器。 如果<code>__low_level_init</code>返回零，则跳过此步骤。</li>
-<li>在标准 C 中，所有静态变量（在固定内存地址分配的变量）必须由运行时系统初始化为应用程序启动时的已知值。此值是分配给变量的显式值，或者如果没有给出值，则将其清零。在编译器中，此规则有例外，例如声明为<code>__no_init</code>的变量，它们根本没有初始化。<ul>
-<li>对于已经初始化的数据，从ROM复制到RAM</li>
-<li>对于未初始化的数据，用零填充</li>
-</ul>
-</li>
-<li>构造静态 C++ 对象。</li>
-<li>调用主函数，启动应用程序。</li>
-</ul>
-<h3 id="应用程序初始化"><a href="#应用程序初始化" class="headerlink" title="应用程序初始化"></a>应用程序初始化</h3><p>就是用户自己的程序部分。这完全取决于用户的应用程序：对于带操作系统的应用程序，它可以包括设置RTOS内核并启动RTOS驱动的应用程序的初始任务；对于裸机应用程序，它可以包括设置各种中断，初始化通信，初始化设备等。<br>对于基于 ROM&#x2F;flash 的系统，常量和函数已经放在 ROM 中。 放置在 RAM 中的所有符号必须在调用main函数之前初始化。链接器已将可用RAM划分为变量，堆栈，堆等的不同区域。</p>
-<ul>
-<li>当应用程序启动时，系统启动代码首先执行硬件初始化，例如初始化栈顶指针以指向预定义堆栈区域的末尾：</li>
-</ul>
-<h2 id="执行阶段"><a href="#执行阶段" class="headerlink" title="执行阶段"></a>执行阶段</h2><p>这里的执行阶段指的是应用程序的执行。<br>应用程序可以是无操作系统，也可以是有操作系统。</p>
-<h2 id="退出阶段"><a href="#退出阶段" class="headerlink" title="退出阶段"></a>退出阶段</h2><p>大多数情况，应用程序是在一个循环中执行，不涉及退出。<br>如果一定要中途退出main函数，有两种方法：</p>
-<ul>
-<li>在main函数中执行return；</li>
-<li>执行exit()；</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://itexp.blog.csdn.net/article/details/80217199">https://itexp.blog.csdn.net/article/details/80217199</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1059,7 +1051,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">54</span>
+          <span class="site-state-item-count">55</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
