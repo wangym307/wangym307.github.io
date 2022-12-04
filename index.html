@@ -145,6 +145,107 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="WaterYoungMan">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="WaterYoungMan's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">linux内核-进程调度算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2022-12-05 00:04:04 / Modified: 00:04:45" itemprop="dateCreated datePublished" datetime="2022-12-05T00:04:04+08:00">2022-12-05</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux内核的三种调度算法：</p>
+<ol>
+<li>SCHED_OTHER分时调度策略，</li>
+<li>SCHED_FIFO实时调度策略，先到先服务</li>
+<li>SCHED_RR实时调度策略，时间片轮转</li>
+</ol>
+<p>实时进程将得到优先调用，实时进程根据实时优先级决定调度权值，分时进程则通过nice和counter值决定权值，nice越小，counter越大，被调度的概率越大，也就是曾经使用了cpu最少的进程将会得到优先调度。</p>
+<h2 id="SHCED-RR和SCHED-FIFO对比"><a href="#SHCED-RR和SCHED-FIFO对比" class="headerlink" title="SHCED_RR和SCHED_FIFO对比"></a>SHCED_RR和SCHED_FIFO对比</h2><h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ul>
+<li>当采用SHCED_RR策略的进程的时间片用完，系统将重新分配时间片，并置于就绪队列尾。放在队列尾保证了所有具有相同优先级的RR任务的调度公平。</li>
+<li>SCHED_FIFO一旦占用cpu则一直运行。一直运行直到有更高优先级任务到达或自己放弃。</li>
+<li>如果有相同优先级的实时进程（根据优先级计算的调度权值是一样的）已经准备好，FIFO时必须等待该进程主动放弃后才可以运行这个优先级相同的任务。而RR可以让每个任务都执行一段时间。</li>
+</ul>
+<h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>SHCED_RR和SHCED_FIFO都只用于实时任务。<br>创建时优先级大于0(1-99)。<br>按照可抢占优先级调度算法进行。<br>就绪态的实时任务立即抢占非实时任务。<br>所有任务都采用linux分时调度策略时。</p>
+<ol>
+<li>创建任务指定采用分时调度策略，并指定优先级nice值(-20~19)。</li>
+<li>将根据每个任务的nice值确定在cpu上的执行时间(counter)。</li>
+<li>如果没有等待资源，则将该任务加入到就绪队列中。</li>
+<li>调度程序遍历就绪队列中的任务，通过对每个任务动态优先级的计算(counter+20-nice)结果，选择计算结果最大的一个去运行，当这个时间片用完后(counter减至0)或者主动放弃cpu时，该任务将被放在就绪队列末尾(时间片用完)或等待队列(因等待资源而放弃cpu)中。</li>
+<li>此时调度程序重复上面计算过程，转到第4步。</li>
+<li>当调度程序发现所有就绪任务计算所得的权值都为不大于0时，重复第2步。</li>
+</ol>
+<h2 id="不通调度算法的差异"><a href="#不通调度算法的差异" class="headerlink" title="不通调度算法的差异"></a>不通调度算法的差异</h2><h3 id="所有任务都采用FIFO时"><a href="#所有任务都采用FIFO时" class="headerlink" title="所有任务都采用FIFO时:"></a>所有任务都采用FIFO时:</h3><ol>
+<li>创建进程时指定采用FIFO，并设置实时优先级rt_priority(1-99)。</li>
+<li>如果没有等待资源，则将该任务加入到就绪队列中。</li>
+<li>调度程序遍历就绪队列，根据实时优先级计算调度权值(1000+rt_priority),选择权值最高的任务使用cpu，该FIFO任务将一直占有cpu直到有优先级更高的任务就绪(即使优先级相同也不行)或者主动放弃(等待资源)。</li>
+<li>调度程序发现有优先级更高的任务到达(高优先级任务可能被中断或定时器任务唤醒，再或被当前运行的任务唤醒，等等)，则调度程序立即在当前任务堆栈中保存当前cpu寄存器的所有数据，重新从高优先级任务的堆栈中加载寄存器数据到cpu，此时高优先级的任务开始运行。重复第3步。</li>
+<li>如果当前任务因等待资源而主动放弃cpu使用权，则该任务将从就绪队列中删除，加入等待队列，此时重复第3步。</li>
+</ol>
+<h3 id="所有任务都采用RR调度策略时："><a href="#所有任务都采用RR调度策略时：" class="headerlink" title="所有任务都采用RR调度策略时："></a>所有任务都采用RR调度策略时：</h3><ol>
+<li>创建任务时指定调度参数为RR，并设置任务的实时优先级和nice值(nice值将会转换为该任务的时间片的长度)。</li>
+<li>如果没有等待资源，则将该任务加入到就绪队列中。</li>
+<li>调度程序遍历就绪队列，根据实时优先级计算调度权值(1000+rt_priority),选择权值最高的任务使用cpu。</li>
+<li>如果就绪队列中的RR任务时间片为0，则会根据nice值设置该任务的时间片，同时将该任务放入就绪队列的末尾。重复步骤3。</li>
+<li>当前任务由于等待资源而主动退出cpu，则其加入等待队列中。重复步骤3。</li>
+</ol>
+<h3 id="系统中既有分时调度，又有时间片轮转调度和先进先出调度时："><a href="#系统中既有分时调度，又有时间片轮转调度和先进先出调度时：" class="headerlink" title="系统中既有分时调度，又有时间片轮转调度和先进先出调度时："></a>系统中既有分时调度，又有时间片轮转调度和先进先出调度时：</h3><ol>
+<li>RR调度和FIFO调度的进程属于实时进程，以分时调度的进程是非实时进程。</li>
+<li>当实时进程准备就绪后，如果当前cpu正在运行非实时进程，则实时进程立即抢占非实时进程。</li>
+<li>RR进程和FIFO进程都采用实时优先级做为调度的权值标准，RR是FIFO的一个延伸。FIFO时，如果两个进程的优先级一样，则这两个优先级一样的进程具体执行哪一个是由其在队列中的未知决定的，这样导致一些不公正性(优先级是一样的，为什么要让你一直运行?),如果将两个优先级一样的任务的调度策略都设为RR,则保证了这两个任务可以循环执行，保证了公平。</li>
+</ol>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://my.oschina.net/u/4388097/blog/4239249">https://my.oschina.net/u/4388097/blog/4239249</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
     <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -880,108 +981,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">ARM-芯片架构简介</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-09-05 00:58:54" itemprop="dateCreated datePublished" datetime="2022-09-05T00:58:54+08:00">2022-09-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-07 00:34:09" itemprop="dateModified" datetime="2022-09-07T00:34:09+08:00">2022-09-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ARM(Advanced RISC Machine)架构。是一个精简指令集(RISC,Reduced Instruction Set Computer)处理器架构家族，具有低成本、高性能、低耗电的特性。<br>ARM架构广泛应用在嵌入式系统，现在也有应用在个人计算机（Apple M1）和超级计算机中。</p>
-<ul>
-<li>与ARM同属精简指令集架构的还有RISC-V，MIPS，Xtensa等。</li>
-<li>与精简指令集相对应的是复杂指令集（CISC,Complex Instruction Set Computer），代表架构为X86。</li>
-</ul>
-<h2 id="ARM架构范畴"><a href="#ARM架构范畴" class="headerlink" title="ARM架构范畴"></a>ARM架构范畴</h2><p>ARM架构的主要范畴整理如下：</p>
-<table>
-<thead>
-<tr>
-<th>条目</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>指令集</td>
-<td>每条指令的功能；指令如何在内存中表示(它的编码)</td>
-</tr>
-<tr>
-<td>寄存器组</td>
-<td>有多少寄存器；寄存器的大小；寄存器的功能；寄存器的初始状态</td>
-</tr>
-<tr>
-<td>异常模型</td>
-<td>不同的权限级别；异常的类型；从异常中获取或返回时会发生什么</td>
-</tr>
-<tr>
-<td>内存模型</td>
-<td>内存访问是如何排序的；缓存是如何运作的，什么时候以及软件必须如何执行显式维护</td>
-</tr>
-<tr>
-<td>调试、跟踪和分析</td>
-<td>如何设置和触发断点；跟踪工具可以捕获什么信息，以什么格式捕获</td>
-</tr>
-<tr>
-<td>安全性扩展(TrustZone)</td>
-<td>安全性扩展，隔离某些资源</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1051,7 +1050,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">55</span>
+          <span class="site-state-item-count">56</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
