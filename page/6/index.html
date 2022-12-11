@@ -1,866 +1,205 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>WaterYoungMan's Blog</title><meta name="author" content="WaterYoungMan"><meta name="copyright" content="WaterYoungMan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="WaterYoungMan&#39;s Blog">
 <meta property="og:url" content="http://example.com/page/6/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="WaterYoungMan">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/page/6/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'en'
-  };
-</script>
-
-  <title>WaterYoungMan's Blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/6/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WaterYoungMan\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-11 23:57:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WaterYoungMan's Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%87%BD%E6%95%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%87%BD%E6%95%B0/" class="post-title-link" itemprop="url">shell学习-函数</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-01 07:59:58 / Modified: 08:00:21" itemprop="dateCreated datePublished" datetime="2022-08-01T07:59:58+08:00">2022-08-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="有返回值函数"><a href="#有返回值函数" class="headerlink" title="有返回值函数"></a>有返回值函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">demoFun()&#123;</span><br><span class="line">    echo &quot;这是我的第一个 shell 函数!&quot;</span><br><span class="line">&#125;</span><br><span class="line">echo &quot;-----函数开始执行-----&quot;</span><br><span class="line">demoFun</span><br><span class="line">echo &quot;-----函数执行完毕-----&quot;</span><br></pre></td></tr></table></figure>
-<h2 id="无返回值函数"><a href="#无返回值函数" class="headerlink" title="无返回值函数"></a>无返回值函数</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">funWithReturn()&#123;</span><br><span class="line">    echo &quot;这个函数会对输入的两个数字进行相加运算...&quot;</span><br><span class="line">    echo &quot;输入第一个数字: &quot;</span><br><span class="line">    read aNum</span><br><span class="line">    echo &quot;输入第二个数字: &quot;</span><br><span class="line">    read anotherNum</span><br><span class="line">    echo &quot;两个数字分别为 $aNum 和 $anotherNum !&quot;</span><br><span class="line">    return $(($aNum+$anotherNum))</span><br><span class="line">&#125;</span><br><span class="line">funWithReturn</span><br></pre></td></tr></table></figure>
-<p>echo “输入的两个数字之和为 $? !”</p>
-<h2 id="函数入参"><a href="#函数入参" class="headerlink" title="函数入参"></a>函数入参</h2><p>在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表示第一个参数，$2表示第二个参数…</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">funWithParam()&#123;</span><br><span class="line">    echo &quot;第一个参数为 $1 !&quot;</span><br><span class="line">    echo &quot;第二个参数为 $2 !&quot;</span><br><span class="line">    echo &quot;第十个参数为 $10 !&quot;</span><br><span class="line">    echo &quot;第十个参数为 $&#123;10&#125; !&quot;</span><br><span class="line">    echo &quot;第十一个参数为 $&#123;11&#125; !&quot;</span><br><span class="line">    echo &quot;参数总数有 $# 个!&quot;</span><br><span class="line">    echo &quot;作为一个字符串输出所有参数 $* !&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考：<a target="_blank" rel="noopener" href="https://www.runoob.com/linux/linux-shell-func.html">https://www.runoob.com/linux/linux-shell-func.html</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%8F%98%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%8F%98%E9%87%8F/" class="post-title-link" itemprop="url">shell学习-变量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-01 07:57:51 / Modified: 07:58:54" itemprop="dateCreated datePublished" datetime="2022-08-01T07:57:51+08:00">2022-08-01</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>shell的变量通常只需要掌握3种类型：数字、字符串、数组</p>
-<h2 id="数字"><a href="#数字" class="headerlink" title="数字"></a>数字</h2><p>A&#x3D;1<br>注意：<br>&#x3D;的前后不能有空格</p>
-<h2 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h2><h3 id="单引号"><a href="#单引号" class="headerlink" title="单引号"></a>单引号</h3><p>str&#x3D;’this is a string’<br>单引号字符串的限制：</p>
-<ul>
-<li>单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；</li>
-<li>单引号字串中不能出现单独一个的单引号（对单引号使用转义符后也不行），但可成对出现，作为字符串拼接使用。</li>
-</ul>
-<h3 id="双引号"><a href="#双引号" class="headerlink" title="双引号"></a>双引号</h3><p>实例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">your_name=&quot;xiaoming&quot;</span><br><span class="line">str=&quot;Hello, I know you are \&quot;$your_name\&quot;! \n&quot;</span><br><span class="line">echo -e $str</span><br><span class="line">输出结果为：</span><br><span class="line">Hello, I know you are &quot;xiaoming&quot;! </span><br></pre></td></tr></table></figure>
-<p>双引号的优点：</p>
-<ul>
-<li>双引号里可以有变量</li>
-<li>双引号里可以出现转义字符</li>
-</ul>
-<h3 id="拼接字符串"><a href="#拼接字符串" class="headerlink" title="拼接字符串"></a>拼接字符串</h3><p>实例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">your_name=&quot;runoob&quot;</span><br><span class="line">使用双引号拼接</span><br><span class="line">greeting=&quot;hello, &quot;$your_name&quot; !&quot;</span><br><span class="line">greeting_1=&quot;hello, $&#123;your_name&#125; !&quot;</span><br><span class="line">echo $greeting  $greeting_1</span><br><span class="line"></span><br><span class="line">使用单引号拼接</span><br><span class="line">greeting_2=&#x27;hello, &#x27;$your_name&#x27; !&#x27;</span><br><span class="line">greeting_3=&#x27;hello, $&#123;your_name&#125; !&#x27;</span><br><span class="line">echo $greeting_2  $greeting_3</span><br></pre></td></tr></table></figure>
-<p>输出结果为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hello, runoob ! hello, runoob !</span><br><span class="line">hello, runoob ! hello, $&#123;your_name&#125; !</span><br></pre></td></tr></table></figure>
-<h3 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h3><p>实例</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">string=&quot;abcd&quot;</span><br><span class="line">echo $&#123;#string&#125;   # 输出 4</span><br></pre></td></tr></table></figure>
-<p>变量为数组时，$</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/20/WiFi%E5%9F%BA%E7%A1%80-WiFi%E7%9A%84%E5%8E%86%E5%8F%B2%E4%B8%8E%E7%89%88%E6%9C%AC%E6%BC%94%E8%BF%9B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/20/WiFi%E5%9F%BA%E7%A1%80-WiFi%E7%9A%84%E5%8E%86%E5%8F%B2%E4%B8%8E%E7%89%88%E6%9C%AC%E6%BC%94%E8%BF%9B/" class="post-title-link" itemprop="url">WiFi基础-WiFi的历史与版本演进</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-07-20 23:25:15 / Modified: 23:27:20" itemprop="dateCreated datePublished" datetime="2022-07-20T23:25:15+08:00">2022-07-20</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="WiFi的历史"><a href="#WiFi的历史" class="headerlink" title="WiFi的历史"></a>WiFi的历史</h2><h3 id="WLAN"><a href="#WLAN" class="headerlink" title="WLAN"></a>WLAN</h3><p>Wireless Local Area Network，无线局域网。<br>是计算机网络与无线通信技术相结合的产物，用无线的方式实现传统有线局域网的功能。</p>
-<h3 id="IEEE-802委员会"><a href="#IEEE-802委员会" class="headerlink" title="IEEE 802委员会"></a>IEEE 802委员会</h3><p>IEEE的全称是Institute of Electrical and Electronics Engineers ，美国电气和电子工程师协会。<br>IEEE 802委员会是IEEE下的一个机构，成立于1980年2月，它的任务是制定局域网和城域网标准。<br>IEEE 802定义的服务和协议限定在OSI模型[OSI网络参考模型]的最低两层（即物理层和数据链路层）。事实上，IEEE 802将OSI的数据链路层分为两个子层，分别是逻辑链路控制(Logical Link Control, LLC)和介质访问控制(Media Access Control, MAC)，如下所示：</p>
-<ul>
-<li>数据链路层<ul>
-<li>逻辑链路控制子层</li>
-<li>介质访问控制子层</li>
-</ul>
-</li>
-<li>物理层</li>
-</ul>
-<p>我们所使用的以太网(802.3)，WiFi(802.11)，蓝牙(802.15.1)等协议都是源自于IEEE 802委员会制定的标准。</p>
-<h3 id="IEEE-802-11"><a href="#IEEE-802-11" class="headerlink" title="IEEE 802.11"></a>IEEE 802.11</h3><p>IEEE 802.11 是IEEE 802委员会所制定的一系列技术性标准。<br>目前已经产生了多个版本，如</p>
-<ul>
-<li>802.11a</li>
-<li>802.11b</li>
-<li>802.11g</li>
-<li>802.11n</li>
-<li>802.11ac</li>
-<li>802.11ax</li>
-</ul>
-<p>目前在IoT领域应用最广泛的是802.11b&#x2F;g&#x2F;n。<br>近年来许多路由器和手机也开始支持802.11ax，即WiFi 6.</p>
-<h3 id="WiFi"><a href="#WiFi" class="headerlink" title="WiFi"></a>WiFi</h3><p>WiFi是WiFi联盟（Wi-Fi Alliance）所制定的一系列商业化标准，WiFi联盟将IEEE 802.11的一系列标准应用到工业生产和商业产品中。我们平时所说的WiFi协议也就是IEEE 802.11系列协议。<br>WiFi也是WiFi联盟拥有的一个商标。<br>WiFi全称为Wireless-Fidelity（无线保真），又可写作Wi-Fi。</p>
-<h2 id="IEEE-802-11各代版本对比"><a href="#IEEE-802-11各代版本对比" class="headerlink" title="IEEE 802.11各代版本对比"></a>IEEE 802.11各代版本对比</h2><table>
-<thead>
-<tr>
-<th>版本号</th>
-<th>协议</th>
-<th>发布时间</th>
-<th>频率(Ghz)</th>
-<th>最大传输速度(Mbps)</th>
-<th>调制方式</th>
-<th>性能演变</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>WiFi 1</td>
-<td>802.11</td>
-<td>1997</td>
-<td>2.4</td>
-<td>2</td>
-<td>FHSS&#x2F;DSSS</td>
-<td>第一代无线局域网标准之一</td>
-</tr>
-<tr>
-<td>WiFi 2</td>
-<td>802.11b</td>
-<td>1999</td>
-<td>2.4</td>
-<td>11</td>
-<td>HR-DSSS</td>
-<td>802.11协议中第一个里程碑，无线网络发展中的很重要的一步。</td>
-</tr>
-<tr>
-<td>-</td>
-<td>802.11a</td>
-<td>2000</td>
-<td>5</td>
-<td>54</td>
-<td>OFDM</td>
-<td>实际应用很少</td>
-</tr>
-<tr>
-<td>WiFi 3</td>
-<td>802.11g</td>
-<td>2004</td>
-<td>2.4</td>
-<td>54</td>
-<td>OFDM</td>
-<td>使命就是兼顾802.11a和802.11b</td>
-</tr>
-<tr>
-<td>WiFi 4</td>
-<td>802.11n</td>
-<td>2009</td>
-<td>2.4&#x2F;5</td>
-<td>150*4</td>
-<td>OFDM</td>
-<td>引入SU-MIMO天线技术，帧聚合，块确认</td>
-</tr>
-<tr>
-<td>WiFi 5</td>
-<td>802.11ac</td>
-<td>2013</td>
-<td>5</td>
-<td>3470</td>
-<td>OFDM</td>
-<td>802.11n的继承者。引入80Mhz和160Mhz带宽，下行MU-MIMO</td>
-</tr>
-<tr>
-<td>WiFi 6</td>
-<td>802.11ax</td>
-<td>2019</td>
-<td>2.4&#x2F;5&#x2F;6</td>
-<td>9600</td>
-<td>OFDMA</td>
-<td>MU-MIMO，更高阶调制技术，TWT节能技术</td>
-</tr>
-</tbody></table>
-<h3 id="IEEE-802-11标准"><a href="#IEEE-802-11标准" class="headerlink" title="IEEE 802.11标准"></a>IEEE 802.11标准</h3><p>802.11最初定义的3个物理层包括了两个扩散频谱技术和一个红外传播规范，无线传输的频道定义在2.4GHz的ISM波段内。这个频段在各个国际无线管理机构中，都是非注册使用频段（微波炉、无绳电话都使用该频段），即使用802.11的客户端设备不需要任何无线许可即可使用。扩散频谱技术保证了802.11设备在这个频段上的可用性和可靠的吞吐量，这项技术还可以保证同其它使用同一频段的设备不互相影响。802.11无线标准定义的传输速率是1Mbps和2Mbps，可以使用FHSS（Frequency Hopping Spread Spread Spectrum,调频技术）和 DSSS(Direct Sequence Spread Spectrum，直序扩频）技术。</p>
-<p>IEEE 802.11无线局域网与IEEE 802.3以太网的原理非常类似，都是采用载波侦听的方式来控制网络中信息的传送。不同之处在于，以太网采用CSMA&#x2F;CD(Carrier Sense Multiple Access with Collision Detection, 载波侦听&#x2F;冲突检测)技术。802.11对CSMA&#x2F;CD进行了一些调整，采用了新的协议CSMA&#x2F;CA(Carrier Sense Multiple Access with Collision Avoidance,载波侦听多点接入&#x2F;冲突避免)或者DCF（ Distributed Coordination Function，分布式协调功能）。</p>
-<h3 id="IEEE-802-11b标准"><a href="#IEEE-802-11b标准" class="headerlink" title="IEEE 802.11b标准"></a>IEEE 802.11b标准</h3><p>IEEE 802.11b标准具有以下特点：传输速率较高：2.4GHz直序扩频无线电提供最大11Mbps的数据传输速率，并且不需要直线传播。覆盖范围较大：802.11b理论上支持以百米为单位的范围，其中空旷的室外为300m，封闭办公环境中最长为100m，同时信号不受墙壁的阻挡。支持无缝漫游，支持负载平衡。安全性较高：内置式鉴定和加密，提供较高的安全传输保证。通常情况下，支持802.1X认证和WEP、WPA加密传输。<br>802.11b是802.11协议中第一个里程碑，早期的带Wi-Fi功能的笔记本，或者PSP游戏机，其所带的无线功能都是基于802.11b的。802.11b协议是无线网络发展中的很重要的一步。</p>
-<h3 id="IEEE-802-11a标准"><a href="#IEEE-802-11a标准" class="headerlink" title="IEEE 802.11a标准"></a>IEEE 802.11a标准</h3><p>IEEE 802.11a是802.11原始标准的一个修订标准，于2000年获得批准。802.11a标准采用与原始标准相同的核心协议，工作频率为5GHz，使用52个正交频分多路复用载波，最大原始数据传输率为54Mbps，达到了现实网络中等吞吐量（20Mbps）的要求。随着传输距离的延长或背景噪声的增加，数据传输速率可降为48Mbps、36Mbps、24Mbps、18Mbps、12Mbps、9Mbps或者6Mbps。802.11a拥有12条不相互重叠的频道，8条用于室内，4条用于点对点传输。802.11a不能与802.11b进行互操作，除非使用了对两种标准都采用的设备。</p>
-<p>IEEE 802.11a标准具有以下特点：<br>A、传输速率较高：IEEE802.11a可以提供高达54Mbps的传输速率，这得益于它采用”OFDM(Orthogonal Frequency Division Multiplexing,正交频分多路复用)”的多载波调制技术。</p>
-<p>B、不兼容802.11b&#x2F;g：由于802.11a运用了5.2GHz频段，因此，与其他采用2.4GHz频段的820.11b&#x2F;g等WLAN标准均不能进行互操作。</p>
-<p>C、传输距离较近<br>由于2.4GHz频带已经被到处使用（如微波炉、无线电话等），采用5GHz的频带可以让802.11a的冲突更少。然而，高载波频率也带来了负面效果。802.11a几乎被限制在直线范围内使用，这导致必须使用更多的接入点。同样，还意味着802.11a不能传播得像802.11 b&#x2F;g&#x2F;n那么远，因为它更容易被吸收。<br>802.11a当时没有收到很好的效果，主要还是频段的问题。因为当时FCC仅在5GHz频段上开放了OFDM技术，据《Next Generation Wireless LANs.802.11n and 802.11ac》一书所言，在1999~2000年间，美国非军事使用的5G频段仅仅只有几个指定的信道。而且由于802.11a和802.11b所在频段不同，所以新出的设备要同时兼容802.11b和802.11a就会造成成本增加，所以实际802.11a的实际应用很少。</p>
-<h3 id="IEEE-802-11g标准"><a href="#IEEE-802-11g标准" class="headerlink" title="IEEE 802.11g标准"></a>IEEE 802.11g标准</h3><p>IEEE组织于2004年6月12日正式批准了802.11g。802.11g采用OFDM调制技术，从而可以得到高达54Mbps的数据通信带宽。另外，802.11g工作在2.4GHz频率，并保留了802.11b所采用的CCK技术，采用了一个”保护”机制，因此可与802.11b产品保持兼容，实现与IEEE802.11b产品的通信。目前，主流无线产品均执行IEEE 802.11g标准。</p>
-<p>IEEE 802.11g标准具有以下特点：<br>A、高数据速率：在纯802.11g网络环境下，无线AP与无线客户端均工作在802.11g模式时，此时无线AP将检测到整个网络中全部是802.11g无线客户端，因此，将不采用与原来802.11b设备保持兼容的保护机制。此环境下可得到高达54Mbps的数据通信带宽，实际TCP吞吐量约为22~24Mbps.<br>B、完全兼容802.11b标准.<br>C、传输距离更远：在相同的物理环境下，在同样达到54Mbps的数据率时，802.11g的设备能提供大约两倍于802.11a设备的覆盖范围<br>D、便于设计双频设备：由于802.11g采用了与802.11a标准相同的OFDM调制，因此，便于802.11a&#x2F;g双频产品的设计于实现。</p>
-<h3 id="IEEE-802-11n标准"><a href="#IEEE-802-11n标准" class="headerlink" title="IEEE 802.11n标准"></a>IEEE 802.11n标准</h3><p>IEEE802.11n标准要求802.11n产品能够在包含802.11g和802.11b的混合模式下运行，且具有向下兼容性。在一个802.11n无线网络中，接入用户包括802.11b、802.11g和802.11n的用户，而且所有用户都采用自己的标准同时与无线接入点进行通信。也就是说，在连接过程中，所有类型的传输可以实现共存，从而能够更好地保障用户的投资。由此可见，IEEE802.11n拥有比IEEE802.11g更高的兼容性。</p>
-<p>IEEE 802.11n标准具有以下特点：<br>A、传输速率成倍提升：802.11n可以将WLAN的传输速率提高至108Mbps，甚至高达600Mbps，即在理想状态下，802.11n提供的传输速率要比802.11g高10倍左右。802.11n结合了多种技术，其中包括MIMO（Multi-In,Multi-Out,多入多出），MIMO系统可以创造多个并行空间信道，解决了带宽共享的问题。802.11n可以支持3路乃至4路MIMO数据流，理论速度可从当前的300Mbps提升到3路的450Mbps，4路的600Mbps。</p>
-<p>B、提升了网络吞吐量：802.11n还对802.11标准的单一MAC层协议进行了优化，改变了数据帧结构，增加了净负载所占的比重，减少管理检错所占的字节数，使得网络的吞吐量得到大大提升。</p>
-<p>C、覆盖范围大幅增加：802.11n采用智能天线技术，通过多组独立天线组成的天线阵列系统，动态地调整波速的方向，802.11n保证让用户接收到稳定的信号，并减少其它噪声信号的干扰，覆盖范围可扩大到几平方千米。同时802.11n设备的穿墙能力也比802.11g产品更出色。</p>
-<p>D、全面兼容各标准：802.11n通过采用软件无线电技术，解决了不同标准采用不同的工作频段、不同的调制方式，造成系统间难以互通，移动性差等问题。这样，不仅保障了与以往的802.11a、802.11b、802.11g标准的兼容，而且还可以实现与无线广域网络的结合，极大地保护了用户的投资。</p>
-<h3 id="IEEE-802-11ac标准"><a href="#IEEE-802-11ac标准" class="headerlink" title="IEEE 802.11ac标准"></a>IEEE 802.11ac标准</h3><p>802.11n协议的性能是802.11ac协议发展的基础。为了获得更高的802.11ac性能，可以通过以下方式实现：</p>
-<p>A、将802.11n协议的40 MHz带宽扩展为更大的带宽，即80 MHz和160 MHz</p>
-<p>B、使用QAM-256调制的信号调制更大，这是802.11n协议使用的QAM-64调制的发展。</p>
-<p>C、使用8个空间流实现多输入多输出，这些空间流大于仅具有4个空间流的802.11n。</p>
-<p>在80 MHz和&#x2F;或160 MHz频段上工作的802.11ac接入点（AP）仍支持已连接的802.11n用户协议，并可以很好地为其通信提供服务。它的工作方式是，信标信号将以802.11n的20 MHz带宽发送，它将成为80 MHz带宽中的主要信道。在这种情况下，访问点和连接到它的客户端将接收并处理在此主通道上接收到的数据。这样802.11n接入点上的客户端将兼容，并且仍然能够在802.11ac接入点（AP）上进行数据传输。<br>各种类型的接入点及其连接的用户具有不同的载波侦听周期，并可以使用各种子信道随时传输数据。从理论上讲，具有160 MHz带宽的802.11ac将能够产生1.3 Gb &#x2F; s的吞吐量。</p>
-<h3 id="IEEE-802-11ax标准"><a href="#IEEE-802-11ax标准" class="headerlink" title="IEEE 802.11ax标准"></a>IEEE 802.11ax标准</h3><p>随着WiFi标准的演进，WFA为了便于WiFi 用户和设备厂商轻松了解其设备连接或支持的WiFi型号，选择使用数字序号来对WiFi重新命名。另一方面,选择新一代命名方法也是为了更好地突出WiFi 技术的重大进步。802.11ax标准被定义为WiFi 6，而前几代的协议被依次定义为WiFi 1-5。<br>IEEE 802.11ax提供了大量新功能，包括增加的吞吐量和更快的速度、支持更多的并发连接等。<br>WiFi 6相比WiFi 5覆盖好，容量大。越小的子载波信道带宽，更远的覆盖范围。WiFi 6相比WiFi 5速度提升38.3%左右，包括1024QAM提升25%，减少帧间隔开销提升6%，子载波数提升5%。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.csdn.net/tags/OtDaAg1sNzQ0NDEtYmxvZwO0O0OO0O0O.html">https://www.csdn.net/tags/OtDaAg1sNzQ0NDEtYmxvZwO0O0OO0O0O.html</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.51cto.com/u_15214399/4712966">https://blog.51cto.com/u_15214399/4712966</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42353331/article/details/86497249">https://blog.csdn.net/weixin_42353331/article/details/86497249</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21951093">https://zhuanlan.zhihu.com/p/21951093</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/07/19/WiFi%E5%9F%BA%E7%A1%80-AP%E5%92%8CSTA%E7%9A%84%E6%A6%82%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/07/19/WiFi%E5%9F%BA%E7%A1%80-AP%E5%92%8CSTA%E7%9A%84%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">WiFi基础-AP和STA的概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-07-19 23:22:07" itemprop="dateCreated datePublished" datetime="2022-07-19T23:22:07+08:00">2022-07-19</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-20 23:28:07" itemprop="dateModified" datetime="2022-07-20T23:28:07+08:00">2022-07-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="总述"><a href="#总述" class="headerlink" title="总述"></a>总述</h2><p>AP和STA是WiFi协议中的基础概念，本文对AP和STA进行介绍。<br>此外，还介绍BSSID、SSID和ESSID的概念。</p>
-<h2 id="AP与STA关系图"><a href="#AP与STA关系图" class="headerlink" title="AP与STA关系图"></a>AP与STA关系图</h2><p>WiFi网络是一个星型网络，AP与STA是1对多的关系：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">erDiagram</span><br><span class="line">    AP ||--o&#123; STA1 : connect</span><br><span class="line">    AP ||--o&#123; STA2 : connect</span><br><span class="line">    AP ||--o&#123; STA3 : connect</span><br></pre></td></tr></table></figure>
-<h2 id="AP"><a href="#AP" class="headerlink" title="AP"></a>AP</h2><p>Access Point, 也就是无线接入点，是一个无线网络的创建者，是网络的中心节点。一般家庭或办公室使用的无线路由器就一个AP。<br>AP相当于一个连接有线网和无线网的桥梁，其主要作用是将各个无线网络客户端连接到一起，然后将无线网络接入以太网，从而达到网络无线覆盖的目的。</p>
-<h3 id="胖AP（FAT-AP）"><a href="#胖AP（FAT-AP）" class="headerlink" title="胖AP（FAT AP）"></a>胖AP（FAT AP）</h3><p>也称无线路由器。无线路由器除具有无线接入功能外，基本具备了路由器的全部功能。一般有WAN、LAN两种接口，支持地址转换（NAT）功能，多支持DHCP服务器、DNS，以及VPN接入、防火墙等安全功能。<br>FAT AP适合小规模无线部署。家用的无线路由器一般为FAT AP。</p>
-<h3 id="瘦AP（FIT-AP）"><a href="#瘦AP（FIT-AP）" class="headerlink" title="瘦AP（FIT AP）"></a>瘦AP（FIT AP）</h3><p>也称无线网桥、无线网关。其传输机制相当于有线网络中的集线器，在无线局域网中不停地接收和传送数据。<br>瘦AP本身并不能进行配置，需要一台专门的设备（无线控制器）进行集中控制管理配置。“控制器+瘦AP+路由器架构”一般用于大面积的无线网覆盖，因为在AP数量众多的时候，只通过控制器来管理配置，会简化很大的工作量。<br>理论上，当网络中增加一个无线AP之后，即可成倍地扩展网络覆盖直径；还可使网络中容纳更多的网络设备。每个无线AP基本上都拥有一个以太网接口，用于实现无线与有线的连接。<br>FIT AP适合大规模无线部署。公司，学校里面的公用AP一般为FIT AP。</p>
-<h2 id="STA"><a href="#STA" class="headerlink" title="STA"></a>STA</h2><p>Station，也就是无线站点，是一个无线网络的使用者，是网络的周边节点。STA可以是装有无线网卡的计算机，也可以是有WiFi模块的智能手机，任何一个接入无线AP的设备都可以称为一个站点。</p>
-<h2 id="其他相关概念"><a href="#其他相关概念" class="headerlink" title="其他相关概念"></a>其他相关概念</h2><h3 id="BSSID"><a href="#BSSID" class="headerlink" title="BSSID"></a>BSSID</h3><p>Basic Service Set ID，基本服务集标识。<br>要在同一个区域划分不同的局域网络，可以为工作站指定所要使用的BSS（基本服务集）。在基础网络里，BSSID（基本服务集标识）即是基站无线界面所使用的 MAC 地址。<br>BSSID的常见格式为11:22:33:44:55:66</p>
-<h3 id="SSID"><a href="#SSID" class="headerlink" title="SSID"></a>SSID</h3><p>Service Set ID，服务集标识。<br>网络管理人员通常比较喜欢跟文字、数字或名称打交道，而不是 48 个 bit 的 MAC 地址。<br>SSID，是让网管人员为服务组合(service set)指定的识别码。<br>我们平时生活中接触到的WiFi热点的名称就是SSID。<br>SSID 的长度介于 0 至 32 字节之间，通常人们习惯将SSID设置ASCII编码的字符串，但802.11规范中并无要求，SSID也可以是任何格式的编码，包括中文。</p>
-<h3 id="ESSID"><a href="#ESSID" class="headerlink" title="ESSID"></a>ESSID</h3><p>Extended Service Set ID，延伸式服务组合标识。<br>ESSID是一个比较抽象的概念，它实际上就和SSID相同（本质也是一串字符），只是如果有好几个无线路由器都叫这个名字，例如上面提到的“瘦AP”通常会使用相同的SSID，那么我们就相当于把这个SSID 扩大了，所以这几个无线路由器共同的这个名字就叫 ESSID。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/28/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF-RSSI%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/28/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF-RSSI%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">无线技术-RSSI基本概念</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-06-28 22:44:48" itemprop="dateCreated datePublished" datetime="2022-06-28T22:44:48+08:00">2022-06-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-07-03 21:26:02" itemprop="dateModified" datetime="2022-07-03T21:26:02+08:00">2022-07-03</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="什么是RSSI"><a href="#什么是RSSI" class="headerlink" title="什么是RSSI"></a>什么是RSSI</h2><p>RSSI(Received Signal Strength Indicator)是通讯工程中的专业术语，它代表着无线网络的信号强度。<br>RSS &#x3D; 10logP，其中P为发射功率。<br>[例1] 如果发射功率P为1mw，折算为dBm后为0dBm。<br>[例2] 对于40W的功率，按dBm单位进行折算后的值应为：<br>10lg（40W&#x2F;1mw)&#x3D;10lg（40000）&#x3D;10lg4+10lg10+10lg1000&#x3D;46dBm。</p>
-<h2 id="RSSI如何测出"><a href="#RSSI如何测出" class="headerlink" title="RSSI如何测出"></a>RSSI如何测出</h2><p>在104us内进行基带IQ功率积分得到RSSI的瞬时值，即RSSI（瞬时）&#x3D;sum（I^2 + Q^2）；然后在约1秒内对8192个RSSI的瞬时值进行平均得到RSSI的平均值，即RSSI（平均）&#x3D;sum（RSSI(瞬时）)&#x2F;8192，同时给出1秒内RSSI瞬时值的最大值和RSSI瞬时值大于某一门限时的比率（RSSI瞬时值大于某一门限的个数&#x2F;8192）。</p>
-<h2 id="dB，dBi，dBd，dBc，dBm，dBw的区别"><a href="#dB，dBi，dBd，dBc，dBm，dBw的区别" class="headerlink" title="dB，dBi，dBd，dBc，dBm，dBw的区别"></a>dB，dBi，dBd，dBc，dBm，dBw的区别</h2><h3 id="1-dB"><a href="#1-dB" class="headerlink" title="1.dB"></a>1.dB</h3><p>　　dB是一个表征相对值的值，纯粹的比值，只表示两个量的相对大小关系，没有单位，当考虑甲的功率相比于乙功率大或小多少个dB时，按下面计算公式：10log（甲功率&#x2F;乙功率），如果采用两者的电压比计算，要用20log（甲电压&#x2F;乙电压）。</p>
-<p>　　[例] 甲功率比乙功率大一倍，那么10lg（甲功率&#x2F;乙功率）&#x3D;10lg2&#x3D;3dB。也就是说，甲的功率比乙的功率大3 dB。反之，如果甲的功率是乙的功率的一半，则甲的功率比乙的功率小3 dB。</p>
-<h3 id="2-dBi-和-dBd"><a href="#2-dBi-和-dBd" class="headerlink" title="2.dBi 和 dBd"></a>2.dBi 和 dBd</h3><p>　　dBi和dBd是表示天线功率增益的量，两者都是一个相对值，但参考基准不一样。dBi的参考基准为全方向性天线，dBd的参考基准为偶极子，所以两者略有不同。一般认为，表示同一个增益，用dBi表示出来比用dBd表示出来要大2.15。</p>
-<p>　　[例] 对于一面增益为16dBd的天线，其增益折算成单位为dBi时，则为18.15dBi（一般忽略小数位，为18dBi）。</p>
-<p>　　[例] 0dBd&#x3D;2.15dBi。</p>
-<h3 id="3-dBc"><a href="#3-dBc" class="headerlink" title="3.dBc"></a>3.dBc</h3><p>　　dBc也是一个表示功率相对值的单位，与dB的计算方法完全一样。一般来说，dBc 是相对于载波（Carrier）功率而言，在许多情况下，用来度量与载波功率的相对值，如用来度量干扰（同频干扰、互调干扰、交调干扰、带外干扰等）以及耦合、杂散等的相对量值。 在采用dBc的地方，原则上也可以使用dB替代。</p>
-<h3 id="4-dBm"><a href="#4-dBm" class="headerlink" title="4.dBm"></a>4.dBm</h3><p>　　dBm是一个表示功率绝对值的值（也可以认为是以1mW功率为基准的一个比值），计算公式为：10log（功率值&#x2F;1mw）。</p>
-<p>　　[例] 如果功率P为1mw，折算为dBm后为0dBm。</p>
-<p>　　[例] 对于40W的功率，按dBm单位进行折算后的值应为：<br>　　10log（40W&#x2F;1mw）&#x3D;10log（40000）&#x3D;10log4+10log10000&#x3D;46dBm。</p>
-<h3 id="5-dBw"><a href="#5-dBw" class="headerlink" title="5.dBw"></a>5.dBw</h3><p>　　与dBm一样，dBw是一个表示功率绝对值的单位（也可以认为是以1W功率为基准的一个比值），计算公式为：10log（功率值&#x2F;1w）。dBw与dBm之间的换算关系为：0 dBw &#x3D; 10log1 W &#x3D; 10log1000 mw &#x3D; 30 dBm。</p>
-<p>　　[例] 如果功率P为1w，折算为dBw后为0dBw。<br>　　总之，dB、dBi、dBd、dBc是两个量之间的比值，表示两个量间的相对大小，而dBm、dBw则是表示功率绝对大小的值。在dB，dBm，dBw计算中，要注意基本概念，用一个dBm（或dBw）减另外一个dBm（dBw）时，得到的结果是dB，如：30dBm - 0dBm &#x3D; 30dB。<br>　　一般来讲，在工程中，dBm（或dBw）和dBm（或dBw）之间只有加减，没有乘除。而用得最多的是减法：dBm 减 dBm 实际上是两个功率相除，信号功率和噪声功率相除就是信噪比（SNR）。dBm 加 dBm 实际上是两个功率相乘</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/06/25/hello-world/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/06/25/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-06-25 15:51:49" itemprop="dateCreated datePublished" datetime="2022-06-25T15:51:49+08:00">2022-06-25</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-05 07:34:50" itemprop="dateModified" datetime="2022-08-05T07:34:50+08:00">2022-08-05</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="关于博客"><a href="#关于博客" class="headerlink" title="关于博客"></a>关于博客</h2><p>每一种编程语言的学习都以”hello world”开始(<del>和结束</del>)，不如个人博客也以一篇”hello world”开始吧hh~。<br>搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。<br>恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。<br>于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会包括以下几个主要内容：</p>
-<ul>
-<li>将个人这几年做嵌入式程序开发的技术笔记做一些整理。</li>
-<li>输出一些技术文章专栏。</li>
-<li>记录一些个人思考、想法。</li>
-<li>分享一些书籍、电影。</li>
-</ul>
-<p>看到有些欣赏的博客网站维护了几年，因为这样那样的原因停更了，有点可惜。<br>希望自己能多多坚持。</p>
-<h2 id="关于生活"><a href="#关于生活" class="headerlink" title="关于生活"></a>关于生活</h2><p>世界上只有一种真正的英雄主义，就是认清了生活的真相后还依然热爱生活。</p>
-<h2 id="关于我"><a href="#关于我" class="headerlink" title="关于我"></a>关于我</h2><ul>
-<li>程序员(IoT上市公司某技术研发组长)</li>
-<li>中国最”水”大学工科硕士(毕业)</li>
-<li>阅读爱好者（小说、传记、历史、哲学）</li>
-<li>热衷于学习一切事物（技多不压身）</li>
-<li>经常在钱塘江边夜跑（吹江风）</li>
-<li>篮球、羽毛球、乒乓球（球类爱好者）</li>
-<li>会跳一点hiphop（强身健体）</li>
-<li>有一个单反（瞎拍一些照片）</li>
-<li>有一只猫（英短银渐层）</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <span class="site-state-item-count">56</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">19</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WaterYoungMan's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" title="shell学习-流程控制"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="shell学习-流程控制"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6/" title="shell学习-流程控制">shell学习-流程控制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-01T00:00:38.000Z" title="Created 2022-08-01 08:00:38">2022-08-01</time></span></div><div class="content">流程控制主要包括选择和循环，本文主要包括以下内容：if选择，case选择，for循环，while循环，跳出循环
+if 选择基本语法12345678910111213if [ 条件判断式 ];then       程序   fi或者（推荐）if [ 条件判断式 ]then    程序elif [ 条件判断式 ]then    程序fi
+case 选择基本语法123456789101112case $变量名 in&quot;值1&quot;)如果变量值等于值1，则执行此处程序1;;&quot;值2&quot;)如果变量值等于值2，则执行此处程序2;;...省略其它分支...*)如果变量值不等于以上列出的值，则执行此处程序;;esac
+for 循环语法1
+1234for 变量名 in 值1 值2 值3...do    程序done
+语法2
+1234for ((初始值;循环控制条件;变量变化))do    程序done
+while 循环1234while conditiondo    commanddone
+
+跳出循环break 命令允许跳出所有循环（终止执行后面的所有循环）。continue ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%87%BD%E6%95%B0/" title="shell学习-函数"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="shell学习-函数"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%87%BD%E6%95%B0/" title="shell学习-函数">shell学习-函数</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-31T23:59:58.000Z" title="Created 2022-08-01 07:59:58">2022-08-01</time></span></div><div class="content">有返回值函数123456demoFun()&#123;    echo &quot;这是我的第一个 shell 函数!&quot;&#125;echo &quot;-----函数开始执行-----&quot;demoFunecho &quot;-----函数执行完毕-----&quot;
+无返回值函数12345678910funWithReturn()&#123;    echo &quot;这个函数会对输入的两个数字进行相加运算...&quot;    echo &quot;输入第一个数字: &quot;    read aNum    echo &quot;输入第二个数字: &quot;    read anotherNum    echo &quot;两个数字分别为 $aNum 和 $anotherNum !&quot;    return $(($aNum+$anotherNum))&#125;funWithReturn
+echo “输入的两个数字之和为 $? !”
+函数入参在Shell中，调用函数时可以向其传递参数。在函数体内部，通过 $n 的形式来获取参数的值，例如，$1表 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%8F%98%E9%87%8F/" title="shell学习-变量"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="shell学习-变量"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/01/shell%E5%AD%A6%E4%B9%A0-%E5%8F%98%E9%87%8F/" title="shell学习-变量">shell学习-变量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-31T23:57:51.000Z" title="Created 2022-08-01 07:57:51">2022-08-01</time></span></div><div class="content">shell的变量通常只需要掌握3种类型：数字、字符串、数组
+数字A&#x3D;1注意：&#x3D;的前后不能有空格
+字符串单引号str&#x3D;’this is a string’单引号字符串的限制：
+
+单引号里的任何字符都会原样输出，单引号字符串中的变量是无效的；
+单引号字串中不能出现单独一个的单引号（对单引号使用转义符后也不行），但可成对出现，作为字符串拼接使用。
+
+双引号实例
+12345your_name=&quot;xiaoming&quot;str=&quot;Hello, I know you are \&quot;$your_name\&quot;! \n&quot;echo -e $str输出结果为：Hello, I know you are &quot;xiaoming&quot;! 
+双引号的优点：
+
+双引号里可以有变量
+双引号里可以出现转义字符
+
+拼接字符串实例
+12345678910your_name=&quot;runoob&quot;使用双引号拼接greeting=&quot;hello, &quot;$your_name&quot; !&quot;gre ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/07/20/WiFi%E5%9F%BA%E7%A1%80-WiFi%E7%9A%84%E5%8E%86%E5%8F%B2%E4%B8%8E%E7%89%88%E6%9C%AC%E6%BC%94%E8%BF%9B/" title="WiFi基础-WiFi的历史与版本演进"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WiFi基础-WiFi的历史与版本演进"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/20/WiFi%E5%9F%BA%E7%A1%80-WiFi%E7%9A%84%E5%8E%86%E5%8F%B2%E4%B8%8E%E7%89%88%E6%9C%AC%E6%BC%94%E8%BF%9B/" title="WiFi基础-WiFi的历史与版本演进">WiFi基础-WiFi的历史与版本演进</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-20T15:25:15.000Z" title="Created 2022-07-20 23:25:15">2022-07-20</time></span></div><div class="content">WiFi的历史WLANWireless Local Area Network，无线局域网。是计算机网络与无线通信技术相结合的产物，用无线的方式实现传统有线局域网的功能。
+IEEE 802委员会IEEE的全称是Institute of Electrical and Electronics Engineers ，美国电气和电子工程师协会。IEEE 802委员会是IEEE下的一个机构，成立于1980年2月，它的任务是制定局域网和城域网标准。IEEE 802定义的服务和协议限定在OSI模型[OSI网络参考模型]的最低两层（即物理层和数据链路层）。事实上，IEEE 802将OSI的数据链路层分为两个子层，分别是逻辑链路控制(Logical Link Control, LLC)和介质访问控制(Media Access Control, MAC)，如下所示：
+
+数据链路层
+逻辑链路控制子层
+介质访问控制子层
 
 
+物理层
 
-      </div>
+我们所使用的以太网(802.3)，WiFi(802.11)，蓝牙(802.15.1)等协议都是源自于IEEE 802委员会制定的标准。
+IEEE 802.11IEEE 802.11 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/07/19/WiFi%E5%9F%BA%E7%A1%80-AP%E5%92%8CSTA%E7%9A%84%E6%A6%82%E5%BF%B5/" title="WiFi基础-AP和STA的概念"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="WiFi基础-AP和STA的概念"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/07/19/WiFi%E5%9F%BA%E7%A1%80-AP%E5%92%8CSTA%E7%9A%84%E6%A6%82%E5%BF%B5/" title="WiFi基础-AP和STA的概念">WiFi基础-AP和STA的概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-07-19T15:22:07.000Z" title="Created 2022-07-19 23:22:07">2022-07-19</time></span></div><div class="content">总述AP和STA是WiFi协议中的基础概念，本文对AP和STA进行介绍。此外，还介绍BSSID、SSID和ESSID的概念。
+AP与STA关系图WiFi网络是一个星型网络，AP与STA是1对多的关系：
+1234erDiagram    AP ||--o&#123; STA1 : connect    AP ||--o&#123; STA2 : connect    AP ||--o&#123; STA3 : connect
+APAccess Point, 也就是无线接入点，是一个无线网络的创建者，是网络的中心节点。一般家庭或办公室使用的无线路由器就一个AP。AP相当于一个连接有线网和无线网的桥梁，其主要作用是将各个无线网络客户端连接到一起，然后将无线网络接入以太网，从而达到网络无线覆盖的目的。
+胖AP（FAT AP）也称无线路由器。无线路由器除具有无线接入功能外，基本具备了路由器的全部功能。一般有WAN、LAN两种接口，支持地址转换（NAT）功能，多支持DHCP服务器、DNS，以及VPN接入、防火墙等安全功能。FAT AP适合小规模无线部署。家用的无线路由器一般为FAT AP。
+瘦AP ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/06/28/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF-RSSI%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="无线技术-RSSI基本概念"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="无线技术-RSSI基本概念"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/28/%E6%97%A0%E7%BA%BF%E6%8A%80%E6%9C%AF-RSSI%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" title="无线技术-RSSI基本概念">无线技术-RSSI基本概念</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-28T14:44:48.000Z" title="Created 2022-06-28 22:44:48">2022-06-28</time></span></div><div class="content">什么是RSSIRSSI(Received Signal Strength Indicator)是通讯工程中的专业术语，它代表着无线网络的信号强度。RSS &#x3D; 10logP，其中P为发射功率。[例1] 如果发射功率P为1mw，折算为dBm后为0dBm。[例2] 对于40W的功率，按dBm单位进行折算后的值应为：10lg（40W&#x2F;1mw)&#x3D;10lg（40000）&#x3D;10lg4+10lg10+10lg1000&#x3D;46dBm。
+RSSI如何测出在104us内进行基带IQ功率积分得到RSSI的瞬时值，即RSSI（瞬时）&#x3D;sum（I^2 + Q^2）；然后在约1秒内对8192个RSSI的瞬时值进行平均得到RSSI的平均值，即RSSI（平均）&#x3D;sum（RSSI(瞬时）)&#x2F;8192，同时给出1秒内RSSI瞬时值的最大值和RSSI瞬时值大于某一门限时的比率（RSSI瞬时值大于某一门限的个数&#x2F;8192）。
+dB，dBi，dBd，dBc，dBm，dBw的区别1.dB　　dB是一个表征相对值的值，纯粹的比值，只表示两个量的相 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/06/25/hello-world/" title="Hello World"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Hello World"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/06/25/hello-world/" title="Hello World">Hello World</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-06-25T07:51:49.007Z" title="Created 2022-06-25 15:51:49">2022-06-25</time></span></div><div class="content">关于博客每一种编程语言的学习都以”hello world”开始(和结束)，不如个人博客也以一篇”hello world”开始吧hh~。搭建博客的冲动来源于，浏览开源项目时看到有些博主的网站做的非常有趣。恰好今年一直在想做一些属于自己的作品，并且最近也有在学习一些前端相关的知识，通过个人网站可以push自己去更好地学习。于是一拍即合之下，这个博客就在半天内诞生了（感谢大佬开发的博客框架），今后主要会包括以下几个主要内容：
 
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+将个人这几年做嵌入式程序开发的技术笔记做一些整理。
+输出一些技术文章专栏。
+记录一些个人思考、想法。
+分享一些书籍、电影。
 
+看到有些欣赏的博客网站维护了几年，因为这样那样的原因停更了，有点可惜。希望自己能多多坚持。
+关于生活世界上只有一种真正的英雄主义，就是认清了生活的真相后还依然热爱生活。
+关于我
+程序员
+中国最”水”大学工科硕士
+阅读爱好者（小说、传记、历史、哲学）
+热衷于学习一切事物（技多不压身）
+经常在钱塘江边夜跑（吹江风）
+篮球、羽毛球、乒乓球（球类爱好者）
+会跳一点hiphop（强身健体）
+有一个单反（瞎拍一些照片）
+有一只猫（英短银渐层）
 
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/5/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/#content-inner">5</a><span class="page-number current">6</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WaterYoungMan</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangym307"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangym307" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/something/" title="something"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="something"/></a><div class="content"><a class="title" href="/2022/12/06/something/" title="something">something</a><time datetime="2022-12-06T15:59:49.000Z" title="Created 2022-12-06 23:59:49">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux内核-进程调度算法"/></a><div class="content"><a class="title" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法">linux内核-进程调度算法</a><time datetime="2022-12-04T16:04:04.000Z" title="Created 2022-12-05 00:04:04">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下模拟AP热点"/></a><div class="content"><a class="title" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点">在linux下模拟AP热点</a><time datetime="2022-11-27T15:33:40.000Z" title="Created 2022-11-27 23:33:40">2022-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="但行好事，莫问前程"/></a><div class="content"><a class="title" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程">但行好事，莫问前程</a><time datetime="2022-10-26T16:24:09.000Z" title="Created 2022-10-27 00:24:09">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CPU-DMA机制"/></a><div class="content"><a class="title" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制">CPU-DMA机制</a><time datetime="2022-09-22T23:58:18.000Z" title="Created 2022-09-23 07:58:18">2022-09-23</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/ARM/" style="font-size: 1.34em; color: #99a3b0">ARM</a> <a href="/tags/FreeRTOS/" style="font-size: 1.5em; color: #99a9bf">FreeRTOS</a> <a href="/tags/WiFi/" style="font-size: 1.18em; color: #999ca1">WiFi</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c</a> <a href="/tags/esp32c3/" style="font-size: 1.1em; color: #999">esp32c3</a> <a href="/tags/gdb/" style="font-size: 1.1em; color: #999">gdb</a> <a href="/tags/linux/" style="font-size: 1.34em; color: #99a3b0">linux</a> <a href="/tags/makefile/" style="font-size: 1.18em; color: #999ca1">makefile</a> <a href="/tags/python/" style="font-size: 1.26em; color: #999fa8">python</a> <a href="/tags/rust/" style="font-size: 1.1em; color: #999">rust</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">安全</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.26em; color: #999fa8">操作系统</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 1.26em; color: #999fa8">方法论</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 1.26em; color: #999fa8">编程语言</a> <a href="/tags/%E7%BC%96%E8%AF%91/" style="font-size: 1.1em; color: #999">编译</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">网络协议</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.42em; color: #99a6b7">读书笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.1em; color: #999">随笔</a> <a href="/tags/%E9%AA%8C%E8%AF%81/" style="font-size: 1.1em; color: #999">验证</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">October 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">31</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">July 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">June 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-12-11T15:57:16.441Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By WaterYoungMan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

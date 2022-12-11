@@ -1,1122 +1,229 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>WaterYoungMan's Blog</title><meta name="author" content="WaterYoungMan"><meta name="copyright" content="WaterYoungMan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="WaterYoungMan&#39;s Blog">
 <meta property="og:url" content="http://example.com/page/3/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="WaterYoungMan">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/page/3/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'en'
-  };
-</script>
-
-  <title>WaterYoungMan's Blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/3/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WaterYoungMan\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-11 23:57:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WaterYoungMan's Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cadb%E8%B0%83%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/02/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cadb%E8%B0%83%E8%AF%95/" class="post-title-link" itemprop="url">在linux下进行adb调试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-02 22:52:43 / Modified: 22:54:13" itemprop="dateCreated datePublished" datetime="2022-09-02T22:52:43+08:00">2022-09-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>之前出于兴趣使用rk3308（一款能运行linux的嵌入式芯片）做过lvgl的开发。<br>当时同事都是用windows系统搭建的adb调试环境，而我个人电脑是用的原生linux系统+虚拟机windows调试系统，在虚拟机中调试adb非常不方便。<br>所以我参考网上文档搭建了一个linux的adb调试环境，这样编译调试都非常快速。</p>
-<h2 id="搭建步骤"><a href="#搭建步骤" class="headerlink" title="搭建步骤"></a>搭建步骤</h2><ol>
-<li>安装adb<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install android-tools-adb</span><br></pre></td></tr></table></figure></li>
-<li>查看usb设备信息<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsusb</span><br><span class="line">Bus 001 Device 011: ID 2207:0006 Fuzhou Rockchip Electronics Company</span><br></pre></td></tr></table></figure></li>
-<li>为adb增加设备操作权限<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/udev/rules.d/70-android.rules</span><br><span class="line">SUBSYSTEM==&quot;usb&quot;, ATTRS&#123;idVendor&#125;==&quot;2207&quot;, ATTRS&#123;idProduct&#125;==&quot;0006&quot;, MODE=&quot;0666&quot;</span><br></pre></td></tr></table></figure>
- 第一次配置adb之后，可能需要重启电脑才能正常使用（当时还尝试在adb_usb.ini中加了一行0x2207，这个数字是设备的vendorid，没有立即连上，重启机器后连上了，所以不确定跟这个有没有关系，连不上可以试一下）</li>
-<li>为adb配置芯片秘钥文件<br> 将rk3308厂商提供的adbkey.pub和adbkey拷贝到~&#x2F;.android目录下。如果原来目录下有同名文件，则自行备份即可。秘钥文件的作用也是让adb工具和rk3308之间能互相认证身份。</li>
-</ol>
-<h2 id="调试步骤"><a href="#调试步骤" class="headerlink" title="调试步骤"></a>调试步骤</h2><ol>
-<li>使用adb连接设备<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo adb kill-server</span><br><span class="line">sudo adb start-server</span><br><span class="line">adb shell</span><br></pre></td></tr></table></figure></li>
-</ol>
-<ul>
-<li>操作指令和shell几乎一样，如查看磁盘空间<br><code>ls -lht</code></li>
-</ul>
-<ol start="2">
-<li>在线推送可执行文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">adb push output/dist/lib/libtuya_app.so  /txxx/data/new</span><br><span class="line">adb push output/dist/bin/voice_control_rk3308  /txxx/data/new</span><br></pre></td></tr></table></figure></li>
-<li>杀进程，重启应用<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ps | grep txxx | grep -v grep | awk &#x27;&#123;print $1&#125;&#x27; | xargs kill -9</span><br><span class="line">cd txxx/data/new/</span><br><span class="line">./voice_control_rk3308</span><br></pre></td></tr></table></figure>
-这一步是我的代码环境中执行程序的方式，仅供参考。</li>
-</ol>
-<h2 id="使用linux工具烧录bin"><a href="#使用linux工具烧录bin" class="headerlink" title="使用linux工具烧录bin"></a>使用linux工具烧录bin</h2><p>在linux下烧录bin到rk3308的关键是执行<code>adb reboot loader</code>让rk3308重启后进入到maskrom模式，然后才能用linux烧录工具<code>upgrade_tool</code>正常发现设备。</p>
-<ol>
-<li>启动upgrade_tool<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">╰─ sudo ./upgrade_tool</span><br><span class="line">[sudo] password for wang: </span><br><span class="line">Program Data in /root/.config/upgrade_tool</span><br><span class="line">List of rockusb connected</span><br><span class="line">DevNo=1Vid=0x2207,Pid=0x330d,LocationID=1020101Mode=LoaderSerialNo=c3d9b8674f4b94f6</span><br><span class="line">Found 1 rockusb,Select input DevNo,Rescan press &lt;R&gt;,Quit press &lt;Q&gt;:Q</span><br></pre></td></tr></table></figure></li>
-<li>连接设备后，执行烧录指令<code>uf xxxx.img</code></li>
-</ol>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://wiki.t-firefly.com/zh_CN/ROC-RK3328-CC/flash_emmc.html#rockusb-mode">https://wiki.t-firefly.com/zh_CN/ROC-RK3328-CC/flash_emmc.html#rockusb-mode</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.bbsmax.com/A/B0zqvwqKJv/">https://www.bbsmax.com/A/B0zqvwqKJv/</a></li>
-<li><a target="_blank" rel="noopener" href="https://roc-rk3328-cc.readthedocs.io/zh_CN/latest/index.html#">https://roc-rk3328-cc.readthedocs.io/zh_CN/latest/index.html#</a></li>
-<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1619905?from=15425">https://cloud.tencent.com/developer/article/1619905?from=15425</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/31/%E7%BC%96%E8%AF%91-data%E6%AE%B5%E5%92%8Cbss%E6%AE%B5%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%97%B6%E6%9C%BA/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/31/%E7%BC%96%E8%AF%91-data%E6%AE%B5%E5%92%8Cbss%E6%AE%B5%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%97%B6%E6%9C%BA/" class="post-title-link" itemprop="url">编译-data段和bss段初始化的时机</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-31 23:53:52 / Modified: 23:54:30" itemprop="dateCreated datePublished" datetime="2022-08-31T23:53:52+08:00">2022-08-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近在做ARM-CM4的BootLoader的相关开发时遇到2个问题：</p>
-<ul>
-<li>在BootLoader中定义了一个静态全局变量，且定义的时候赋了一个不为0的初值，但是在代码中首次获取这个变量值的时候，却发现变量的初值不是我所预先定义的值。</li>
-<li>在BootLoader中定义的局部静态变量，定义的时候赋了初值为0，在代码中首次获取时，变量的初值也不为0。</li>
-</ul>
-<p>这个问题事实上和可执行文件中的data、bss段的初始化有关。</p>
-<h2 id="bss，data和text"><a href="#bss，data和text" class="headerlink" title="bss，data和text"></a>bss，data和text</h2><p>我们知道，一个计算机系统的可执行文件主要由 data，bss，text组成，除此之外还有rodata等：</p>
-<ul>
-<li>bss段（bss segment）：bss是Block Started by Symbol的简称，用来存放程序中未赋初值的全局变量的静态内存区域。<br>在Linux环境的C下，初始值为0和没有赋初始值的变量放在bss段。</li>
-<li>data段（data segment）：用来存放程序中已赋初值（且初值不为0）的全局变量的静态内存区域。</li>
-<li>text段（text segment）：用来存放程序执行代码的内存区域。这部分区域的大小在程序运行前就已经确定，并且内存区域通常属于只读（某些架构也允许代码段为可写，即允许修改程序）。也有可能包含一些只读的常数变量，例如字符串常量等。</li>
-</ul>
-<h2 id="变量如何指定放在哪个段"><a href="#变量如何指定放在哪个段" class="headerlink" title="变量如何指定放在哪个段"></a>变量如何指定放在哪个段</h2><h3 id="自动分配"><a href="#自动分配" class="headerlink" title="自动分配"></a>自动分配</h3><p>如上所述，在未人为指定的情况下，初始值为非0的静态变量自动存放在bss段，其他静态变量则自动存放在data段。</p>
-<h3 id="手动分配"><a href="#手动分配" class="headerlink" title="手动分配"></a>手动分配</h3><p>在 GNU C 中，我们可以通过<code>__atttribute__</code>的<code>section</code>属性，显式指定一个函数或变量，在编译时放到指定的 <code>section</code> 里面。<br>如<code>__attribute__((section(&quot;.data&quot;)))</code>和<code>__attribute__((section(&quot;.bss&quot;)))</code><br>注意：在不同的计算机系统中，段的命名可能有所不同。</p>
-<h2 id="data段是如何初始化的"><a href="#data段是如何初始化的" class="headerlink" title="data段是如何初始化的"></a>data段是如何初始化的</h2><p>data段的变量地址编译的时候已经确定，且初始化的值是直接存放在可执行文件中的，会增加可执行文件的大小。换而言之，如果在代码中大量使用data段的变量，则编译生成的可执行文件会很大。<br>经实测，data段的变量初始化在执行启动函数(entry)的时候已经完成了，其内容应该是从可执行文件中搬移过去的。</p>
-<p>由此可见，问题1的原因可能是变量没有被分配到BootLoader的data段，而是落到了bss段。查看map文件后发现的确如此，我手动指定<code>__attribute__((section(&quot;.data&quot;)))</code>属性后问题1解决。<br>至于BootLoader中赋了非0初值的变量为什么没有自动分配到data段，我猜想可能与BootLoader下的编译规则与应用编译规则不同有关。</p>
-<h2 id="bss段是如何初始化的"><a href="#bss段是如何初始化的" class="headerlink" title="bss段是如何初始化的"></a>bss段是如何初始化的</h2><p>bss段的变量在可执行文件中只有一个占位符，不占据程序空间。因为其初值都是0，无需编译到可执行文件中。<br>bss段的变量初始化是在启动函数(entry)和main函数之间，由用户手动完成的。<br>相应示例代码为<code>_memset((void *) __bss_start__, 0, (__bss_end__ - __bss_start__));</code></p>
-<p>以我所使用的arm-cm4核的启动代码为例子，可以看到bss中的变量是在进入应用之后才初始化的：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line">// The Main App entry point</span><br><span class="line">void app_start(void)</span><br><span class="line">&#123;</span><br><span class="line">	//cmse_address_info_t cmse_address_info = cmse_TT((void *)DiagPrintf);</span><br><span class="line"></span><br><span class="line">	irq_table_init(MSP_RAM_HP_NS); /* NS Vector table init */</span><br><span class="line">	VectorTableOverride();</span><br><span class="line"></span><br><span class="line">	app_section_init();</span><br><span class="line">	_memset((void *) __bss_start__, 0, (__bss_end__ - __bss_start__));</span><br><span class="line"></span><br><span class="line">#if defined (configENABLE_TRUSTZONE) &amp;&amp; (configENABLE_TRUSTZONE == 1U)</span><br><span class="line">	BOOT_IMG3();</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">	/* enable non-secure cache */</span><br><span class="line">	//Cache_Enable(ENABLE);</span><br><span class="line"></span><br><span class="line">	DBG_PRINTF(MODULE_BOOT, LEVEL_INFO,&quot;KM4 BOOT REASON: %x \n&quot;, BOOT_Reason());</span><br><span class="line">	</span><br><span class="line">	SystemCoreClockUpdate();</span><br><span class="line">	</span><br><span class="line">	SOCPS_InitSYSIRQ_HP();</span><br><span class="line">	</span><br><span class="line">	/* Init PSRAM */</span><br><span class="line">	if(TRUE == psram_dev_config.psram_dev_enable) &#123;</span><br><span class="line">		app_init_psram();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	/* configure FreeRTOS interrupt and heap region */</span><br><span class="line">	os_heap_init();</span><br><span class="line">	__NVIC_SetVector(SVCall_IRQn, (u32)(VOID*)vPortSVCHandler);</span><br><span class="line">	__NVIC_SetVector(PendSV_IRQn, (u32)(VOID*)xPortPendSVHandler);</span><br><span class="line">	__NVIC_SetVector(SysTick_IRQn, (u32)(VOID*)xPortSysTickHandler);</span><br><span class="line"></span><br><span class="line">	/* load psram image if needed */</span><br><span class="line">	if(TRUE == psram_dev_config.psram_dev_enable) &#123;</span><br><span class="line">		app_psram_load_ns();</span><br><span class="line">		app_psram_load_s();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">#if defined (__GNUC__)</span><br><span class="line">extern void __libc_init_array(void);</span><br><span class="line">/* Add This for C++ support */</span><br><span class="line">	__libc_init_array();</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">	// force SP align to 8 byte not 4 byte (initial SP is 4 byte align)</span><br><span class="line">	__asm( </span><br><span class="line">		&quot;mov r0, sp\n&quot;</span><br><span class="line">		&quot;bic r0, r0, #7\n&quot; </span><br><span class="line">		&quot;mov sp, r0\n&quot;</span><br><span class="line">	);</span><br><span class="line"></span><br><span class="line">	mpu_init();</span><br><span class="line">	app_mpu_nocache_init();</span><br><span class="line">	app_mpu_s_nocache_init();</span><br><span class="line"></span><br><span class="line">	app_vdd1833_detect();</span><br><span class="line">	memcpy_gdma_init();</span><br><span class="line">	//retention Ram space should not exceed 0xB0</span><br><span class="line">	assert_param(sizeof(RRAM_TypeDef) &lt;= 0xB0);</span><br><span class="line"></span><br><span class="line">	app_driver_call_os_func_init();</span><br><span class="line"></span><br><span class="line">	main(); /* project/xxxx/src/main.c */</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>由于BootLoader比应用先运行，所以在BootLoader中获取bss变量的初值，可能是非0的。<br>因此问题2有两个解决办法：</p>
-<ol>
-<li>直接将bss变量指定到data段。</li>
-<li>如果变量数量较少的话也可以在首次使用的时候手动赋值。</li>
-</ol>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>在BootLoader下使用变量时，可能需要手动指定在data段还是bss段（有些cpu也无需指定）。</li>
-<li>data段和bss段中的变量最终都需要占用相同大小的ram空间，但大量使用data段可能会导致bin文件过大。</li>
-<li>计算机系统中将bss段和data段分开设计的原因，可能是为了优化bin文件的大小。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/31/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E6%B4%BB%E6%B3%95%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/31/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E6%B4%BB%E6%B3%95%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《活法》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-31 00:00:51 / Modified: 00:06:47" itemprop="dateCreated datePublished" datetime="2022-08-31T00:00:51+08:00">2022-08-31</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：稻盛和夫<br>阅读时间：2022.05</p>
-<p>今天是2022年8月30日，在新闻中得知作者逝世的消息。想起几个月前看的这本《活法》，竟还没来得及写下笔记。<br>稻盛和夫先生是京瓷公司的创始人，白手起家打造了2家世界500强公司，是公司经营的宗师级人物。读这本书的起因是曾在很多书单上看到过这本书。此外，我在混沌的课堂中也听到多位讲师谈过作者的经营理念，推崇备至。</p>
-<p>谈谈对书中记忆深刻的几点：</p>
-<ul>
-<li>书的行文是以第一人称叙述，主要讲述自己的人生理念和经营哲学。作者虽拥有大量财富，但语气始终保持谦和，我能感受到他没有半点的居功自傲。在书中，他像一个前辈，对后辈们娓娓道来，将自己的人生经验和深度思考，无私奉献。</li>
-<li>对幸福人生的美好愿望能催生出极致的意志，持续激发心灵的力量。我们面对外界的困难，要避免逃避和抱怨，要努力去克服困难，磨炼心智，锻炼灵魂。</li>
-<li>持续精进，一天更胜过一天。“精进”一词我曾经在采铜的书中看过，原来这个概念可能更早来自于稻盛和夫。持续打磨自己是任何一个崇尚终身学习的人都应该做的事情。芒格和巴菲特这样的人都在持续学习，我们有什么理由止步不前呢？</li>
-<li>“利他”原则。作为企业，“利他”以“利己”。合作才能共赢，步入良性循环。</li>
-<li>对佛法的修行。以前实验室的师兄胡博士就常常向我们推荐佛法。佛经中的哲学思想其实是包罗万象的，做技术的人要追求技术的底层原理，而活在世上的人难道不也应该追求人生的底层原理吗。对于人生本质问题的追问和思考，可以让我们从凡尘中暂时地跳脱出来，获得心灵的宁静。</li>
-</ul>
-<p>近期因为工作的事情，颇感焦虑。回顾这本书，又再次得到心灵的洗礼。<br>很多时候，慢下来，方向对了，才是更重要的。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/" class="post-title-link" itemprop="url">FreeRTOS基础-编码标准和命名风格</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-28 23:49:06 / Modified: 23:59:36" itemprop="dateCreated datePublished" datetime="2022-08-28T23:49:06+08:00">2022-08-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="FreeRTOS-的编码标准"><a href="#FreeRTOS-的编码标准" class="headerlink" title="FreeRTOS 的编码标准"></a><code>FreeRTOS</code> 的编码标准</h2><p><code>FreeRTOS</code> 核心源码文件的编写遵循 MISRA 代码规则，同时支持各种编译器。但考虑到有些编译器的性能还比较弱，不支持 C 语言的新标准 <code>C99</code> 和 <code>C11</code> 的一些特性和语法，所以 <code>FreeRTOS</code> 的源码中就没有引入 <code>C99</code> 和 <code>C11</code> 的新特性，但是有一个例外，源码中有用到头文件<code>stdint.h</code>（这个文件是C99标准才引入的）。</p>
-<h2 id="FreeRTOS-的命名规则"><a href="#FreeRTOS-的命名规则" class="headerlink" title="FreeRTOS 的命名规则"></a><code>FreeRTOS</code> 的命名规则</h2><h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
-<li>uint32_t 定义的变量都加上前缀 ul。 u 代表 unsigned 无符号，l 代表 long 长整型。</li>
-<li>uint16_t 定义的变量都加上前缀 us。 u 代表 unsigned 无符号，s 代表 short 短整型。</li>
-<li>uint8_t 定义的变量都加上前缀 uc。 u 代表 unsigned 无符号，c 代表 char 字符型。</li>
-<li>stdint.h 文件中未定义的变量类型，在定义变量时需要加上前缀 x，比如 BaseType_t 和</li>
-<li>TickType_t 定义的变量。</li>
-<li>stdint.h 文件中未定义的无符号变量类型，在定义变量时要加上前缀 u，比如 UBaseType_t 定义的变量要加上前缀 ux。</li>
-<li>size_t 定义的变量也要加上前缀 ux。</li>
-<li>枚举变量会加上前缀 e。</li>
-<li>指针变量会加上前缀 p，比如 uint16_t 定义的指针变量会加上前缀 pus。</li>
-<li>根据 MISRA 代码规则，char 定义的变量只能用于 ASCII 字符，前缀使用 c。</li>
-<li>根据 MISRA 代码规则，char *定义的指针变量只能用于 ASCII 字符串，前缀使用 pc。</li>
-</ul>
-<h3 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h3><ul>
-<li>加上了 static 声明的函数，定义时要加上前缀 prv，这个是单词 private 的缩写。</li>
-<li>带有返回值的函数，根据返回值的数据类型，加上相应的前缀；如果没有返回值，即 void 类型，函数的前缀加上字母 v。</li>
-<li>根据文件名，文件中相应的函数定义时也将文件名加到函数命名中，比如<code>tasks.c</code>文件中函数<code>vTaskDelete</code>，函数中的 task 就是文件名中的 task。</li>
-</ul>
-<h3 id="宏定义"><a href="#宏定义" class="headerlink" title="宏定义"></a>宏定义</h3><ul>
-<li>根据宏定义所在的文件，文件中的宏定义声明时也将文件名加到宏定义中，比如宏定义<code>configUSE_PREEMPTION </code>是定义在文件<code>FreeRTOSConfig.h</code>里面。宏定义中的<code>config</code>就是文件名中的<code>config</code>。</li>
-<li>前缀要小写。</li>
-<li>除了前缀，其余部分全部大写，同时用下划线分开。</li>
-</ul>
-<h2 id="FreeRTOS-中数据类型"><a href="#FreeRTOS-中数据类型" class="headerlink" title="FreeRTOS 中数据类型"></a><code>FreeRTOS</code> 中数据类型</h2><p><code>FreeRTOS</code> 使用的数据类型主要分为 stdint.h 文件中定义的和自己定义的两种。 其中 char 和 char * 定义的变量要特别注意。<br><code>FreeRTOS</code> 主要自定义了以下四种数据类型：</p>
-<h3 id="TickType-t"><a href="#TickType-t" class="headerlink" title="TickType_t"></a>TickType_t</h3><p>如果用户使能了宏定义<code>configUSE_16_BIT_TICKS</code>，那么<code>TickType_t</code>定义的就是16位无符号数；<br>如果没有使能，那么TickType_t定义的就是32位无符号数。对于32位架构的处理器，一定要禁止此宏定义，即设置此宏定义数值为 0 即可。</p>
-<h3 id="BaseType-t"><a href="#BaseType-t" class="headerlink" title="BaseType_t"></a>BaseType_t</h3><p>这个数据类型根据系统架构的位数而定，对于32位架构，<code>BaseType_t</code>定义的是32位有符号数，对于16位架构，<code>BaseType_t</code>定义的是16位有符号数。如果<code>BaseType_t</code> 被定义成了<code>char</code>型，要特别注意将其设置为有符号数，因为部分函数的返回值是用负数来表示错误类型。</p>
-<h3 id="UBaseType-t"><a href="#UBaseType-t" class="headerlink" title="UBaseType_t"></a>UBaseType_t</h3><p>这个数据类型是<code>BaseType_t</code>类型的无符号版本。</p>
-<h3 id="StackType-t"><a href="#StackType-t" class="headerlink" title="StackType_t"></a>StackType_t</h3><p>栈变量数据类型定义，这个数量类型由系统架构决定，对于 16 位系统架构，<code>StackType_t</code>定义的是16位变量，对于 32 位系统架构，<code>StackType_t</code> 定义的是 32 位变量。</p>
-<h2 id="FreeRTOS-的排版和注释"><a href="#FreeRTOS-的排版和注释" class="headerlink" title="FreeRTOS 的排版和注释"></a><code>FreeRTOS</code> 的排版和注释</h2><h3 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h3><p>Tab 制表符用于缩进，Tab 一次缩进 4 个字符空间。</p>
-<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p><code>FreeRTOS</code> 中注释不会超过 80 个字符宽度，除非对函数的参数进行注释时。 源码中主要是采用<code>/* */</code>的形式进行注释，不采用<code>C++</code>中的双斜杠风格来注释。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/" class="post-title-link" itemprop="url">makefile库函数-wildcard</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-28 23:45:27 / Modified: 23:45:42" itemprop="dateCreated datePublished" datetime="2022-08-28T23:45:27+08:00">2022-08-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：在makefile中手动一个个添加.c文件，相对来说比较繁琐。为此makefile提供了库函数wildcard，能一次性添加特定目录下符合特定规则（通常是通配符*）的所有文件。<br>由于makefile中可以直接调用shell，因此我们也可以通过shell的find语句来实现类似于wildcard的功能。</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p><code>my_abs_path = $(wildcard path/to/*.c)</code></p>
-<h2 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h2><ul>
-<li>wildcard返回值为以空格隔开的文件路径集合，如“path&#x2F;to&#x2F;file1.c path&#x2F;to&#x2F;file2.c”</li>
-<li>不能递归查找入参目录下的所有子目录；</li>
-<li>入参目录为相对路径，则展开之后也是相对路径，入参目录为绝对路径，则展开之后也是绝对路径；</li>
-<li><code>*.c</code>也可以是其他类型的文件，如<code>*.h，*.txt</code>等等</li>
-</ul>
-<h2 id="测试代码"><a href="#测试代码" class="headerlink" title="测试代码"></a>测试代码</h2><p>新建一个makefile，内容为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ABS_ROOT := $(abspath .)</span><br><span class="line">SRCS := $(wildcard src/*.c)</span><br><span class="line">ABS_SRCS := $(wildcard $(ABS_ROOT)/src/*.c)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(SRCS)</span><br><span class="line">	@echo $(ABS_SRCS)</span><br></pre></td></tr></table></figure>
-<p>执行make可以看到输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">╰─± make</span><br><span class="line">src/test2.c src/test3.c src/test1.c</span><br><span class="line">/home/wang/Workspaces/learning/c/src/test2.c /home/wang/Workspaces/learning/c/src/test3.c /home/wang/Workspaces/learning/c/src/test1.c</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/" class="post-title-link" itemprop="url">makefile库函数-abspath</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-28 23:43:10 / Modified: 23:45:13" itemprop="dateCreated datePublished" datetime="2022-08-28T23:43:10+08:00">2022-08-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>函数作用：该函数主要用于将_names中的相对路径转换成绝对路径，并返回转换后的结果。<br>函数意义：abs_path &#x3D; absolute path，指绝对路径</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>在makefile中的常见用法为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path = $(abspath _names)</span><br></pre></td></tr></table></figure>
-
-<h2 id="测试方法"><a href="#测试方法" class="headerlink" title="测试方法"></a>测试方法</h2><p>新建一个makefile，内容为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">my_abs_path := $(abspath .)</span><br><span class="line"></span><br><span class="line">all:</span><br><span class="line">	@echo $(my_abs_path)</span><br></pre></td></tr></table></figure>
-<p>执行make可以看到输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ make</span><br><span class="line">/home/wang/Workspaces/open</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/" class="post-title-link" itemprop="url">rust-云原生时代下的微服务框架语言选择</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-28 00:06:35 / Modified: 00:07:24" itemprop="dateCreated datePublished" datetime="2022-08-28T00:06:35+08:00">2022-08-28</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>今天周六在家休息，下午看了一场技术直播：“2022年字节跳动技术沙龙”的第七期|高性能微服务框架CloudWeGo。</p>
-<p>技术沙龙的主题是介绍CloudWeGo项目中的几个子项目：</p>
-<ul>
-<li>6W+微服务高性能RPC框架Kitex；</li>
-<li>大规模企业级HTTP框架Hertz；</li>
-<li>基于Rust语言实现的RPC框架Volo；</li>
-</ul>
-<p>以下是直播间给出的背景介绍：</p>
-<blockquote>
-<p>云原生时代，微服务架构改造是 IT 架构变化的主流。如何解决研发效率和稳定性两大关键问题，成了企业 IT 部门的关注焦点。另一方面，过去的企业级 IT 架构，选型上大多以 Java 语言写就，Java 总体设计上面向大规模、长时间服务；静态类型动态链接的语言结构等特性，在强调敏捷开发、效率优先的云原生时代，往往失去了一丝灵活性。</p>
-</blockquote>
-<blockquote>
-<p>规模化的差别，各异的业务场景，不同选型思路下诞生了各种各样的开源微服务框架，这其中就有来自字节跳动所开源的 CloudWeGo。CloudWeGo 是一套可快速构建企业级云原生微服务架构的中间件集合，项目共同的特点是高性能、高扩展性、高可靠，注于微服务通信与治理，主体选用了 Go 语言。另外，本次沙龙还将正式发布国内唯一一个基于 Rust 语言的开源 RPC 框架，敬请期待！</p>
-</blockquote>
-<h2 id="听后感"><a href="#听后感" class="headerlink" title="听后感"></a>听后感</h2><p>作为一个嵌入式开发，我对很多后端的开发知识了解不全面。不过好在演讲者的侧重点普遍在：</p>
-<ul>
-<li>go、rust及其他语言优劣势对比。</li>
-<li>如何结合语言做性能优化。</li>
-<li>开源社区搭建愿景和方法。</li>
-</ul>
-<p>所以整体听下来还是比较轻松的。其中印象较深的有以下几点：</p>
-<h3 id="对rust的介绍"><a href="#对rust的介绍" class="headerlink" title="对rust的介绍"></a>对rust的介绍</h3><p>rust是最近几年比较火的编程语言，可以在嵌入式领域应用，乐鑫已经提供了基于esp32c3的<a target="_blank" rel="noopener" href="https://github.com/ivmarkov/rust-esp32-std-demo">rust-esp32-std-demo</a>。</p>
-<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ul>
-<li>rust也是一门接近底层的语言，运行效率接近<code>c/c++</code>，甚至在某些场景下运行效率能超过<code>c/c++</code>，演讲者给出的理由是“rust的编译规则更加严格，编译器可以做更为激进的优化”。</li>
-<li>有人说“rust是c++的最佳实践”，rust没有<code>c++</code>的历史包袱，语言设计时就避免了很多<code>c++</code>踩过的坑。</li>
-<li>linux内核唯一接收过的有非c语言的代码提交，就是rust。rust获得了来自linus本人的肯定。</li>
-<li>具有很好的内存安全性。</li>
-</ul>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ul>
-<li>rust的学习曲线陡峭，难于上手。</li>
-<li>rust编译速度巨慢，编译一个项目可能要几个小时。</li>
-</ul>
-<h3 id="多种编程语言的对比"><a href="#多种编程语言的对比" class="headerlink" title="多种编程语言的对比"></a>多种编程语言的对比</h3><p>java、c、rust、go、python。<br>基本上从运行效率、开发难度、优化难易、内存安全等几个维度来进行比较。<br>rust除了开发难度大之外，其他维度上都没有太大短板，可以说综合能力很强。</p>
-<h3 id="开源社区"><a href="#开源社区" class="headerlink" title="开源社区"></a>开源社区</h3><p>相比于嵌入式，后端的开源框架是非常活跃的。嵌入式的开发环境碎片化无疑是开源的最大阻力，任重而道远啊~</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>rust是一门非常有潜力的语言，应用空间广阔。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/27/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-P5%E5%92%8CP7%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/27/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-P5%E5%92%8CP7%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/" class="post-title-link" itemprop="url">编程方法论-P5和P7的代码有什么区别</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-27 23:21:02" itemprop="dateCreated datePublished" datetime="2022-08-27T23:21:02+08:00">2022-08-27</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-15 00:47:37" itemprop="dateModified" datetime="2022-09-15T00:47:37+08:00">2022-09-15</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>有一天，小明问我一个这样的问题：<br>“P5和P7的代码有什么区别？”<br>（这里P5和P7指的<del>不是某XP电动汽车品牌的型号，而</del>是某互联网大厂的工程师职级：P5一般指刚入行的初级工程师，P7一般指从业5-10年的资深工程师。）</p>
-<h2 id="我的回答"><a href="#我的回答" class="headerlink" title="我的回答"></a>我的回答</h2><p>我思考了一下，脑海里跳出一连串字眼，P7的代码应该是：</p>
-<ul>
-<li>排版整洁的，有一致的编程风格的</li>
-<li>不缺乏注释，也不过度注释的</li>
-<li>易于被人类理解的</li>
-<li>易于扩充功能的</li>
-<li>易于被接手的工程师修改的</li>
-<li>被合理组织的</li>
-<li>函数功能单一的</li>
-<li>文件职责明确的</li>
-<li>数据结构设计合理的</li>
-<li>运行效率更高的</li>
-<li>bug更少的</li>
-</ul>
-<h2 id="小明的补充"><a href="#小明的补充" class="headerlink" title="小明的补充"></a>小明的补充</h2><p>小明说，你说很对，但是关于函数API设计，不只是功能单一即可，还要追求“高内聚低耦合”。有人总结了一整套关于“高内聚低耦合”的原则：</p>
-<ul>
-<li>开闭原则 OCP (The Open-Close Principle)</li>
-<li>单一职责原则 SRP (Single Responsibility Principle)</li>
-<li>依赖倒置原则 DIP (Dependence Inversion Principle)</li>
-<li>最少知识原则 LKP (Least Knowledge Principle)) &#x2F; 迪米特法则 (Law Of Demeter)</li>
-<li>里氏替换原则 LSP (Liskov Substitution Principle)</li>
-<li>接口隔离原则 ISP (Interface Segregation Principle)</li>
-<li>组合&#x2F;聚合复用原则 CARP (Composite&#x2F;Aggregate Reuse Principle)</li>
-</ul>
-<h2 id="什么是不好的代码"><a href="#什么是不好的代码" class="headerlink" title="什么是不好的代码"></a>什么是不好的代码</h2><h3 id="重复"><a href="#重复" class="headerlink" title="重复"></a>重复</h3><blockquote>
-<p>重复可能是软件中一切邪恶的根源。—— Robert C.Martin</p>
-</blockquote>
-<p>Martin Fowler 也认为坏味道中首当其冲的就是重复代码。<br>很多时候，当我们消除了重复代码之后，发现代码就已经比原来整洁多了。</p>
-<h3 id="函数过长、类过大、参数过长"><a href="#函数过长、类过大、参数过长" class="headerlink" title="函数过长、类过大、参数过长"></a>函数过长、类过大、参数过长</h3><p>过长的函数解释能力、共享能力、选择能力都较差，也不易维护。<br>过大的类代表了类做了很多事情，也常常有过多的重复代码。<br>参数过长，不易理解，调用时也容易出错。</p>
-<h3 id="发散式变化、霰弹式修改、依恋情结"><a href="#发散式变化、霰弹式修改、依恋情结" class="headerlink" title="发散式变化、霰弹式修改、依恋情结"></a>发散式变化、霰弹式修改、依恋情结</h3><p>如果一个类不是单一职责的，则不同的变化可能都需要修改这个类，说明存在发散式变化，应考虑将不同的变化分离开。<br>如果某个变化需要修改多个类的方法，则说明存在霰弹式修改，应考虑将这些需要修改的方法放入同一个类。<br>如果函数对于某个类的兴趣高于了自己所处的类，说明存在依恋情结，应考虑将函数转移到他应有的类中。</p>
-<h3 id="数据泥团"><a href="#数据泥团" class="headerlink" title="数据泥团"></a>数据泥团</h3><p>有时候会发现三四个相同的字段，在多个类和函数中均出现，这时候说明有必要给这一组字段建立一个类，将其封装起来。</p>
-<h3 id="过多的-if…else-或者使用-switch"><a href="#过多的-if…else-或者使用-switch" class="headerlink" title="过多的 if…else 或者使用 switch"></a>过多的 if…else 或者使用 switch</h3><p>过多的 if…else 或者 switch ，都应该考虑用多态来替换掉。甚至有些人认为除个别情况外，代码中就不应该存在 if…else 。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><ul>
-<li>整洁是好代码的必要条件。</li>
-<li>编程者应该追求高质量的代码，把代码看做自己的作品。</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://www.infoq.cn/article/3edxmpbbtgc4i2vf19xg">https://www.infoq.cn/article/3edxmpbbtgc4i2vf19xg</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/" class="post-title-link" itemprop="url">UVM通用验证方法学与嵌入式测试</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-26 07:54:40 / Modified: 07:55:11" itemprop="dateCreated datePublished" datetime="2022-08-26T07:54:40+08:00">2022-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>UVM（Universal Verification Methodology），通用验证方法学，是当前芯片验证中最流行的验证方法学。<br>本文将介绍UVM的全局视图，包括基于UVM的验证框架、UVM类库和UVM的各种实用的机制。</p>
-<h2 id="UVM验证大框架"><a href="#UVM验证大框架" class="headerlink" title="UVM验证大框架"></a>UVM验证大框架</h2><p>UVM这一验证方法学从发布到现在已经有10年之久了，它是一种使用SystemVerilog进行功能验证的方法，并提供了使用SystemVerilog代码实现的支持库。UVM的定位还是很高的，从它的名字”通用验证方法学“就可以看出，三个观念的转变：从定制到通用、从仿真到验证、从方法到方法学。</p>
-<p>传统的仿真可以简单地理解为就是从testbench向待测设计通过连线施加不同测试向量或者命令的过程，而UVM考虑的维度会更高一些、更详尽一些和更通用一些，仿真只是完成验证工程的技术手段。仿真要解决的问题是怎么从DUT输入激励并得到DUT的输出，而验证要解决的问题是怎么保证DUT功能的完备性和正确性。</p>
-<p>单从方法学这一字眼看，UVM定义的是一套完整的规范、方式或者流程，有组织有纪律，它不单单只是那一套SystemVerilog类库。UVM方法学指导了整个基于仿真的验证过程，区别于现在发展如火如荼且验证思想不相同的Formal验证和便携式激励验证（PSS，Portable Stimulus Standard）。</p>
-<p>UVM指导验证工程从DUT的功能规范（Specification）出发，制定验证计划，测试点分解，创建测试用例，定义验收（sign-off）方式和标准，流程自动化和报告自动化等等。如下图所示，基于UVM的验证流程相对标准和规范，也是目前被广泛采用的方式，不同单位不同项目可能会进行一些调整：</p>
-<p>UVM通过SystemVerilog类库的形式提供了验证环境和测试用例的可重用机制，极大的提高了验证效率。在UVM的框架里面，各类环境组件相互独立、各司其职，各个仿真阶段定义明确且执行起来井然有序，这相当于在”空间“和”时间“两个尺度上都体现出了其通用性。下图是基于UVM搭建的验证环境下各组件的大致关系，实际工程中需要根据待测设计规格进行调整。</p>
-<h2 id="UVM类库"><a href="#UVM类库" class="headerlink" title="UVM类库"></a>UVM类库</h2><p>这一节要呈现的是UVM提供的SystemVerilog类库，或者直接叫UVM类库（UVM Class Library）。这套库提供了可以使用SV快速开发架构良好（well-constructed）且具有可重用性（resuable）的验证环境所需要的基础类（Class）、宏（Macro）以及公共函数（Utilities），这就意味着，UVM验证在技术上说白了就是面向对象程序的开发。用户可以从Accellera网站（Accellera是在EDA、IC设计和制造领域的标准组织）上下载UVM类库源代码、用户指南和参考文档等相关资料。</p>
-<p>按照Accellera提供的UVM参考手册，UVM类库可以按照功能将其内容分成若干类别，方便梳理和使用。主要的类别有公共元素（包括类型定义、变量、函数和任务）、核心基类（Core Base Classes）、报告类（Reporting Classes）、工厂类（Factory Class）、组件类（Component Classes）、寄存器类（Register Layer Classes）、序列类（Sequence Classes）、序列器类（Sequencer Classes）、事务级模型类（TLM Classes）、线程同步类（Synchronization Classes）、宏（Macro）等等，更多细节读者可以翻一翻UVM参考手册[2]，或者等一等该系列后续文章。下面是将这些类的继承关系稍作整理后的UVM类架构：</p>
-<h2 id="UVM机制"><a href="#UVM机制" class="headerlink" title="UVM机制"></a>UVM机制</h2><p>UVM类库强大的地方不只是上面展开的类图，还应领略它各种非常实用且功能强大的机制。只有这些机制的引入，才能让UVM环境组件分工明确、密切协作，才能让整个仿真有条不紊且高效正确地运作起来。回过头讲，掌握UVM的各种机制也是用好UVM的必备条件。本节将大概介绍UVM有哪些机制，以及他们的作用，更多的细节需要后续文章再逐个展开。</p>
-<p>Factory机制。顾名思义，这是UVM家开的工厂。在这家工厂里面，你可以登记所有你定义的类。当你需要创建对象的时候，只要让工厂帮你生产出来即可；当你想要更换对象类型的时候，跟工厂交代一下，它会帮你把后续生产的对象都换成你想要的类型。</p>
-<p>ConfigDatabase机制。翻译过来就是配置数据库，缩写是config_db。数据库无非就是用来存放数据的，UVM提供的这个配置数据库功能很齐全，它可以存放一切你想要存放的数据，并且提供完善的匹配查询服务。配置数据库的用处在于，可以在不同对象之间传递数据。</p>
-<p>Phase机制。这套机制定义了基于UVM的仿真步调，也就是说它将整个仿真分成了不同的阶段（phase），在什么时候实例化环境组件，什么时候连接组件，什么时候复位，什么时候产生激励，什么时候产生报告等等，这些步调都是提前安排好的。</p>
-<p>Objection机制。作为软件程序的验证环境，它总是想要不断往下执行，最好不要停下来。然而，phase机制为所有环境组件都定好了基调，它要协调大家步调一致地往前走。于是Objection机制就出现了，它是协调各个环境组件遵守Phase机制的手段，有时候也会被用来同步跟RTL的步调。</p>
-<p>Sequence机制。测试用例如果想要构造稍微复杂一点的测试场景，可以率先构造能够复用的测试序列，然后再根据不同的测试场景组合起来。多个测试序列可能是串行的，也可能是并行的，但都没关系，sequence机制会协调好测试序列和驱动器（Driver）之间关系，好让测试向量一个不落地驱动到待测设计接口上。</p>
-<p>Reporting机制。信息的打印对于验证人员来说至关重要，关系到问题定位的效率。UVM的消息机制非常强大，消息分了严重等级（severity），不同等级的消息对应不同的处理方式；其中INFO等级的消息还被赋予了冗余度（verbosity），便于信息的筛选和分类；此外还提供了相关的宏和函数来便利不同数据结构的打印。</p>
-<p>寄存器抽象层（RAL, Register Abstraction Layer）。在数字系统中，寄存器常被用于功能配置、状态记录和查询、数值传递等等，切实影响着数字系统的行为。为了实时跟踪这些寄存器的状态，或者方便根据测试意图来配置寄存器，可以使用UVM的寄存器抽象层来完整地映射RTL中的寄存器组。这样除了便利寄存器的访问，还提供了收集寄存器覆盖率的方法。</p>
-<p>事务级建模（TLM, Transaction Level Modeling ）。事务级区别于信号级，不再关心具体某个信号的逻辑值。事务级建模处理的数据对象是一组有关联的数据，可以是数据包（Package）的形式，同时事务（Transaction）也是UVM环境组件之间交互的信息单元。抽象层的建立，使得数据的传递和处理变得更加高效。</p>
-<h2 id="嵌入式测试"><a href="#嵌入式测试" class="headerlink" title="嵌入式测试"></a>嵌入式测试</h2><p>UVM是芯片验证测试的成熟方法，具备一套复杂、完备的流程和机制。<br>偏上层的测试，比如芯片应用测试，也可以理解并借鉴UVM方法的设计思想，将其简化后应用到测试中，打造出更完备的测试方案。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/404777602">https://zhuanlan.zhihu.com/p/404777602</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/26/python-%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/26/python-%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84/" class="post-title-link" itemprop="url">python-列表与元组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-26 00:00:21 / Modified: 08:34:42" itemprop="dateCreated datePublished" datetime="2022-08-26T00:00:21+08:00">2022-08-26</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>列表(list)与元组(tuple)都是python内置的数据类型，是有序的元素的集合。</p>
-<h2 id="列表、元组与c语言数组"><a href="#列表、元组与c语言数组" class="headerlink" title="列表、元组与c语言数组"></a>列表、元组与c语言数组</h2><h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><p>列表有点类似于c语言中的数组和链表的结合体。</p>
-<ul>
-<li>从数据的初始化和访问方法上来说，list有点类似于c语言数组：  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_animals = [&#x27;cat&#x27;, &#x27;dog&#x27;]</span><br></pre></td></tr></table></figure>
-  可以用<code>test_animals[0]</code>，<code>test_animals[1]</code>来访问其中的元素。</li>
-<li>从数据操作上来说，list又有点类似于c语言的链表：<br>  可以用<code>test_animals.append(&#39;bull&#39;)</code>，<code>test_animals.pop()</code>，<code>test_animals.insert(1, &#39;bird&#39;)</code>这样的函数来轻松地增加、删除、插入数据，修改元素的个数。</li>
-</ul>
-<h3 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h3><p>tuple有点类似于c语言的只读数组，如const int a[10]，一旦定义后其元素内容和长度都不可变。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">test_animals = (&#x27;cat&#x27;, &#x27;dog&#x27;)</span><br></pre></td></tr></table></figure>
-<p>元组元素访问方法同列表。</p>
-<h3 id="差异点"><a href="#差异点" class="headerlink" title="差异点"></a>差异点</h3><p>列表和元组里面的元素可以是不同的数据类型，这是和c语言数组不同的地方。</p>
-<h2 id="列表和元组的使用场景"><a href="#列表和元组的使用场景" class="headerlink" title="列表和元组的使用场景"></a>列表和元组的使用场景</h2><ul>
-<li>元组作为很多内置函数和序列类型方法的返回值存在，也就是说，在使用某些函数或者方法时，它的返回值会元组类型，因此你必须对元组进行处理。</li>
-<li>同样长度的数据，列表比元组所占用的内存空间更大，列表需要存储更多的管理信息。</li>
-<li>元组比列表的访问和处理速度更快，因此，当需要对指定元素进行访问，且不涉及修改元素的操作时，建议使用元组。</li>
-<li>元组可以在映射（和集合的成员）中当做“键”使用，而列表不行。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <span class="site-state-item-count">56</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">19</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WaterYoungMan's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/02/c%E8%AF%AD%E8%A8%80-%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E6%88%90%E5%91%98%E5%81%8F%E7%A7%BB%E9%87%8F/" title="c语言-计算结构体中成员偏移量"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="c语言-计算结构体中成员偏移量"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/02/c%E8%AF%AD%E8%A8%80-%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E6%88%90%E5%91%98%E5%81%8F%E7%A7%BB%E9%87%8F/" title="c语言-计算结构体中成员偏移量">c语言-计算结构体中成员偏移量</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-02T14:55:52.000Z" title="Created 2022-09-02 22:55:52">2022-09-02</time></span></div><div class="content">问题12345typedef struct &#123;    char a;    int b;    int c;&#125; test_s;
+求test_s中成员c相对于结构体首地址的偏移量。
+写法12#define offsetof(type, v) (&amp;(((type *)0)-&gt;v))int result = offset(test_s, c);
+
+优点
+无需借助实体变量。
+相比于”以成员c的实际地址减去结构体的地址”的方法，少了一步减法运算，执行速度快。
+事实上offsetof是c语言标准库中的宏，定义在&lt;stddef.h&gt;中，可以直接使用。
+
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/02/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cadb%E8%B0%83%E8%AF%95/" title="在linux下进行adb调试"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下进行adb调试"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/02/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cadb%E8%B0%83%E8%AF%95/" title="在linux下进行adb调试">在linux下进行adb调试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-02T14:52:43.000Z" title="Created 2022-09-02 22:52:43">2022-09-02</time></span></div><div class="content">引言之前出于兴趣使用rk3308（一款能运行linux的嵌入式芯片）做过lvgl的开发。当时同事都是用windows系统搭建的adb调试环境，而我个人电脑是用的原生linux系统+虚拟机windows调试系统，在虚拟机中调试adb非常不方便。所以我参考网上文档搭建了一个linux的adb调试环境，这样编译调试都非常快速。
+搭建步骤
+安装adb1sudo apt install android-tools-adb
+查看usb设备信息12lsusbBus 001 Device 011: ID 2207:0006 Fuzhou Rockchip Electronics Company
+为adb增加设备操作权限12sudo vim /etc/udev/rules.d/70-android.rulesSUBSYSTEM==&quot;usb&quot;, ATTRS&#123;idVendor&#125;==&quot;2207&quot;, ATTRS&#123;idProduct&#125;==&quot;0006&quot;, MODE=&quot;0666&quot;
+ 第一次配置adb ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/31/%E7%BC%96%E8%AF%91-data%E6%AE%B5%E5%92%8Cbss%E6%AE%B5%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%97%B6%E6%9C%BA/" title="编译-data段和bss段初始化的时机"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编译-data段和bss段初始化的时机"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/31/%E7%BC%96%E8%AF%91-data%E6%AE%B5%E5%92%8Cbss%E6%AE%B5%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9A%84%E6%97%B6%E6%9C%BA/" title="编译-data段和bss段初始化的时机">编译-data段和bss段初始化的时机</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-31T15:53:52.000Z" title="Created 2022-08-31 23:53:52">2022-08-31</time></span></div><div class="content">前言最近在做ARM-CM4的BootLoader的相关开发时遇到2个问题：
+
+在BootLoader中定义了一个静态全局变量，且定义的时候赋了一个不为0的初值，但是在代码中首次获取这个变量值的时候，却发现变量的初值不是我所预先定义的值。
+在BootLoader中定义的局部静态变量，定义的时候赋了初值为0，在代码中首次获取时，变量的初值也不为0。
+
+这个问题事实上和可执行文件中的data、bss段的初始化有关。
+bss，data和text我们知道，一个计算机系统的可执行文件主要由 data，bss，text组成，除此之外还有rodata等：
+
+bss段（bss segment）：bss是Block Started by Symbol的简称，用来存放程序中未赋初值的全局变量的静态内存区域。在Linux环境的C下，初始值为0和没有赋初始值的变量放在bss段。
+data段（data segment）：用来存放程序中已赋初值（且初值不为0）的全局变量的静态内存区域。
+text段（text segment）：用来存放程序执行代码的内存区域。这部分区域的大小在程序运行前就已经确定，并且内存区域通常属 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/31/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E6%B4%BB%E6%B3%95%E3%80%8B/" title="读书笔记-《活法》"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="读书笔记-《活法》"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/31/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E6%B4%BB%E6%B3%95%E3%80%8B/" title="读书笔记-《活法》">读书笔记-《活法》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-30T16:00:51.000Z" title="Created 2022-08-31 00:00:51">2022-08-31</time></span></div><div class="content">作者：稻盛和夫阅读时间：2022.05
+今天是2022年8月30日，在新闻中得知作者逝世的消息。想起几个月前看的这本《活法》，竟还没来得及写下笔记。稻盛和夫先生是京瓷公司的创始人，白手起家打造了2家世界500强公司，是公司经营的宗师级人物。读这本书的起因是曾在很多书单上看到过这本书。此外，我在混沌的课堂中也听到多位讲师谈过作者的经营理念，推崇备至。
+谈谈对书中记忆深刻的几点：
+
+书的行文是以第一人称叙述，主要讲述自己的人生理念和经营哲学。作者虽拥有大量财富，但语气始终保持谦和，我能感受到他没有半点的居功自傲。在书中，他像一个前辈，对后辈们娓娓道来，将自己的人生经验和深度思考，无私奉献。
+对幸福人生的美好愿望能催生出极致的意志，持续激发心灵的力量。我们面对外界的困难，要避免逃避和抱怨，要努力去克服困难，磨炼心智，锻炼灵魂。
+持续精进，一天更胜过一天。“精进”一词我曾经在采铜的书中看过，原来这个概念可能更早来自于稻盛和夫。持续打磨自己是任何一个崇尚终身学习的人都应该做的事情。芒格和巴菲特这样的人都在持续学习，我们有什么理由止步不前呢？
+“利他”原则。作为企业，“利他”以“利己”。合作才能共 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/" title="FreeRTOS基础-编码标准和命名风格"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="FreeRTOS基础-编码标准和命名风格"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/28/FreeRTOS%E5%9F%BA%E7%A1%80-%E7%BC%96%E7%A0%81%E6%A0%87%E5%87%86%E5%92%8C%E5%91%BD%E5%90%8D%E9%A3%8E%E6%A0%BC/" title="FreeRTOS基础-编码标准和命名风格">FreeRTOS基础-编码标准和命名风格</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-28T15:49:06.000Z" title="Created 2022-08-28 23:49:06">2022-08-28</time></span></div><div class="content">FreeRTOS 的编码标准FreeRTOS 核心源码文件的编写遵循 MISRA 代码规则，同时支持各种编译器。但考虑到有些编译器的性能还比较弱，不支持 C 语言的新标准 C99 和 C11 的一些特性和语法，所以 FreeRTOS 的源码中就没有引入 C99 和 C11 的新特性，但是有一个例外，源码中有用到头文件stdint.h（这个文件是C99标准才引入的）。
+FreeRTOS 的命名规则变量
+uint32_t 定义的变量都加上前缀 ul。 u 代表 unsigned 无符号，l 代表 long 长整型。
+uint16_t 定义的变量都加上前缀 us。 u 代表 unsigned 无符号，s 代表 short 短整型。
+uint8_t 定义的变量都加上前缀 uc。 u 代表 unsigned 无符号，c 代表 char 字符型。
+stdint.h 文件中未定义的变量类型，在定义变量时需要加上前缀 x，比如 BaseType_t 和
+TickType_t 定义的变量。
+stdint.h 文件中未定义的无符号变量类型，在定义变量时要加上前缀 u，比如 UBaseType_t 定义的变 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/" title="makefile库函数-wildcard"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="makefile库函数-wildcard"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-wildcard/" title="makefile库函数-wildcard">makefile库函数-wildcard</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-28T15:45:27.000Z" title="Created 2022-08-28 23:45:27">2022-08-28</time></span></div><div class="content">简介函数作用：在makefile中手动一个个添加.c文件，相对来说比较繁琐。为此makefile提供了库函数wildcard，能一次性添加特定目录下符合特定规则（通常是通配符*）的所有文件。由于makefile中可以直接调用shell，因此我们也可以通过shell的find语句来实现类似于wildcard的功能。
+用法my_abs_path = $(wildcard path/to/*.c)
+特性
+wildcard返回值为以空格隔开的文件路径集合，如“path&#x2F;to&#x2F;file1.c path&#x2F;to&#x2F;file2.c”
+不能递归查找入参目录下的所有子目录；
+入参目录为相对路径，则展开之后也是相对路径，入参目录为绝对路径，则展开之后也是绝对路径；
+*.c也可以是其他类型的文件，如*.h，*.txt等等
+
+测试代码新建一个makefile，内容为：
+1234567ABS_ROOT := $(abspath .)SRCS := $(wildcard src/*.c)ABS_SRCS := $(wildcard $(ABS_ROOT)/src/*.c)all ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/" title="makefile库函数-abspath"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="makefile库函数-abspath"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/28/makefile%E5%BA%93%E5%87%BD%E6%95%B0-abspath/" title="makefile库函数-abspath">makefile库函数-abspath</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-28T15:43:10.000Z" title="Created 2022-08-28 23:43:10">2022-08-28</time></span></div><div class="content">简介函数作用：该函数主要用于将_names中的相对路径转换成绝对路径，并返回转换后的结果。函数意义：abs_path &#x3D; absolute path，指绝对路径
+用法在makefile中的常见用法为：
+1my_abs_path = $(abspath _names)
+
+测试方法新建一个makefile，内容为：
+1234my_abs_path := $(abspath .)all:	@echo $(my_abs_path)
+执行make可以看到输出结果：
+12╰─○ make/home/wang/Workspaces/open</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/" title="rust-云原生时代下的微服务框架语言选择"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="rust-云原生时代下的微服务框架语言选择"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/28/rust-%E4%BA%91%E5%8E%9F%E7%94%9F%E6%97%B6%E4%BB%A3%E4%B8%8B%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%A1%86%E6%9E%B6%E8%AF%AD%E8%A8%80%E9%80%89%E6%8B%A9/" title="rust-云原生时代下的微服务框架语言选择">rust-云原生时代下的微服务框架语言选择</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-27T16:06:35.000Z" title="Created 2022-08-28 00:06:35">2022-08-28</time></span></div><div class="content">背景今天周六在家休息，下午看了一场技术直播：“2022年字节跳动技术沙龙”的第七期|高性能微服务框架CloudWeGo。
+技术沙龙的主题是介绍CloudWeGo项目中的几个子项目：
+
+6W+微服务高性能RPC框架Kitex；
+大规模企业级HTTP框架Hertz；
+基于Rust语言实现的RPC框架Volo；
+
+以下是直播间给出的背景介绍：
+
+云原生时代，微服务架构改造是 IT 架构变化的主流。如何解决研发效率和稳定性两大关键问题，成了企业 IT 部门的关注焦点。另一方面，过去的企业级 IT 架构，选型上大多以 Java 语言写就，Java 总体设计上面向大规模、长时间服务；静态类型动态链接的语言结构等特性，在强调敏捷开发、效率优先的云原生时代，往往失去了一丝灵活性。
 
 
+规模化的差别，各异的业务场景，不同选型思路下诞生了各种各样的开源微服务框架，这其中就有来自字节跳动所开源的 CloudWeGo。CloudWeGo 是一套可快速构建企业级云原生微服务架构的中间件集合，项目共同的特点是高性能、高扩展性、高可靠，注于微服务通信与治理，主体选用了 Go 语言。另外，本次沙龙还将正式发布国内唯一 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/27/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-P5%E5%92%8CP7%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/" title="编程方法论-P5和P7的代码有什么区别"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程方法论-P5和P7的代码有什么区别"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/27/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-P5%E5%92%8CP7%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB/" title="编程方法论-P5和P7的代码有什么区别">编程方法论-P5和P7的代码有什么区别</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-27T15:21:02.000Z" title="Created 2022-08-27 23:21:02">2022-08-27</time></span></div><div class="content">背景有一天，小明问我一个这样的问题：“P5和P7的代码有什么区别？”（这里P5和P7指的不是某XP电动汽车品牌的型号，而是某互联网大厂的工程师职级：P5一般指刚入行的初级工程师，P7一般指从业5-10年的资深工程师。）
+我的回答我思考了一下，脑海里跳出一连串字眼，P7的代码应该是：
 
-      </div>
+排版整洁的，有一致的编程风格的
+不缺乏注释，也不过度注释的
+易于被人类理解的
+易于扩充功能的
+易于被接手的工程师修改的
+被合理组织的
+函数功能单一的
+文件职责明确的
+数据结构设计合理的
+运行效率更高的
+bug更少的
 
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+小明的补充小明说，你说很对，但是关于函数API设计，不只是功能单一即可，还要追求“高内聚低耦合”。有人总结了一整套关于“高内聚低耦合”的原则：
 
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+开闭原则 OCP (The Open-Close Principle)
+单一职责原则 SRP (Single Responsibility Principle)
+依赖倒置原则 DIP (Dependence Inversion Principle)
+最少知识原则 LKP (Least Knowledge Principle)) &#x2F; 迪米特 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/" title="UVM通用验证方法学与嵌入式测试"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="UVM通用验证方法学与嵌入式测试"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/26/UVM%E9%80%9A%E7%94%A8%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95%E5%AD%A6%E4%B8%8E%E5%B5%8C%E5%85%A5%E5%BC%8F%E6%B5%8B%E8%AF%95/" title="UVM通用验证方法学与嵌入式测试">UVM通用验证方法学与嵌入式测试</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-25T23:54:40.000Z" title="Created 2022-08-26 07:54:40">2022-08-26</time></span></div><div class="content">概述UVM（Universal Verification Methodology），通用验证方法学，是当前芯片验证中最流行的验证方法学。本文将介绍UVM的全局视图，包括基于UVM的验证框架、UVM类库和UVM的各种实用的机制。
+UVM验证大框架UVM这一验证方法学从发布到现在已经有10年之久了，它是一种使用SystemVerilog进行功能验证的方法，并提供了使用SystemVerilog代码实现的支持库。UVM的定位还是很高的，从它的名字”通用验证方法学“就可以看出，三个观念的转变：从定制到通用、从仿真到验证、从方法到方法学。
+传统的仿真可以简单地理解为就是从testbench向待测设计通过连线施加不同测试向量或者命令的过程，而UVM考虑的维度会更高一些、更详尽一些和更通用一些，仿真只是完成验证工程的技术手段。仿真要解决的问题是怎么从DUT输入激励并得到DUT的输出，而验证要解决的问题是怎么保证DUT功能的完备性和正确性。
+单从方法学这一字眼看，UVM定义的是一套完整的规范、方式或者流程，有组织有纪律，它不单单只是那一套SystemVerilog类库。UVM方法学指导了整个基于仿真的 ...</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/#content-inner">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/4/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WaterYoungMan</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangym307"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangym307" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/something/" title="something"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="something"/></a><div class="content"><a class="title" href="/2022/12/06/something/" title="something">something</a><time datetime="2022-12-06T15:59:49.000Z" title="Created 2022-12-06 23:59:49">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux内核-进程调度算法"/></a><div class="content"><a class="title" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法">linux内核-进程调度算法</a><time datetime="2022-12-04T16:04:04.000Z" title="Created 2022-12-05 00:04:04">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下模拟AP热点"/></a><div class="content"><a class="title" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点">在linux下模拟AP热点</a><time datetime="2022-11-27T15:33:40.000Z" title="Created 2022-11-27 23:33:40">2022-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="但行好事，莫问前程"/></a><div class="content"><a class="title" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程">但行好事，莫问前程</a><time datetime="2022-10-26T16:24:09.000Z" title="Created 2022-10-27 00:24:09">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CPU-DMA机制"/></a><div class="content"><a class="title" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制">CPU-DMA机制</a><time datetime="2022-09-22T23:58:18.000Z" title="Created 2022-09-23 07:58:18">2022-09-23</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/ARM/" style="font-size: 1.34em; color: #99a3b0">ARM</a> <a href="/tags/FreeRTOS/" style="font-size: 1.5em; color: #99a9bf">FreeRTOS</a> <a href="/tags/WiFi/" style="font-size: 1.18em; color: #999ca1">WiFi</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c</a> <a href="/tags/esp32c3/" style="font-size: 1.1em; color: #999">esp32c3</a> <a href="/tags/gdb/" style="font-size: 1.1em; color: #999">gdb</a> <a href="/tags/linux/" style="font-size: 1.34em; color: #99a3b0">linux</a> <a href="/tags/makefile/" style="font-size: 1.18em; color: #999ca1">makefile</a> <a href="/tags/python/" style="font-size: 1.26em; color: #999fa8">python</a> <a href="/tags/rust/" style="font-size: 1.1em; color: #999">rust</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">安全</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.26em; color: #999fa8">操作系统</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 1.26em; color: #999fa8">方法论</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 1.26em; color: #999fa8">编程语言</a> <a href="/tags/%E7%BC%96%E8%AF%91/" style="font-size: 1.1em; color: #999">编译</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">网络协议</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.42em; color: #99a6b7">读书笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.1em; color: #999">随笔</a> <a href="/tags/%E9%AA%8C%E8%AF%81/" style="font-size: 1.1em; color: #999">验证</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">October 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">31</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">July 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">June 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-12-11T15:57:16.441Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By WaterYoungMan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

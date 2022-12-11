@@ -1,1129 +1,266 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>WaterYoungMan's Blog</title><meta name="author" content="WaterYoungMan"><meta name="copyright" content="WaterYoungMan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="WaterYoungMan&#39;s Blog">
 <meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="WaterYoungMan">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/page/2/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'en'
-  };
-</script>
-
-  <title>WaterYoungMan's Blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/2/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WaterYoungMan\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-11 23:57:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WaterYoungMan's Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/" class="post-title-link" itemprop="url">ARM-芯片架构简介</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-09-05 00:58:54" itemprop="dateCreated datePublished" datetime="2022-09-05T00:58:54+08:00">2022-09-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-07 00:34:09" itemprop="dateModified" datetime="2022-09-07T00:34:09+08:00">2022-09-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ARM(Advanced RISC Machine)架构。是一个精简指令集(RISC,Reduced Instruction Set Computer)处理器架构家族，具有低成本、高性能、低耗电的特性。<br>ARM架构广泛应用在嵌入式系统，现在也有应用在个人计算机（Apple M1）和超级计算机中。</p>
-<ul>
-<li>与ARM同属精简指令集架构的还有RISC-V，MIPS，Xtensa等。</li>
-<li>与精简指令集相对应的是复杂指令集（CISC,Complex Instruction Set Computer），代表架构为X86。</li>
-</ul>
-<h2 id="ARM架构范畴"><a href="#ARM架构范畴" class="headerlink" title="ARM架构范畴"></a>ARM架构范畴</h2><p>ARM架构的主要范畴整理如下：</p>
-<table>
-<thead>
-<tr>
-<th>条目</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>指令集</td>
-<td>每条指令的功能；指令如何在内存中表示(它的编码)</td>
-</tr>
-<tr>
-<td>寄存器组</td>
-<td>有多少寄存器；寄存器的大小；寄存器的功能；寄存器的初始状态</td>
-</tr>
-<tr>
-<td>异常模型</td>
-<td>不同的权限级别；异常的类型；从异常中获取或返回时会发生什么</td>
-</tr>
-<tr>
-<td>内存模型</td>
-<td>内存访问是如何排序的；缓存是如何运作的，什么时候以及软件必须如何执行显式维护</td>
-</tr>
-<tr>
-<td>调试、跟踪和分析</td>
-<td>如何设置和触发断点；跟踪工具可以捕获什么信息，以什么格式捕获</td>
-</tr>
-<tr>
-<td>安全性扩展(TrustZone)</td>
-<td>安全性扩展，隔离某些资源</td>
-</tr>
-</tbody></table>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" class="post-title-link" itemprop="url">ARM-芯片启动流程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-05 00:37:53 / Modified: 00:43:23" itemprop="dateCreated datePublished" datetime="2022-09-05T00:37:53+08:00">2022-09-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="芯片启动流程"><a href="#芯片启动流程" class="headerlink" title="芯片启动流程"></a>芯片启动流程</h2><p>在MCU(CPU)上执行C语言编译的可执行文件时，基本可以将启动流程分为以下3个阶段：</p>
-<ul>
-<li>初始化阶段</li>
-<li>执行阶段</li>
-<li>退出阶段</li>
-</ul>
-<p>ARM芯片也不例外，仅与其他架构芯片有一些细节上的不同。</p>
-<h2 id="初始化流程"><a href="#初始化流程" class="headerlink" title="初始化流程"></a>初始化流程</h2><h3 id="硬件初始化"><a href="#硬件初始化" class="headerlink" title="硬件初始化"></a>硬件初始化</h3><p>硬件初始化通常在启动代码cstartup.s中执行，如果需要，还可以通过用户提供的额外低级接口<code>__low_level_init</code>来执行用户自己的代码。它可能包括重置&#x2F;启动其余硬件，设置CPU等，以准备软件c&#x2F;c++系统初始化。</p>
-<ul>
-<li>当cpu复位的时候，，程序将从系统启动代码中的程序入口entry开始执行。</li>
-<li>堆栈指针初始化为 CSTACK 块的末尾。</li>
-<li>对于Arm7&#x2F;9&#x2F;11、Cortex-A和Cortex-R器件，异常堆栈指针初始化为每个相应部分的末尾。</li>
-<li>如果用户定义了函数<code>__low_level_init</code>，则为应用程序提供执行早期初始化的机会。</li>
-</ul>
-<h3 id="c-x2F-c-软件系统初始化"><a href="#c-x2F-c-软件系统初始化" class="headerlink" title="c&#x2F;c++软件系统初始化"></a>c&#x2F;c++软件系统初始化</h3><p>通常，此步操作确保在调用 main 函数之前，每个全局（静态链接）的 C&#x2F;C++符号都会收到其正确的初始化值。</p>
-<ul>
-<li>静态和全局变量初始化。也就是说，清零初始化为零的变量，并将其他初始化变量的值从 ROM 复制到 RAM 存储器。 如果<code>__low_level_init</code>返回零，则跳过此步骤。</li>
-<li>在标准 C 中，所有静态变量（在固定内存地址分配的变量）必须由运行时系统初始化为应用程序启动时的已知值。此值是分配给变量的显式值，或者如果没有给出值，则将其清零。在编译器中，此规则有例外，例如声明为<code>__no_init</code>的变量，它们根本没有初始化。<ul>
-<li>对于已经初始化的数据，从ROM复制到RAM</li>
-<li>对于未初始化的数据，用零填充</li>
-</ul>
-</li>
-<li>构造静态 C++ 对象。</li>
-<li>调用主函数，启动应用程序。</li>
-</ul>
-<h3 id="应用程序初始化"><a href="#应用程序初始化" class="headerlink" title="应用程序初始化"></a>应用程序初始化</h3><p>就是用户自己的程序部分。这完全取决于用户的应用程序：对于带操作系统的应用程序，它可以包括设置RTOS内核并启动RTOS驱动的应用程序的初始任务；对于裸机应用程序，它可以包括设置各种中断，初始化通信，初始化设备等。<br>对于基于 ROM&#x2F;flash 的系统，常量和函数已经放在 ROM 中。 放置在 RAM 中的所有符号必须在调用main函数之前初始化。链接器已将可用RAM划分为变量，堆栈，堆等的不同区域。</p>
-<ul>
-<li>当应用程序启动时，系统启动代码首先执行硬件初始化，例如初始化栈顶指针以指向预定义堆栈区域的末尾：</li>
-</ul>
-<h2 id="执行阶段"><a href="#执行阶段" class="headerlink" title="执行阶段"></a>执行阶段</h2><p>这里的执行阶段指的是应用程序的执行。<br>应用程序可以是无操作系统，也可以是有操作系统。</p>
-<h2 id="退出阶段"><a href="#退出阶段" class="headerlink" title="退出阶段"></a>退出阶段</h2><p>大多数情况，应用程序是在一个循环中执行，不涉及退出。<br>如果一定要中途退出main函数，有两种方法：</p>
-<ul>
-<li>在main函数中执行return；</li>
-<li>执行exit()；</li>
-</ul>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://itexp.blog.csdn.net/article/details/80217199">https://itexp.blog.csdn.net/article/details/80217199</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/" class="post-title-link" itemprop="url">FreeRTOS源码精读-tasks</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-09-05 00:20:45" itemprop="dateCreated datePublished" datetime="2022-09-05T00:20:45+08:00">2022-09-05</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-07 00:05:18" itemprop="dateModified" datetime="2022-09-07T00:05:18+08:00">2022-09-07</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="阅读原则"><a href="#阅读原则" class="headerlink" title="阅读原则"></a>阅读原则</h2><p>tasks.c是FreeRTOS的核心代码，虽不算非常复杂，也有5000多行代码，一行行代码看的话一天也不够用。我推荐的阅读步骤是：</p>
-<ul>
-<li>先看API、数据结构、全局变量</li>
-<li>再看主要函数的源码</li>
-<li>最后看次要函数的源码</li>
-</ul>
-<h2 id="关键API"><a href="#关键API" class="headerlink" title="关键API"></a>关键API</h2><h3 id="xTaskCreate"><a href="#xTaskCreate" class="headerlink" title="xTaskCreate"></a>xTaskCreate</h3><p>功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。<br>这个函数仅在支持动态内存申请的宏使能时生效。</p>
-<p>值得注意的是，有的CPU的栈内存是从低向高增长，有的CPU栈内存是高向低增长（如ARM架构）。这会影响任务控制块内存（pxNewTCB）和任务内存（pxStack）的申请顺序，对于一块全新的内存来说，malloc通常是优先申请低地址的内存，再申请高地址的内存。</p>
-<p>两种不同栈生长方向的内存申请情况如下图所示：<br><img src="https://s2.loli.net/2022/09/07/pDzy5ro4Ijl3ifv.png" alt="stackgrow.png"></p>
-<p>为了避免栈增长到溢出的时候踩踏到pxNewTCB的内存，freeRTOS实现了一套任务控制块内存保护机制：</p>
-<ul>
-<li>若CPU的内存是由高向低增长，则先申请任务内存（pxStack），再申请任务控制块内存（pxNewTCB），这样pxNewTCB就处于pxStack的更高地址，栈顶指针pxTopOfStack的初始值就放在任务内存（pxStack）的最高地址（为了向低增长），也就是内存数组的结尾处。</li>
-<li>此后，任务内存（pxStack）不断被使用，pxTopOfStack也逐渐指向更低的地址，但再也不会和任务控制块内存相遇。这就降低了自身控制块内存被自身stack内存踩踏的风险。</li>
-<li>值得注意的是，由于内存是由malloc去分配的，当内存被多次循环使用并释放后，并不能保证后申请的内存地址就比先申请的内存地址更高（也就是说，前文说提的任务控制块内存保护机制并不总能生效），也不能保证连续申请的两块内存物理地址是连续的（此时这种内存保护机制无需生效）。</li>
-</ul>
-<h3 id="xTaskCreateStatic"><a href="#xTaskCreateStatic" class="headerlink" title="xTaskCreateStatic"></a>xTaskCreateStatic</h3><p>功能：以静态内存创建任务<br>这个函数与xTaskCreate的区别仅在于任务相关的内存的申请方式不通，该函数用的是预先指定的静态内存。</p>
-<h3 id="prvInitialiseNewTask"><a href="#prvInitialiseNewTask" class="headerlink" title="prvInitialiseNewTask"></a>prvInitialiseNewTask</h3><p>功能：初始化一个新的任务，被以上两个API<code>xTaskCreate</code>和<code>xTaskCreateStatic</code>调用。</p>
-<ul>
-<li>重置任务内存（pxStack）为默认值，默认为<code>0xA5</code></li>
-<li>根据栈增长方向设置栈顶指针pxTopOfStack的初始值</li>
-<li>初始化优先级、任务名。</li>
-<li>初始化<code>xStateListItem</code>，<code>xStateListItem</code>是一个重要的元素，其类型为一个链表的节点，挂在不同的链表（就绪，阻塞，删除，挂起）下时，意味着其处于不同的任务状态。</li>
-<li>初始化<code>xStateListItem</code></li>
-</ul>
-<h3 id="vTaskDelete"><a href="#vTaskDelete" class="headerlink" title="vTaskDelete"></a>vTaskDelete</h3><p>功能：删除任务</p>
-<h3 id="prvInitialiseTaskLists"><a href="#prvInitialiseTaskLists" class="headerlink" title="prvInitialiseTaskLists"></a>prvInitialiseTaskLists</h3><p>功能：初始化各个状态的任务链表全局变量，在创建第一个任务的时候会被调用。</p>
-<h3 id="vTaskStartScheduler"><a href="#vTaskStartScheduler" class="headerlink" title="vTaskStartScheduler"></a>vTaskStartScheduler</h3><p>功能：开启任务调度器。</p>
-<ul>
-<li>创建第一个任务（或称线程），idle任务</li>
-<li>（如果使能了timer宏）创建定时器任务</li>
-<li>开始调度器（<code>xPortStartScheduler</code>），初始化tick时钟，tick是整个操作系统的心跳。</li>
-</ul>
-<h3 id="vTaskEndScheduler"><a href="#vTaskEndScheduler" class="headerlink" title="vTaskEndScheduler"></a>vTaskEndScheduler</h3><p>功能：结束任务调度器。（很少使用）</p>
-<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
-<li>任务按相对时间延迟<code>vTaskDelay</code>、任务按绝对时间延迟<code>xTaskDelayUntil</code>；</li>
-<li>任务优先级设置<code>vTaskPrioritySet</code>、任务优先级获取<code>uxTaskPriorityGet</code>，<code>uxTaskPriorityGetFromISR</code>;</li>
-<li>挂起任务<code>vTaskSuspend</code>、恢复任务<code>vTaskResume</code>；</li>
-<li>挂起所有任务<code>vTaskSuspendAll</code>，恢复所有任务<code>xTaskResumeAll</code>，支持递归调用。</li>
-<li>任务上下文切换<code>vTaskSwitchContext</code></li>
-<li>任务优先级继承<code>xTaskPriorityInherit</code>（与互斥锁有关）</li>
-<li>当前所有任务信息获取<code>vTaskList</code></li>
-</ul>
-<h2 id="关键结构体"><a href="#关键结构体" class="headerlink" title="关键结构体"></a>关键结构体</h2><p>整个task.c的核心数据结构就是这个任务控制块tskTCB，对应源码为：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">/*</span><br><span class="line"> * Task control block.  A task control block (TCB) is allocated for each task,</span><br><span class="line"> * and stores task state information, including a pointer to the task&#x27;s context</span><br><span class="line"> * (the task&#x27;s run time environment, including register values)</span><br><span class="line"> */</span><br><span class="line">typedef struct tskTaskControlBlock       /* The old naming convention is used to prevent breaking kernel aware debuggers. */</span><br><span class="line">&#123;</span><br><span class="line">    volatile StackType_t * pxTopOfStack; /*&lt; Points to the location of the last item placed on the tasks stack.  THIS MUST BE THE FIRST MEMBER OF THE TCB STRUCT. */</span><br><span class="line"></span><br><span class="line">    #if ( portUSING_MPU_WRAPPERS == 1 )</span><br><span class="line">        xMPU_SETTINGS xMPUSettings; /*&lt; The MPU settings are defined as part of the port layer.  THIS MUST BE THE SECOND MEMBER OF THE TCB STRUCT. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    ListItem_t xStateListItem;                  /*&lt; The list that the state list item of a task is reference from denotes the state of that task (Ready, Blocked, Suspended ). */</span><br><span class="line">    ListItem_t xEventListItem;                  /*&lt; Used to reference a task from an event list. */</span><br><span class="line">    UBaseType_t uxPriority;                     /*&lt; The priority of the task.  0 is the lowest priority. */</span><br><span class="line">    StackType_t * pxStack;                      /*&lt; Points to the start of the stack. */</span><br><span class="line">    char pcTaskName[ configMAX_TASK_NAME_LEN ]; /*&lt; Descriptive name given to the task when created.  Facilitates debugging only. */ /*lint !e971 Unqualified char types are allowed for strings and single characters only. */</span><br><span class="line"></span><br><span class="line">    #if ( ( portSTACK_GROWTH &gt; 0 ) || ( configRECORD_STACK_HIGH_ADDRESS == 1 ) )</span><br><span class="line">        StackType_t * pxEndOfStack; /*&lt; Points to the highest valid address for the stack. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( portCRITICAL_NESTING_IN_TCB == 1 )</span><br><span class="line">        UBaseType_t uxCriticalNesting; /*&lt; Holds the critical section nesting depth for ports that do not maintain their own count in the port layer. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_TRACE_FACILITY == 1 )</span><br><span class="line">        UBaseType_t uxTCBNumber;  /*&lt; Stores a number that increments each time a TCB is created.  It allows debuggers to determine when a task has been deleted and then recreated. */</span><br><span class="line">        UBaseType_t uxTaskNumber; /*&lt; Stores a number specifically for use by third party trace code. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_MUTEXES == 1 )</span><br><span class="line">        UBaseType_t uxBasePriority; /*&lt; The priority last assigned to the task - used by the priority inheritance mechanism. */</span><br><span class="line">        UBaseType_t uxMutexesHeld;</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_APPLICATION_TASK_TAG == 1 )</span><br><span class="line">        TaskHookFunction_t pxTaskTag;</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configNUM_THREAD_LOCAL_STORAGE_POINTERS &gt; 0 )</span><br><span class="line">        void * pvThreadLocalStoragePointers[ configNUM_THREAD_LOCAL_STORAGE_POINTERS ];</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configGENERATE_RUN_TIME_STATS == 1 )</span><br><span class="line">        configRUN_TIME_COUNTER_TYPE ulRunTimeCounter; /*&lt; Stores the amount of time the task has spent in the Running state. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( ( configUSE_NEWLIB_REENTRANT == 1 ) || ( configUSE_C_RUNTIME_TLS_SUPPORT == 1 ) )</span><br><span class="line">        configTLS_BLOCK_TYPE xTLSBlock; /*&lt; Memory block used as Thread Local Storage (TLS) Block for the task. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_TASK_NOTIFICATIONS == 1 )</span><br><span class="line">        volatile uint32_t ulNotifiedValue[ configTASK_NOTIFICATION_ARRAY_ENTRIES ];</span><br><span class="line">        volatile uint8_t ucNotifyState[ configTASK_NOTIFICATION_ARRAY_ENTRIES ];</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    /* See the comments in FreeRTOS.h with the definition of</span><br><span class="line">     * tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE. */</span><br><span class="line">    #if ( tskSTATIC_AND_DYNAMIC_ALLOCATION_POSSIBLE != 0 ) /*lint !e731 !e9029 Macro has been consolidated for readability reasons. */</span><br><span class="line">        uint8_t ucStaticallyAllocated;                     /*&lt; Set to pdTRUE if the task is a statically allocated to ensure no attempt is made to free the memory. */</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( INCLUDE_xTaskAbortDelay == 1 )</span><br><span class="line">        uint8_t ucDelayAborted;</span><br><span class="line">    #endif</span><br><span class="line"></span><br><span class="line">    #if ( configUSE_POSIX_ERRNO == 1 )</span><br><span class="line">        int iTaskErrno;</span><br><span class="line">    #endif</span><br><span class="line">&#125; tskTCB;</span><br><span class="line">typedef tskTCB TCB_t;</span><br></pre></td></tr></table></figure>
-
-<h2 id="关键全局变量"><a href="#关键全局变量" class="headerlink" title="关键全局变量"></a>关键全局变量</h2><p>对任务的操作和以下几个全局变量有重要关系：</p>
-<ul>
-<li>pxReadyTasksLists，就绪任务列表数组（数组的序号是对应的优先级）；</li>
-<li>pxDelayedTaskList，延时任务列表（任务阻塞后根据阻塞时间，变成延时任务或溢出延时任务或挂起任务）；</li>
-<li>pxOverflowDelayedTaskList，时间溢出的延时任务列表；</li>
-<li>xPendingReadyList，调度器挂起期间切换到就绪状态的任务列表；</li>
-<li>xTasksWaitingTermination，被删除（但还未删除内存的）任务列表；</li>
-<li>xSuspendedTaskList，挂起任务列表；</li>
-</ul>
-<p>理解了这几个全局变量，就能轻松地理解task.c中的函数对于任务状态的切换过程。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">PRIVILEGED_DATA static List_t pxReadyTasksLists[ configMAX_PRIORITIES ]; /*&lt; Prioritised ready tasks. */</span><br><span class="line">PRIVILEGED_DATA static List_t xDelayedTaskList1;                         /*&lt; Delayed tasks. */</span><br><span class="line">PRIVILEGED_DATA static List_t xDelayedTaskList2;                         /*&lt; Delayed tasks (two lists are used - one for delays that have overflowed the current tick count. */</span><br><span class="line">PRIVILEGED_DATA static List_t * volatile pxDelayedTaskList;              /*&lt; Points to the delayed task list currently being used. */</span><br><span class="line">PRIVILEGED_DATA static List_t * volatile pxOverflowDelayedTaskList;      /*&lt; Points to the delayed task list currently being used to hold tasks that have overflowed the current tick count. */</span><br><span class="line">PRIVILEGED_DATA static List_t xPendingReadyList;                         /*&lt; Tasks that have been readied while the scheduler was suspended.  They will be moved to the ready list when the scheduler is resumed. */</span><br><span class="line"></span><br><span class="line">#if ( INCLUDE_vTaskDelete == 1 )</span><br><span class="line"></span><br><span class="line">    PRIVILEGED_DATA static List_t xTasksWaitingTermination; /*&lt; Tasks that have been deleted - but their memory not yet freed. */</span><br><span class="line">    PRIVILEGED_DATA static volatile UBaseType_t uxDeletedTasksWaitingCleanUp = ( UBaseType_t ) 0U;</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">#if ( INCLUDE_vTaskSuspend == 1 )</span><br><span class="line"></span><br><span class="line">    PRIVILEGED_DATA static List_t xSuspendedTaskList; /*&lt; Tasks that are currently suspended. */</span><br><span class="line"></span><br><span class="line">#endif</span><br></pre></td></tr></table></figure>
-
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>理解了最关键的几个全局变量、数据结构、任务函数，就能快速掌握task.c的核心功能。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/04/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%B8%8D%E5%90%8CMTU%E7%9A%84%E7%BD%91%E5%8D%A1%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CTCP%E9%80%9A%E4%BF%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/04/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%B8%8D%E5%90%8CMTU%E7%9A%84%E7%BD%91%E5%8D%A1%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CTCP%E9%80%9A%E4%BF%A1/" class="post-title-link" itemprop="url">网络协议-不同MTU的网卡如何进行TCP通信</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-04 00:06:07 / Modified: 00:08:29" itemprop="dateCreated datePublished" datetime="2022-09-04T00:06:07+08:00">2022-09-04</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>一台路由器下连接了两个子设备，一台设备的网卡MTU（最大传输单元）是1500，一台设备的MTU是1000，如何进行TCP通信，在哪一层协商？</p>
-<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>要解决这个问题，最基本的两个知识是TCP分段和IP分片，简单来说：</p>
-<ul>
-<li>分段特指发生在使用TCP协议的传输层中的数据切分行为</li>
-<li>分片特指发生在使用IPv4协议的网络IP层中的数据切分行为</li>
-</ul>
-<h3 id="TCP分段"><a href="#TCP分段" class="headerlink" title="TCP分段"></a>TCP分段</h3><blockquote>
-<p>TCP分段的原因是因为TCP报文段大小受MSS限制。</p>
-</blockquote>
-<p>最大报文段长度MSS（Maximum Segment Size），为TCP传输层的最大载荷上限(即应用层数据最大长度)。<br>MSS是TCP的报头的可选项，MSS的协商在TCP握手阶段完成：</p>
-<blockquote>
-<p>B将自己的MSS发送给A，建议A在发数据给B的时候，采用MSS&#x3D;1420进行分段。而B在发数据给A的时候，同样会带上MSS&#x3D;1372。两者在对比后，会采用小的那个值（1372）作为通信的MSS值，这个过程叫MSS协商。</p>
-</blockquote>
-<p>通常一条TCP连接的MSS取通信双方较小的那一个MSS值，与MTU的换算关系为：<br>MTU &#x3D; MSS + TCP首部长度 + IP首部长度<br>故在以太网中(网络层以IPv4为例)：<br>MSS &#x3D; 以太网MTU - TCP首部长度 - IPv4首部长度 &#x3D; 1500 - 20 - 20 &#x3D; 1460字节</p>
-<p>为什么MSS的大小需要协商呢？还得从IP层分片说起。</p>
-<h3 id="IP层分片"><a href="#IP层分片" class="headerlink" title="IP层分片"></a>IP层分片</h3><blockquote>
-<p>IP分片的原因是因为IP数据报大小受MTU限制。</p>
-</blockquote>
-<p>最大传输单元MTU(Maximum Transmit Unit)，这个值是由数据链路层提供，为了告诉上层IP层，自己的传输能力是多大。<br>受各种因素限制，一个网卡能发出的单包数据长度是有限的，这个单包数据的最大长度就是数据链路层的传输能力。</p>
-<h3 id="发送端的IP分片"><a href="#发送端的IP分片" class="headerlink" title="发送端的IP分片"></a>发送端的IP分片</h3><p>在网络数据发送者开始发送时，IP层就会根据MTU进行数据包切分，一般MTU&#x3D;1500 Byte。 </p>
-<ul>
-<li>假设IP层有 &lt;&#x3D; 1500 Byte 需要发送，只需要一个IP包就可以完成发送任务；</li>
-<li>假设IP层有 &gt; 1500 Byte 数据需要发送，需要分片才能完成发送，分片后的 IP Header ID 相同，同时为了分片后能在接收端把切片组装起来，还需要在分片后的IP包里加上各种信息。比如这个分片在原来的IP包里的偏移offset。</li>
-</ul>
-<h3 id="传输路径上的IP分片"><a href="#传输路径上的IP分片" class="headerlink" title="传输路径上的IP分片"></a>传输路径上的IP分片</h3><p>我们知道在因特网通信过程，网络数据在很多路由器节点之间跳转，而各个节点间MTU可能不同，这就导致数据是可能被多次分片的。而且每次分片都要加上各种信息便于在接收端进行分片重组。<br>如果有办法知道整个链路上，最小的MTU是多少，并且以最小MTU长度发送数据，那么不管数据传到哪个节点，都不会发生分片。<br>整个链路上，最小的MTU，就叫PMTU（path MTU）。<br>有一个获得这个PMTU的方法，叫 Path MTU Discovery。<br>Path MTU Discovery的大致原理是：</p>
-<blockquote>
-<p>通过向对端发送申明不要分包(DF)的IP报文，然后根据是否收到传输路径上节点的“ICMP不可达报文”，来判断目前的发送数据长度是否过长，如果过长则减少长度重新试探，直至发送成功。</p>
-</blockquote>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>不同MTU的两个网卡设备进行TCP通信时，两端先根据自身的MTU计算出MSS，然后在TCP握手的时候进行MSS协商。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BA%A2%E6%8B%82%E5%A4%9C%E5%A5%94%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BA%A2%E6%8B%82%E5%A4%9C%E5%A5%94%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《红拂夜奔》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-09-03 22:43:20" itemprop="dateCreated datePublished" datetime="2022-09-03T22:43:20+08:00">2022-09-03</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-04 00:07:58" itemprop="dateModified" datetime="2022-09-04T00:07:58+08:00">2022-09-04</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：王小波<br>阅读时间：2022.03.22</p>
-<p>这是一本以明代戏剧《红拂传》人物为原型创作的小说：<br>李靖、红拂、虬髯公，世称风尘三侠。隋朝末年，他们三人都在洛阳城里住过。</p>
-<ul>
-<li>李靖解开费马定理，证明了自己是一个聪明人。他成为唐朝开国功臣“李卫公”后，却装傻到老。</li>
-<li>红拂曾是歌姬，与李靖私奔后成为了他的妻子——唐朝“第一夫人”，丈夫死后她无奈上吊自杀。</li>
-<li>虬髯公深爱着红拂，求而不得，后成为了扶桑国的国王，过着扭曲的生活。</li>
-</ul>
-<p>这个故事荒诞得好像现实。我们很容易从书中的某个事物看到现实中的影子。<br>《红拂夜奔》的内容太多，讽刺的密度之高令人叹为观止，我无法也不便一一列出。可以确认的是，王小波对于这个世界看得非常地清楚。</p>
-<p>这本书也许能改变一些人的世界观：你以为书里的世界很离谱，殊不知现实远比书中荒唐一百倍。 </p>
-<blockquote>
-<p>You have to know the past to understand the present.</p>
-</blockquote>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BD%97%E7%B4%A0%E8%B0%88%E4%BA%BA%E7%9A%84%E7%90%86%E6%80%A7%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BD%97%E7%B4%A0%E8%B0%88%E4%BA%BA%E7%9A%84%E7%90%86%E6%80%A7%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《罗素谈人的理性》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-03 22:41:28 / Modified: 22:42:37" itemprop="dateCreated datePublished" datetime="2022-09-03T22:41:28+08:00">2022-09-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：罗素<br>阅读时间：2020.12.05</p>
-<p>读罗素的书是因为王小波对他的推崇，而我个人也喜欢看一些哲学相关的书籍。<br>这也是一本影响了我个人世界观的书籍，推荐。<br>当时没有写完整的书评，仅在微信读书上记录了一些划线笔记，现搬移过来，暂不做整理。</p>
-<h2 id="第1章-人有不幸"><a href="#第1章-人有不幸" class="headerlink" title="第1章 人有不幸"></a>第1章 人有不幸</h2><blockquote>
-<p>我认为，这种不幸在很大程度上是由对世界的错误看法、错误的伦理观、错误的生活习惯所引起的，结果导致了对那些可能获得事物的天然热情和追求欲望的丧失，而这些事物，正是人和动物的一切幸福、快乐最终有赖于它们的。</p>
-</blockquote>
-<p>王小波说人的一切痛苦来自于对无能的愤怒，而罗素眼中，大概还有错误的世界观。在我看来，错误也是无知的一种，王小波是了解罗素的，不知他是如何看待“无能”和“无知”之间的关系的。</p>
-<h2 id="第5章-疲劳的工作"><a href="#第5章-疲劳的工作" class="headerlink" title="第5章 疲劳的工作"></a>第5章 疲劳的工作</h2><blockquote>
-<p>但是，我们有必要认识到，使人兴奋的娱乐并非通向幸福之路，尽管只要使人更满足的快乐是可望而不可及的，一个人会发现，除非通过兴奋的刺激，否则生活是难以忍受的。</p>
-</blockquote>
-<p>过度娱乐带来疲劳，长久的平淡反而使人清醒。</p>
-<h2 id="第9章-舆论与恐惧"><a href="#第9章-舆论与恐惧" class="headerlink" title="第9章 舆论与恐惧"></a>第9章 舆论与恐惧</h2><blockquote>
-<p>在现代世界，由于交通工具的创造发明，人们不必再像过去那样，仅仅与自己的近邻来往了。那些拥有汽车的人可以把方圆20英里内的任何人看做自己的邻居。因此他们比过去有更多的机会来选择自己的朋友。</p>
-</blockquote>
-<p>有趣的现象，在中国和美国的城市化进程中，都出现了邻里变得陌生的情况。但个人认为其主要原因并不是交通工具的出现，而是由人在社会中的角色变化。其一，现代社会功能的强大使得人不必再依靠邻里的帮扶和受到宗族村落的制约。其二，现代的工作时间特性使得人们早出晚归，邻里之间鲜有机会和精力见面，人们更愿意按自己的喜好选择多种多样的消遣方式。</p>
-<h2 id="第11章-渴望的热情"><a href="#第11章-渴望的热情" class="headerlink" title="第11章 渴望的热情"></a>第11章 渴望的热情</h2><blockquote>
-<p>一个人的兴趣越广，他拥有的快乐机会就越多，而受命运摆布的可能性也就越小，因为如果他失去了某一种兴趣，他便可转而依赖另一种。生命短暂，人们不可能事事都感兴趣，不过对尽可能多的事物感兴趣却是一桩好事。我们都容易染上内省者的弊病，世界向他吐现出千姿百态的景象，但他却别转脑袋，专注于内心的空虚，我们可不要以为，内省者的忧郁有什么了不起之处。 </p>
-</blockquote>
-<h2 id="第14章-时代与劳务"><a href="#第14章-时代与劳务" class="headerlink" title="第14章 时代与劳务"></a>第14章 时代与劳务</h2><blockquote>
-<p>一项伟大的建设性事业所给予的乐趣是人生所能奉献的最大的快慰之一，虽然不幸得很，这种卓绝超群的欢乐仅为不同凡俗的人所享受。</p>
-</blockquote>
-<p>哲学的魅力在于，将一些事情、道理抽象出最本质的部分，而这又和写代码的过程很相似。解构并重塑，能让一件事情达到新的高度。</p>
-<h2 id="第20章-休闲生活"><a href="#第20章-休闲生活" class="headerlink" title="第20章 休闲生活"></a>第20章 休闲生活</h2><blockquote>
-<p>富人和奉承他们的人发表赞美可敬的劳苦工作，颂扬简朴的生活，宣传一种教义，那就是所谓穷人比富人容易进入天堂。总之，他们竭力使体力劳动者相信改变物质在空间中的形式及其位置的工作是特别高尚的，所有这些就同男人竭力让女人相信她们之所以特别高尚在于她们性的约束一样。</p>
-</blockquote>
-<p>所有事物背后必有其道理。儒家思想控制士大夫阶层忠君爱国，得以被统治阶级发扬光大。类似的情况在古今中外都是如此的一致。<br>很多事情你看到是这样子，不是因为它本身是这样子，而是因为有人希望你看到是这样子。<br>这个世界是怎么样的，一家之言永远是肤浅的。读万卷书，行万里路才是最好的答案。终身学习的可贵之处也在这里。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E4%BA%AC%E5%8D%8E%E7%83%9F%E4%BA%91%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E4%BA%AC%E5%8D%8E%E7%83%9F%E4%BA%91%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《京华烟云》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-03 22:40:27 / Modified: 22:40:55" itemprop="dateCreated datePublished" datetime="2022-09-03T22:40:27+08:00">2022-09-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：林语堂<br>阅读时间：2020.02.01</p>
-<p>之前读过林语堂的《苏东坡传》，后恰好看到《京华烟云》电视剧，便买了纸质书来读。<br>整书分上篇、下篇，各记了笔记。</p>
-<h2 id="上篇"><a href="#上篇" class="headerlink" title="上篇"></a>上篇</h2><p>以家事写国事，以人事写历史。<br>京城富有的姚家，位高权重的曾家，清贫的孔家，以及由盛转衰的牛家，在近代中国剧烈动荡下的变化，非常具有代表性。守旧派和革新派，是当时社会的两股对抗力量。上篇中还未爆发激烈的冲突，结尾立夫和怀瑜的争吵预示着下篇将推向高潮。<br>木兰同时受到中西方思想的影响，两种文化的碰撞塑造了她。她热爱电影，钟表这些新事物，喜欢游历，却也对人情事故得心应手。她最终压制自己的爱情，接受命运。曼娘，银屏是旧社会婚姻制度的牺牲品。莫愁相对中庸，却最有福气。立夫是典型的寒门贵子，处事得体，胸有大志，未来可期。</p>
-<h2 id="下篇"><a href="#下篇" class="headerlink" title="下篇"></a>下篇</h2><p>故事结束于木兰的得道，而非主角的生死或是战争的终结，这是让我意外的。后查阅到此书封笔于三十年代末，那时抗日战争尚未结束，这便很合情合理了。<br>从八国联军侵华到抗日战争，本书几乎是一部中国的近代史。家庭的命运因为国家的命运而改变，每个人都不可避免地被卷入到这一段段社会巨变中。从一段段故事中我们得以从另一个视角去看待义和团运动，辛亥革命，新文化运动，五四运动，北伐战争这些历史事件，去看民众是如何看待和参与这些事件，以及事件对国家对人民产生了什么样的影响。<br>从看似平静的笔触中，我们可以体会到作者对于国家破败的痛心疾首。另一方面，作者又以老庄的哲学思想去看待这些历史变迁，同时对抗战胜利抱有坚定的信心。正如文中所写，不管风云怎么变幻，老北京一直在那里。当然中国大地也会一直在那里，中国的老百姓会一直在那里。所有的中国群众凝聚在一起，会成为不可战胜的强大力量。<br>姚老说过，他的生命会在女儿木兰和他的孙子们身上得以延续。而木兰对道的领悟则到达了另一层，她相信她的生命更会在千千万万的中国群众身上得以延续。</p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>总的来说，这部作品可以称得上是一部鸿篇巨著，其中的哲学思想也和生活紧密结合。我虽只能管中窥其一二，也觉得酣畅淋漓。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《牧羊少年奇幻之旅》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-03 22:38:50 / Modified: 22:39:35" itemprop="dateCreated datePublished" datetime="2022-09-03T22:38:50+08:00">2022-09-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：保罗·柯艾略<br>阅读时间：2018.07.09</p>
-<p>如果说有书能催生源源不断的精神力量，那么这本书应该是其中之一。<br>书中讲述了一个西班牙的牧羊少年San Diego，为了追寻梦境中宝藏前往金字塔的历程。在旅途中男孩历尽千辛万苦，通过了对勇气、智慧、执着的考验，最终收获宝藏。<br>少年后来意识到，真正属于自己的宝藏，其实就是这段寻找的经历。</p>
-<p>我从这本书中学到的最深刻的事情便是，“learn from everything”，这世上的一切事物，都可以成为你的老师。<br>羊群可以是你的老师，风可以是你的老师，路人可以是你的老师。只要拥有足够的洞察力，便可以从宇宙万物中学习。<br>“鱼儿在跳出水面之前不会知道自己生活在水中”，年轻的时候去经历不同的人生，尽力打开自己的视野，是难能可贵的事情。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E5%A4%B1%E6%8E%A7%E3%80%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E5%A4%B1%E6%8E%A7%E3%80%8B/" class="post-title-link" itemprop="url">读书笔记-《失控》</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-03 22:37:20 / Modified: 22:37:41" itemprop="dateCreated datePublished" datetime="2022-09-03T22:37:20+08:00">2022-09-03</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>作者：凯文·凯利<br>阅读时间：2020.09.04</p>
-<p>很难想象这是一本26年前写出来的书，刚好跟我的年纪一样。<br>里面的大量观点放到今天来看也毫不过时，甚至超前于当前时代。书中几乎准确地预测了互联网世界的发展方向，例如：</p>
-<ul>
-<li>从无序走向有序；</li>
-<li>分布式协作；</li>
-<li>从大数据和超强算力中涌现出人工智能；</li>
-</ul>
-<p>优美的行文架构，丰富的逻辑论证让书中观点变得丰满立体。<br>读这本书，就像爬黄山，到了山顶忽然看见了云海，波涛，怪石。<br>它打开一扇新世界的大门，让你从上而下去欣赏这混沌世界。 </p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/02/c%E8%AF%AD%E8%A8%80-%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E6%88%90%E5%91%98%E5%81%8F%E7%A7%BB%E9%87%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/02/c%E8%AF%AD%E8%A8%80-%E8%AE%A1%E7%AE%97%E7%BB%93%E6%9E%84%E4%BD%93%E4%B8%AD%E6%88%90%E5%91%98%E5%81%8F%E7%A7%BB%E9%87%8F/" class="post-title-link" itemprop="url">c语言-计算结构体中成员偏移量</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-02 22:55:52 / Modified: 23:44:59" itemprop="dateCreated datePublished" datetime="2022-09-02T22:55:52+08:00">2022-09-02</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">typedef struct &#123;</span><br><span class="line">    char a;</span><br><span class="line">    int b;</span><br><span class="line">    int c;</span><br><span class="line">&#125; test_s;</span><br></pre></td></tr></table></figure>
-<p>求test_s中成员c相对于结构体首地址的偏移量。</p>
-<h2 id="写法"><a href="#写法" class="headerlink" title="写法"></a>写法</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define offsetof(type, v) (&amp;(((type *)0)-&gt;v))</span><br><span class="line">int result = offset(test_s, c);</span><br></pre></td></tr></table></figure>
-
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>无需借助实体变量。</li>
-<li>相比于”以成员c的实际地址减去结构体的地址”的方法，少了一步减法运算，执行速度快。</li>
-<li>事实上<code>offsetof</code>是c语言标准库中的宏，定义在&lt;stddef.h&gt;中，可以直接使用。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <span class="site-state-item-count">56</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">19</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WaterYoungMan's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" title="ARM-CPU核间通信如何实现"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ARM-CPU核间通信如何实现"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" title="ARM-CPU核间通信如何实现">ARM-CPU核间通信如何实现</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-06T16:32:13.000Z" title="Created 2022-09-07 00:32:13">2022-09-07</time></span></div><div class="content">问题对于多核的CPU架构，如果两个核之间需要进行通信，如何实现？
+实现原理核间通信，又叫Inter Processor Communication(IPC)。这里仅简单介绍一种方式，基本的思想是“共享内存+互斥操作+通知机制”：
+
+共享内存，即两个核能访问同一块内存区域。
+互斥操作，即两个核不会在同一时刻去修改同一个内存区域。
+通知机制，即一个核通过GPIO中断或其他方式来通知另一个核有消息要发送。
+
+当A核需要向B核发送消息时，大致过程为：
+
+首先A核通过互斥操作取得共享内存的修改权；
+然后A核将要发送的消息放置到共享内存中；
+最后A核通过通知机制告诉B核来读取内存中的数据。
+
+实例在一块由KM4(Armv8-M，Cortex-M33) + KM0(ArmV8-M，Cortex-M23)组成的双核芯片上，核间通信实现如下（共用一段代码）:
+1234567891011121314151617181920212223242526272829303132u32 Messages[32] = &#123;0&#125;;/**  * @brief  exchange messages bet ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/" title="ARM-芯片架构简介"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ARM-芯片架构简介"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E6%9E%B6%E6%9E%84%E7%AE%80%E4%BB%8B/" title="ARM-芯片架构简介">ARM-芯片架构简介</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-04T16:58:54.000Z" title="Created 2022-09-05 00:58:54">2022-09-05</time></span></div><div class="content">简介ARM(Advanced RISC Machine)架构。是一个精简指令集(RISC,Reduced Instruction Set Computer)处理器架构家族，具有低成本、高性能、低耗电的特性。ARM架构广泛应用在嵌入式系统，现在也有应用在个人计算机（Apple M1）和超级计算机中。
+
+与ARM同属精简指令集架构的还有RISC-V，MIPS，Xtensa等。
+与精简指令集相对应的是复杂指令集（CISC,Complex Instruction Set Computer），代表架构为X86。
+
+ARM架构范畴ARM架构的主要范畴整理如下：
 
 
 
-      </div>
-
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
-  </div>
-
-        
+条目
+说明
 
 
 
+指令集
+每条指令的功能；指令如何在内存中表示(它的编码)
 
 
+寄存器组
+有多少寄存器；寄存器的大小；寄存器的功能；寄存器的初始状态
 
 
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
+异常模型
+不同的权限级别；异常的类型；从异常中获取或返回时会发生什么
 
 
-<script src="/js/schemes/pisces.js"></script>
+内存模型
+内存访问是如何排序的；缓存是如何运作的，什么时候以及软件必须如何执行显式维护
 
 
-<script src="/js/next-boot.js"></script>
+调试、跟踪和分析
+如何设置和触发断点；跟踪工具可以捕获什么信息，以什么格式捕获
 
 
+安全性扩展(TrustZone)
+ ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="ARM-芯片启动流程"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ARM-芯片启动流程"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/05/ARM-%E8%8A%AF%E7%89%87%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B/" title="ARM-芯片启动流程">ARM-芯片启动流程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-04T16:37:53.000Z" title="Created 2022-09-05 00:37:53">2022-09-05</time></span></div><div class="content">芯片启动流程在MCU(CPU)上执行C语言编译的可执行文件时，基本可以将启动流程分为以下3个阶段：
 
+初始化阶段
+执行阶段
+退出阶段
 
-  
+ARM芯片也不例外，仅与其他架构芯片有一些细节上的不同。
+初始化流程硬件初始化硬件初始化通常在启动代码cstartup.s中执行，如果需要，还可以通过用户提供的额外低级接口__low_level_init来执行用户自己的代码。它可能包括重置&#x2F;启动其余硬件，设置CPU等，以准备软件c&#x2F;c++系统初始化。
 
+当cpu复位的时候，，程序将从系统启动代码中的程序入口entry开始执行。
+堆栈指针初始化为 CSTACK 块的末尾。
+对于Arm7&#x2F;9&#x2F;11、Cortex-A和Cortex-R器件，异常堆栈指针初始化为每个相应部分的末尾。
+如果用户定义了函数__low_level_init，则为应用程序提供执行早期初始化的机会。
 
+c&#x2F;c++软件系统初始化通常，此步操作确保在调用 main 函数之前，每个全局（静态链接）的 C&#x2F;C++符号都会收到其正确的初始化值。
 
+静态和全局变量初始化。也就是说，清零初始 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/" title="FreeRTOS源码精读-tasks"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="FreeRTOS源码精读-tasks"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/05/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-tasks/" title="FreeRTOS源码精读-tasks">FreeRTOS源码精读-tasks</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-04T16:20:45.000Z" title="Created 2022-09-05 00:20:45">2022-09-05</time></span></div><div class="content">阅读原则tasks.c是FreeRTOS的核心代码，虽不算非常复杂，也有5000多行代码，一行行代码看的话一天也不够用。我推荐的阅读步骤是：
 
+先看API、数据结构、全局变量
+再看主要函数的源码
+最后看次要函数的源码
 
+关键APIxTaskCreate功能：申请动态内存，并创建任务，为任务结构体（TCB_t）赋初值。这个函数仅在支持动态内存申请的宏使能时生效。
+值得注意的是，有的CPU的栈内存是从低向高增长，有的CPU栈内存是高向低增长（如ARM架构）。这会影响任务控制块内存（pxNewTCB）和任务内存（pxStack）的申请顺序，对于一块全新的内存来说，malloc通常是优先申请低地址的内存，再申请高地址的内存。
+两种不同栈生长方向的内存申请情况如下图所示：
+为了避免栈增长到溢出的时候踩踏到pxNewTCB的内存，freeRTOS实现了一套任务控制块内存保护机制：
 
+若CPU的内存是由高向低增长，则先申请任务内存（pxStack），再申请任务控制块内存（pxNewTCB），这样pxNewTCB就处于pxStack的更高地址，栈顶指针pxTopOfStack的初始值就放在任务内存（p ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/04/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%B8%8D%E5%90%8CMTU%E7%9A%84%E7%BD%91%E5%8D%A1%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CTCP%E9%80%9A%E4%BF%A1/" title="网络协议-不同MTU的网卡如何进行TCP通信"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="网络协议-不同MTU的网卡如何进行TCP通信"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/04/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE-%E4%B8%8D%E5%90%8CMTU%E7%9A%84%E7%BD%91%E5%8D%A1%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CTCP%E9%80%9A%E4%BF%A1/" title="网络协议-不同MTU的网卡如何进行TCP通信">网络协议-不同MTU的网卡如何进行TCP通信</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-03T16:06:07.000Z" title="Created 2022-09-04 00:06:07">2022-09-04</time></span></div><div class="content">问题一台路由器下连接了两个子设备，一台设备的网卡MTU（最大传输单元）是1500，一台设备的MTU是1000，如何进行TCP通信，在哪一层协商？
+分析要解决这个问题，最基本的两个知识是TCP分段和IP分片，简单来说：
 
+分段特指发生在使用TCP协议的传输层中的数据切分行为
+分片特指发生在使用IPv4协议的网络IP层中的数据切分行为
 
+TCP分段
+TCP分段的原因是因为TCP报文段大小受MSS限制。
 
+最大报文段长度MSS（Maximum Segment Size），为TCP传输层的最大载荷上限(即应用层数据最大长度)。MSS是TCP的报头的可选项，MSS的协商在TCP握手阶段完成：
 
+B将自己的MSS发送给A，建议A在发数据给B的时候，采用MSS&#x3D;1420进行分段。而B在发数据给A的时候，同样会带上MSS&#x3D;1372。两者在对比后，会采用小的那个值（1372）作为通信的MSS值，这个过程叫MSS协商。
 
+通常一条TCP连接的MSS取通信双方较小的那一个MSS值，与MTU的换算关系为：MTU &#x3D; MSS + TCP首部长度 + IP首部长度故在以太网中(网络层 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BA%A2%E6%8B%82%E5%A4%9C%E5%A5%94%E3%80%8B/" title="读书笔记-《红拂夜奔》"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="读书笔记-《红拂夜奔》"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BA%A2%E6%8B%82%E5%A4%9C%E5%A5%94%E3%80%8B/" title="读书笔记-《红拂夜奔》">读书笔记-《红拂夜奔》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-03T14:43:20.000Z" title="Created 2022-09-03 22:43:20">2022-09-03</time></span></div><div class="content">作者：王小波阅读时间：2022.03.22
+这是一本以明代戏剧《红拂传》人物为原型创作的小说：李靖、红拂、虬髯公，世称风尘三侠。隋朝末年，他们三人都在洛阳城里住过。
 
+李靖解开费马定理，证明了自己是一个聪明人。他成为唐朝开国功臣“李卫公”后，却装傻到老。
+红拂曾是歌姬，与李靖私奔后成为了他的妻子——唐朝“第一夫人”，丈夫死后她无奈上吊自杀。
+虬髯公深爱着红拂，求而不得，后成为了扶桑国的国王，过着扭曲的生活。
 
+这个故事荒诞得好像现实。我们很容易从书中的某个事物看到现实中的影子。《红拂夜奔》的内容太多，讽刺的密度之高令人叹为观止，我无法也不便一一列出。可以确认的是，王小波对于这个世界看得非常地清楚。
+这本书也许能改变一些人的世界观：你以为书里的世界很离谱，殊不知现实远比书中荒唐一百倍。 
 
+You have to know the past to understand the present.
 
-  
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BD%97%E7%B4%A0%E8%B0%88%E4%BA%BA%E7%9A%84%E7%90%86%E6%80%A7%E3%80%8B/" title="读书笔记-《罗素谈人的理性》"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="读书笔记-《罗素谈人的理性》"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%BD%97%E7%B4%A0%E8%B0%88%E4%BA%BA%E7%9A%84%E7%90%86%E6%80%A7%E3%80%8B/" title="读书笔记-《罗素谈人的理性》">读书笔记-《罗素谈人的理性》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-03T14:41:28.000Z" title="Created 2022-09-03 22:41:28">2022-09-03</time></span></div><div class="content">作者：罗素阅读时间：2020.12.05
+读罗素的书是因为王小波对他的推崇，而我个人也喜欢看一些哲学相关的书籍。这也是一本影响了我个人世界观的书籍，推荐。当时没有写完整的书评，仅在微信读书上记录了一些划线笔记，现搬移过来，暂不做整理。
+第1章 人有不幸
+我认为，这种不幸在很大程度上是由对世界的错误看法、错误的伦理观、错误的生活习惯所引起的，结果导致了对那些可能获得事物的天然热情和追求欲望的丧失，而这些事物，正是人和动物的一切幸福、快乐最终有赖于它们的。
 
-  
+王小波说人的一切痛苦来自于对无能的愤怒，而罗素眼中，大概还有错误的世界观。在我看来，错误也是无知的一种，王小波是了解罗素的，不知他是如何看待“无能”和“无知”之间的关系的。
+第5章 疲劳的工作
+但是，我们有必要认识到，使人兴奋的娱乐并非通向幸福之路，尽管只要使人更满足的快乐是可望而不可及的，一个人会发现，除非通过兴奋的刺激，否则生活是难以忍受的。
 
-</body>
-</html>
+过度娱乐带来疲劳，长久的平淡反而使人清醒。
+第9章 舆论与恐惧
+在现代世界，由于交通工具的创造发明，人们不必再像过去那样，仅仅与自己的近邻来往了。那些拥有汽车的人可以把方圆20英里内的任何 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E4%BA%AC%E5%8D%8E%E7%83%9F%E4%BA%91%E3%80%8B/" title="读书笔记-《京华烟云》"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="读书笔记-《京华烟云》"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E4%BA%AC%E5%8D%8E%E7%83%9F%E4%BA%91%E3%80%8B/" title="读书笔记-《京华烟云》">读书笔记-《京华烟云》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-03T14:40:27.000Z" title="Created 2022-09-03 22:40:27">2022-09-03</time></span></div><div class="content">作者：林语堂阅读时间：2020.02.01
+之前读过林语堂的《苏东坡传》，后恰好看到《京华烟云》电视剧，便买了纸质书来读。整书分上篇、下篇，各记了笔记。
+上篇以家事写国事，以人事写历史。京城富有的姚家，位高权重的曾家，清贫的孔家，以及由盛转衰的牛家，在近代中国剧烈动荡下的变化，非常具有代表性。守旧派和革新派，是当时社会的两股对抗力量。上篇中还未爆发激烈的冲突，结尾立夫和怀瑜的争吵预示着下篇将推向高潮。木兰同时受到中西方思想的影响，两种文化的碰撞塑造了她。她热爱电影，钟表这些新事物，喜欢游历，却也对人情事故得心应手。她最终压制自己的爱情，接受命运。曼娘，银屏是旧社会婚姻制度的牺牲品。莫愁相对中庸，却最有福气。立夫是典型的寒门贵子，处事得体，胸有大志，未来可期。
+下篇故事结束于木兰的得道，而非主角的生死或是战争的终结，这是让我意外的。后查阅到此书封笔于三十年代末，那时抗日战争尚未结束，这便很合情合理了。从八国联军侵华到抗日战争，本书几乎是一部中国的近代史。家庭的命运因为国家的命运而改变，每个人都不可避免地被卷入到这一段段社会巨变中。从一段段故事中我们得以从另一个视角去看待义和团运动，辛亥革 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85%E3%80%8B/" title="读书笔记-《牧羊少年奇幻之旅》"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="读书笔记-《牧羊少年奇幻之旅》"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E7%89%A7%E7%BE%8A%E5%B0%91%E5%B9%B4%E5%A5%87%E5%B9%BB%E4%B9%8B%E6%97%85%E3%80%8B/" title="读书笔记-《牧羊少年奇幻之旅》">读书笔记-《牧羊少年奇幻之旅》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-03T14:38:50.000Z" title="Created 2022-09-03 22:38:50">2022-09-03</time></span></div><div class="content">作者：保罗·柯艾略阅读时间：2018.07.09
+如果说有书能催生源源不断的精神力量，那么这本书应该是其中之一。书中讲述了一个西班牙的牧羊少年San Diego，为了追寻梦境中宝藏前往金字塔的历程。在旅途中男孩历尽千辛万苦，通过了对勇气、智慧、执着的考验，最终收获宝藏。少年后来意识到，真正属于自己的宝藏，其实就是这段寻找的经历。
+我从这本书中学到的最深刻的事情便是，“learn from everything”，这世上的一切事物，都可以成为你的老师。羊群可以是你的老师，风可以是你的老师，路人可以是你的老师。只要拥有足够的洞察力，便可以从宇宙万物中学习。“鱼儿在跳出水面之前不会知道自己生活在水中”，年轻的时候去经历不同的人生，尽力打开自己的视野，是难能可贵的事情。
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E5%A4%B1%E6%8E%A7%E3%80%8B/" title="读书笔记-《失控》"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="读书笔记-《失控》"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/03/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0-%E3%80%8A%E5%A4%B1%E6%8E%A7%E3%80%8B/" title="读书笔记-《失控》">读书笔记-《失控》</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-03T14:37:20.000Z" title="Created 2022-09-03 22:37:20">2022-09-03</time></span></div><div class="content">作者：凯文·凯利阅读时间：2020.09.04
+很难想象这是一本26年前写出来的书，刚好跟我的年纪一样。里面的大量观点放到今天来看也毫不过时，甚至超前于当前时代。书中几乎准确地预测了互联网世界的发展方向，例如：
+
+从无序走向有序；
+分布式协作；
+从大数据和超强算力中涌现出人工智能；
+
+优美的行文架构，丰富的逻辑论证让书中观点变得丰满立体。读这本书，就像爬黄山，到了山顶忽然看见了云海，波涛，怪石。它打开一扇新世界的大门，让你从上而下去欣赏这混沌世界。 
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/3/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WaterYoungMan</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangym307"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangym307" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/something/" title="something"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="something"/></a><div class="content"><a class="title" href="/2022/12/06/something/" title="something">something</a><time datetime="2022-12-06T15:59:49.000Z" title="Created 2022-12-06 23:59:49">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux内核-进程调度算法"/></a><div class="content"><a class="title" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法">linux内核-进程调度算法</a><time datetime="2022-12-04T16:04:04.000Z" title="Created 2022-12-05 00:04:04">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下模拟AP热点"/></a><div class="content"><a class="title" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点">在linux下模拟AP热点</a><time datetime="2022-11-27T15:33:40.000Z" title="Created 2022-11-27 23:33:40">2022-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="但行好事，莫问前程"/></a><div class="content"><a class="title" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程">但行好事，莫问前程</a><time datetime="2022-10-26T16:24:09.000Z" title="Created 2022-10-27 00:24:09">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CPU-DMA机制"/></a><div class="content"><a class="title" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制">CPU-DMA机制</a><time datetime="2022-09-22T23:58:18.000Z" title="Created 2022-09-23 07:58:18">2022-09-23</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/ARM/" style="font-size: 1.34em; color: #99a3b0">ARM</a> <a href="/tags/FreeRTOS/" style="font-size: 1.5em; color: #99a9bf">FreeRTOS</a> <a href="/tags/WiFi/" style="font-size: 1.18em; color: #999ca1">WiFi</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c</a> <a href="/tags/esp32c3/" style="font-size: 1.1em; color: #999">esp32c3</a> <a href="/tags/gdb/" style="font-size: 1.1em; color: #999">gdb</a> <a href="/tags/linux/" style="font-size: 1.34em; color: #99a3b0">linux</a> <a href="/tags/makefile/" style="font-size: 1.18em; color: #999ca1">makefile</a> <a href="/tags/python/" style="font-size: 1.26em; color: #999fa8">python</a> <a href="/tags/rust/" style="font-size: 1.1em; color: #999">rust</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">安全</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.26em; color: #999fa8">操作系统</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 1.26em; color: #999fa8">方法论</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 1.26em; color: #999fa8">编程语言</a> <a href="/tags/%E7%BC%96%E8%AF%91/" style="font-size: 1.1em; color: #999">编译</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">网络协议</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.42em; color: #99a6b7">读书笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.1em; color: #999">随笔</a> <a href="/tags/%E9%AA%8C%E8%AF%81/" style="font-size: 1.1em; color: #999">验证</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">October 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">31</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">July 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">June 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-12-11T15:57:16.441Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By WaterYoungMan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

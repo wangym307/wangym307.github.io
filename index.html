@@ -1,1146 +1,252 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>WaterYoungMan's Blog</title><meta name="author" content="WaterYoungMan"><meta name="copyright" content="WaterYoungMan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="WaterYoungMan&#39;s Blog">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="WaterYoungMan">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'en'
-  };
-</script>
-
-  <title>WaterYoungMan's Blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WaterYoungMan\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-11 23:57:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WaterYoungMan's Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" class="post-title-link" itemprop="url">linux内核-进程调度算法</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-12-05 00:04:04 / Modified: 00:04:45" itemprop="dateCreated datePublished" datetime="2022-12-05T00:04:04+08:00">2022-12-05</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>linux内核的三种调度算法：</p>
-<ol>
-<li>SCHED_OTHER分时调度策略，</li>
-<li>SCHED_FIFO实时调度策略，先到先服务</li>
-<li>SCHED_RR实时调度策略，时间片轮转</li>
-</ol>
-<p>实时进程将得到优先调用，实时进程根据实时优先级决定调度权值，分时进程则通过nice和counter值决定权值，nice越小，counter越大，被调度的概率越大，也就是曾经使用了cpu最少的进程将会得到优先调度。</p>
-<h2 id="SHCED-RR和SCHED-FIFO对比"><a href="#SHCED-RR和SCHED-FIFO对比" class="headerlink" title="SHCED_RR和SCHED_FIFO对比"></a>SHCED_RR和SCHED_FIFO对比</h2><h3 id="不同点"><a href="#不同点" class="headerlink" title="不同点"></a>不同点</h3><ul>
-<li>当采用SHCED_RR策略的进程的时间片用完，系统将重新分配时间片，并置于就绪队列尾。放在队列尾保证了所有具有相同优先级的RR任务的调度公平。</li>
-<li>SCHED_FIFO一旦占用cpu则一直运行。一直运行直到有更高优先级任务到达或自己放弃。</li>
-<li>如果有相同优先级的实时进程（根据优先级计算的调度权值是一样的）已经准备好，FIFO时必须等待该进程主动放弃后才可以运行这个优先级相同的任务。而RR可以让每个任务都执行一段时间。</li>
-</ul>
-<h3 id="相同点"><a href="#相同点" class="headerlink" title="相同点"></a>相同点</h3><p>SHCED_RR和SHCED_FIFO都只用于实时任务。<br>创建时优先级大于0(1-99)。<br>按照可抢占优先级调度算法进行。<br>就绪态的实时任务立即抢占非实时任务。<br>所有任务都采用linux分时调度策略时。</p>
-<ol>
-<li>创建任务指定采用分时调度策略，并指定优先级nice值(-20~19)。</li>
-<li>将根据每个任务的nice值确定在cpu上的执行时间(counter)。</li>
-<li>如果没有等待资源，则将该任务加入到就绪队列中。</li>
-<li>调度程序遍历就绪队列中的任务，通过对每个任务动态优先级的计算(counter+20-nice)结果，选择计算结果最大的一个去运行，当这个时间片用完后(counter减至0)或者主动放弃cpu时，该任务将被放在就绪队列末尾(时间片用完)或等待队列(因等待资源而放弃cpu)中。</li>
-<li>此时调度程序重复上面计算过程，转到第4步。</li>
-<li>当调度程序发现所有就绪任务计算所得的权值都为不大于0时，重复第2步。</li>
-</ol>
-<h2 id="不通调度算法的差异"><a href="#不通调度算法的差异" class="headerlink" title="不通调度算法的差异"></a>不通调度算法的差异</h2><h3 id="所有任务都采用FIFO时"><a href="#所有任务都采用FIFO时" class="headerlink" title="所有任务都采用FIFO时:"></a>所有任务都采用FIFO时:</h3><ol>
-<li>创建进程时指定采用FIFO，并设置实时优先级rt_priority(1-99)。</li>
-<li>如果没有等待资源，则将该任务加入到就绪队列中。</li>
-<li>调度程序遍历就绪队列，根据实时优先级计算调度权值(1000+rt_priority),选择权值最高的任务使用cpu，该FIFO任务将一直占有cpu直到有优先级更高的任务就绪(即使优先级相同也不行)或者主动放弃(等待资源)。</li>
-<li>调度程序发现有优先级更高的任务到达(高优先级任务可能被中断或定时器任务唤醒，再或被当前运行的任务唤醒，等等)，则调度程序立即在当前任务堆栈中保存当前cpu寄存器的所有数据，重新从高优先级任务的堆栈中加载寄存器数据到cpu，此时高优先级的任务开始运行。重复第3步。</li>
-<li>如果当前任务因等待资源而主动放弃cpu使用权，则该任务将从就绪队列中删除，加入等待队列，此时重复第3步。</li>
-</ol>
-<h3 id="所有任务都采用RR调度策略时："><a href="#所有任务都采用RR调度策略时：" class="headerlink" title="所有任务都采用RR调度策略时："></a>所有任务都采用RR调度策略时：</h3><ol>
-<li>创建任务时指定调度参数为RR，并设置任务的实时优先级和nice值(nice值将会转换为该任务的时间片的长度)。</li>
-<li>如果没有等待资源，则将该任务加入到就绪队列中。</li>
-<li>调度程序遍历就绪队列，根据实时优先级计算调度权值(1000+rt_priority),选择权值最高的任务使用cpu。</li>
-<li>如果就绪队列中的RR任务时间片为0，则会根据nice值设置该任务的时间片，同时将该任务放入就绪队列的末尾。重复步骤3。</li>
-<li>当前任务由于等待资源而主动退出cpu，则其加入等待队列中。重复步骤3。</li>
-</ol>
-<h3 id="系统中既有分时调度，又有时间片轮转调度和先进先出调度时："><a href="#系统中既有分时调度，又有时间片轮转调度和先进先出调度时：" class="headerlink" title="系统中既有分时调度，又有时间片轮转调度和先进先出调度时："></a>系统中既有分时调度，又有时间片轮转调度和先进先出调度时：</h3><ol>
-<li>RR调度和FIFO调度的进程属于实时进程，以分时调度的进程是非实时进程。</li>
-<li>当实时进程准备就绪后，如果当前cpu正在运行非实时进程，则实时进程立即抢占非实时进程。</li>
-<li>RR进程和FIFO进程都采用实时优先级做为调度的权值标准，RR是FIFO的一个延伸。FIFO时，如果两个进程的优先级一样，则这两个优先级一样的进程具体执行哪一个是由其在队列中的未知决定的，这样导致一些不公正性(优先级是一样的，为什么要让你一直运行?),如果将两个优先级一样的任务的调度策略都设为RR,则保证了这两个任务可以循环执行，保证了公平。</li>
-</ol>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://my.oschina.net/u/4388097/blog/4239249">https://my.oschina.net/u/4388097/blog/4239249</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" class="post-title-link" itemprop="url">在linux下模拟AP热点</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-11-27 23:33:40 / Modified: 23:34:15" itemprop="dateCreated datePublished" datetime="2022-11-27T23:33:40+08:00">2022-11-27</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="相关工具"><a href="#相关工具" class="headerlink" title="相关工具"></a>相关工具</h2><p>在Linux PC下使用WiFi网卡仿真一个AP热点需要如下3步，对应需要的组件分别为：</p>
-<ul>
-<li>创建WiFi AP：hostapd</li>
-<li>使能DHCP功能：udhcpd(或dnsmasq)</li>
-<li>使能NAT(路由转发)功能：iptables</li>
-</ul>
-<p>如果热点下的设备不需要上网，则配置前两步即可。</p>
-<h2 id="安装相应工具"><a href="#安装相应工具" class="headerlink" title="安装相应工具"></a>安装相应工具</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install hostapd</span><br><span class="line">sudo apt install udhcpd</span><br></pre></td></tr></table></figure>
-
-<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h3><p>1.如果当前wifi网卡正在作为STATION模式使用，可能会导致多个进程同时操作wifi，出现冲突，建议先关闭<code>network-manager</code>（ubuntu默认安装的网络管理服务）：<br><code>sudo service network-manager stop</code><br>恢复方法：<code>sudo service network-manager start</code><br>注意，关闭network-manager服务也会同时关闭有线网卡的使用，如果需要有线上网功能，也可以仅手动关闭wifi网卡。<br>2.如果之前开启的进程未完全结束，可能需要清除历史进程及缓存：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo killall hostapd udhcpd</span><br><span class="line">sudo rfkill unblock all</span><br></pre></td></tr></table></figure>
-
-<h3 id="创建WiFi-AP"><a href="#创建WiFi-AP" class="headerlink" title="创建WiFi AP"></a>创建WiFi AP</h3><ol>
-<li>新建配置文件test_hostapd.conf，可参考：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface=wlp4s0</span><br><span class="line">ctrl_interface_group=0</span><br><span class="line">ieee80211n=1</span><br><span class="line">ssid=m_test_ap</span><br><span class="line">hw_mode=g</span><br><span class="line">channel=6</span><br><span class="line">max_num_sta=1</span><br><span class="line">macaddr_acl=0</span><br><span class="line">beacon_int=100</span><br><span class="line">ignore_broadcast_ssid=0</span><br></pre></td></tr></table></figure>
-其中<code>wlp4s0</code>为wifi网卡在linux系统中的名称，可以通过<code>ip addr</code>或者<code>ifconfig</code>指令查看。</li>
-<li>运行hostapd进程<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo hostapd test_hostapd.conf -B</span><br><span class="line">(其中-B代表放到后台执行)</span><br></pre></td></tr></table></figure>
-说明：创建AP这一步，其实仅是让WiFi网卡拥有发送AP beacon和收发auth，assoc等管理帧的能力。<br>此时如果有WiFi STA连上这台AP，还无法通过dhcp获取动态ip地址。</li>
-</ol>
-<h3 id="为创建的AP使能dhcp功能"><a href="#为创建的AP使能dhcp功能" class="headerlink" title="为创建的AP使能dhcp功能"></a>为创建的AP使能dhcp功能</h3><p>上面已经提到，使能dhcp可以通过udhcpd或dnsmasq工具来实现，本文提供udhcpd的用法。</p>
-<ol>
-<li>新建配置文件test_udhcpd.conf，可参考：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">start		192.168.30.20	</span><br><span class="line">end		192.168.30.254	</span><br><span class="line">interface	wlp4s0		</span><br><span class="line">remaining	yes		</span><br><span class="line">opt	dns	8.8.8.8 114.114.114.114</span><br><span class="line">option	subnet	255.255.255.0</span><br><span class="line">opt	router	192.168.30.1</span><br></pre></td></tr></table></figure></li>
-<li>为AP设置ip地址，<code>sudo ip addr add dev wlp4s0 192.168.30.1</code>。</li>
-<li>如果出现STA连上AP连上ARP不回复的情况，可以尝试修改路由表：<code>sudo ip route add dev wlp4s0 default</code></li>
-<li>运行udhcpd进程，<code>sudo udhcpd -f test_udhcpd.conf &amp; </code></li>
-</ol>
-<h3 id="NAT路由功能"><a href="#NAT路由功能" class="headerlink" title="NAT路由功能"></a>NAT路由功能</h3><p>如连接热点的设备需连接因特网，则需要执行此步骤。<br>需用到iptables工具，本文不展开。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://wiki.alpinelinux.org/wiki/Wireless_AP_with_udhcpd_and_NAT">https://wiki.alpinelinux.org/wiki/Wireless_AP_with_udhcpd_and_NAT</a></li>
-<li><a target="_blank" rel="noopener" href="https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-dhcp-configuring-server">https://access.redhat.com/documentation/zh-cn/red_hat_enterprise_linux/7/html/networking_guide/sec-dhcp-configuring-server</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" class="post-title-link" itemprop="url">但行好事，莫问前程</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-10-27 00:24:09 / Modified: 00:35:59" itemprop="dateCreated datePublished" datetime="2022-10-27T00:24:09+08:00">2022-10-27</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="写在最前"><a href="#写在最前" class="headerlink" title="写在最前"></a>写在最前</h2><p>消失了近一个月，给自己放了一个很长很长的假——我离职了，离开了工作5年的公司。</p>
-<h2 id="毕业那五年"><a href="#毕业那五年" class="headerlink" title="毕业那五年"></a>毕业那五年</h2><p>毕业时，出于对IoT行业巨大潜力的看好以及种种机缘巧合，我放弃钱多事少的垄断型国企offer，放弃大公司的offer，投身一家几十人的初创企业。从默默无闻到行业第一，从纳斯达克敲钟到市值大幅缩水，我陪公司走过漫长岁月，见证了它的辉煌和低谷，我也从职场菜鸟成长为公司某一领域的技术负责人。于此同时，我逐渐发现我们作为普通人，在经济衰退的时代浪潮面前是多么苍白无力。<br>一年内发生的巨大变化，让我开始重新审视自己的价值，重新思考自己未来的道路，以及重新明白自己对于这个世界的了解还十分浅薄。</p>
-<h2 id="找工作那些事"><a href="#找工作那些事" class="headerlink" title="找工作那些事"></a>找工作那些事</h2><p>离职的事情思考了大半年，期间更多地是在考虑下一份工作会是什么行业、什么规模的公司、以及什么样的工作内容。<br>这一次，我尝试去接触更多的信息，与更多人交流，获取更多的意见。古人云：“兼听则明”，在大量的思考和沟通之后，我逐渐明白自己的核心诉求：</p>
-<ul>
-<li>做让自己更有成就感，有价值感的事情；</li>
-<li>提升自己的视野，去接触更多维度的东西；</li>
-<li>让自己变得更值钱；</li>
-</ul>
-<ol>
-<li>更有成就感和价值感的事情，取决于工作范畴和工作内容。我们无法对未来的事情做精准的预测，毕竟“变化来得太快就像龙卷风”。所以我想有两个方法去判断，一个是在面试的过程中与业务部门进行更深度的交流；一个是去寻找价值观和使命愿景为你所认同的公司。在混沌课堂的经历，让我更加深刻地理解价值观对于一家公司的重要性：创始人的视野和格局决定了公司的价值观，价值观决定了一个公司的行事方式，而行事方式决定了一个公司最终能走多远。</li>
-<li>工作几年接触了很多人和事，我也逐渐明白在职业生涯的早期，去提升自己的视野是非常重要的一件事情。鱼只有跳出水的那一刻才会知道自己生活在水里。工作如是，人生亦如是。</li>
-<li>让自己变得更值钱，更看重的是长期主义的诉求。不太过计较当下的得失，把人生当做一场长跑。我理解也有两个方法，一个是去到上升中的行业；一个是让工作履历为你背书（背书的重要性我是在看了<a target="_blank" rel="noopener" href="https://maskray.me/blog/2016-12-10-situation">某位清华大佬的博客</a>后逐渐意识到的，当然仅有履历也不够，个人能力的提升必须同步进行）。同时满足这两个方法意味着需要加入行业最顶尖的公司。</li>
-</ol>
-<p>可能是得益于这几年的努力，在就业市场下行、找工作困难的大背景下，我的面试却非常顺利。这次面试投递以杭州为主，上海仅投了一家外企，没有海投，主要挑选了IoT、芯片、新能源三个行业的头部企业：IoT是我的老本行，芯片和新能源则是当前最热门的赛道。参加的几家面试全都拿到了offer，其中包括全球top3的芯片外企、国内top2的互联网公司、国内top3新能源车企、一线IoT硬件产品公司，均为核心部门研发岗位。</p>
-<h2 id="离职后的日子"><a href="#离职后的日子" class="headerlink" title="离职后的日子"></a>离职后的日子</h2><p>毕业5年内，除了法定节假日，我几乎很少休息，仅有的5天年假也经常没有休完。这次离职，同事也建议我一定要留够休息的时间，不要无缝衔接。我筹划了一段旅行，最终选择的目的地是川西，即四川西部的甘孜自治州。此次川西之旅是沿着国道318线到稻城亚丁，亚丁被誉为“蓝色星球上的最后一块净土”。由于亚丁的徒步十分辛苦，很多攻略都劝退说，“不来后悔一辈子，来了后悔八辈子”。但这反而增加了我对于亚丁的好奇心，毕竟很多事情只有亲身经历才能分辨。<br>我订了机票，踏上了去成都的旅程。从成都沿318线进入新都桥的第一天我就开始经历严重的高原反应，鱼子西的风景的确令人震撼，但随后我就开始头晕呕吐。第一晚整夜未眠，第二晚直接去医院吸氧，一查血氧含量只有70，已经处于警戒线以下很多，好在一个小时的吸氧让我恢复了不少状态，第三天还是选择去亚丁徒步。徒步当天天气很好没有下雨，进入景区后立即被眼前的景色所震撼，明白了为什么亚丁被称为最美的徒步线路之一。虽然一路上由于高反而心跳加速，头也是晕的，但我仍然成功登顶牛奶海和五色海，下山的路比上山更为漫长，脑子里时刻回荡着一句话——“眼睛在天堂，身体在地狱”。</p>
-<p><img src="https://s2.loli.net/2022/10/27/2wdxLzESVNKCFBp.jpg" alt="yading1.jpg"><br><img src="https://s2.loli.net/2022/10/27/DbLqlNf3U7uGWmg.jpg" alt="yading2.jpg"></p>
-<h2 id="重新出发"><a href="#重新出发" class="headerlink" title="重新出发"></a>重新出发</h2><p>离职的日子，我也一直思考着如何选择手上的offer，征询过很多人的意见，包括自己的前领导、同事、同学、家人等等。期间和offer公司的部门leader、hr也多次交流，最终我决定放弃年薪高一大截的新能源车企和世界顶尖的芯片外企，选择加入一家饱受争议的公司，去从事一份对我而言跨度较大的工作。我想工作的选择就像是稻城亚丁的徒步，一千个人眼中有一千种看法，因为每个人都站在不同的处境，是否适合自己只有亲身经历才能得出答案。<br>人生如棋，落子无悔。想清楚自己要做的事情，就去做吧，暂时放下那些得失。<br>但行好事，莫问前程——送给此刻的自己。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" class="post-title-link" itemprop="url">CPU-DMA机制</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-23 07:58:18 / Modified: 07:59:01" itemprop="dateCreated datePublished" datetime="2022-09-23T07:58:18+08:00">2022-09-23</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>DMA，全称Direct Memory Access，即直接存储器访问。<br>DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。</p>
-<h3 id="优势"><a href="#优势" class="headerlink" title="优势"></a>优势</h3><p>DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据的通道，使得CPU的效率大大提高。<br>DMA传输对于高效能嵌入式系统算法和网络非常重要。</p>
-<h3 id="传输范围"><a href="#传输范围" class="headerlink" title="传输范围"></a>传输范围</h3><ul>
-<li>外设到内存</li>
-<li>内存到外设</li>
-<li>内存到内存</li>
-</ul>
-<h3 id="CPU和DMA访问内存的冲突"><a href="#CPU和DMA访问内存的冲突" class="headerlink" title="CPU和DMA访问内存的冲突"></a>CPU和DMA访问内存的冲突</h3><p>CPU和DMA同时需要访问内存总线时，两者是如何协调工作的，常见的方式有以下3种：</p>
-<ul>
-<li>DMA传输期间停止CPU访问内存</li>
-<li>I&#x2F;O设备周期性挪用内存</li>
-<li>DMA与CPU交替访问内存</li>
-</ul>
-<p>对于一个已经量产的CPU，选用以上哪种方式已经确定。</p>
-<h2 id="DMA传输流程"><a href="#DMA传输流程" class="headerlink" title="DMA传输流程"></a>DMA传输流程</h2><h3 id="请求"><a href="#请求" class="headerlink" title="请求"></a>请求</h3><p>CPU对DMA控制器初始化，并向I&#x2F;O接口发出操作命令，I&#x2F;O接口提出DMA请求。</p>
-<h3 id="响应"><a href="#响应" class="headerlink" title="响应"></a>响应</h3><p>DMA控制器对DMA请求判别优先级及屏蔽，向总线裁决逻辑提出总线请求。当CPU执行完当前总线周期即可释放总线控制权。此时，总线裁决逻辑输出总线应答，表示DMA已经响应，通过DMA控制器通知I&#x2F;O接口开始DMA传输。</p>
-<h3 id="传输"><a href="#传输" class="headerlink" title="传输"></a>传输</h3><p>DMA控制器获得总线控制权后，CPU即刻挂起或只执行内部操作，由DMA控制器输出读写命令，直接控制RAM与I&#x2F;O接口进行DMA传输。<br>在DMA控制器的控制下，在存储器和外部设备之间直接进行数据传送，在传送过程中不需要中央处理器的参与。开始时需提供要传送的数据的起始位置和数据长度。</p>
-<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><p>当完成规定的成批数据传送后，DMA控制器即释放总线控制权，并向I&#x2F;O接口发出结束信号。当I&#x2F;O接口收到结束信号后，一方面停 止I&#x2F;O设备的工作，另一方面向CPU提出中断请求，使CPU从不介入的状态解脱，并执行一段检查本次DMA传输操作正确性的代码。最后，带着本次操作结果及状态继续执行原来的程序。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" class="post-title-link" itemprop="url">编程方法论-面向对象</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-15 23:35:10 / Modified: 23:39:15" itemprop="dateCreated datePublished" datetime="2022-09-15T23:35:10+08:00">2022-09-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>面向对象的核心思想是“将数据和操作数据的函数紧密结合”。</p>
-<h2 id="三大特点"><a href="#三大特点" class="headerlink" title="三大特点"></a>三大特点</h2><p>封装，继承和多态：</p>
-<ul>
-<li>封装即将数据和操作封装在一起，并避免了局部变量的暴露，而只提供接口；</li>
-<li>继承可以在原来的基础上很快的产生新的对象；</li>
-<li>多态是同一个方法调用，针对不同的对象有不同的反应，这方便了程序的设计。</li>
-</ul>
-<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
-<li>易维护</li>
-<li>易复用</li>
-<li>易扩展</li>
-</ul>
-<h2 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h2><p>更多的封装通常导致性能比面向过程低</p>
-<h2 id="如何做"><a href="#如何做" class="headerlink" title="如何做"></a>如何做</h2><ul>
-<li>首先是分析需求，先不要思考怎么用程序实现它，先分析需求中稳定不变的客体都是些什么，这些客体之间的关系是什么。</li>
-<li>把第一步分析出来的需求，通过进一步扩充模型，变成可实现的、符合成本的、模块化的、低耦合高内聚的模型。</li>
-<li>使用面向对象的方法实现模型。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-c%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-c%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">编程方法论-c语言设计模式</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-15 00:47:00 / Modified: 00:52:27" itemprop="dateCreated datePublished" datetime="2022-09-15T00:47:00+08:00">2022-09-15</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="对c语言设计模式的理解"><a href="#对c语言设计模式的理解" class="headerlink" title="对c语言设计模式的理解"></a>对c语言设计模式的理解</h2><p>常见设计模式有23种，经常在java开发中被使用，而嵌入式c语言开发中往往少有提及。我认为有以下几点原因：</p>
-<ul>
-<li>设计模式是与面向对象的编程思想紧密结合的，而java拥有很多面向对象的语言特性。</li>
-<li>设计模式中有大量的抽象封装方法，更适合在偏上层的复杂业务逻辑中使用，而java相比于c来说是更偏上层的语言。</li>
-</ul>
-<p>事实上c语言也能实现面向对象的设计方法。且随着市面上MCU的性能高速发展，嵌入式程序中的业务逻辑越来越复杂，代码量也达到很高的级别。由此，软件人员的架构设计能力也变得越来越重要。</p>
-<p>设计模式可能不用，但不可不了解。<br>我认为设计模式与c语言的结合点如下：</p>
-<ul>
-<li>在一些需求经常变更的，代码扩展迭代频繁的场景中，可以尝试将设计模式与c语言深度融合。</li>
-<li>在一些底层代码如硬件操作中，不宜做过多封装。此时可不使用设计模式，或仅在一些结构体数据结构的设计上做相应参考。</li>
-</ul>
-<h2 id="3句话以内描述设计模式"><a href="#3句话以内描述设计模式" class="headerlink" title="3句话以内描述设计模式"></a>3句话以内描述设计模式</h2><h3 id="单件模式"><a href="#单件模式" class="headerlink" title="单件模式"></a>单件模式</h3><p>将构造类的过程用一个函数封装。</p>
-<h3 id="原型模式"><a href="#原型模式" class="headerlink" title="原型模式"></a>原型模式</h3><p>将拷贝数据的过程用一个函数封装。</p>
-<h3 id="组合模式"><a href="#组合模式" class="headerlink" title="组合模式"></a>组合模式</h3><p>与二叉树有关。<br>如果一个节点还有子节点，则处理对应的子节点；如果无子节点，则直接处理。</p>
-<h3 id="模板模式"><a href="#模板模式" class="headerlink" title="模板模式"></a>模板模式</h3><p>将多个不同流程里面相同的步骤或者说框架提取出来，作为一套模板，供不同的流程使用。<br>个人认为有点类似于c++中的继承，但又不太一样。</p>
-<h3 id="工厂模式"><a href="#工厂模式" class="headerlink" title="工厂模式"></a>工厂模式</h3><p>根据不同的要求输出不同类型的产品(同数据结构)。</p>
-<h3 id="抽象工厂模式"><a href="#抽象工厂模式" class="headerlink" title="抽象工厂模式"></a>抽象工厂模式</h3><p>抽象工厂模式和工厂模式很相似，都是根据不同的要求输出不同类型的产品。<br>两者的区别是：</p>
-<ul>
-<li>抽象工厂的产品和操作接口都不一样。</li>
-<li>工厂模式只是产品不同，操作接口是相同的。</li>
-</ul>
-<h3 id="责任链模式"><a href="#责任链模式" class="headerlink" title="责任链模式"></a>责任链模式</h3><p>对于当前等级无法处理的任务，由链表的下一级负责完成，依此类推。</p>
-<h3 id="迭代器模式"><a href="#迭代器模式" class="headerlink" title="迭代器模式"></a>迭代器模式</h3><p>迭代器模式是对数据结构的一种隐藏，迭代器相当于装载各种数据结构的一种容器。使用者只关心对容器的操作，而无需关心容器内部的数据结构。</p>
-<h3 id="外观模式"><a href="#外观模式" class="headerlink" title="外观模式"></a>外观模式</h3><p>将数据结构中一个接口中有强相关关系的多个操作，打包在一个接口中处理。</p>
-<h3 id="代理模式"><a href="#代理模式" class="headerlink" title="代理模式"></a>代理模式</h3><p>将行为相似的操作抽象为一个代理操作，外部使用者直接操作代理接口即可。<br>个人认为有点类似于迭代器模式，迭代器模式的抽象更为彻底（包括了数据类型）。</p>
-<h3 id="享元模式"><a href="#享元模式" class="headerlink" title="享元模式"></a>享元模式</h3><p>个人认为享元模式有点类似于单例模式的组合。在需要获取时才判断数据是否存在，如不存在则创建。<br>区别是享元模式一般存在类型相似但不相同的多组数据。</p>
-<h3 id="装饰模式"><a href="#装饰模式" class="headerlink" title="装饰模式"></a>装饰模式</h3><p>装饰模式需要借助链表，有点类似于责任链模式。<br>个人认为区别有两点：</p>
-<ul>
-<li>装饰模式还增加了对接口入参的封装，入参常为结构体本身的指针。</li>
-<li>装饰模式也是将数据处理交由下一级完成，但不先进行责任判定。</li>
-</ul>
-<h3 id="适配器模式"><a href="#适配器模式" class="headerlink" title="适配器模式"></a>适配器模式</h3><p>将要处理的事情抽象为对特定数据结构的操作，只关心结果，过程交由该操作完成。</p>
-<h3 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h3><p>对同一类型但不同值的数据的处理，交由统一的方法接口处理。</p>
-<h3 id="中介者模式"><a href="#中介者模式" class="headerlink" title="中介者模式"></a>中介者模式</h3><p>一方对另一方的请求，需通过中介找到。</p>
-<h3 id="建造者模式"><a href="#建造者模式" class="headerlink" title="建造者模式"></a>建造者模式</h3><p>是对流程的一种抽象化处理。<br>个人认为有点类似于模板模式和外观模式。</p>
-<h3 id="桥接模式"><a href="#桥接模式" class="headerlink" title="桥接模式"></a>桥接模式</h3><p>将对入参的请求和处理解耦。先根据入参的类型找到处理函数，再做相应处理。<br>个人认为有点类似于代理模式。</p>
-<h3 id="观察者模式-常用"><a href="#观察者模式-常用" class="headerlink" title="观察者模式(常用)"></a>观察者模式(常用)</h3><p>对数据结构中的公有操作及相应的数据类型进行互相绑定。</p>
-<h3 id="备忘录模式"><a href="#备忘录模式" class="headerlink" title="备忘录模式"></a>备忘录模式</h3><p>与应用软件中的“撤销”行为有强相关性。具体做法是：</p>
-<ul>
-<li>用户的每执行一个操作，都同时建立一个对应的撤销函数。</li>
-<li>将每一个操作和对应的撤销函数都作为节点的内容挂接到操作链表上。</li>
-<li>这样就能在任何时候通过操作链表找到上一步动作，并进行相应的撤销。</li>
-</ul>
-<h3 id="解释器模式"><a href="#解释器模式" class="headerlink" title="解释器模式"></a>解释器模式</h3><p>主要用于解析组合字符串。</p>
-<h3 id="命令模式"><a href="#命令模式" class="headerlink" title="命令模式"></a>命令模式</h3><p>通过命令内容，找到相应的命令处理方法并执行。<br>可以用于设计cli(command-line interface)命令处理架构。</p>
-<h3 id="状态模式"><a href="#状态模式" class="headerlink" title="状态模式"></a>状态模式</h3><p>适合结合状态机编程使用。主要封装状态切换函数和当前状态处理函数。</p>
-<h3 id="访问者模式"><a href="#访问者模式" class="headerlink" title="访问者模式"></a>访问者模式</h3><p>访问者即消费者，处理者即生产者。<br>处理者根据访问者的类型和需求来做相应处理。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>软件的基本设计原则：以人为本、模块分离、层次清晰、简约至上、适用为先、抽象基本业务。<br>合理的才是最好的。不能不设计，也不能过度设计。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="http://www.uml.org.cn/c%2B%2B/201608044.asp">http://www.uml.org.cn/c%2B%2B/201608044.asp</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/14/ARM-%E4%B8%BB%E8%A6%81%E5%AF%84%E5%AD%98%E5%99%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/14/ARM-%E4%B8%BB%E8%A6%81%E5%AF%84%E5%AD%98%E5%99%A8/" class="post-title-link" itemprop="url">ARM-主要寄存器</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-14 00:20:39 / Modified: 00:28:19" itemprop="dateCreated datePublished" datetime="2022-09-14T00:20:39+08:00">2022-09-14</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>寄存器是CPU架构的重要组成部分，要了解ARM架构，就必须了解主要的寄存器。</p>
-<h3 id="CPU中为什么要有寄存器"><a href="#CPU中为什么要有寄存器" class="headerlink" title="CPU中为什么要有寄存器"></a>CPU中为什么要有寄存器</h3><p>程序的执行可以分解成CPU的一条条基本操作，这些基本操作就是各种CPU指令：</p>
-<ul>
-<li>一条CPU指令通常借助多个缓存才能完成，比如一个相加的指令，就至少需要2个被加数，1个相加结果。</li>
-<li>CPU需要一些缓存来保存自身的状态。</li>
-</ul>
-<p>从以上描述可知，这些“CPU指令需要借助的缓存”应具有“可读取”和“可修改”的特性，这意味着缓存可以是内存，也可以是其他存储介质。但是内存访问每次都要通过数据总线去读取，显然会导致效率低下。<br>这种情况下寄存器应运而生，它们就是CPU可以随时快速使用的临时缓存空间。</p>
-<h2 id="ARM主要寄存器"><a href="#ARM主要寄存器" class="headerlink" title="ARM主要寄存器"></a>ARM主要寄存器</h2><p>ARM处理器共有7种不同的处理器模式，在每一种处理器模式中有一组相应的寄存器组。任意时刻(也就是任意的处理器模式下)，可见的寄存器包括15个通用寄存器(R0～R14)、一个或两个状态寄存器及程序计数器(PC)。在所有的寄存器中，有些是各模式共用的同一个物理寄存器，有一些寄存器是各模式自己拥有的独立的物理寄存器。</p>
-<h3 id="未分组寄存器-R0-R7"><a href="#未分组寄存器-R0-R7" class="headerlink" title="未分组寄存器(R0 - R7)"></a>未分组寄存器(R0 - R7)</h3><p>对于未分组寄存器，它们没有被系统用于特别的用途，因此任何可采用通用寄存器的应用场合都可以使用未分组寄存器。<br>但需要注意一点，未分组寄存器不会因为处理器模式的改变而更改指向的寄存器，因此在所有的处理器模式下未分组寄存器都指向同一个寄存器，当中断或异常处理造成处理器模式转换的时候，由于不同的处理器模式使用了相同的物理寄存器，这就有可能造成寄存器中的数据被破坏。</p>
-<h3 id="分组寄存器-R8-R14"><a href="#分组寄存器-R8-R14" class="headerlink" title="分组寄存器(R8 - R14)"></a>分组寄存器(R8 - R14)</h3><p>对于分组寄存器，它们每一次所访问的物理寄存器和处理器当前的运行模式有关。例如在快速中断模式 fiq下R8-R12访问寄存器<code>R8_fiq-R12_fiq</code>；而在其他模式下又访问<code>R8_usr-R12_usr</code>。因此它们每个对应着两个不同的寄存器。</p>
-<p>对于R13（SP）、R14（LR）来说，每个寄存器对应着6个不同的物理寄存器，其中的一个是用户模式与系统模式共用，另外5个物理寄存器对应于其他5种不同的运行模式。采用以下的记号来区分不同的物理寄存器：<br>R13_&lt; mode &gt;<br>R14_&lt; mode &gt;<br>其中，mode为以下几种模式之一：usr、fiq、irq、svc、abt、und。</p>
-<h4 id="R13-SP"><a href="#R13-SP" class="headerlink" title="R13(SP)"></a>R13(SP)</h4><p>栈指针。存储栈地址，比如有个CPU，然后还有个外部资源也就是内存，我们想象CPU在程序跳转的时候在运行是最核心的ALU单元，然后外部资源存储着程序A和程序B还有程序C，实际上在CPU在读程序A的时候，可能下面的时候会跳到程序B单元，这个时候它可能不知道地址在哪里，那么这个时候就存储在SP这个寄存器里面，SP这个寄存器表示后面将要执行的程序。</p>
-<h4 id="R14-LR"><a href="#R14-LR" class="headerlink" title="R14(LR)"></a>R14(LR)</h4><p>链接寄存器。存储于程序返回地址。这个链接寄存器主要用在函数A和函数B，A正在运行时，突然要调用B，那么就引了一个分支了，然后这个函数B去运行，运行完之后还是要返回到最初然后继续往下走，那么这个时候返回值应该要有个记录，这就是链接寄存器。</p>
-<h3 id="程序状态寄存器"><a href="#程序状态寄存器" class="headerlink" title="程序状态寄存器"></a>程序状态寄存器</h3><h4 id="R15-PC"><a href="#R15-PC" class="headerlink" title="R15(PC)"></a>R15(PC)</h4><p>介绍R15之前先简单了解一下ARM处理器的是流水线机制。ARM7处理器采用3级流水线来增加处理器指令流的速度，能提供0.9MIPS&#x2F;MHz的指令处理速度。</p>
-<p>ARM7 的流水线有3个阶段，因此指令分3个阶段执行。<br>⑴ 取指从存储器装载一条指令<br>⑵ 译码识别将要被执行的指令<br>⑶ 执行处理指令并将结果写会寄存器</p>
-<p>对于x86处理器来说，只有完成一条指令的读取和执行后，才会执行下一条指令。这样， PC 始终指向的正在“执行”的指令。<br>而对于 ARM7 来说因为是3级流水线，所以把指令的处理分为了上面所述的3个阶段。所以处理时实际是这样的： ARM 正在执行第1条指令的同时对第2条指令进行译码，并将第3条指令从存储器中取出。因此 ARM7 流水线只有在取第4条指令时，第1条指令才算完成执行。继而 ARM 的 PC 寄存器永远指向当前执行的指令后的第二条指令，即处于取指阶段的指令。</p>
-<p>另外，在ARM状态下，最低的两位[1:0]为0，其他位[31:2]用于保存PC；在Thumb状态下，最低位[0]为0，其他位 [31:1]用于保存PC；所以 R15（PC）虽然可以用作通用寄存器，但是有一些指令在使用R15时有一些特殊限制，当违反了这些限制时，程序的执行结果是未知的。</p>
-<h4 id="R16-CPSR-x2F-APSR"><a href="#R16-CPSR-x2F-APSR" class="headerlink" title="R16(CPSR&#x2F;APSR)"></a>R16(CPSR&#x2F;APSR)</h4><p>寄存器R16只在usr下面被叫做APSR（应用程序状态寄存器），其他情况下叫做CPSR（Current Program Status Register）。<br>R16可在任何运行模式下被访问，它包括条件标志位、中断禁止位、当前处理器模式标志位，以及其他一些相关的控制和状态位。</p>
-<h4 id="R17-SPSR"><a href="#R17-SPSR" class="headerlink" title="R17(SPSR)"></a>R17(SPSR)</h4><p>每一种运行模式下又都有一个专用的物理状态寄存器，称为备份的程序状态寄存器 SPSR （Saved Program Status Register），当异常发生时， SPSR 用于保存 CPSR 的当前值，从异常退出时则可由 SPSR 来恢复 CPSR 。</p>
-<p>由于用户模式和系统模式不属于异常模式，他们没有 SPSR ，当在这两种模式下访问 SPSR ，结果是未知的。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a target="_blank" rel="noopener" href="https://github.com/JnuSimba/AndroidSecNotes/blob/master/Android%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/ARM%20%E5%AF%84%E5%AD%98%E5%99%A8%E7%AE%80%E4%BB%8B.md">https://github.com/JnuSimba/AndroidSecNotes/blob/master/Android%E9%80%86%E5%90%91%E5%9F%BA%E7%A1%80/ARM%20%E5%AF%84%E5%AD%98%E5%99%A8%E7%AE%80%E4%BB%8B.md</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/13/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%AD%E5%A4%A7%E5%B7%A5%E5%85%B7/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/13/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%AD%E5%A4%A7%E5%B7%A5%E5%85%B7/" class="post-title-link" itemprop="url">安全-密码学六大工具</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-09-13 23:59:23" itemprop="dateCreated datePublished" datetime="2022-09-13T23:59:23+08:00">2022-09-13</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-14 20:47:44" itemprop="dateModified" datetime="2022-09-14T20:47:44+08:00">2022-09-14</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>“密码学家的工具箱”这一概念来自《图解密码学》一书。里面有六大工具，它们分别是：</p>
-<ul>
-<li>对称加密</li>
-<li>非对称加密</li>
-<li>单向散列函数</li>
-<li>消息认证码</li>
-<li>数字签名</li>
-<li>随机数生成</li>
-</ul>
-<h2 id="为什么有这六大工具"><a href="#为什么有这六大工具" class="headerlink" title="为什么有这六大工具"></a>为什么有这六大工具</h2><p>密码学是研究如何隐密地传递信息的学科。这项学科想解决的问题主要有四个：</p>
-<ul>
-<li>窃听</li>
-<li>篡改</li>
-<li>伪装</li>
-<li>否认</li>
-</ul>
-<p>密码学的六大工具正是为解决这四个问题而生的，它们之间的对应关系为：</p>
-<p><img src="https://s2.loli.net/2022/09/14/9v1sCR6ATpzjH4Q.png" alt="密码学挑战与工具.png"></p>
-<p>从上图可以看到，某一个工具能同时解决一个或多个问题。<br>使用者应该根据具体的应用场景来选择不同的工具。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>TLS综合运用了密码学中工具中的对称加密、非对称加密、消息认证码、数字签名、伪随机数生成器等。可以说是密码学中的集大成者。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">操作系统-原子操作与互斥操作</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-09-08 00:07:27 / Modified: 00:16:31" itemprop="dateCreated datePublished" datetime="2022-09-08T00:07:27+08:00">2022-09-08</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>如果多个线程访问相同的数据，一个正在读取共享数据的线程可能中断另一个正在修改相同共享数据的线程，导致线程读取到不一致的数据。<br>为了避免多线程同时访问同一块数据，可以用原子操作或者互斥操作进行相应的保护。</p>
-<h2 id="互斥操作"><a href="#互斥操作" class="headerlink" title="互斥操作"></a>互斥操作</h2><p>互相排斥（mutex exclusion）技术，简称为互斥（mutex），它用于防止多个线程同时访问共享资源。互斥技术采用一个对象控制独占访问权限，该对象称之为互斥。配合条件变量（condition variable），互斥可以实现广泛的同步访问控制。例如，它们允许程序员为数据访问操作指定执行次序。</p>
-<h2 id="原子操作"><a href="#原子操作" class="headerlink" title="原子操作"></a>原子操作</h2><p>原子操作，指CPU操作过程中不能被中断。原子曾被认为是不可分割的最小单元，原子操作也可以被理解为一个不可被分割的操作。在针对某个值进行原子操作时，CPU绝对不会再进行其他的针对该值的操作，通常，原子操作仅会由单条CPU指令完成。原子操作是无锁的，其他同步技术实现也常依赖于原子操作。</p>
-<h2 id="互斥操作和原子操作的区别"><a href="#互斥操作和原子操作的区别" class="headerlink" title="互斥操作和原子操作的区别"></a>互斥操作和原子操作的区别</h2><ul>
-<li>互斥操作时，线程取锁之后，可以被其他线程打断再返回回来执行；而原子操作是单个不可被打断的操作，通常是由单条CPU指令完成，所以没有其他线程可以打断它。</li>
-<li>原子操作的优势：更加轻量，可以在不形成临界区的情况下完成并发安全的值得替换操作。可以大大减少同步对程序性能的消耗。</li>
-<li>原子操作的劣势：原子操作是乐观锁，总是假设操作未被改变，在被操作的值被频繁改变的情况下，原子操作并不那么容易成功；而互斥锁是悲观锁，我们总是假设会有并发的操作要修改被操作的值，因此使用锁对一系列操作加上临界区保护。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/09/07/ARM-CPU%E6%A0%B8%E9%97%B4%E9%80%9A%E4%BF%A1%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0/" class="post-title-link" itemprop="url">ARM-CPU核间通信如何实现</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-09-07 00:32:13" itemprop="dateCreated datePublished" datetime="2022-09-07T00:32:13+08:00">2022-09-07</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-08 00:18:07" itemprop="dateModified" datetime="2022-09-08T00:18:07+08:00">2022-09-08</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>对于多核的CPU架构，如果两个核之间需要进行通信，如何实现？</p>
-<h2 id="实现原理"><a href="#实现原理" class="headerlink" title="实现原理"></a>实现原理</h2><p>核间通信，又叫Inter Processor Communication(IPC)。<br>这里仅简单介绍一种方式，基本的思想是“共享内存+互斥操作+通知机制”：</p>
-<ul>
-<li>共享内存，即两个核能访问同一块内存区域。</li>
-<li>互斥操作，即两个核不会在同一时刻去修改同一个内存区域。</li>
-<li>通知机制，即一个核通过GPIO中断或其他方式来通知另一个核有消息要发送。</li>
-</ul>
-<p>当A核需要向B核发送消息时，大致过程为：</p>
-<ul>
-<li>首先A核通过互斥操作取得共享内存的修改权；</li>
-<li>然后A核将要发送的消息放置到共享内存中；</li>
-<li>最后A核通过通知机制告诉B核来读取内存中的数据。</li>
-</ul>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><p>在一块由KM4(Armv8-M，Cortex-M33) + KM0(ArmV8-M，Cortex-M23)组成的双核芯片上，核间通信实现如下（共用一段代码）:</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">u32 Messages[32] = &#123;0&#125;;</span><br><span class="line">/**</span><br><span class="line">  * @brief  exchange messages between KM0 and KM4.</span><br><span class="line">  * @param  IPC_ChNum: the IPC channel number.</span><br><span class="line">   * @param  Message: pointer to the message to be exchanged,and should not stored in stack.</span><br><span class="line">  * @retval   None</span><br><span class="line">  */</span><br><span class="line">void ipc_send_message(u8 IPC_ChNum, u32 Message)</span><br><span class="line">&#123;</span><br><span class="line">	u32 CpuId = IPC_CPUID();</span><br><span class="line">	IPC_TypeDef *IPC_DEV;</span><br><span class="line">	</span><br><span class="line">	if(CpuId == 1) </span><br><span class="line">		IPC_DEV = IPCM4_DEV;</span><br><span class="line">	else if(CpuId == 0) </span><br><span class="line">		IPC_DEV = IPCM0_DEV;</span><br><span class="line">	if(IPC_USER_POINT == ipc_init_config[IPC_ChNum].USER_MSG_TYPE) &#123;</span><br><span class="line">		/*message is shared between two cpu ,so it can&#x27;t store in stack</span><br><span class="line">		 * assume stack down growth, and 0x100 is an estimated value</span><br><span class="line">		 */</span><br><span class="line">		assert_param((Message &gt; (u32)(vTaskStackAddr() + vTaskStackSize()*4)) || (Message &lt; (u32)vTaskStackAddr()));</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	if(IPC_ChNum &gt; 10)&#123;</span><br><span class="line">		Messages[IPC_ChNum] = (u32)Message;</span><br><span class="line">		IPC_DEV-&gt;IPCx_USR[11] = (u32)&amp;Messages[0];</span><br><span class="line">	&#125;else&#123;</span><br><span class="line">		IPC_DEV-&gt;IPCx_USR[IPC_ChNum] = (u32)Message;</span><br><span class="line">	&#125;</span><br><span class="line">		</span><br><span class="line">	IPC_INTRequest(IPC_DEV, IPC_ChNum);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>代码中的基本流程为：</p>
-<ul>
-<li>将要发送的数据放置在共享内存中；</li>
-<li>将共享内存的地址和通道号（最多定义32个通道）放到对应的寄存器中；</li>
-<li>通过中断通知对端核接收IPC消息。</li>
-</ul>
-<p>其中，IPC_INTRequest 的代码为汇编实现：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">1010c940 &lt;IPC_INTRequest&gt;:</span><br><span class="line">1010c940:	2301      	movs	r3, #1</span><br><span class="line">1010c942:	fa03 f101 	lsl.w	r1, r3, r1</span><br><span class="line">1010c946:	6081      	str	r1, [r0, #8]</span><br><span class="line">1010c948:	4770      	bx	lr</span><br><span class="line">1010c94a:	bf00      	nop</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <span class="site-state-item-count">56</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">19</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WaterYoungMan's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/12/06/something/" title="something"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="something"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/06/something/" title="something">something</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-12-06T15:59:49.000Z" title="Created 2022-12-06 23:59:49">2022-12-06</time></span></div><div class="content">一个人的奋斗固然重要，但还是要考虑历史的进程。
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux内核-进程调度算法"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法">linux内核-进程调度算法</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-12-04T16:04:04.000Z" title="Created 2022-12-05 00:04:04">2022-12-05</time></span></div><div class="content">概述linux内核的三种调度算法：
+
+SCHED_OTHER分时调度策略，
+SCHED_FIFO实时调度策略，先到先服务
+SCHED_RR实时调度策略，时间片轮转
+
+实时进程将得到优先调用，实时进程根据实时优先级决定调度权值，分时进程则通过nice和counter值决定权值，nice越小，counter越大，被调度的概率越大，也就是曾经使用了cpu最少的进程将会得到优先调度。
+SHCED_RR和SCHED_FIFO对比不同点
+当采用SHCED_RR策略的进程的时间片用完，系统将重新分配时间片，并置于就绪队列尾。放在队列尾保证了所有具有相同优先级的RR任务的调度公平。
+SCHED_FIFO一旦占用cpu则一直运行。一直运行直到有更高优先级任务到达或自己放弃。
+如果有相同优先级的实时进程（根据优先级计算的调度权值是一样的）已经准备好，FIFO时必须等待该进程主动放弃后才可以运行这个优先级相同的任务。而RR可以让每个任务都执行一段时间。
+
+相同点SHCED_RR和SHCED_FIFO都只用于实时任务。创建时优先级大于0(1-99)。按照可抢占优先级调度算法进行。就绪态的实时任务立即抢占非实时 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下模拟AP热点"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点">在linux下模拟AP热点</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-11-27T15:33:40.000Z" title="Created 2022-11-27 23:33:40">2022-11-27</time></span></div><div class="content">相关工具在Linux PC下使用WiFi网卡仿真一个AP热点需要如下3步，对应需要的组件分别为：
+
+创建WiFi AP：hostapd
+使能DHCP功能：udhcpd(或dnsmasq)
+使能NAT(路由转发)功能：iptables
+
+如果热点下的设备不需要上网，则配置前两步即可。
+安装相应工具12sudo apt install hostapdsudo apt install udhcpd
+
+操作步骤前置条件1.如果当前wifi网卡正在作为STATION模式使用，可能会导致多个进程同时操作wifi，出现冲突，建议先关闭network-manager（ubuntu默认安装的网络管理服务）：sudo service network-manager stop恢复方法：sudo service network-manager start注意，关闭network-manager服务也会同时关闭有线网卡的使用，如果需要有线上网功能，也可以仅手动关闭wifi网卡。2.如果之前开启的进程未完全结束，可能需要清除历史进程及缓存：
+12sudo killall hostapd udhcpdsudo rf ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="但行好事，莫问前程"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程">但行好事，莫问前程</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-10-26T16:24:09.000Z" title="Created 2022-10-27 00:24:09">2022-10-27</time></span></div><div class="content">写在最前消失了近一个月，给自己放了一个很长很长的假——我离职了，离开了工作5年的公司。
+毕业那五年毕业时，出于对IoT行业巨大潜力的看好以及种种机缘巧合，我放弃钱多事少的垄断型国企offer，放弃大公司的offer，投身一家几十人的初创企业。从默默无闻到行业第一，从纳斯达克敲钟到市值大幅缩水，我陪公司走过漫长岁月，见证了它的辉煌和低谷，我也从职场菜鸟成长为公司某一领域的技术负责人。于此同时，我逐渐发现我们作为普通人，在经济衰退的时代浪潮面前是多么苍白无力。一年内发生的巨大变化，让我开始重新审视自己的价值，重新思考自己未来的道路，以及重新明白自己对于这个世界的了解还十分浅薄。
+找工作那些事离职的事情思考了大半年，期间更多地是在考虑下一份工作会是什么行业、什么规模的公司、以及什么样的工作内容。这一次，我尝试去接触更多的信息，与更多人交流，获取更多的意见。古人云：“兼听则明”，在大量的思考和沟通之后，我逐渐明白自己的核心诉求：
+
+做让自己更有成就感，有价值感的事情；
+提升自己的视野，去接触更多维度的东西；
+让自己变得更值钱；
 
 
+更有成就感和价值感的事情，取决于工作范畴和工作内容。我们无法对 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CPU-DMA机制"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制">CPU-DMA机制</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-22T23:58:18.000Z" title="Created 2022-09-23 07:58:18">2022-09-23</time></span></div><div class="content">简介定义DMA，全称Direct Memory Access，即直接存储器访问。DMA传输将数据从一个地址空间复制到另一个地址空间，提供在外设和存储器之间或者存储器和存储器之间的高速数据传输。当CPU初始化这个传输动作，传输动作本身是由DMA控制器来实现和完成的。
+优势DMA传输方式无需CPU直接控制传输，也没有中断处理方式那样保留现场和恢复现场过程，通过硬件为RAM和IO设备开辟一条直接传输数据的通道，使得CPU的效率大大提高。DMA传输对于高效能嵌入式系统算法和网络非常重要。
+传输范围
+外设到内存
+内存到外设
+内存到内存
 
-      </div>
+CPU和DMA访问内存的冲突CPU和DMA同时需要访问内存总线时，两者是如何协调工作的，常见的方式有以下3种：
 
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+DMA传输期间停止CPU访问内存
+I&#x2F;O设备周期性挪用内存
+DMA与CPU交替访问内存
 
+对于一个已经量产的CPU，选用以上哪种方式已经确定。
+DMA传输流程请求CPU对DMA控制器初始化，并向I&#x2F;O接口发出操作命令，I&#x2F;O接口提出DMA请求。
+响应DMA控制器对DMA请求判别优先级及屏蔽，向总线裁决逻辑提出总线请求。当 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="编程方法论-面向对象"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程方法论-面向对象"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/" title="编程方法论-面向对象">编程方法论-面向对象</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-15T15:35:10.000Z" title="Created 2022-09-15 23:35:10">2022-09-15</time></span></div><div class="content">概述面向对象的核心思想是“将数据和操作数据的函数紧密结合”。
+三大特点封装，继承和多态：
 
-      </div>
-    </main>
+封装即将数据和操作封装在一起，并避免了局部变量的暴露，而只提供接口；
+继承可以在原来的基础上很快的产生新的对象；
+多态是同一个方法调用，针对不同的对象有不同的反应，这方便了程序的设计。
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+优点
+易维护
+易复用
+易扩展
 
-        
+缺点更多的封装通常导致性能比面向过程低
+如何做
+首先是分析需求，先不要思考怎么用程序实现它，先分析需求中稳定不变的客体都是些什么，这些客体之间的关系是什么。
+把第一步分析出来的需求，通过进一步扩充模型，变成可实现的、符合成本的、模块化的、低耦合高内聚的模型。
+使用面向对象的方法实现模型。
 
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
-  </div>
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-c%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="编程方法论-c语言设计模式"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="编程方法论-c语言设计模式"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/15/%E7%BC%96%E7%A8%8B%E6%96%B9%E6%B3%95%E8%AE%BA-c%E8%AF%AD%E8%A8%80%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" title="编程方法论-c语言设计模式">编程方法论-c语言设计模式</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-14T16:47:00.000Z" title="Created 2022-09-15 00:47:00">2022-09-15</time></span></div><div class="content">对c语言设计模式的理解常见设计模式有23种，经常在java开发中被使用，而嵌入式c语言开发中往往少有提及。我认为有以下几点原因：
 
-        
+设计模式是与面向对象的编程思想紧密结合的，而java拥有很多面向对象的语言特性。
+设计模式中有大量的抽象封装方法，更适合在偏上层的复杂业务逻辑中使用，而java相比于c来说是更偏上层的语言。
 
+事实上c语言也能实现面向对象的设计方法。且随着市面上MCU的性能高速发展，嵌入式程序中的业务逻辑越来越复杂，代码量也达到很高的级别。由此，软件人员的架构设计能力也变得越来越重要。
+设计模式可能不用，但不可不了解。我认为设计模式与c语言的结合点如下：
 
+在一些需求经常变更的，代码扩展迭代频繁的场景中，可以尝试将设计模式与c语言深度融合。
+在一些底层代码如硬件操作中，不宜做过多封装。此时可不使用设计模式，或仅在一些结构体数据结构的设计上做相应参考。
 
+3句话以内描述设计模式单件模式将构造类的过程用一个函数封装。
+原型模式将拷贝数据的过程用一个函数封装。
+组合模式与二叉树有关。如果一个节点还有子节点，则处理对应的子节点；如果无子节点，则直接处理。
+模板模式将多个不同流程里 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/14/ARM-%E4%B8%BB%E8%A6%81%E5%AF%84%E5%AD%98%E5%99%A8/" title="ARM-主要寄存器"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ARM-主要寄存器"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/14/ARM-%E4%B8%BB%E8%A6%81%E5%AF%84%E5%AD%98%E5%99%A8/" title="ARM-主要寄存器">ARM-主要寄存器</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-13T16:20:39.000Z" title="Created 2022-09-14 00:20:39">2022-09-14</time></span></div><div class="content">前言寄存器是CPU架构的重要组成部分，要了解ARM架构，就必须了解主要的寄存器。
+CPU中为什么要有寄存器程序的执行可以分解成CPU的一条条基本操作，这些基本操作就是各种CPU指令：
 
+一条CPU指令通常借助多个缓存才能完成，比如一个相加的指令，就至少需要2个被加数，1个相加结果。
+CPU需要一些缓存来保存自身的状态。
 
+从以上描述可知，这些“CPU指令需要借助的缓存”应具有“可读取”和“可修改”的特性，这意味着缓存可以是内存，也可以是其他存储介质。但是内存访问每次都要通过数据总线去读取，显然会导致效率低下。这种情况下寄存器应运而生，它们就是CPU可以随时快速使用的临时缓存空间。
+ARM主要寄存器ARM处理器共有7种不同的处理器模式，在每一种处理器模式中有一组相应的寄存器组。任意时刻(也就是任意的处理器模式下)，可见的寄存器包括15个通用寄存器(R0～R14)、一个或两个状态寄存器及程序计数器(PC)。在所有的寄存器中，有些是各模式共用的同一个物理寄存器，有一些寄存器是各模式自己拥有的独立的物理寄存器。
+未分组寄存器(R0 - R7)对于未分组寄存器，它们没有被系统用于特别的用途，因此 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/09/13/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%AD%E5%A4%A7%E5%B7%A5%E5%85%B7/" title="安全-密码学六大工具"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="安全-密码学六大工具"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/13/%E5%AE%89%E5%85%A8-%E5%AF%86%E7%A0%81%E5%AD%A6%E5%85%AD%E5%A4%A7%E5%B7%A5%E5%85%B7/" title="安全-密码学六大工具">安全-密码学六大工具</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-13T15:59:23.000Z" title="Created 2022-09-13 23:59:23">2022-09-13</time></span></div><div class="content">概念“密码学家的工具箱”这一概念来自《图解密码学》一书。里面有六大工具，它们分别是：
 
+对称加密
+非对称加密
+单向散列函数
+消息认证码
+数字签名
+随机数生成
 
+为什么有这六大工具密码学是研究如何隐密地传递信息的学科。这项学科想解决的问题主要有四个：
 
-      </div>
-    </footer>
-  </div>
+窃听
+篡改
+伪装
+否认
 
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
+密码学的六大工具正是为解决这四个问题而生的，它们之间的对应关系为：
 
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+从上图可以看到，某一个工具能同时解决一个或多个问题。使用者应该根据具体的应用场景来选择不同的工具。
+实例TLS综合运用了密码学中工具中的对称加密、非对称加密、消息认证码、数字签名、伪随机数生成器等。可以说是密码学中的集大成者。
+</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/" title="操作系统-原子操作与互斥操作"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统-原子操作与互斥操作"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/09/08/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C%E4%B8%8E%E4%BA%92%E6%96%A5%E6%93%8D%E4%BD%9C/" title="操作系统-原子操作与互斥操作">操作系统-原子操作与互斥操作</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-09-07T16:07:27.000Z" title="Created 2022-09-08 00:07:27">2022-09-08</time></span></div><div class="content">背景如果多个线程访问相同的数据，一个正在读取共享数据的线程可能中断另一个正在修改相同共享数据的线程，导致线程读取到不一致的数据。为了避免多线程同时访问同一块数据，可以用原子操作或者互斥操作进行相应的保护。
+互斥操作互相排斥（mutex exclusion）技术，简称为互斥（mutex），它用于防止多个线程同时访问共享资源。互斥技术采用一个对象控制独占访问权限，该对象称之为互斥。配合条件变量（condition variable），互斥可以实现广泛的同步访问控制。例如，它们允许程序员为数据访问操作指定执行次序。
+原子操作原子操作，指CPU操作过程中不能被中断。原子曾被认为是不可分割的最小单元，原子操作也可以被理解为一个不可被分割的操作。在针对某个值进行原子操作时，CPU绝对不会再进行其他的针对该值的操作，通常，原子操作仅会由单条CPU指令完成。原子操作是无锁的，其他同步技术实现也常依赖于原子操作。
+互斥操作和原子操作的区别
+互斥操作时，线程取锁之后，可以被其他线程打断再返回回来执行；而原子操作是单个不可被打断的操作，通常是由单条CPU指令完成，所以没有其他线程可以打断它。
+原子操作的优势 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WaterYoungMan</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangym307"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangym307" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/something/" title="something"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="something"/></a><div class="content"><a class="title" href="/2022/12/06/something/" title="something">something</a><time datetime="2022-12-06T15:59:49.000Z" title="Created 2022-12-06 23:59:49">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux内核-进程调度算法"/></a><div class="content"><a class="title" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法">linux内核-进程调度算法</a><time datetime="2022-12-04T16:04:04.000Z" title="Created 2022-12-05 00:04:04">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下模拟AP热点"/></a><div class="content"><a class="title" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点">在linux下模拟AP热点</a><time datetime="2022-11-27T15:33:40.000Z" title="Created 2022-11-27 23:33:40">2022-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="但行好事，莫问前程"/></a><div class="content"><a class="title" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程">但行好事，莫问前程</a><time datetime="2022-10-26T16:24:09.000Z" title="Created 2022-10-27 00:24:09">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CPU-DMA机制"/></a><div class="content"><a class="title" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制">CPU-DMA机制</a><time datetime="2022-09-22T23:58:18.000Z" title="Created 2022-09-23 07:58:18">2022-09-23</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/ARM/" style="font-size: 1.34em; color: #99a3b0">ARM</a> <a href="/tags/FreeRTOS/" style="font-size: 1.5em; color: #99a9bf">FreeRTOS</a> <a href="/tags/WiFi/" style="font-size: 1.18em; color: #999ca1">WiFi</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c</a> <a href="/tags/esp32c3/" style="font-size: 1.1em; color: #999">esp32c3</a> <a href="/tags/gdb/" style="font-size: 1.1em; color: #999">gdb</a> <a href="/tags/linux/" style="font-size: 1.34em; color: #99a3b0">linux</a> <a href="/tags/makefile/" style="font-size: 1.18em; color: #999ca1">makefile</a> <a href="/tags/python/" style="font-size: 1.26em; color: #999fa8">python</a> <a href="/tags/rust/" style="font-size: 1.1em; color: #999">rust</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">安全</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.26em; color: #999fa8">操作系统</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 1.26em; color: #999fa8">方法论</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 1.26em; color: #999fa8">编程语言</a> <a href="/tags/%E7%BC%96%E8%AF%91/" style="font-size: 1.1em; color: #999">编译</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">网络协议</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.42em; color: #99a6b7">读书笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.1em; color: #999">随笔</a> <a href="/tags/%E9%AA%8C%E8%AF%81/" style="font-size: 1.1em; color: #999">验证</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">October 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">31</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">July 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">June 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-12-11T15:57:16.441Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By WaterYoungMan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>

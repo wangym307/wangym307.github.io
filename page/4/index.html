@@ -1,1089 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 6.2.0">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
-  </script>
-
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>WaterYoungMan's Blog</title><meta name="author" content="WaterYoungMan"><meta name="copyright" content="WaterYoungMan"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="WaterYoungMan&#39;s Blog">
 <meta property="og:url" content="http://example.com/page/4/index.html">
 <meta property="og:site_name" content="WaterYoungMan&#39;s Blog">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="WaterYoungMan">
 <meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="http://example.com/page/4/">
-
-
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : true,
-    isPost : false,
-    lang   : 'en'
-  };
-</script>
-
-  <title>WaterYoungMan's Blog</title>
-  
-
-
-
-
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/page/4/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'WaterYoungMan\'s Blog',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-12-11 23:57:16'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
   }
 
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">WaterYoungMan's Blog</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives</a>
-
-  </li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-    </header>
-
-    
-  <div class="back-to-top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content index posts-expand">
-            
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/25/%E6%9C%89%E6%BD%9C%E5%8A%9B%E7%9A%84%E5%91%98%E5%B7%A5%E9%80%9A%E5%B8%B8%E5%85%B7%E6%9C%89%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E8%B4%A8/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/25/%E6%9C%89%E6%BD%9C%E5%8A%9B%E7%9A%84%E5%91%98%E5%B7%A5%E9%80%9A%E5%B8%B8%E5%85%B7%E6%9C%89%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E8%B4%A8/" class="post-title-link" itemprop="url">有潜力的员工通常具有的几个特质</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-25 23:33:15 / Modified: 23:33:35" itemprop="dateCreated datePublished" datetime="2022-08-25T23:33:15+08:00">2022-08-25</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <ul>
-<li>好奇心：渴望获得新体验、新知识以及别人反馈，以开放心态学习和改进。</li>
-<li>洞见：收集并准确理解新信息的能力。</li>
-<li>参与：善于运用感情和逻辑进行沟通，能够说服他人并与他人建立联系。</li>
-<li>决心：面临挑战或在逆境中受挫时，依旧能为目标不懈努力。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/23/FreeRTOS%E8%BF%9B%E9%98%B6-%E8%8A%AF%E7%89%87%E7%A7%BB%E6%A4%8D/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/23/FreeRTOS%E8%BF%9B%E9%98%B6-%E8%8A%AF%E7%89%87%E7%A7%BB%E6%A4%8D/" class="post-title-link" itemprop="url">FreeRTOS进阶-芯片移植</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-23 00:21:41" itemprop="dateCreated datePublished" datetime="2022-08-23T00:21:41+08:00">2022-08-23</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-01 00:40:03" itemprop="dateModified" datetime="2022-09-01T00:40:03+08:00">2022-09-01</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>所谓FreeRTOS芯片移植，就是让MCU类芯片能运行FreeRTOS操作系统，其中大部分工作是在port.c这个文件中实现FreeRTOS内核要求的硬件接口。<br><a target="_blank" rel="noopener" href="https://github.com/FreeRTOS/FreeRTOS">github开源库</a>的<code>FreeRTOS/Demo</code>目录下已经包含了大量常用芯片的移植代码。如果是未移植过的芯片，可以找相似架构的芯片作为参考。</p>
-<h2 id="移植过程"><a href="#移植过程" class="headerlink" title="移植过程"></a>移植过程</h2><h3 id="增加FreeRTOS内核代码"><a href="#增加FreeRTOS内核代码" class="headerlink" title="增加FreeRTOS内核代码"></a>增加FreeRTOS内核代码</h3><p>将FreeRTOS内核代码加入编译规则（包括.c和.h）。</p>
-<h3 id="修改FreeRTOSConfig-h文件"><a href="#修改FreeRTOSConfig-h文件" class="headerlink" title="修改FreeRTOSConfig.h文件"></a>修改FreeRTOSConfig.h文件</h3><p>这个是FreeRTOS的个性化配置文件，可以从网上下载Demo，并根据自己的需求修改。<br>常见配置：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">配置tick周期</span><br><span class="line">#define configTICK_RATE_HZ			( ( TickType_t ) 1000 )</span><br><span class="line"></span><br><span class="line">配置内核使用的中断优先级</span><br><span class="line">#define configKERNEL_INTERRUPT_PRIORITY                255</span><br></pre></td></tr></table></figure>
-
-<h3 id="实现适配层函数"><a href="#实现适配层函数" class="headerlink" title="实现适配层函数"></a>实现适配层函数</h3><p>主要包括以下函数：</p>
-<ul>
-<li>xPortStartScheduler，开启FreeRTOS任务调度器</li>
-<li>pxPortInitialiseStack，初始化栈，用于创建任务</li>
-<li>xPortSysTickHandler，tick中断函数</li>
-<li>vPortEnterCritical，进入临界区</li>
-<li>vPortExitCritical，退出临界区</li>
-</ul>
-<h3 id="编写一些钩子函数"><a href="#编写一些钩子函数" class="headerlink" title="编写一些钩子函数"></a>编写一些钩子函数</h3><p>这取决于你在FreeRTOSConfig.h是否开启了相关宏。例如：</p>
-<ul>
-<li>如果你在FreeRTOSConfig.h中设置了configUSE_TICK_HOOK&#x3D;1，则必须编写<code>void vApplicationTickHook(void)</code>函数。该函数利用时间片中断，可以很方便的实现一个定时器功能。</li>
-<li>如果你在FreeRTOSConfig.h中设置了configCHECK_FOR_STACK_OVERFLOW&#x3D;1或&#x3D;2，则必须编写<code>void vApplicationStackOverflowHook( xTaskHandle pxTask, signed char *pcTaskName )</code>函数，该函数用于检测堆栈溢出。</li>
-</ul>
-<h3 id="挂接中断"><a href="#挂接中断" class="headerlink" title="挂接中断"></a>挂接中断</h3><p>异常中断服务代码位于port.c文件中，FreeRTOS的作者已经为各种架构的CPU写好了这些代码，可以直接拿来用，需要用户做的，仅仅是将这些异常中断入口地址挂接到启动代码中。</p>
-<h3 id="创建任务并验证"><a href="#创建任务并验证" class="headerlink" title="创建任务并验证"></a>创建任务并验证</h3><p>调用FreeRTOS提供的API函数来创建任务，并开启调度器vTaskStartScheduler。</p>
-<p>int main(void)<br>{<br>    init_serial_debug();&#x2F;&#x2F;初始化调试串口</p>
-<pre><code>xTaskCreate(vTask,&quot;Task1&quot;,50,NULL,1,NULL);
-vTaskStartScheduler();
-while(1);
-</code></pre>
-<p>}</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cwifi%E5%97%85%E6%8E%A2%E6%8A%93%E5%8C%85/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cwifi%E5%97%85%E6%8E%A2%E6%8A%93%E5%8C%85/" class="post-title-link" itemprop="url">在linux下进行wifi嗅探抓包</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-22 23:48:31" itemprop="dateCreated datePublished" datetime="2022-08-22T23:48:31+08:00">2022-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-09-02 22:54:18" itemprop="dateModified" datetime="2022-09-02T22:54:18+08:00">2022-09-02</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在原生linux系统下（虚拟机不支持），如果内置WiFi网卡及驱动支持monitor(sniffer)模式，则可以用wireshark直接嗅探抓取空中所有802.11帧，无需购买专门的抓包网卡。</p>
-<p>确认网卡是否支持monitor模式的方法是：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">iw list | grep &#x27;Supported interface modes&#x27; -A 10</span><br><span class="line"></span><br><span class="line">输出为:</span><br><span class="line">	Supported interface modes:</span><br><span class="line">		 * IBSS</span><br><span class="line">		 * managed</span><br><span class="line">		 * AP</span><br><span class="line">		 * AP/VLAN</span><br><span class="line">		 * monitor</span><br><span class="line">		 * P2P-client</span><br><span class="line">		 * P2P-GO</span><br><span class="line">		 * P2P-device</span><br><span class="line">	Band 1:</span><br><span class="line">		Capabilities: 0x19ef</span><br></pre></td></tr></table></figure>
-<p>如果输出中包含“monitor”，则代表当前的网卡和驱动都已支持wifi的sniffer模式，可以正常抓wifi包。</p>
-<h2 id="安装wireshark"><a href="#安装wireshark" class="headerlink" title="安装wireshark"></a>安装wireshark</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install wireshark</span><br></pre></td></tr></table></figure>
-<p>出现Configuring wireshark-common时选择yes。</p>
-<p>添加用户组，让wireshark程序拥有更高的权限，以便于内部使用tcpdump这样的内核工具:<br><code>sudo adduser $USER wireshark</code></p>
-<h2 id="设置Monitor模式"><a href="#设置Monitor模式" class="headerlink" title="设置Monitor模式"></a>设置Monitor模式</h2><p>1.查看无线网卡号<br>指令为<code>ifconfig</code>或<code>ip addr</code>，这里我的无线网卡名为“wlp3s0”，下面指令中需将“wlp3s0”替换为你的无线网卡号。</p>
-<p>2.设置为混杂模式</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo service network-manager stop</span><br><span class="line">sudo ifconfig wlp3s0 down(sudo ip addr set wlp3s0 down)</span><br><span class="line">sudo iwconfig wlp3s0 mode Monitor</span><br><span class="line">sudo ifconfig wlp3s0 up(sudo ip addr set wlp3s0 up)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>3.查看当前信道<br><code>iwlist wlp3s0 channel</code><br>4.设置信道<br><code>sudo iwconfig wlp3s0 channel 1</code></p>
-<h2 id="打开wireshark"><a href="#打开wireshark" class="headerlink" title="打开wireshark"></a>打开wireshark</h2><p>正常情况下，如果已经按照上面的说明将当前用户添加到wireshark组中，则可以直接打开wireshark进行抓包。<br>如果打开wireshark后完全无法抓包，可以尝试以超级用户权限打开wireshark。</p>
-<h2 id="结束抓包，切回正常模式"><a href="#结束抓包，切回正常模式" class="headerlink" title="结束抓包，切回正常模式"></a>结束抓包，切回正常模式</h2><p>在Monitor(sniffer)模式下，无法正常使用因特网络。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ifconfig wlp3s0 down(sudo ip addr set wlp3s0 down)</span><br><span class="line">sudo iwconfig wlp3s0 mode Managed</span><br><span class="line">sudo ifconfig wlp3s0 up(sudo ip addr set wlp3s0 up)</span><br><span class="line">sudo service network-manager restart</span><br></pre></td></tr></table></figure>
-<p>无线网卡恢复正常使用。</p>
-<h3 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h3><ul>
-<li>如果经常使用空中抓包，你可以将以上命令保存为脚本，则可以迅速设置Monitor模式，迅速切回正常模式。</li>
-<li>在ubuntu20之后的版本，<code>ifconfig</code>指令已经不再默认安装，转而替换为<code>ip addr</code>系列指令。</li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/gdb-vscode%E5%8F%AF%E8%A7%86%E5%8C%96%E8%B0%83%E8%AF%95%E6%97%B6%E5%A2%9E%E5%8A%A0sudo%E6%9D%83%E9%99%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/gdb-vscode%E5%8F%AF%E8%A7%86%E5%8C%96%E8%B0%83%E8%AF%95%E6%97%B6%E5%A2%9E%E5%8A%A0sudo%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">gdb-vscode可视化调试时增加sudo权限</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:39:22 / Modified: 23:59:45" itemprop="dateCreated datePublished" datetime="2022-08-22T23:39:22+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="前置条件"><a href="#前置条件" class="headerlink" title="前置条件"></a>前置条件</h2><p>不管是命令行调试，还是可视化调试，都需确保要调试的文件在编译时已经增加了cflag”-g”，否则无法增加对应调试信息。</p>
-<h2 id="命令行gdb调试"><a href="#命令行gdb调试" class="headerlink" title="命令行gdb调试"></a>命令行gdb调试</h2><p>基础指令：<code>gdb + 可执行文件</code><br>输入<code>r</code>开始运行<br>具体命令行可参阅：<a target="_blank" rel="noopener" href="https://www.modb.pro/db/232755">gdb命令行</a></p>
-<h2 id="vscode可视化gdb调试"><a href="#vscode可视化gdb调试" class="headerlink" title="vscode可视化gdb调试"></a>vscode可视化gdb调试</h2><ul>
-<li>在工作目录下为调试项目增加”launch.json”</li>
-<li>使用vscode左侧的”Run and Debug”工具进行可视化调试，可以轻松增加断点，单步调试，查看变量值等</li>
-</ul>
-<h3 id="vscode调用的gdb没有sudo权限问题"><a href="#vscode调用的gdb没有sudo权限问题" class="headerlink" title="vscode调用的gdb没有sudo权限问题"></a>vscode调用的gdb没有sudo权限问题</h3><p>gdb运行代码的时候出现<code>Operation not permitted</code>，需要为gdb增加sudo权限，解决方法是新建一个执行文件来间接以sudo方式调用gdb，然后指定vscode将这个执行文件作为gdb工具使用；<br>这么转换的原因是vscode的gdb工具是默认以非sudo方式运行的。</p>
-<ol>
-<li>工程根目录创建一个名为gdb_sudo的可执行脚本，并赋予执行权限。<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;sudo /usr/bin/gdb &quot;$@&quot;&#x27;&gt;gdb_sudo</span><br><span class="line">sudo chmod 777 gdb_sudo</span><br></pre></td></tr></table></figure></li>
-<li>增加.vscode文件夹下的launch.json或改动<br>“miDebuggerPath”: “${workspaceRoot}&#x2F;gdb_sudo”</li>
-</ol>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    // Use IntelliSense to learn about possible attributes.</span><br><span class="line">    // Hover to view descriptions of existing attributes.</span><br><span class="line">    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;name&quot;: &quot;(gdb) xxx_demo_quickstart&quot;,</span><br><span class="line">            &quot;type&quot;: &quot;cppdbg&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;/path/to/bin&quot;,</span><br><span class="line">            &quot;args&quot;: [&quot;&quot;],</span><br><span class="line">            &quot;stopAtEntry&quot;: false,</span><br><span class="line">            &quot;cwd&quot;: &quot;$&#123;workspaceFolder&#125;&quot;,</span><br><span class="line">            &quot;environment&quot;: [],</span><br><span class="line">            &quot;externalConsole&quot;: false,</span><br><span class="line">            &quot;MIMode&quot;: &quot;gdb&quot;,</span><br><span class="line">            &quot;setupCommands&quot;: [</span><br><span class="line">                &#123;</span><br><span class="line">                    &quot;description&quot;: &quot;Enable pretty-printing for gdb&quot;,</span><br><span class="line">                    &quot;text&quot;: &quot;-enable-pretty-printing&quot;,</span><br><span class="line">                    &quot;ignoreFailures&quot;: true</span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            // &quot;miDebuggerPath&quot;: &quot;/usr/bin/gdb&quot;,</span><br><span class="line">            &quot;miDebuggerPath&quot;: &quot;$&#123;workspaceRoot&#125;/gdb_sudo&quot;,</span><br><span class="line">            &quot;postDebugTask&quot;: &quot;Terminate All Tasks&quot;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<ol start="3">
-<li>更改&#x2F;etc&#x2F;sudoers，增加一行，user_name为自己账号名。<br>user_name ALL&#x3D;(ALL) NOPASSWD:&#x2F;usr&#x2F;bin&#x2F;gdb</li>
-</ol>
-<h3 id="无法增加断点问题"><a href="#无法增加断点问题" class="headerlink" title="无法增加断点问题"></a>无法增加断点问题</h3><p>如果gdb启动执行文件的时候打印<code>no debugging symbols found</code>，且无法增加断点，可能是编译可执行文件的时候没有增加cflag “-g”</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E6%9D%83%E9%99%90/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" class="post-title-link" itemprop="url">linux-权限</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:57 / Modified: 23:40:07" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:57+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>权限与用户、组的关系是密不可分的。<br>Linux系统中文件的ugo权限是Linux进行权限管理的基本方式，本文将介绍ugo权限的基本概念。</p>
-<h2 id="权限的概念"><a href="#权限的概念" class="headerlink" title="权限的概念"></a>权限的概念</h2><h3 id="文件的所有者和组"><a href="#文件的所有者和组" class="headerlink" title="文件的所有者和组"></a>文件的所有者和组</h3><p>Linux 文件的ugo权限把对文件的访问者划分为三个类别：文件的所有者、组和其他人。所谓的 ugo 就是指 user(也称为 owner)、group(所在组)和other(其他组)三个单词的首字母组合。</p>
-<p>通过<code>ls -al</code>指令可以查看ugo权限：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">╰─○ ls -al /usr/bin/wireshark </span><br><span class="line">-rwxr-xr-x 1 root root 8786544 4月  20  2020 /usr/bin/wireshark</span><br></pre></td></tr></table></figure>
-
-<h3 id="文件的所有者"><a href="#文件的所有者" class="headerlink" title="文件的所有者"></a>文件的所有者</h3><p>文件的所有者一般是创建该文件的用户，对该文件具有完全的权限。在一台允许多个用户访问的Linux主机上，可以通过文件的所有者来区分一个文件属于某个用户。当然，一个用户也无权查看或更改其它用户的文件。<br>上面第一个root代表文件所有者为root。</p>
-<h3 id="文件所属的组"><a href="#文件所属的组" class="headerlink" title="文件所属的组"></a>文件所属的组</h3><p>假如有几个用户合作开发同一个项目，如果每个用户只能查看和修改自己创建的文件就太不方便了，也就谈不上什么合作了。所以需要一个机制允许一个用户查看和修改其它用户的文件，此时就用到组的概念的。我们可以创建一个组，然后把需要合作的用户都添加都这个组中。在设置文件的访问权限时，允许这个组中的用户对该文件进行读取和修改。<br>上面第二个root代表文件所属的组为root。</p>
-<h3 id="其他人"><a href="#其他人" class="headerlink" title="其他人"></a>其他人</h3><p>如果我想把一个文件共享给系统中的所有用户该怎么办？通过组的方式显然是不合适的，因为需要把系统中的所有用户都添加到一个组中。并且系统中添加了新用户该怎么办，每添加一个新用户就把他添加到这个组中吗？这个问题可以通过其他人的概念解决。在设置文件的访问权限时，允许其他人户对该文件进行读取和修改。</p>
-<h2 id="操作权限的指令"><a href="#操作权限的指令" class="headerlink" title="操作权限的指令"></a>操作权限的指令</h2><p>u：user，所有者<br>g：group，所在组<br>o：other，其他组<br>a：all，以上所有</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chmod u=rwx g=r o=r 文件名：</span><br><span class="line">表示修改文件的所有者的权限是rwx，所在组r，其他组r，u表示所有者，g表示所在组，o表示其他组。</span><br><span class="line">chmod u+x o-x 文件名：表示所有者加上一个x权限，其他组减去一个x权限。</span><br><span class="line">chmod a=rwx 文件名 ：表示给文件所有者、所在组、其他组都设置rwx权限，a表示所有。</span><br><span class="line">chmod a+r 文件名：表示给文件所有者、所在组、其他组都加上r权限。</span><br></pre></td></tr></table></figure>
-
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html">https://p3terx.com/archives/add-normal-users-with-adduser-and-useradd.html</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/" class="post-title-link" itemprop="url">linux-用户与组</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 23:34:21 / Modified: 23:34:48" itemprop="dateCreated datePublished" datetime="2022-08-22T23:34:21+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>在 Linux 操作系统中，有时候需要用指令来为某些应用程序增加权限。<br>比如为虚拟机增加usb使用权限，需要增加一个名为usbfs的用户组，并将当前用户添加到usbfs组中：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo groupadd usbfs</span><br><span class="line">sudo adduser $USER usbfs</span><br><span class="line">cat /etc/group |grep usbfs</span><br></pre></td></tr></table></figure>
-<p>那么“为什么增加用户组就可以解决这些权限问题?”，首先需要了解用户和组的概念。<br>“用户-组-权限”三者的关系是密不可分的。</p>
-<h2 id="用户与组的概念"><a href="#用户与组的概念" class="headerlink" title="用户与组的概念"></a>用户与组的概念</h2><h3 id="理解linux多用户，多任务的特性"><a href="#理解linux多用户，多任务的特性" class="headerlink" title="理解linux多用户，多任务的特性"></a>理解linux多用户，多任务的特性</h3><p>Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响，例如某台linux服务器上有4个用户，分别是root、www、ftp和mysql，在同一时间内，root用户可能在查看系统日志，管理维护系统，www用户可能在修改自己的网页程序，ftp用户可能在上传软件到服务器，mysql用户可能在执行自己的SQL查询，每个用户互不干扰，有条不紊的进行着自己的工作，而每个用户之间不能越权访问，比如www用户不能执行mysql用户的SQL查询操作，ftp用户也不能修改www用户的网页程序，因此可知，不同用户具有不同的权限，每个用户是在权限允许的范围内完成不同的任务，linux正是通过这种权限的划分与管理，实现了多用户多任务的运行机制。</p>
-<h3 id="linux下用户的角色分类"><a href="#linux下用户的角色分类" class="headerlink" title="linux下用户的角色分类"></a>linux下用户的角色分类</h3><p> 在linux下用户是根据角色定义的，具体分为三种角色：</p>
-<ul>
-<li>超级用户：拥有对系统的最高管理权限，默认是root用户。</li>
-<li>普通用户：只能对自己目录下的文件进行访问和修改，具有登录系统的权限，例如上面提到的www用户、ftp用户等。</li>
-<li>虚拟用户：也叫“伪”用户，这类用户最大的特点是不能登录系统，它们的存在主要是方便系统管理，满足相应的系统进程对文件属主的要求。例如系统默认的bin、adm、nobody用户等，一般运行的web服务，默认就是使用的nobody用户，但是nobody用户是不能登录系统的。</li>
-</ul>
-<h3 id="用户和组的概念"><a href="#用户和组的概念" class="headerlink" title="用户和组的概念"></a>用户和组的概念</h3><p>我们知道，Linux是一个多用户多任务的分时操作系统，如果要使用系统资源，就必须向系统管理员申请一个账户，然后通过这个账户进入系统。这个账户和用户是一个概念，通过建立不同属性的用户，一方面，可以合理的利用和控制系统资源，另一方面也可以帮助用户组织文件，提供对用户文件的安全性保护。<br>每个用户都用一个唯一的用户名和用户口令，在登录系统时，只有正确输入了用户名和密码，才能进入系统和自己的主目录。<br>用户组是具有相同特征用户的逻辑集合，有时我们需要让多个用户具有相同的权限，比如查看、修改某一个文件的权限，一种方法是分别对多个用户进行文件访问授权，如果有10个用户的话，就需要授权10次，显然这种方法不太合理；另一种方法是建立一个组，让这个组具有查看、修改此文件的权限，然后将所有需要访问此文件的用户放入这个组中，那么所有用户就具有了和组一样的权限。这就是用户组，将用户分组是Linux 系统中对用户进行管理及控制访问权限的一种手段，通过定义用户组，在很大程度上简化了管理工作。</p>
-<h3 id="用户和组的关系"><a href="#用户和组的关系" class="headerlink" title="用户和组的关系"></a>用户和组的关系</h3><p>用户和用户组的对应关系有：一对一、一对多、多对一和多对多；</p>
-<ul>
-<li>一对一：即一个用户可以存在一个组中，也可以是组中的唯一成员。</li>
-<li>一对多：即一个用户可以存在多个用户组中。那么此用户具有多个组的共同权限。</li>
-<li>多对一：多个用户可以存在一个组中，这些用户具有和组相同的权限。</li>
-<li>多对多：多个用户可以存在多个组中。其实就是上面三个对应关系的扩展。</li>
-</ul>
-<h2 id="操作指令"><a href="#操作指令" class="headerlink" title="操作指令"></a>操作指令</h2><h3 id="增删用户"><a href="#增删用户" class="headerlink" title="增删用户"></a>增删用户</h3><p>adduser deluser</p>
-<h3 id="用户操作"><a href="#用户操作" class="headerlink" title="用户操作"></a>用户操作</h3><p>useradd userdel usermod</p>
-<h3 id="组操作"><a href="#组操作" class="headerlink" title="组操作"></a>组操作</h3><p>groupadd groupdel groupmod</p>
-<h3 id="useradd-与adduser的区别"><a href="#useradd-与adduser的区别" class="headerlink" title="useradd 与adduser的区别"></a>useradd 与adduser的区别</h3><ul>
-<li>adduser是一个 perl 脚本，通过交互式菜单设定一些用户参数。在输入adduser 用户名后，会自动创建用户主目录（并复制&#x2F;etc&#x2F;skel目录下的文件）、指定系统 shell，提示输入用户密码，很简单的就添加了一个标准的普通用户。</li>
-<li>useradd是一个指令，如果不使用任何选项，创建的用户将无密码、无主目录、没有指定 shell。如果你需要正常使用这个账户，就还需要设置密码、创建家目录等额外操作。</li>
-</ul>
-<p>以下是执行<code>man useradd</code>获得的一段作者对于useradd的描述，可以看出useradd相比adduser是更偏底层的指令：</p>
-<blockquote>
-<p>DESCRIPTION<br>useradd is a low level utility for adding users. On Debian,<br>administrators should usually use adduser(8) instead.</p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://developer.aliyun.com/article/401618">https://developer.aliyun.com/article/401618</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">esp32c3-执行export.sh失败问题</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 02:02:51 / Modified: 02:03:24" itemprop="dateCreated datePublished" datetime="2022-08-22T02:02:51+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>export.sh是乐鑫开发框架esp-idf的一个编译环境自动导入脚本，每次编译之前都需要执行。<br>一次在ubuntu虚拟机中执行esp-idf的export.sh时出现了卡住的情况，异常日志如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Detecting the Python interpreter</span><br><span class="line">Checking &quot;python3&quot; ...</span><br><span class="line">Python 3.8.10</span><br><span class="line">&quot;python3&quot; has been detected</span><br><span class="line">Checking Python compatibility</span><br><span class="line">Checking other ESP-IDF version.</span><br><span class="line">Adding ESP-IDF tools to PATH...</span><br><span class="line">Using a supported version of tool cmake found in PATH: 3.16.3.</span><br><span class="line">However the recommended version is 3.23.1.</span><br><span class="line">Using Python interpreter in /home/wang/.espressif/python_env/idf5.0_py3.8_env/bin/python</span><br><span class="line">Checking if Python packages are up to date...</span><br><span class="line">Downloading https://dl.espressif.com/dl/esp-idf/</span><br><span class="line">Destination: /home/wang/.espressif/espidf.constraints.v5.0.txt.tmp</span><br></pre></td></tr></table></figure>
-<p>从日志可以看出，下载配置文件espidf.constraints.v5.0.txt出现异常。</p>
-<h2 id="解决方法一"><a href="#解决方法一" class="headerlink" title="解决方法一"></a>解决方法一</h2><p>通过在esp-idf源码中搜索错误日志定位到idf_tools.py的一个函数，读了代码发现下载这个配置文件前会检查espidf.constraints.v5.0.txt的更新日期与当前日期之差，如果超过一天才会下载更新。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">def get_constraints(idf_version):  # type: (str) -&gt; str</span><br><span class="line">    constraint_file = &#x27;espidf.constraints.v&#123;&#125;.txt&#x27;.format(idf_version)</span><br><span class="line">    constraint_path = os.path.join(global_idf_tools_path or &#x27;&#x27;, constraint_file)</span><br><span class="line">    constraint_url = &#x27;/&#x27;.join([IDF_DL_URL, constraint_file])</span><br><span class="line">    temp_path = constraint_path + &#x27;.tmp&#x27;</span><br><span class="line"></span><br><span class="line">    mkdir_p(os.path.dirname(temp_path))</span><br><span class="line">    try:</span><br><span class="line">        age = datetime.date.today() - datetime.date.fromtimestamp(os.path.getmtime(constraint_path))</span><br><span class="line">        if age &lt; datetime.timedelta(days=1):</span><br><span class="line">            info(f&#x27;Skipping the download of &#123;constraint_path&#125; because it was downloaded recently. If you believe &#x27;</span><br><span class="line">                 f&#x27;that this is causing you trouble then remove it manually and re-run your install script.&#x27;)</span><br><span class="line">            return constraint_path</span><br><span class="line">    except OSError:</span><br><span class="line">        # doesn&#x27;t exist or inaccessible</span><br><span class="line">        pass</span><br></pre></td></tr></table></figure>
-<p>解决方法有两种：</p>
-<ol>
-<li><p>如果该文件已经存在，则更新文件时间即可<br>进入到该目录下手动更新该文件的时间。<br>cd ~&#x2F;.espressif<br>touch espidf.constraints.v5.0.txt</p>
-</li>
-<li><p>如果该文件不存在，手动下载文件即可<br>手动下载<a target="_blank" rel="noopener" href="https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.0.txt">https://dl.espressif.com/dl/esp-idf/espidf.constraints.v5.0.txt</a><br>再拷贝到&#x2F;home&#x2F;wang&#x2F;.espressif&#x2F;espidf.constraints.v5.0.txt</p>
-</li>
-</ol>
-<p>以上两种改动都会导致再次执行export.sh时认为espidf.constraints.v5.0.txt刚刚更新过，不会再执行下载动作，也就避免了下载卡顿问题。但这两种做法都只是通过避免下载来绕过问题，并没有真正解决下载失败问题。</p>
-<h2 id="解决方法二"><a href="#解决方法二" class="headerlink" title="解决方法二"></a>解决方法二</h2><p>根本问题在于在terminal通过脚本到<a target="_blank" rel="noopener" href="https://dl.espressif.com下载文件失败./">https://dl.espressif.com下载文件失败。</a><br>于是我在terminal中尝试ping了一下dl.espressif.com，发现也是失败，但是用chrome浏览器打开这个地址却是正常的，这说明在浏览器和terminal中访问一个域名，实际经过的路径是不一样的。<br>于是在terminal中ping了一下其他域名，发现有的能通有的不能通：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ping www.qq.com失败</span><br><span class="line">ping qq.com正常</span><br><span class="line">ping www.baidu.com正常</span><br><span class="line">ping baidu.com正常</span><br></pre></td></tr></table></figure>
-<p>因此我怀疑在虚拟机自身的DNS服务出现了问题。<br>网上建议修改&#x2F;etc&#x2F;resolv.conf，增加DNS服务器地址。<br>打开后发现文件作者建议我们不要直接修改conf文件，而是需要通过resolvectl去操作。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"># This file is managed by man:systemd-resolved(8). Do not edit.</span><br><span class="line">#</span><br><span class="line"># This is a dynamic resolv.conf file for connecting local clients to the</span><br><span class="line"># internal DNS stub resolver of systemd-resolved. This file lists all</span><br><span class="line"># configured search domains.</span><br><span class="line">#</span><br><span class="line"># Run &quot;resolvectl status&quot; to see details about the uplink DNS servers</span><br><span class="line"># currently in use.</span><br><span class="line">#</span><br><span class="line"># Third party programs must not access this file directly, but only through the</span><br><span class="line"># symlink at /etc/resolv.conf. To manage man:resolv.conf(5) in a different way,</span><br><span class="line"># replace this symlink by a static file or a different symlink.</span><br><span class="line">#</span><br><span class="line"># See man:systemd-resolved.service(8) for details about the supported modes of</span><br><span class="line"># operation for /etc/resolv.conf.</span><br><span class="line"></span><br><span class="line">nameserver 127.0.0.53</span><br><span class="line">options edns0 trust-ad</span><br><span class="line">search localdomain</span><br></pre></td></tr></table></figure>
-<p>联想到最近有将虚拟机的NAT模式改为桥接模式，而之前NAT模式下执行export.sh是正常的。</p>
-<ul>
-<li>桥接模式相当于从主机虚拟一个网卡出来给虚拟机使用，虚拟机和主机处于同一局域网。</li>
-<li>NAT模式是虚拟机处于主机的子网当中，相当于虚拟机把主机当做一个路由器，虚拟机位于LAN口。</li>
-</ul>
-<p>于是我将虚拟机从NAT模式改回了桥接模式，结果之前ping不通的<a target="_blank" rel="noopener" href="http://www.qq.com和dl.espressif.com都能ping通了,export.sh也能正常的执行完毕./">www.qq.com和dl.espressif.com都能ping通了，export.sh也能正常的执行完毕。</a><br>猜想NAT模式下，虚拟机的ternimal中执行DNS时有先经过主机的DNS服务；而桥接模式下虚拟机DNS不经过主机，而是直接经过主机上级路由器。</p>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>当前export.sh卡顿的根源在于该脚本从dl.espressif.com下载文件失败。<br>可以通过手动下载文件来绕过问题，也可以通过修复DNS问题来根本性解决问题。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/" class="post-title-link" itemprop="url">ARM指令-LDR</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 01:45:32 / Modified: 01:49:40" itemprop="dateCreated datePublished" datetime="2022-08-22T01:45:32+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>LDR是ARM的指令，也是伪指令</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><p>LDR{条件} 目的寄存器 &lt;存储器地址&gt;<br>作用：将存储器地址所指地址处连续的4个字节（1个字）的数据传送到目的寄存器中。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">LDR R0，[R1] ；将存储器地址为R1的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，R2] ；将存储器地址为R1+R2的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，#8] ；将存储器地址为R1+8的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1]，R2 ；将存储器地址为R1的字数据读入寄存器R0，然后R1=R1+8。</span><br><span class="line">LDR R0，[R1]，#8 ；将存储器地址为R1的字数据读入寄存器R0，并将R1+8的值存入R1。</span><br><span class="line">LDR R0，[R1，R2]! ；将存储器地址为R1+R2的字数据读入寄存器R0，并将R1+R2的值存入R1。</span><br><span class="line">LDR R0，[R1，LSL #3] ；将存储器地址为R18的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，R2，LSL #2] ；将存储器地址为R1+R24的字数据读入寄存器R0。</span><br><span class="line">LDR R0，[R1，，R2，LSL #2]！ ；将存储器地址为R1+R24的字数据读入寄存器R0，并将R1+R24的值存入R1。</span><br><span class="line">LDR R0，[R1]，R2，LSL #2 ；将存储器地址为R1的字数据读入寄存器R0，并将R1+R2*4的值存入R1。</span><br><span class="line">LDR R0，Label ；Label为程序标号，Label必须是当前指令的-4~4KB范围内。</span><br></pre></td></tr></table></figure>
-<p>要注意的是:<br>LDR Rd，[Rn]，#0x04 ；这里Rd不允许是R15。</p>
-<h2 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h2><h3 id="LDRB和LDRH"><a href="#LDRB和LDRH" class="headerlink" title="LDRB和LDRH"></a>LDRB和LDRH</h3><p>另外LDRB 的指令格式与LDR相似，只不过它是将存储器地址中的8位（1个字节）读到目的寄存器中。<br>LDRH的指令格式也与LDR相似，它是将内存中的16位（半字）读到目的寄存器中。</p>
-<h3 id="LDR-R0，-x3D-0xff"><a href="#LDR-R0，-x3D-0xff" class="headerlink" title="LDR R0，&#x3D;0xff"></a>LDR R0，&#x3D;0xff</h3><p>这里的LDR不是arm指令，而是伪指令。这个时候与MOVE很相似，只不过MOV指令后的立即数是有限制的。这个立即数必须是0X00-0XFF范围内的数经过偶数次右移得到的数，所以MOV用起来比较麻烦，因为有些数不那么容易看出来是否合法。</p>
-<h3 id="LDR-R，label-和-LDR-R，-x3D-label的区别"><a href="#LDR-R，label-和-LDR-R，-x3D-label的区别" class="headerlink" title="LDR R，label 和 LDR R，&#x3D;label的区别"></a>LDR R，label 和 LDR R，&#x3D;label的区别</h3><p>当用 LDR r， &#x3D;imd &#x2F;&#x2F; r 为寄存器， imd为立即数<br>LDR 是一条伪指令。编译器会根据 立即数的大小，决定用 ldr 指令或者是mov或mvn指令。<br>当imd能用mov或者mvn操作时，就将它翻译成一条mov或mvn指令。当imd大于mov或mvn能够操作的数时，编译器会将imd存在一个内存单元中，然后再用一条ldr指令加载这个内存单元的的值到寄存器中。<br>LDR r， label 和 LDR r， &#x3D;label的区别：<br>LDR r， &#x3D;label 会把label表示的值加载到寄存器中，而LDR r， label会把label当做地址，把label指向的地址中的值加载到寄存器中。<br>譬如 label的值是 0x8000， LDR r， &#x3D;label会将 0x8000加载到寄存器中，而LDR r， label则会将内存0x8000处的值加载到寄存器中。</p>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/66d801c85ee9">https://www.jianshu.com/p/66d801c85ee9</a></li>
-</ul>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/" class="post-title-link" itemprop="url">ARM指令-cpsid和cpsie</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2022-08-22 01:44:35 / Modified: 23:40:20" itemprop="dateCreated datePublished" datetime="2022-08-22T01:44:35+08:00">2022-08-22</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>cpsid和cpsie不是通用汇编指令，而是arm指令。</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cps = Change Processor State`</span><br><span class="line">id = irq_disable</span><br><span class="line">ie = irq_enable</span><br></pre></td></tr></table></figure>
-<h2 id="中断开关"><a href="#中断开关" class="headerlink" title="中断开关"></a>中断开关</h2><p>i &#x3D; interrupt</p>
-<h3 id="cpsid-i"><a href="#cpsid-i" class="headerlink" title="cpsid i"></a>cpsid i</h3><p>禁用中断</p>
-<h3 id="cpsie-i"><a href="#cpsie-i" class="headerlink" title="cpsie i"></a>cpsie i</h3><p>使能中断</p>
-<h2 id="异常开关"><a href="#异常开关" class="headerlink" title="异常开关"></a>异常开关</h2><p>f &#x3D; faultmask</p>
-<h3 id="cpsid-f"><a href="#cpsid-f" class="headerlink" title="cpsid f"></a>cpsid f</h3><p>禁用异常</p>
-<h3 id="cpsie-f"><a href="#cpsie-f" class="headerlink" title="cpsie f"></a>cpsie f</h3><p>使能异常</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="en">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2022/08/22/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-xTaskIncrementTick/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="WaterYoungMan">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WaterYoungMan's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2022/08/22/FreeRTOS%E6%BA%90%E7%A0%81%E7%B2%BE%E8%AF%BB-xTaskIncrementTick/" class="post-title-link" itemprop="url">FreeRTOS源码精读-xTaskIncrementTick</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-
-              <time title="Created: 2022-08-22 01:01:17" itemprop="dateCreated datePublished" datetime="2022-08-22T01:01:17+08:00">2022-08-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2022-08-23 00:26:23" itemprop="dateModified" datetime="2022-08-23T00:26:23+08:00">2022-08-23</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h2><p>在调度器未挂起时将FreeRTOS的系统tick时间xTickCount+1，并检查是否有时间溢出事件；<br>返回值是<code>是否需要切换任务</code>。</p>
-<h2 id="调用者"><a href="#调用者" class="headerlink" title="调用者"></a>调用者</h2><p>xTaskIncrementTick有2处被调用：</p>
-<ol>
-<li>在系统tick中断函数中调用，由xPortSysTickHandler的返回值告知是否需要进行任务切换，如果是通过修改寄存器portNVIC_INT_CTRL_REG来触发PendSV中断，进而切换任务。<br>以ARM_CM3为例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">void xPortSysTickHandler( void )</span><br><span class="line">&#123;</span><br><span class="line">    /* The SysTick runs at the lowest interrupt priority, so when this interrupt</span><br><span class="line">     * executes all interrupts must be unmasked.  There is therefore no need to</span><br><span class="line">     * save and then restore the interrupt mask value as its value is already</span><br><span class="line">     * known. */</span><br><span class="line">    portDISABLE_INTERRUPTS();</span><br><span class="line">    &#123;</span><br><span class="line">        /* Increment the RTOS tick. */</span><br><span class="line">        if( xTaskIncrementTick() != pdFALSE )</span><br><span class="line">        &#123;</span><br><span class="line">            /* A context switch is required.  Context switching is performed in</span><br><span class="line">             * the PendSV interrupt.  Pend the PendSV interrupt. */</span><br><span class="line">            portNVIC_INT_CTRL_REG = portNVIC_PENDSVSET_BIT;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    portENABLE_INTERRUPTS();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
-<li>在xTaskResumeAll中调用，有时调度器会被挂起，此时xTickCount并没有及时+1，而是暂存在xPendedCounts中。等到调度器恢复的时候，再补执行。</li>
-</ol>
-<h2 id="函数源码"><a href="#函数源码" class="headerlink" title="函数源码"></a>函数源码</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br></pre></td><td class="code"><pre><span class="line">BaseType_t xTaskIncrementTick( void )</span><br><span class="line">&#123;</span><br><span class="line">    TCB_t * pxTCB;</span><br><span class="line">    TickType_t xItemValue;</span><br><span class="line">    BaseType_t xSwitchRequired = pdFALSE;</span><br><span class="line"></span><br><span class="line">    /* Called by the portable layer each time a tick interrupt occurs.</span><br><span class="line">     * Increments the tick then checks to see if the new tick value will cause any</span><br><span class="line">     * tasks to be unblocked. */</span><br><span class="line">    traceTASK_INCREMENT_TICK( xTickCount );</span><br><span class="line"></span><br><span class="line">    if( uxSchedulerSuspended == ( UBaseType_t ) pdFALSE )</span><br><span class="line">    &#123;</span><br><span class="line">        /* Minor optimisation.  The tick count cannot change in this</span><br><span class="line">         * block. */</span><br><span class="line">        const TickType_t xConstTickCount = xTickCount + ( TickType_t ) 1;</span><br><span class="line"></span><br><span class="line">        /* Increment the RTOS tick, switching the delayed and overflowed</span><br><span class="line">         * delayed lists if it wraps to 0. */</span><br><span class="line">        xTickCount = xConstTickCount;</span><br><span class="line"></span><br><span class="line">        if( xConstTickCount == ( TickType_t ) 0U ) /*lint !e774 &#x27;if&#x27; does not always evaluate to false as it is looking for an overflow. */</span><br><span class="line">        &#123;</span><br><span class="line">            taskSWITCH_DELAYED_LISTS();</span><br><span class="line">        &#125;</span><br><span class="line">        else</span><br><span class="line">        &#123;</span><br><span class="line">            mtCOVERAGE_TEST_MARKER();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /* See if this tick has made a timeout expire.  Tasks are stored in</span><br><span class="line">         * the  queue in the order of their wake time - meaning once one task</span><br><span class="line">         * has been found whose block time has not expired there is no need to</span><br><span class="line">         * look any further down the list. */</span><br><span class="line">        if( xConstTickCount &gt;= xNextTaskUnblockTime )</span><br><span class="line">        &#123;</span><br><span class="line">            for( ; ; )</span><br><span class="line">            &#123;</span><br><span class="line">                if( listLIST_IS_EMPTY( pxDelayedTaskList ) != pdFALSE )</span><br><span class="line">                &#123;</span><br><span class="line">                    /* The delayed list is empty.  Set xNextTaskUnblockTime</span><br><span class="line">                     * to the maximum possible value so it is extremely</span><br><span class="line">                     * unlikely that the</span><br><span class="line">                     * if( xTickCount &gt;= xNextTaskUnblockTime ) test will pass</span><br><span class="line">                     * next time through. */</span><br><span class="line">                    xNextTaskUnblockTime = portMAX_DELAY; /*lint !e961 MISRA exception as the casts are only redundant for some ports. */</span><br><span class="line">                    break;</span><br><span class="line">                &#125;</span><br><span class="line">                else</span><br><span class="line">                &#123;</span><br><span class="line">                    /* The delayed list is not empty, get the value of the</span><br><span class="line">                     * item at the head of the delayed list.  This is the time</span><br><span class="line">                     * at which the task at the head of the delayed list must</span><br><span class="line">                     * be removed from the Blocked state. */</span><br><span class="line">                    pxTCB = listGET_OWNER_OF_HEAD_ENTRY( pxDelayedTaskList ); /*lint !e9079 void * is used as this macro is used with timers and co-routines too.  Alignment is known to be fine as the type of the pointer stored and retrieved is the same. */</span><br><span class="line">                    xItemValue = listGET_LIST_ITEM_VALUE( &amp;( pxTCB-&gt;xStateListItem ) );</span><br><span class="line"></span><br><span class="line">                    if( xConstTickCount &lt; xItemValue )</span><br><span class="line">                    &#123;</span><br><span class="line">                        /* It is not time to unblock this item yet, but the</span><br><span class="line">                         * item value is the time at which the task at the head</span><br><span class="line">                         * of the blocked list must be removed from the Blocked</span><br><span class="line">                         * state -  so record the item value in</span><br><span class="line">                         * xNextTaskUnblockTime. */</span><br><span class="line">                        xNextTaskUnblockTime = xItemValue;</span><br><span class="line">                        break; /*lint !e9011 Code structure here is deemed easier to understand with multiple breaks. */</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                    &#123;</span><br><span class="line">                        mtCOVERAGE_TEST_MARKER();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    /* It is time to remove the item from the Blocked state. */</span><br><span class="line">                    listREMOVE_ITEM( &amp;( pxTCB-&gt;xStateListItem ) );</span><br><span class="line"></span><br><span class="line">                    /* Is the task waiting on an event also?  If so remove</span><br><span class="line">                     * it from the event list. */</span><br><span class="line">                    if( listLIST_ITEM_CONTAINER( &amp;( pxTCB-&gt;xEventListItem ) ) != NULL )</span><br><span class="line">                    &#123;</span><br><span class="line">                        listREMOVE_ITEM( &amp;( pxTCB-&gt;xEventListItem ) );</span><br><span class="line">                    &#125;</span><br><span class="line">                    else</span><br><span class="line">                    &#123;</span><br><span class="line">                        mtCOVERAGE_TEST_MARKER();</span><br><span class="line">                    &#125;</span><br><span class="line"></span><br><span class="line">                    /* Place the unblocked task into the appropriate ready</span><br><span class="line">                     * list. */</span><br><span class="line">                    prvAddTaskToReadyList( pxTCB );</span><br><span class="line"></span><br><span class="line">                    /* A task being unblocked cannot cause an immediate</span><br><span class="line">                     * context switch if preemption is turned off. */</span><br><span class="line">                    #if ( configUSE_PREEMPTION == 1 )</span><br><span class="line">                    &#123;</span><br><span class="line">                        /* Preemption is on, but a context switch should</span><br><span class="line">                         * only be performed if the unblocked task has a</span><br><span class="line">                         * priority that is equal to or higher than the</span><br><span class="line">                         * currently executing task. */</span><br><span class="line">                        if( pxTCB-&gt;uxPriority &gt;= pxCurrentTCB-&gt;uxPriority )</span><br><span class="line">                        &#123;</span><br><span class="line">                            xSwitchRequired = pdTRUE;</span><br><span class="line">                        &#125;</span><br><span class="line">                        else</span><br><span class="line">                        &#123;</span><br><span class="line">                            mtCOVERAGE_TEST_MARKER();</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    #endif /* configUSE_PREEMPTION */</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        /* Tasks of equal priority to the currently running task will share</span><br><span class="line">         * processing time (time slice) if preemption is on, and the application</span><br><span class="line">         * writer has not explicitly turned time slicing off. */</span><br><span class="line">        #if ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) )</span><br><span class="line">        &#123;</span><br><span class="line">            if( listCURRENT_LIST_LENGTH( &amp;( pxReadyTasksLists[ pxCurrentTCB-&gt;uxPriority ] ) ) &gt; ( UBaseType_t ) 1 )</span><br><span class="line">            &#123;</span><br><span class="line">                xSwitchRequired = pdTRUE;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                mtCOVERAGE_TEST_MARKER();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        #endif /* ( ( configUSE_PREEMPTION == 1 ) &amp;&amp; ( configUSE_TIME_SLICING == 1 ) ) */</span><br><span class="line"></span><br><span class="line">        #if ( configUSE_TICK_HOOK == 1 )</span><br><span class="line">        &#123;</span><br><span class="line">            /* Guard against the tick hook being called when the pended tick</span><br><span class="line">             * count is being unwound (when the scheduler is being unlocked). */</span><br><span class="line">            if( xPendedTicks == ( TickType_t ) 0 )</span><br><span class="line">            &#123;</span><br><span class="line">                vApplicationTickHook();</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                mtCOVERAGE_TEST_MARKER();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        #endif /* configUSE_TICK_HOOK */</span><br><span class="line"></span><br><span class="line">        #if ( configUSE_PREEMPTION == 1 )</span><br><span class="line">        &#123;</span><br><span class="line">            if( xYieldPending != pdFALSE )</span><br><span class="line">            &#123;</span><br><span class="line">                xSwitchRequired = pdTRUE;</span><br><span class="line">            &#125;</span><br><span class="line">            else</span><br><span class="line">            &#123;</span><br><span class="line">                mtCOVERAGE_TEST_MARKER();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        #endif /* configUSE_PREEMPTION */</span><br><span class="line">    &#125;</span><br><span class="line">    else</span><br><span class="line">    &#123;</span><br><span class="line">        ++xPendedTicks;</span><br><span class="line"></span><br><span class="line">        /* The tick hook gets called at regular intervals, even if the</span><br><span class="line">         * scheduler is locked. */</span><br><span class="line">        #if ( configUSE_TICK_HOOK == 1 )</span><br><span class="line">        &#123;</span><br><span class="line">            vApplicationTickHook();</span><br><span class="line">        &#125;</span><br><span class="line">        #endif</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return xSwitchRequired;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="源码解读"><a href="#源码解读" class="headerlink" title="源码解读"></a>源码解读</h2><ol>
-<li>首先通过变量uxSchedulerSuspended确认当前调度器是否被挂起，如果挂起则直接将xPendedCounts+1然后退出；</li>
-<li>如果未挂起则将xTickCount+1；然后检查tick是否出现溢出，如果tick从0xffffffff增加为0，则会执行<code>taskSWITCH_DELAYED_LISTS</code>，对应代码为:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">/* pxDelayedTaskList and pxOverflowDelayedTaskList are switched when the tick</span><br><span class="line"> * count overflows. */</span><br><span class="line">#define taskSWITCH_DELAYED_LISTS()                                                \</span><br><span class="line">    &#123;                                                                             \</span><br><span class="line">        List_t * pxTemp;                                                          \</span><br><span class="line">                                                                                  \</span><br><span class="line">        /* The delayed tasks list should be empty when the lists are switched. */ \</span><br><span class="line">        configASSERT( ( listLIST_IS_EMPTY( pxDelayedTaskList ) ) );               \</span><br><span class="line">                                                                                  \</span><br><span class="line">        pxTemp = pxDelayedTaskList;                                               \</span><br><span class="line">        pxDelayedTaskList = pxOverflowDelayedTaskList;                            \</span><br><span class="line">        pxOverflowDelayedTaskList = pxTemp;                                       \</span><br><span class="line">        xNumOfOverflows++;                                                        \</span><br><span class="line">        prvResetNextTaskUnblockTime();                                            \</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></li>
-</ol>
-<p>taskSWITCH_DELAYED_LISTS函数功能：</p>
-<ul>
-<li>将溢出delay任务列表和非溢出delay任务列表做一个对调。</li>
-<li>xNumOfOverflows +1，即tick溢出次数加1，用于获知当前的tick已经溢出了多少个循环，可以理解为秒钟走了一圈自动触发分针走一格。</li>
-<li>prvResetNextTaskUnblockTime()，将下一个任务的解除阻塞时间重新计算。</li>
-</ul>
-<p>（我是这么理解的：溢出任务列表里面存放的任务应该是下一个tick循环的任务，而当tick清0并进入新一轮的循环之后，原本的溢出任务列表则变成了非溢出任务列表，可以正常比较执行了。）</p>
-<ol start="3">
-<li>检查完tick溢出后，通过判断xConstTickCount与xNextTaskUnblockTime的大小关系来确认是否有阻塞的任务出现超时，如果有则将这些任务挨个从pxDelayedTaskList取出放到pxReadyTasksLists，并判断是否有优先级比当前任务相同或更高的任务。如果有（且系统配置了允许优先级抢占configUSE_PREEMPTION）则将xSwitchRequired置为true。</li>
-<li>检查当前同一优先级的就绪任务是否超过1个，如果有（且系统配置了允许时间分片configUSE_TIME_SLICING）则将xSwitchRequired置为true。</li>
-<li>如果xYieldPending为true，则将xSwitchRequired置为true。xYieldPending是一个全局变量，可以理解为一个异步的任务切换通知，当有些函数希望触发任务切换时，不是直接调用切换，而是通过将xYieldPending置位，然后等到systick中断再切换。</li>
-</ol>
-<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>xTaskIncrementTick的功能：</p>
-<ol>
-<li>在调度器未挂起时修改系统tick；</li>
-<li>判断是否有任务因为tick增加或是别的原因（xYieldPending）而需要解除阻塞，并修改pxReadyTasksLists和pxDelayedTaskList两个任务列表。</li>
-<li>综合判断是否需要进行任务切换并放到函数返回值中，而真正的切换动作由后续其他函数（xPortPendSVHandler）来完成。</li>
-</ol>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
-  </nav>
-
-
-
-          </div>
-          
-
-<script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
     }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
-    });
-  }
-</script>
-
-        </div>
-          
   
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
-
-  <aside class="sidebar">
-    <div class="sidebar-inner">
-
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-      </div>
-      <!--/noindex-->
-
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-  <p class="site-author-name" itemprop="name">WaterYoungMan</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-          <span class="site-state-item-count">56</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">19</span>
-        <span class="site-state-item-name">tags</span>
-      </div>
-  </nav>
-</div>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.2.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">WaterYoungMan's Blog</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/26/python-%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84/" title="python-列表与元组"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="python-列表与元组"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/26/python-%E5%88%97%E8%A1%A8%E4%B8%8E%E5%85%83%E7%BB%84/" title="python-列表与元组">python-列表与元组</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-25T16:00:21.000Z" title="Created 2022-08-26 00:00:21">2022-08-26</time></span></div><div class="content">概述列表(list)与元组(tuple)都是python内置的数据类型，是有序的元素的集合。
+列表、元组与c语言数组列表列表有点类似于c语言中的数组和链表的结合体。
 
+从数据的初始化和访问方法上来说，list有点类似于c语言数组：  1test_animals = [&#x27;cat&#x27;, &#x27;dog&#x27;]
+  可以用test_animals[0]，test_animals[1]来访问其中的元素。
+从数据操作上来说，list又有点类似于c语言的链表：  可以用test_animals.append(&#39;bull&#39;)，test_animals.pop()，test_animals.insert(1, &#39;bird&#39;)这样的函数来轻松地增加、删除、插入数据，修改元素的个数。
 
+元组tuple有点类似于c语言的只读数组，如const int a[10]，一旦定义后其元素内容和长度都不可变。
+1test_animals = (&#x27;cat&#x27;, &#x27;dog&#x27;)
+元组元素访问方法同列表。
+差异点列表和元组里面的 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/25/%E6%9C%89%E6%BD%9C%E5%8A%9B%E7%9A%84%E5%91%98%E5%B7%A5%E9%80%9A%E5%B8%B8%E5%85%B7%E6%9C%89%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E8%B4%A8/" title="有潜力的员工通常具有的几个特质"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="有潜力的员工通常具有的几个特质"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/25/%E6%9C%89%E6%BD%9C%E5%8A%9B%E7%9A%84%E5%91%98%E5%B7%A5%E9%80%9A%E5%B8%B8%E5%85%B7%E6%9C%89%E7%9A%84%E5%87%A0%E4%B8%AA%E7%89%B9%E8%B4%A8/" title="有潜力的员工通常具有的几个特质">有潜力的员工通常具有的几个特质</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-25T15:33:15.000Z" title="Created 2022-08-25 23:33:15">2022-08-25</time></span></div><div class="content">
+好奇心：渴望获得新体验、新知识以及别人反馈，以开放心态学习和改进。
+洞见：收集并准确理解新信息的能力。
+参与：善于运用感情和逻辑进行沟通，能够说服他人并与他人建立联系。
+决心：面临挑战或在逆境中受挫时，依旧能为目标不懈努力。
 
-      </div>
+</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/23/FreeRTOS%E8%BF%9B%E9%98%B6-%E8%8A%AF%E7%89%87%E7%A7%BB%E6%A4%8D/" title="FreeRTOS进阶-芯片移植"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="FreeRTOS进阶-芯片移植"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/23/FreeRTOS%E8%BF%9B%E9%98%B6-%E8%8A%AF%E7%89%87%E7%A7%BB%E6%A4%8D/" title="FreeRTOS进阶-芯片移植">FreeRTOS进阶-芯片移植</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-22T16:21:41.000Z" title="Created 2022-08-23 00:21:41">2022-08-23</time></span></div><div class="content">概述所谓FreeRTOS芯片移植，就是让MCU类芯片能运行FreeRTOS操作系统，其中大部分工作是在port.c这个文件中实现FreeRTOS内核要求的硬件接口。github开源库的FreeRTOS/Demo目录下已经包含了大量常用芯片的移植代码。如果是未移植过的芯片，可以找相似架构的芯片作为参考。
+移植过程增加FreeRTOS内核代码将FreeRTOS内核代码加入编译规则（包括.c和.h）。
+修改FreeRTOSConfig.h文件这个是FreeRTOS的个性化配置文件，可以从网上下载Demo，并根据自己的需求修改。常见配置：
+12345配置tick周期#define configTICK_RATE_HZ			( ( TickType_t ) 1000 )配置内核使用的中断优先级#define configKERNEL_INTERRUPT_PRIORITY                255
 
-    </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
+实现适配层函数主要包括以下函数：
 
+xPortStartScheduler，开启FreeRTOS任务调度器
+pxPortInitialiseStack，初始化栈，用于创建任务
+xPortS ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/22/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cwifi%E5%97%85%E6%8E%A2%E6%8A%93%E5%8C%85/" title="在linux下进行wifi嗅探抓包"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下进行wifi嗅探抓包"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/22/%E5%9C%A8linux%E4%B8%8B%E8%BF%9B%E8%A1%8Cwifi%E5%97%85%E6%8E%A2%E6%8A%93%E5%8C%85/" title="在linux下进行wifi嗅探抓包">在linux下进行wifi嗅探抓包</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-22T15:48:31.000Z" title="Created 2022-08-22 23:48:31">2022-08-22</time></span></div><div class="content">概述在原生linux系统下（虚拟机不支持），如果内置WiFi网卡及驱动支持monitor(sniffer)模式，则可以用wireshark直接嗅探抓取空中所有802.11帧，无需购买专门的抓包网卡。
+确认网卡是否支持monitor模式的方法是：
+1234567891011121314iw list | grep &#x27;Supported interface modes&#x27; -A 10输出为:	Supported interface modes:		 * IBSS		 * managed		 * AP		 * AP/VLAN		 * monitor		 * P2P-client		 * P2P-GO		 * P2P-device	Band 1:		Capabilities: 0x19ef
+如果输出中包含“monitor”，则代表当前的网卡和驱动都已支持wifi的sniffer模式，可以正常抓wifi包。
+安装wireshark12sudo apt-get updatesudo apt-get install wireshark
+出现Configuring wireshark ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/22/gdb-vscode%E5%8F%AF%E8%A7%86%E5%8C%96%E8%B0%83%E8%AF%95%E6%97%B6%E5%A2%9E%E5%8A%A0sudo%E6%9D%83%E9%99%90/" title="gdb-vscode可视化调试时增加sudo权限"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="gdb-vscode可视化调试时增加sudo权限"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/22/gdb-vscode%E5%8F%AF%E8%A7%86%E5%8C%96%E8%B0%83%E8%AF%95%E6%97%B6%E5%A2%9E%E5%8A%A0sudo%E6%9D%83%E9%99%90/" title="gdb-vscode可视化调试时增加sudo权限">gdb-vscode可视化调试时增加sudo权限</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-22T15:39:22.000Z" title="Created 2022-08-22 23:39:22">2022-08-22</time></span></div><div class="content">前置条件不管是命令行调试，还是可视化调试，都需确保要调试的文件在编译时已经增加了cflag”-g”，否则无法增加对应调试信息。
+命令行gdb调试基础指令：gdb + 可执行文件输入r开始运行具体命令行可参阅：gdb命令行
+vscode可视化gdb调试
+在工作目录下为调试项目增加”launch.json”
+使用vscode左侧的”Run and Debug”工具进行可视化调试，可以轻松增加断点，单步调试，查看变量值等
 
-      </div>
-    </main>
+vscode调用的gdb没有sudo权限问题gdb运行代码的时候出现Operation not permitted，需要为gdb增加sudo权限，解决方法是新建一个执行文件来间接以sudo方式调用gdb，然后指定vscode将这个执行文件作为gdb工具使用；这么转换的原因是vscode的gdb工具是默认以非sudo方式运行的。
 
-    <footer class="footer">
-      <div class="footer-inner">
-        
+工程根目录创建一个名为gdb_sudo的可执行脚本，并赋予执行权限。12echo &#x27;sudo /usr/bin/gdb &quot;$@&quot;&#x27;&gt;gdb_sudosudo chmod 777 gdb_sudo
+增加 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" title="linux-权限"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux-权限"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/22/linux-%E6%9D%83%E9%99%90/" title="linux-权限">linux-权限</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-22T15:34:57.000Z" title="Created 2022-08-22 23:34:57">2022-08-22</time></span></div><div class="content">引言权限与用户、组的关系是密不可分的。Linux系统中文件的ugo权限是Linux进行权限管理的基本方式，本文将介绍ugo权限的基本概念。
+权限的概念文件的所有者和组Linux 文件的ugo权限把对文件的访问者划分为三个类别：文件的所有者、组和其他人。所谓的 ugo 就是指 user(也称为 owner)、group(所在组)和other(其他组)三个单词的首字母组合。
+通过ls -al指令可以查看ugo权限：
+12╰─○ ls -al /usr/bin/wireshark -rwxr-xr-x 1 root root 8786544 4月  20  2020 /usr/bin/wireshark
 
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">WaterYoungMan</span>
-</div>
-  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a>
-  </div>
-
-        
-
-
-
-
-
-
-
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-  
-
-</body>
-</html>
+文件的所有者文件的所有者一般是创建该文件的用户，对该文件具有完全的权限。在一台允许多个用户访问的Linux主机上，可以通过文件的所有者来区分一个文件属于某个用户。当然，一个用户也无权查看或更改其它用户的文件。上面第一个root代表文件所有者为root。
+文件所属的组假如有几个用户合作开发同一个项目，如果每个用户只能查看和修改自己创建的文件就太不方便了，也就谈不上什么合作了。所以需要一个机制 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/" title="linux-用户与组"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux-用户与组"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/22/linux-%E7%94%A8%E6%88%B7%E4%B8%8E%E7%BB%84/" title="linux-用户与组">linux-用户与组</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-22T15:34:21.000Z" title="Created 2022-08-22 23:34:21">2022-08-22</time></span></div><div class="content">引言在 Linux 操作系统中，有时候需要用指令来为某些应用程序增加权限。比如为虚拟机增加usb使用权限，需要增加一个名为usbfs的用户组，并将当前用户添加到usbfs组中：
+123sudo groupadd usbfssudo adduser $USER usbfscat /etc/group |grep usbfs
+那么“为什么增加用户组就可以解决这些权限问题?”，首先需要了解用户和组的概念。“用户-组-权限”三者的关系是密不可分的。
+用户与组的概念理解linux多用户，多任务的特性Linux是一个真实的、完整的多用户多任务操作系统，多用户多任务就是可以在系统上建立多个用户，而多个用户可以在同一时间内登录同一个系统执行各自不同的任务，而互不影响，例如某台linux服务器上有4个用户，分别是root、www、ftp和mysql，在同一时间内，root用户可能在查看系统日志，管理维护系统，www用户可能在修改自己的网页程序，ftp用户可能在上传软件到服务器，mysql用户可能在执行自己的SQL查询，每个用户互不干扰，有条不紊的进行着自己的工作，而每个用户之间不能越权访问，比如www用 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" title="esp32c3-执行export.sh失败问题"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="esp32c3-执行export.sh失败问题"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/22/esp32c3-%E6%89%A7%E8%A1%8Cexport-sh%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/" title="esp32c3-执行export.sh失败问题">esp32c3-执行export.sh失败问题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-21T18:02:51.000Z" title="Created 2022-08-22 02:02:51">2022-08-22</time></span></div><div class="content">问题export.sh是乐鑫开发框架esp-idf的一个编译环境自动导入脚本，每次编译之前都需要执行。一次在ubuntu虚拟机中执行esp-idf的export.sh时出现了卡住的情况，异常日志如下：
+12345678910111213Detecting the Python interpreterChecking &quot;python3&quot; ...Python 3.8.10&quot;python3&quot; has been detectedChecking Python compatibilityChecking other ESP-IDF version.Adding ESP-IDF tools to PATH...Using a supported version of tool cmake found in PATH: 3.16.3.However the recommended version is 3.23.1.Using Python interpreter in /home/wang/.espressif/python_env/idf5.0_py3.8 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/" title="ARM指令-LDR"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ARM指令-LDR"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-LDR/" title="ARM指令-LDR">ARM指令-LDR</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-21T17:45:32.000Z" title="Created 2022-08-22 01:45:32">2022-08-22</time></span></div><div class="content">概述LDR是ARM的指令，也是伪指令
+用法LDR{条件} 目的寄存器 &lt;存储器地址&gt;作用：将存储器地址所指地址处连续的4个字节（1个字）的数据传送到目的寄存器中。
+实例1234567891011LDR R0，[R1] ；将存储器地址为R1的字数据读入寄存器R0。LDR R0，[R1，R2] ；将存储器地址为R1+R2的字数据读入寄存器R0。LDR R0，[R1，#8] ；将存储器地址为R1+8的字数据读入寄存器R0。LDR R0，[R1]，R2 ；将存储器地址为R1的字数据读入寄存器R0，然后R1=R1+8。LDR R0，[R1]，#8 ；将存储器地址为R1的字数据读入寄存器R0，并将R1+8的值存入R1。LDR R0，[R1，R2]! ；将存储器地址为R1+R2的字数据读入寄存器R0，并将R1+R2的值存入R1。LDR R0，[R1，LSL #3] ；将存储器地址为R18的字数据读入寄存器R0。LDR R0，[R1，R2，LSL #2] ；将存储器地址为R1+R24的字数据读入寄存器R0。LDR R0，[R1，，R2，LSL #2]！ ；将存储器地址为R1+R24的字数据 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/" title="ARM指令-cpsid和cpsie"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="ARM指令-cpsid和cpsie"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/08/22/ARM%E6%8C%87%E4%BB%A4-cpsid%E5%92%8Ccpsie/" title="ARM指令-cpsid和cpsie">ARM指令-cpsid和cpsie</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-08-21T17:44:35.000Z" title="Created 2022-08-22 01:44:35">2022-08-22</time></span></div><div class="content">概述cpsid和cpsie不是通用汇编指令，而是arm指令。
+123cps = Change Processor State`id = irq_disableie = irq_enable
+中断开关i &#x3D; interrupt
+cpsid i禁用中断
+cpsie i使能中断
+异常开关f &#x3D; faultmask
+cpsid f禁用异常
+cpsie f使能异常
+</div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/3/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/#content-inner">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/#content-inner">5</a><a class="page-number" href="/page/6/#content-inner">6</a><a class="extend next" rel="next" href="/page/5/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">WaterYoungMan</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">57</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">19</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/wangym307"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/wangym307" target="_blank" title="Github"><i class="fab fa-github"></i></a></div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/12/06/something/" title="something"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="something"/></a><div class="content"><a class="title" href="/2022/12/06/something/" title="something">something</a><time datetime="2022-12-06T15:59:49.000Z" title="Created 2022-12-06 23:59:49">2022-12-06</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="linux内核-进程调度算法"/></a><div class="content"><a class="title" href="/2022/12/05/linux%E5%86%85%E6%A0%B8-%E8%BF%9B%E7%A8%8B%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/" title="linux内核-进程调度算法">linux内核-进程调度算法</a><time datetime="2022-12-04T16:04:04.000Z" title="Created 2022-12-05 00:04:04">2022-12-05</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="在linux下模拟AP热点"/></a><div class="content"><a class="title" href="/2022/11/27/%E5%9C%A8linux%E4%B8%8B%E6%A8%A1%E6%8B%9FAP%E7%83%AD%E7%82%B9/" title="在linux下模拟AP热点">在linux下模拟AP热点</a><time datetime="2022-11-27T15:33:40.000Z" title="Created 2022-11-27 23:33:40">2022-11-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="但行好事，莫问前程"/></a><div class="content"><a class="title" href="/2022/10/27/%E4%BD%86%E8%A1%8C%E5%A5%BD%E4%BA%8B%EF%BC%8C%E8%8E%AB%E9%97%AE%E5%89%8D%E7%A8%8B/" title="但行好事，莫问前程">但行好事，莫问前程</a><time datetime="2022-10-26T16:24:09.000Z" title="Created 2022-10-27 00:24:09">2022-10-27</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="CPU-DMA机制"/></a><div class="content"><a class="title" href="/2022/09/23/CPU-DMA%E6%9C%BA%E5%88%B6/" title="CPU-DMA机制">CPU-DMA机制</a><time datetime="2022-09-22T23:58:18.000Z" title="Created 2022-09-23 07:58:18">2022-09-23</time></div></div></div></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/ARM/" style="font-size: 1.34em; color: #99a3b0">ARM</a> <a href="/tags/FreeRTOS/" style="font-size: 1.5em; color: #99a9bf">FreeRTOS</a> <a href="/tags/WiFi/" style="font-size: 1.18em; color: #999ca1">WiFi</a> <a href="/tags/c/" style="font-size: 1.1em; color: #999">c</a> <a href="/tags/esp32c3/" style="font-size: 1.1em; color: #999">esp32c3</a> <a href="/tags/gdb/" style="font-size: 1.1em; color: #999">gdb</a> <a href="/tags/linux/" style="font-size: 1.34em; color: #99a3b0">linux</a> <a href="/tags/makefile/" style="font-size: 1.18em; color: #999ca1">makefile</a> <a href="/tags/python/" style="font-size: 1.26em; color: #999fa8">python</a> <a href="/tags/rust/" style="font-size: 1.1em; color: #999">rust</a> <a href="/tags/%E5%AE%89%E5%85%A8/" style="font-size: 1.1em; color: #999">安全</a> <a href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" style="font-size: 1.26em; color: #999fa8">操作系统</a> <a href="/tags/%E6%96%B9%E6%B3%95%E8%AE%BA/" style="font-size: 1.26em; color: #999fa8">方法论</a> <a href="/tags/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" style="font-size: 1.26em; color: #999fa8">编程语言</a> <a href="/tags/%E7%BC%96%E8%AF%91/" style="font-size: 1.1em; color: #999">编译</a> <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/" style="font-size: 1.1em; color: #999">网络协议</a> <a href="/tags/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" style="font-size: 1.42em; color: #99a6b7">读书笔记</a> <a href="/tags/%E9%9A%8F%E7%AC%94/" style="font-size: 1.1em; color: #999">随笔</a> <a href="/tags/%E9%AA%8C%E8%AF%81/" style="font-size: 1.1em; color: #999">验证</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/12/"><span class="card-archive-list-date">December 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/11/"><span class="card-archive-list-date">November 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/10/"><span class="card-archive-list-date">October 2022</span><span class="card-archive-list-count">1</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/09/"><span class="card-archive-list-date">September 2022</span><span class="card-archive-list-count">18</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/08/"><span class="card-archive-list-date">August 2022</span><span class="card-archive-list-count">31</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/07/"><span class="card-archive-list-date">July 2022</span><span class="card-archive-list-count">2</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/06/"><span class="card-archive-list-date">June 2022</span><span class="card-archive-list-count">2</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">57</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-12-11T15:57:16.441Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By WaterYoungMan</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
